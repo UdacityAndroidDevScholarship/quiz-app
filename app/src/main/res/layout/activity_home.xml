@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeactivitycoordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:fitsSystemWindows="true"
+    android:visibility="invisible">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:stateListAnimator="@animator/appbar_elevated">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbarrnav"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <RelativeLayout
+            android:id="@+id/updatelist"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingStart="16dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Total : "
+                android:layout_alignParentStart="true"
+                android:textStyle="bold"
+                android:id="@+id/total"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="0"
+                android:layout_toEndOf="@id/total"
+                android:id="@+id/total_quizzes_count"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:paddingStart="16dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Left : "
+                android:layout_toStartOf="@id/left_quizzes_count"
+                android:textStyle="bold"
+                android:id="@+id/left_quizzes"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="0"
+                android:paddingEnd="16dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/left_quizzes_count"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+        </RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>

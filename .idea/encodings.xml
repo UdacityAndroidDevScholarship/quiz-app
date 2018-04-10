@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/developervishalsehgal/udacityscholarsapp/Extras/Connectivity.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/developervishalsehgal/udacityscholarsapp/Extras/ParallaxPageTransformer.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/developervishalsehgal/udacityscholarsapp/IntroActivity/IntroActivity.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/animator/appbar_elevated.xml" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/backk.png" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/google_logo.png" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/intro_diagnol_layout_one.xml" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/intro_diagnol_layout_two.xml" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/white_radius.xml" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_intro.xml" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash_screen.xml" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/intro_screen_one.xml" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/intro_screen_two.xml" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_navigation_drawer.xml" charset="windows-1251" />
+  </component>
+</project>

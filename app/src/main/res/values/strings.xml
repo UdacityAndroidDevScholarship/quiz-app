@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">UdacityScholarsApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="thumb_link">https://drive.google.com/uc?export=download&amp;id=</string>
+    <string name="deadline">Deadline:</string>
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>

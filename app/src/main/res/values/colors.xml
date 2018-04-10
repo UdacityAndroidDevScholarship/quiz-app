@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#243447</color>
+    <color name="colorPrimaryDark">#1b2836</color>
+    <color name="colorAccent">#00B8D4</color>
+
+    <color name="color_green_deadline">#00c853</color>
+    <color name="color_red_deadline">#d50000</color>
+
+    <color name="screen_one">#00BCD4</color>
+    <color name="screen_two">#009688</color>
+
+    <color name="translucent_scrim_bottom">#6f000000</color>
+    <color name="translucent_scrim_bottom_center">#0D000000</color>
+
+
+    <color name="bnv_color">#151e3f</color>
+    <color name="blue_jeans">#63adf2</color>
+    <color name="ufo_green">#32e875</color>
+    <color name="vivid_tangelo">#ea7317</color>
+
+
+    <color name="dot_dark1">#0288D1</color>
+    <color name="dot_dark2">#00796B</color>
+    <color name="dot_dark3">#7B1FA2</color>
+    <color name="dot_dark4">#C2185B</color>
+    <color name="dot_dark5">#D32F2F</color>
+
+    <color name="dot_light1">#81D4FA</color>
+    <color name="dot_light2">#80CBC4</color>
+    <color name="dot_light3">#CE93D8</color>
+    <color name="dot_light4">#F48FB1</color>
+    <color name="dot_light5">#EF9A9A</color>
+
+    <array name="dot_active">
+        <item>@color/dot_dark1</item>
+        <item>@color/dot_dark2</item>
+        <item>@color/dot_dark3</item>
+        <item>@color/dot_dark4</item>
+        <item>@color/dot_dark5</item>
+    </array>
+
+    <array name="dot_inactive">
+    <item>@color/dot_light1</item>
+    <item>@color/dot_light2</item>
+    <item>@color/dot_light3</item>
+    <item>@color/dot_light4</item>
+    <item>@color/dot_light5</item>
+    </array>
+</resources>

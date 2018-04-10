@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "897350396907",
+    "firebase_url": "https://udacityscholarsapp-91da6.firebaseio.com",
+    "project_id": "udacityscholarsapp-91da6",
+    "storage_bucket": "udacityscholarsapp-91da6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897350396907:android:3527301905ca6725",
+        "android_client_info": {
+          "package_name": "com.developervishalsehgal.udacityscholarsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897350396907-tnb23f600919uvj8up7hhh0v8go4spe4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.developervishalsehgal.udacityscholarsapp",
+            "certificate_hash": "e5fa556081e3efc8cd0efc90139ddbb98cae1bcc"
+          }
+        },
+        {
+          "client_id": "897350396907-p9alch81qro22j44741h668glbn7uqic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnqgG_GPIB0kNxWJutDKgVRNm3WxAer9U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897350396907-p9alch81qro22j44741h668glbn7uqic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

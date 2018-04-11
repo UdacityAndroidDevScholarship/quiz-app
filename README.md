@@ -14,7 +14,7 @@ Thank you for showing interest in the project. We will work together and make it
 • Android Resources: Useful resources related to android based on search keyword
 Contains a section : Tips for making a Great UI.
 
-# Idea of the project` -
+# Idea of the project -
 
 • *Manage quizzes* -
 

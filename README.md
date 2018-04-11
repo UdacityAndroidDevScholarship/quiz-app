@@ -1,10 +1,10 @@
-*QUIZ/SHOWCASE APP*
+## QUIZ/SHOWCASE APP
 
 Hello Everyone,
 
 Thank you for showing interest in the project. We will work together and make it big.
 
-`Purpose of the Project` -
+# Purpose of the Project -
 
 • Attempting all the quizzes will be easy for everyone.
 • Reminder and Notifications for the quizzes.
@@ -14,7 +14,7 @@ Thank you for showing interest in the project. We will work together and make it
 • Android Resources: Useful resources related to Android based on a search keyword
 Contains a section: Tips for making a Great UI.
 
-`Idea of the project` -
+# Idea of the project -
 
 • *Manage quizzes* -
 
@@ -28,10 +28,18 @@ The app will also have a feature of showcasing the work done by other students (
 
 People will also be able to search for Android keywords to find relevant resources. Resources/blogs will be present based on the number upvotes received in the app if no upvotes then alphabetically.
 
-`Mods`: Aditi Soni (@aditi.soni) , Vishal Sehgal (@sehgalvishal31) , Parth Joshi (@Parth J)
+# Mods:
+  * Aditi Soni (@aditi.soni) 
+  * Vishal Sehgal (@sehgalvishal31)
+  * Parth Joshi (@Parth J)
 
-`Co-Mod`: Kaushal Dhruw(@Kaushal), Vansh Badkul(@Vansh), Sagarsrao(@Sagarsrao), Thayumaanavan(@Thayumaanavan C R)
 
-`Google form link for suggestions`- https://goo.gl/forms/aE1YfyZRKhNOscPW2
+# Co-Mod:
+  * Kaushal Dhruw(@Kaushal), Vansh Badkul(@Vansh), Sagarsrao(@Sagarsrao), Thayumaanavan(@Thayumaanavan C R)
 
-`Please have a look at the video for better understanding`- https://drive.google.com/open?id=12FhKx3EB8OlvBvJCMNoIS8qMhMk35vqH
+# Google form link for suggestions-
+https://goo.gl/forms/aE1YfyZRKhNOscPW2
+
+
+> Please have a look at the video for better understanding- https://drive.google.com/open?id=12FhKx3EB8OlvBvJCMNoIS8qMhMk35vqH
+

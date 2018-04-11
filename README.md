@@ -30,7 +30,7 @@ People will also be able to search for Android keywords to find relevant resourc
 
 `Mods`: Aditi Soni (@aditi.soni) , Vishal Sehgal (@sehgalvishal31) , Parth Joshi (@Parth J)
 
-`Co-Mod`: Kaushal Dhruw(@Kaushal)
+`Co-Mod`: Kaushal Dhruw(@Kaushal), Vansh Badkul(@Vansh), Sagarsrao(@Sagarsrao), Thayumaanavan(@Thayumaanavan C R)
 
 `Google form link for suggestions`- https://goo.gl/forms/aE1YfyZRKhNOscPW2
 

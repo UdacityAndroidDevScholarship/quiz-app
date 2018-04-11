@@ -35,10 +35,11 @@ People will also be able to search for Android keywords to find relevant resourc
 
 
 # Co-Mod:
-  * Kaushal Dhruw(@Kaushal), Vansh Badkul(@Vansh), Sagarsrao(@Sagarsrao), Thayumaanavan(@Thayumaanavan C R)
+  * Kaushal Dhruw(@Kaushal)
+  * Vansh Badkul(@Vansh)
+  * Sagarsrao(@Sagarsrao)
+  * Thayumaanavan(@Thayumaanavan C R)
 
-# Google form link for suggestions-
-https://goo.gl/forms/aE1YfyZRKhNOscPW2
 
 
 > Please have a look at the video for better understanding- https://drive.google.com/open?id=12FhKx3EB8OlvBvJCMNoIS8qMhMk35vqH

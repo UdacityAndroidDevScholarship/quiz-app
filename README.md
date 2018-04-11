@@ -6,13 +6,13 @@ Thank you for showing interest in the project. We will work together and make it
 
 # Purpose of the Project -
 
-• Attempting all the quizzes will be easy for everyone.
-• Reminder and Notifications for the quizzes.
-• Access to the quiz for the revision even after the 3 months challenge. 
-• Easy to manage quizzes and keeping the track of all attempted quizzes.
-• Showcasing the work of the other students *eg- blog layouts and their projects* will be featured in this app.
-• Android Resources: Useful resources related to Android based on a search keyword
-Contains a section: Tips for making a Great UI.
+* Attempting all the quizzes will be easy for everyone.
+* Reminder and Notifications for the quizzes.
+* Access to the quiz for the revision even after the 3 months challenge. 
+* Easy to manage quizzes and keeping the track of all attempted quizzes.
+* Showcasing the work of the other students *eg- blog layouts and their projects* will be featured in this app.
+* Android Resources: Useful resources related to Android based on a search keyword
+  Contains a section: Tips for making a Great UI.
 
 # Idea of the project -
 

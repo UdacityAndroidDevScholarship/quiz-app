@@ -1,6 +1,6 @@
 # QUIZ/SHOWCASE APP
 
-Hello Everyone,
+Hi Everyone,
 
 Thank you for showing interest in the project. We will work together and make it big.
 

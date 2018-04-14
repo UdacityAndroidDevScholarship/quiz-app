@@ -44,3 +44,6 @@ Contains a section: Tips for making a Great UI.
 
 > Please have a look at the video for better understanding- https://drive.google.com/open?id=12FhKx3EB8OlvBvJCMNoIS8qMhMk35vqH
 
+### To get started, please read [Contributing Guidelines](https://github.com/UdacityAndroidDevScholarship/quiz-app/blob/master/CONTRIBUTING.md).
+
+For queries, you can reach out to us `#cp_quiz_app`.

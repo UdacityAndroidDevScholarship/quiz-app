@@ -39,4 +39,5 @@ ext {
     glideVersion = '4.2.0'
     firebaseVersion = '15.0.0'
     junitVersion = '4.12'
+    constraintLayoutVersion = '1.1.0'
 }

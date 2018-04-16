@@ -10,7 +10,7 @@
 
     <application
         android:name=".application.AppClass"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -24,6 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.profile.UserProfileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
         </activity>
     </application>
 

@@ -5,4 +5,5 @@ package com.developervishalsehgal.udacityscholarsapp.data;
  */
 
 public interface DataHandler {
+
 }

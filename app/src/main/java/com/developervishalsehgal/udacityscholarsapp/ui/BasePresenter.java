@@ -4,9 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 /**
- * Created by dru on 16/04/18.
+ * Base Presenter interface to be extended by all presenters of the app
  */
-
 public interface BasePresenter {
 
     void start(@Nullable Bundle extras);

@@ -7,7 +7,8 @@
     <string name="deadline">Deadline:</string>
 
 
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="hint_email">Email address</string>
+    <string name="hint_password">********</string>
 </resources>

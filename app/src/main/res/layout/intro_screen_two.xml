@@ -24,11 +24,11 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/google_signin_btn"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="84dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:elevation="8dp"
@@ -42,8 +42,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:visibility="gone" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -52,7 +59,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Sign-In To Get Started"
+        android:text="@string/login"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:fontFamily="@font/quicksandregular"

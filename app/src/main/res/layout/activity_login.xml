@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/login_gradient_background"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <!-- for the bottom horizontal guideline placed at 80% position from the top -->
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_login_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <!-- for the left vertical guideline placed at 20% position from the left -->
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_login_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <!-- for the right vertical guideline placed at 80% position from the left -->
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_login_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <!-- for the center vertical guideline placed at 50% position from the left -->
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_login_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <!-- for the complete logo of Udacity -->
+        <ImageView
+            android:id="@+id/imageview_login_udacity"
+            android:layout_width="144dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_login_center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_all_udacity_complete_logo" />
+
+        <!-- for the complete logo of Google -->
+        <ImageView
+            android:id="@+id/imageview_login_google"
+            android:layout_width="96dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline_login_center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_all_google_complete_logo" />
+
+        <!-- for the caption image -->
+        <ImageView
+            android:id="@+id/imageview_login_caption"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/login_caption_layered_drawable"
+            app:layout_constraintBottom_toTopOf="@+id/textview_login_caption"
+            app:layout_constraintEnd_toEndOf="@id/guideline_login_right"
+            app:layout_constraintStart_toStartOf="@id/guideline_login_left"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_login_udacity" />
+
+        <!-- for the caption text following the caption image -->
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textview_login_caption"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Unlock your true potential!"
+            android:textColor="#2d3c49"
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="48sp"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeStepGranularity="4sp"
+            app:autoSizeTextType="uniform"
+            app:fontFamily="cursive"
+            app:layout_constraintBottom_toTopOf="@id/guideline_login_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageview_login_caption" />
+
+        <!-- for the Google sign in button -->
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/button_login_google_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_login_bottom" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>
+

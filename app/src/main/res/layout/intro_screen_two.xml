@@ -1,53 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/screen_two_wizard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0a0a0a"
     android:orientation="vertical">
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <ImageView
             android:id="@+id/wizard_two_background"
-            android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:fitsSystemWindows="true"/>
+            android:fitsSystemWindows="true"
+            android:scaleType="fitXY" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/ll_two_wizard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/scholar_id"
+                android:layout_width="wrap_content"
+                android:layout_height="158dp"
+                android:gravity="center"
+                android:fontFamily="serif"
+                android:padding="20dp"
+                android:text="Google India Challenge Scholarship"
+                android:textColor="#fff"
+                android:textSize="32sp" />
 
-                <ImageView
-                    android:id="@+id/img_back_five"
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/google_logo" />
+            <ImageView
+                android:layout_width="192dp"
+                android:layout_height="171dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="175dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/google_scholar" />
 
-
-            </LinearLayout>
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/google_signin_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ll_two_wizard"
+                android:layout_below="@+id/ll_two_wizard"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="-92dp"
                 android:elevation="8dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_two_wizard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="92dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp">
+
+                <ImageView
+                    android:id="@+id/img_back_five"
+                    android:layout_width="162dp"
+                    android:layout_height="111dp"
+                    android:adjustViewBounds="true"
+                    android:paddingRight="60dp"
+                    android:src="@drawable/google" />
+
+                <ImageView
+                    android:id="@+id/img_back_five_udacity"
+                    android:layout_width="126dp"
+                    android:layout_height="111dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/udacity" />
+
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progressbar_google_signin"
@@ -60,4 +96,4 @@
                 android:visibility="gone" />
         </RelativeLayout>
     </FrameLayout>
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

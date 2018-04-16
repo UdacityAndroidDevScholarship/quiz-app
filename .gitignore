@@ -7,5 +7,5 @@
 /build
 /captures
 .externalNativeBuild
-.idea
+/.idea
 .idea

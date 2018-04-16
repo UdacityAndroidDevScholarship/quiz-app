@@ -24,6 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.profile.UserProfileActivity">
+            <!--Adding this intent filter here to silence the warning ,this should be a part of home
+            activity or quiz details activity-->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>

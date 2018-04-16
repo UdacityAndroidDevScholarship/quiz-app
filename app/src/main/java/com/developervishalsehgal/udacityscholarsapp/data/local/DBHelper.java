@@ -5,7 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by kaushald on 16/04/18.
+ * Local database for the app. Contains only one database which all the related tables.
+ * Notifications, Attempt Quiz, Create Quiz, Forums, Cache etc.
+ *
+ * TODO change the description after implementation
  *
  * @Author kaushald
  */

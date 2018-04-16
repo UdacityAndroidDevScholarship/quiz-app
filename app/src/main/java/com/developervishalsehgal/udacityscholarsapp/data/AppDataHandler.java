@@ -1,9 +1,12 @@
 package com.developervishalsehgal.udacityscholarsapp.data;
 
 /**
- * Created by kaushald on 16/04/18.
+ * This is the implementation of {@link DataHandler} interface. This class should either directly
+ * deal with shared preferences of via delegate class
+ *
+ * TODO change this description after implementation
  *
  * @Author kaushald
  */
-public class AppDataHandler implements DataHandler {
+class AppDataHandler implements DataHandler {
 }

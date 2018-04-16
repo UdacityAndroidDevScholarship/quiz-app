@@ -40,6 +40,8 @@ dependencies {
     implementation "com.google.firebase:firebase-database:$rootProject.firebaseVersion"
     implementation "com.google.firebase:firebase-core:$rootProject.firebaseVersion"
 
+    implementation group: 'com.google.code.gson', name: 'gson', version: "$rootProject.gsonVersion"
+
 }
 
 apply plugin: 'com.google.gms.google-services'

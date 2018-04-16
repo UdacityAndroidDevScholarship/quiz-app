@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Parent layout with the background res/drawable/bg_user_details.png -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_user_details">
+
+
+    <!-- Frame layout to display the user profile picture along with upload ImageButton -->
+    <FrameLayout
+        android:id="@+id/fl_profile_image_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="52dp">
+
+        <!-- Add this line to app/build.gradle to use CircleImageView implementation 'de.hdodenhof:circleimageview:2.2.0' -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignTop="@+id/fl_profile_image_frame"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="top|center_horizontal"
+            android:src="@drawable/guy_avatar"
+            app:civ_border_color="@android:color/holo_blue_bright"
+            app:civ_border_width="2dp" />
+
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|right"
+            android:background="@drawable/ic_bg_add_image" />
+    </FrameLayout>
+
+    <!-- added EditText for input User's name -->
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fl_profile_image_frame"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_rectangle_input"
+        android:hint="Akshit Jain"
+        android:inputType="text"
+        android:padding="10dp" />
+
+    <!-- added EditText for input User's Slack Handle -->
+    <EditText
+        android:id="@+id/et_slack_handle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_name"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_rectangle_input"
+        android:hint=" @akshit.udacity"
+        android:inputType="text"
+        android:padding="10dp" />
+
+    <!-- added un-focusable EditText for showing User's Email Id -->
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_rectangle_input"
+        android:drawableRight="@drawable/ic_mail_black_24dp"
+        android:drawableTint="@android:color/white"
+        android:hint="akshit@gmail.com"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:focusable="false"
+        android:layout_below="@+id/et_slack_handle"/>
+
+    <!-- added Spinner inside FrameLayout to make similar background as other inputs -->
+    <FrameLayout
+        android:id="@+id/fl_spinner_frame"
+        android:background="@drawable/bg_rectangle_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/et_email">
+
+        <!-- added Spinner for selecting scholarship track -->
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/track_selections"
+            android:backgroundTint="@android:color/white"
+            />
+    </FrameLayout>
+
+    <!-- added ImageButton for submitting User's inputs -->
+    <ImageButton
+        android:id="@+id/btn_submit_details"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/fl_spinner_frame"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ic_bg_round_button" />
+
+</RelativeLayout>

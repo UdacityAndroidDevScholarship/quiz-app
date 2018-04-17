@@ -7,6 +7,11 @@
     <color name="color_green_deadline">#00c853</color>
     <color name="color_red_deadline">#d50000</color>
 
+    <color name="cream">#f9f9f9</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="orange">#FFA726</color>
+
     <color name="screen_one">#00BCD4</color>
     <color name="screen_two">#009688</color>
 

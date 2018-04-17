@@ -11,6 +11,7 @@
     <string name="det_slack">Slack Handle</string>
     <string name="det_track">Select Your Track</string>
     <string name="det_email">name@email.com</string>
+    <string name="det_submit">Submit</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

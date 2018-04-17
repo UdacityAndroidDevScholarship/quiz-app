@@ -95,7 +95,7 @@
         android:fontFamily="@font/quicksandregular"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:text="Submit"
+        android:text="@string/det_submit"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

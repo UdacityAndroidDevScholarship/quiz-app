@@ -1,7 +1,7 @@
 package com.developervishalsehgal.udacityscholarsapp.ui;
 
 /**
- * Created by dru on 16/04/18.
+ * Base View interface to be extended by all Views of the app
  */
 
 public interface BaseView<T> {

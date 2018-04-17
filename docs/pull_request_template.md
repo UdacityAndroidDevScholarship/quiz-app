@@ -10,10 +10,10 @@ with this PR?_
 ## Before & After Screenshots
 
 **BEFORE**:
-[optional - insert screenshot here]
+[insert screenshot here]
 
 **AFTER**:
-[optional - insert screenshot here]
+[insert screenshot here]
 
 
 ## Other changes (e.g. bug fixes, UI tweaks, refactors)

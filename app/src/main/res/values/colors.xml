@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#1b2836</color>
     <color name="colorAccent">#00B8D4</color>
 
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
     <color name="color_green_deadline">#00c853</color>
     <color name="color_red_deadline">#d50000</color>
 

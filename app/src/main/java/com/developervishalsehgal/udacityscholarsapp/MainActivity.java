@@ -46,7 +46,6 @@ public class MainActivity extends BaseActivity implements QuizzesFragment.OnComp
     private DrawerLayout drawer;
     TextView quizzes_count,left_quizzes_count, app_title;
 
-
     private Vibrator v;
 
     private Typeface typeface;
@@ -240,7 +239,6 @@ public class MainActivity extends BaseActivity implements QuizzesFragment.OnComp
 
     @Override
     public void onBackPressed() {
-
         if (relativeLayout.getVisibility() == View.VISIBLE) {
 
         } else {

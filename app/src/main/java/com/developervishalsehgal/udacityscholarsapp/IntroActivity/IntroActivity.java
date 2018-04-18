@@ -292,8 +292,11 @@ public class IntroActivity extends BaseActivity {
                     ProgressBar progressBar = (ProgressBar) v.findViewById(R.id.progressbar_google_signin);
                     IntroActivity.this.progressBarr = progressBar;
                     IntroActivity.this.button = button;
-                    ImageView relativeLayout = (ImageView) v.findViewById(R.id.wizard_two_background);
-                    Glide.with(getApplicationContext()).load("https://drive.google.com/uc?export=download&id=0B1R9AX00GI_ZQXQ1SmV3djFqNmM").into(relativeLayout);
+
+                    //Commented out both lines below because no longer needed
+
+                    //ImageView relativeLayout = (ImageView) v.findViewById(R.id.wizard_two_background);
+                    //Glide.with(getApplicationContext()).load("https://drive.google.com/uc?export=download&id=0B1R9AX00GI_ZQXQ1SmV3djFqNmM").into(relativeLayout);
                     break;
 
             }

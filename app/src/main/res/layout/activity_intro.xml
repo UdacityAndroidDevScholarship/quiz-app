@@ -32,19 +32,16 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:background="@drawable/scrim_bottom" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="80dp"
         android:layout_alignParentTop="true"
         android:layout_gravity="bottom"
         android:background="@drawable/scrim_top" />
-
-
-
 
 </RelativeLayout>

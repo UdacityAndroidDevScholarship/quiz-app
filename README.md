@@ -36,6 +36,10 @@ Thank you for showing interest in the project. Let's work together and make it b
 
 #### For Project Boards, please read our [Projects Section](https://github.com/UdacityAndroidDevScholarship/quiz-app/wiki/Project-Board).
 
+#### For mockups of all screens of the app, please have a look to [App-Mockups Wiki](https://github.com/UdacityAndroidDevScholarship/quiz-app/wiki/App-Mockups)
+
 #### For queries, you can reach out to us on our slack channel [#cp_quiz_app](https://anddevindiascholars.slack.com/messages/CA5HLKWEA).
 
 #### Know how to contribute to collaborative projects and git / github basics [YouTube](https://youtu.be/lXY02pZWR58)
+
+

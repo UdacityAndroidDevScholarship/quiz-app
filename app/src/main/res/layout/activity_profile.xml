@@ -146,12 +146,12 @@
     </ScrollView>
 
     <ImageView
-        android:id="@+id/imageView"
-        android:onClick="changeProfilePicture"
+        android:id="@+id/image_profile_changeImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="changeProfilePicture"
         app:layout_constraintBottom_toBottomOf="@+id/image_profile_profileImage"
         app:layout_constraintEnd_toEndOf="@+id/image_profile_profileImage"
         app:srcCompat="@android:drawable/ic_menu_edit" />

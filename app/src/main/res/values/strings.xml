@@ -10,4 +10,9 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="profile_default_name">Pranav Vyas</string>
+    <string name="profile_default_email">Email : provyas4399@gmail.com</string>
+    <string name="profile_default_slack">"SlackID : @Pranav"</string>
+    <string name="profile_default_track">"Scholarship Track : Android Developer Track"</string>
 </resources>

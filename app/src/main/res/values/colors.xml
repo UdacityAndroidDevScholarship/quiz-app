@@ -47,4 +47,8 @@
     <item>@color/dot_light4</item>
     <item>@color/dot_light5</item>
     </array>
+
+    <color name="profile_lowerPart">#40c4ff</color>
+    <color name="profile_upparPart">#0094cc</color>
+    <color name="profile_textview">#81d4fa</color>
 </resources>

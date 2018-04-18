@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity.ProfileActivity">
+
+    <ImageView
+        android:id="@+id/image_profile_upparPart"
+        android:layout_width="0dp"
+        android:layout_height="149dp"
+        app:layout_constraintBottom_toTopOf="@+id/image_profile_lowerPart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/profile_upparPart" />
+
+    <ImageView
+        android:id="@+id/image_profile_lowerPart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_profile_upparPart"
+        app:srcCompat="@color/profile_lowerPart" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/image_profile_profileImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginStart="48dp"
+        android:elevation="15dp"
+        android:layout_marginTop="48dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintBottom_toTopOf="@+id/scroll_profile_mainBody"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/image_profile_upparPart" />
+
+    <!--<ImageView-->
+    <!--android:id="@+id/imageView3"-->
+    <!--android:layout_width="137dp"-->
+    <!--android:layout_height="137dp"-->
+    <!--android:layout_marginEnd="52dp"-->
+    <!--android:layout_marginStart="52dp"-->
+    <!--android:layout_marginTop="80dp"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.497"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="@+id/imageView"-->
+    <!--app:srcCompat="@mipmap/ic_launcher" />-->
+
+    <ScrollView
+        android:id="@+id/scroll_profile_mainBody"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_profile_profileImage">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_profile_track"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:onClick="changeTrack"
+                android:background="@drawable/profile_textview_shape"
+                android:drawableStart="@drawable/ic_profile_scholarship"
+                android:drawableEnd="@android:drawable/ic_menu_edit"
+                android:padding="8dp"
+                android:text="@string/profile_default_track"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/text_profile_email"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/text_profile_email"
+                app:layout_constraintTop_toBottomOf="@+id/text_profile_email" />
+
+            <TextView
+                android:id="@+id/text_profile_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/profile_textview_shape"
+                android:drawableStart="@drawable/ic_profile_email"
+                android:padding="8dp"
+                android:text="@string/profile_default_email"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/text_profile_slack"
+                app:layout_constraintStart_toStartOf="@+id/text_profile_slack"
+                app:layout_constraintTop_toBottomOf="@+id/text_profile_slack" />
+
+            <TextView
+                android:id="@+id/text_profile_slack"
+                android:layout_width="0dp"
+                android:onClick="changeSlackID"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/profile_textview_shape"
+                android:drawableStart="@drawable/ic_profile_slack"
+                android:drawableEnd="@android:drawable/ic_menu_edit"
+                android:padding="8dp"
+                android:text="@string/profile_default_slack"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/text_profile_userName"
+                app:layout_constraintStart_toStartOf="@+id/text_profile_userName"
+                app:layout_constraintTop_toBottomOf="@+id/text_profile_userName" />
+
+            <TextView
+                android:id="@+id/text_profile_userName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:drawableEnd="@android:drawable/ic_menu_edit"
+                android:onClick="changeUserName"
+                android:text="@string/profile_default_name"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/image_profile_changeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="changeProfilePicture"
+        app:layout_constraintBottom_toBottomOf="@+id/image_profile_profileImage"
+        app:layout_constraintEnd_toEndOf="@+id/image_profile_profileImage"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+</android.support.constraint.ConstraintLayout>

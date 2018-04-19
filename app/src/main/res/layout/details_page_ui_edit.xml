@@ -111,6 +111,12 @@
                     android:layout_marginTop="3dp"
                     android:padding="25dp"/>
             </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                tools:text="Submit"
+                />
 
         </LinearLayout>
     </RelativeLayout>

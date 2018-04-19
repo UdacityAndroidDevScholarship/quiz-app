@@ -27,6 +27,7 @@ import com.developervishalsehgal.udacityscholarsapp.BaseActivity.BaseActivity;
 import com.developervishalsehgal.udacityscholarsapp.Extras.Connectivity;
 import com.developervishalsehgal.udacityscholarsapp.MainActivity;
 import com.developervishalsehgal.udacityscholarsapp.R;
+import com.developervishalsehgal.udacityscholarsapp.UserDetails;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -124,7 +125,9 @@ public class IntroActivity extends BaseActivity {
                     Toast.makeText(IntroActivity.this, user.getDisplayName() + user.getEmail() + user.getPhoneNumber() + "You're Successfully Signed In", Toast.LENGTH_SHORT).show();
 
 
-                    Intent i = new Intent(IntroActivity.this, MainActivity.class);
+
+                    //Changed this MainActivity.class to UserDetails.class
+                    Intent i = new Intent(IntroActivity.this, UserDetails.class);
                     startActivity(i);
                     finish();
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

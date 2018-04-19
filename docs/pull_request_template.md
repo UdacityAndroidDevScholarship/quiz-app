@@ -8,16 +8,13 @@ What is the current behavior of the app? What is the updated/expected behavior
 with this PR?_
 
 
-## Before & After Screenshots
+## Screenshots
 
 **BEFORE**:
-[insert screenshot here]
+[if applicable, insert screenshot here]
 
 **AFTER**:
 [insert screenshot here]
-
-
-[Incase of only code changes this is not required]
 
 
 ## Other changes (e.g. bug fixes, UI tweaks, refactors)

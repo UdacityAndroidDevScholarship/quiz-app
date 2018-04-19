@@ -18,6 +18,9 @@
         <item>Web Developer Intermediate Track</item>
     </string-array>
 
+    <!--Sign In page text-->
+    <string name="sigin_text_almost_there">Almost there, Sign In to continue</string>
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "897350396907",
-    "firebase_url": "https://udacityscholarsapp-91da6.firebaseio.com",
-    "project_id": "udacityscholarsapp-91da6",
-    "storage_bucket": "udacityscholarsapp-91da6.appspot.com"
+    "project_number": "1091713250991",
+    "firebase_url": "https://quiz-app-40995.firebaseio.com",
+    "project_id": "quiz-app-40995",
+    "storage_bucket": "quiz-app-40995.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:897350396907:android:3527301905ca6725",
+        "mobilesdk_app_id": "1:1091713250991:android:3527301905ca6725",
         "android_client_info": {
           "package_name": "com.developervishalsehgal.udacityscholarsapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "897350396907-tnb23f600919uvj8up7hhh0v8go4spe4.apps.googleusercontent.com",
+          "client_id": "1091713250991-gumlfhqgjntbtfraq28rdvrd5kf1pai9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.developervishalsehgal.udacityscholarsapp",
-            "certificate_hash": "e5fa556081e3efc8cd0efc90139ddbb98cae1bcc"
+            "certificate_hash": "e39379809c3f0dd961d821ed95257b55dd611c85"
           }
         },
         {
-          "client_id": "897350396907-p9alch81qro22j44741h668glbn7uqic.apps.googleusercontent.com",
+          "client_id": "1091713250991-2euqatcnu3f5u7mjbdct11ro6btd932e.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAnqgG_GPIB0kNxWJutDKgVRNm3WxAer9U"
+          "current_key": "AIzaSyBF2p6XTTDBQ5Bt_9yxc5gVTTiM3Tey-5M"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "897350396907-p9alch81qro22j44741h668glbn7uqic.apps.googleusercontent.com",
+              "client_id": "1091713250991-2euqatcnu3f5u7mjbdct11ro6btd932e.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

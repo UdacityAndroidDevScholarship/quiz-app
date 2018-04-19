@@ -13,6 +13,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
     }
 
     @Override
@@ -23,6 +24,11 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     @Override
     public void loginFailure() {
         // TODO Login failed, notify user
+    }
+
+    @Override
+    public void showNetworkError() {
+
     }
 
     @Override

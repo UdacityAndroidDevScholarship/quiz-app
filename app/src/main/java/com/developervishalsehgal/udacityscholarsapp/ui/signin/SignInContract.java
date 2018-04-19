@@ -21,6 +21,7 @@ public interface SignInContract {
 
         void loginFailure();
 
+        void showNetworkError();
     }
 
     /**

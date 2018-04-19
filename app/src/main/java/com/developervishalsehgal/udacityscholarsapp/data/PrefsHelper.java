@@ -106,7 +106,7 @@ class PrefsHelper {
     }
 
     public void destroy() {
-
+        // TODO remove all the cache. i.e. clear all local variables
     }
 
 }

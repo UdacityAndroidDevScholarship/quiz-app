@@ -9,8 +9,8 @@ with this PR?_
 
 ## Screenshots
 
-**BEFORE**: [if applicable]
-[insert screenshot here]
+**BEFORE**:
+[if applicable, insert screenshot here]
 
 **AFTER**:
 [insert screenshot here]

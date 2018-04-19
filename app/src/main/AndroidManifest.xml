@@ -17,8 +17,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/homeactivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/homeactivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +30,8 @@
             android:configChanges="orientation|screenSize"
             android:label="AppIntro"
             android:theme="@style/appIntro" />
-        <activity android:name=".QuizDetailsActivity"></activity>
+        <activity android:name=".QuizDetailsActivity" />
+        <activity android:name=".UserDetails"></activity>
     </application>
 
 </manifest>

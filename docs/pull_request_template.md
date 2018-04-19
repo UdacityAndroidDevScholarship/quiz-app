@@ -7,9 +7,9 @@ What is the current behavior of the app? What is the updated/expected behavior
 with this PR?_
 
 
-## Before & After Screenshots
+## Screenshots
 
-**BEFORE**:
+**BEFORE**: [if applicable]
 [insert screenshot here]
 
 **AFTER**:

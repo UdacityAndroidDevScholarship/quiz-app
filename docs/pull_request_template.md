@@ -1,3 +1,4 @@
+<!-- Note: PR should be only in the development branch -->
 Fixes #[Insert_issue_number_here]
 
 ## Description
@@ -14,6 +15,9 @@ with this PR?_
 
 **AFTER**:
 [insert screenshot here]
+
+
+[Incase of only code changes this is not required]
 
 
 ## Other changes (e.g. bug fixes, UI tweaks, refactors)

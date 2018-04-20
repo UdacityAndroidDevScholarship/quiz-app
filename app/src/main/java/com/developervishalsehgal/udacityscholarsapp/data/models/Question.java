@@ -22,6 +22,9 @@ public class Question {
     @SerializedName("type")
     private String mType;
 
+    @SerializedName("files")
+    private String mFiles;
+
     public String getDescription() {
         return mDescription;
     }
@@ -52,6 +55,14 @@ public class Question {
 
     public void setType(String type) {
         mType = type;
+    }
+
+    public String getFiles() {
+        return mFiles;
+    }
+
+    public void setFiles(String files) {
+        this.mFiles = files;
     }
 
 }

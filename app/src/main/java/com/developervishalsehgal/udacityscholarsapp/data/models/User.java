@@ -37,6 +37,9 @@ public class User {
     @SerializedName("prefs")
     private NotificationPrefs mNotificationPrefs;
 
+    @SerializedName("bookmarks")
+    private List<String> mBookmarks;
+
     public String getEmail() {
         return mEmail;
     }
@@ -107,5 +110,13 @@ public class User {
 
     public void setNotificationPrefs(NotificationPrefs notificationPrefs) {
         this.mNotificationPrefs = notificationPrefs;
+    }
+
+    public List<String> getBookmarks() {
+        return mBookmarks;
+    }
+
+    public void setBookmarks(List<String> bookmarks) {
+        this.mBookmarks = bookmarks;
     }
 }

@@ -10,9 +10,6 @@ import java.util.List;
  */
 public class Discussion {
 
-    @SerializedName("deadline")
-    private String mDeadline;
-
     @SerializedName("quiz-id")
     private String mQuizId;
 
@@ -21,14 +18,6 @@ public class Discussion {
 
     @SerializedName("comments")
     private List<Comment> mComments;
-
-    public String getDeadline() {
-        return mDeadline;
-    }
-
-    public void setDeadline(String deadline) {
-        mDeadline = deadline;
-    }
 
     public String getQuizId() {
         return mQuizId;

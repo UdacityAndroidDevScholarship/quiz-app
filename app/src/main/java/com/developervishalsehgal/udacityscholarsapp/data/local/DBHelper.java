@@ -19,7 +19,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_NOTIFICATION_TABLE =
             "CREATE TABLE " + NotificationContract.NotificationEntry.TABLE_NAME + " (" +
-                    NotificationContract.NotificationEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                //    NotificationContract.NotificationEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+  removed as it is not specified in the requirements can be added if required
                     NotificationContract.NotificationEntry.COLUMN_TIMESTAMP + " INTEGER, " +
                     NotificationContract.NotificationEntry.COLUMN_TITLE + " TEXT NOT NULL, " +
                     NotificationContract.NotificationEntry.COLUMN_DESCRIPTION + " TEXT NOT NULL, " +

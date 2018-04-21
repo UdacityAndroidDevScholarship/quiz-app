@@ -23,6 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     private final static String SQL_CREATE_NOTIFICATION_TABLE =
             "CREATE TABLE " + NotificationContract.NotificationEntry.TABLE_NAME + " (" +
+                    NotificationContract.NotificationEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
                     NotificationContract.NotificationEntry.COLUMN_TIMESTAMP + "TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
                     NotificationContract.NotificationEntry.COLUMN_TITLE + "TEXT NOT NULL, " +
                     NotificationContract.NotificationEntry.COLUMN_DESCRIPTION + "TEXT NOT NULL, " +

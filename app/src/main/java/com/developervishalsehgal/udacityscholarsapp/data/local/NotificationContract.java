@@ -7,7 +7,9 @@ public class NotificationContract {
     public NotificationContract(){}
 
     public static final class NotificationEntry implements BaseColumns {
-
+        /*
+        * Columns of Table notification
+        */
         public static final String TABLE_NAME = "notification";
         public static final String COLUMN_TIMESTAMP = "timestamp";
         public static final String COLUMN_TITLE ="title";

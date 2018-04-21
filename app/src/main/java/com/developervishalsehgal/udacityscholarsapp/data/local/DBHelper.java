@@ -17,12 +17,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "quiz_app.db";
     private static final int DATABASE_VERSION = 1;
+
     /*
     * Create table query for Notification table stored in a String variable
      */
     private final static String SQL_CREATE_NOTIFICATION_TABLE =
             "CREATE TABLE " + NotificationContract.NotificationEntry.TABLE_NAME + " (" +
-                    NotificationContract.NotificationEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     NotificationContract.NotificationEntry.COLUMN_TIMESTAMP + "TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
                     NotificationContract.NotificationEntry.COLUMN_TITLE + "TEXT NOT NULL, " +
                     NotificationContract.NotificationEntry.COLUMN_DESCRIPTION + "TEXT NOT NULL, " +

@@ -9,40 +9,43 @@ import com.google.gson.annotations.SerializedName;
 public class Notification {
 
 
-        @Expose
-        @SerializedName("time-stamp")
-        private long mTimeStamp;
+    @Expose
+    @SerializedName("time-stamp")
+    private long mTimeStamp;
 
-        @Expose
-        @SerializedName("title")
-        private String mTitle;
+    @Expose
+    @SerializedName("title")
+    private String mTitle;
 
-        @Expose
-        @SerializedName("description")
-        private String mDescription;
+    @Expose
+    @SerializedName("description")
+    private String mDescription;
 
-        @Expose
-        @SerializedName("from")
-        private String mFrom;
+    @Expose
+    @SerializedName("from")
+    private String mFrom;
 
-        @Expose
-        @SerializedName("type")
-        private String mType;
+    @Expose
+    @SerializedName("type")
+    private String mType;
 
-        @Expose
-        @SerializedName("action")
-        private String mAction;
+    @Expose
+    @SerializedName("action")
+    private String mAction;
 
-        @Expose
-        @SerializedName("extra1")
-        private String mExtra1;
+    @Expose
+    @SerializedName("extra1")
+    private String mExtra1;
 
-        @Expose
-        @SerializedName("extra2")
-        private String mExtra2;
+    @Expose
+    @SerializedName("extra2")
+    private String mExtra2;
 
-        @Exclude
-        private String mKey;
+    /**
+     * This field should be used for storing key of realtime database snapshot, otherwise ignore it
+     */
+    @Exclude
+    private String mKey;
 
     public long getmTimeStamp() {
         return mTimeStamp;
@@ -76,40 +79,40 @@ public class Notification {
         return mExtra2;
     }
 
-    public void setmTimeStamp(long mTimeStamp) {
-        this.mTimeStamp = mTimeStamp;
+    public void setmTimeStamp(long timeStamp) {
+        this.mTimeStamp = timeStamp;
     }
 
-    public void setmTitle(String mTitle) {
-        this.mTitle = mTitle;
+    public void setmTitle(String title) {
+        this.mTitle = title;
     }
 
-    public void setmDescription(String mDescription) {
-        this.mDescription = mDescription;
+    public void setmDescription(String description) {
+        this.mDescription = description;
     }
 
-    public void setmFrom(String mFrom) {
-        this.mFrom = mFrom;
+    public void setmFrom(String from) {
+        this.mFrom = from;
     }
 
-    public void setmType(String mType) {
-        this.mType = mType;
+    public void setmType(String type) {
+        this.mType = type;
     }
 
-    public void setmAction(String mAction) {
-        this.mAction = mAction;
+    public void setmAction(String action) {
+        this.mAction = action;
     }
 
-    public void setmExtra1(String mExtra1) {
-        this.mExtra1 = mExtra1;
+    public void setmExtra1(String extra1) {
+        this.mExtra1 = extra1;
     }
 
-    public void setmExtra2(String mExtra2) {
-        this.mExtra2 = mExtra2;
+    public void setmExtra2(String extra2) {
+        this.mExtra2 = extra2;
     }
 
-    public void setmKey(String mKey) {
-        this.mKey = mKey;
+    public void setmKey(String key) {
+        this.mKey = key;
     }
 
     public String getmKey() {

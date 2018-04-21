@@ -6,11 +6,14 @@
     <string name="thumb_link">https://drive.google.com/uc?export=download&amp;id=</string>
     <string name="deadline">Deadline:</string>
 
-
+    <!--Sign In page text-->
+    <string name="sigin_text_almost_there">Almost there, Sign In to continue</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    
+    <string name="hint_email">Email address</string>
+    <string name="hint_password">********</string>
+
     <string-array name="track_selections">
         <item>Select Your Track</item>
         <item>Web Developer Beginner Track</item>

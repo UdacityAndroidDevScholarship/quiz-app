@@ -1,3 +1,4 @@
+<!-- Note: PR should be only in the development branch -->
 Fixes #[Insert_issue_number_here]
 
 ## Description
@@ -7,10 +8,10 @@ What is the current behavior of the app? What is the updated/expected behavior
 with this PR?_
 
 
-## Before & After Screenshots
+## Screenshots
 
 **BEFORE**:
-[insert screenshot here]
+[if applicable, insert screenshot here]
 
 **AFTER**:
 [insert screenshot here]

@@ -41,5 +41,4 @@ ext {
     junitVersion = '4.12'
     constraintLayoutVersion = '1.1.0'
     gsonVersion = '2.8.0'
-    circleImageViewVersion = '2.2.0'
 }

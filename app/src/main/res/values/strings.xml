@@ -14,4 +14,11 @@
     <string name="hint_email">Email address</string>
     <string name="hint_password">********</string>
 
+    <string-array name="track_selections">
+        <item>Select Your Track</item>
+        <item>Web Developer Beginner Track</item>
+        <item>Web Developer Intermediate Track</item>
+        <item>Android Developer Beginner Track</item>
+        <item>Android Developer Intermediate Track</item>
+    </string-array>
 </resources>

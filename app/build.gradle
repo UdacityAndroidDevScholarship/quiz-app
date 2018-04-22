@@ -25,6 +25,7 @@ dependencies {
     implementation "com.google.firebase:firebase-database:$rootProject.firebaseVersion"
     implementation "com.google.firebase:firebase-messaging:$rootProject.firebaseVersion"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+    implementation "de.hdodenhof:circleimageview:$rootProject.circleImageViewVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

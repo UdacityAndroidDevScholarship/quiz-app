@@ -6,8 +6,8 @@ public class NotificationContract {
 
     //to prevent someone to accidently instantiate the contract class
 
-//    private NotificationContract() {
-//    }
+    private NotificationContract() {
+    }
 
     // Inner class to hold the contents of the notifications table
     public static final class NotificationEntry implements BaseColumns {

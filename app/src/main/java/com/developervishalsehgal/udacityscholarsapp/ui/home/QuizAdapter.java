@@ -30,7 +30,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         holder.dateCreatedTextView.setText("22 April 2018");
         holder.deadlineTextView.setText("None");
         holder.quizStatusTextView.setText("Completed");
-        showQuizDifficultyView(holder, "Medium");
+        showQuizDifficultyView(holder, "Hard");
     }
 
     @Override

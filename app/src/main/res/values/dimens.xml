@@ -12,4 +12,10 @@
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
+
+    <dimen name="margin_normal_16">16dp</dimen>
+    <dimen name="margin_padding_8">8dp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="nav_text_margin_32">32dp</dimen>
+
 </resources>

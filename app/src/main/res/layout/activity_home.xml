@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
     android:fitsSystemWindows="true"
-    android:visibility="invisible">
+    android:visibility="visible">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout_home"
@@ -18,6 +18,8 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbarrnav"
                 android:layout_width="match_parent"
+                app:navigationIcon="@drawable/ic_toolbar_logo"
+                app:title="@string/app_bar_title"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/colorPrimary"
                 app:layout_scrollFlags="scroll|enterAlways"
@@ -33,7 +35,7 @@
                 android:paddingStart="16dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Total : "
+                tools:text="Total : "
                 android:layout_alignParentStart="true"
                 android:textStyle="bold"
                 android:id="@+id/total"
@@ -43,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="0"
+                tools:text="0"
                 android:layout_toEndOf="@id/total"
                 android:id="@+id/total_quizzes_count"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
@@ -54,7 +56,7 @@
                 android:paddingStart="16dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Left : "
+                tools:text="Left : "
                 android:layout_toStartOf="@id/left_quizzes_count"
                 android:textStyle="bold"
                 android:id="@+id/left_quizzes"
@@ -65,20 +67,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="0"
+                tools:text="0"
                 android:paddingEnd="16dp"
                 android:layout_alignParentEnd="true"
                 android:id="@+id/left_quizzes_count"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Unattempted"
+                android:id="@+id/toggle_text"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="70dp"
+                android:layout_alignBaseline="@id/total"/>
+
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingEnd="16dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/toggle_attempted"
+                android:layout_alignBaseline="@id/total"/>
+
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/content_main"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_quiz_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
         android:orientation="vertical"
+        tools:listitem="@layout/quizzes_list_item"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>

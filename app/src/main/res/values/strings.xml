@@ -13,4 +13,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="hint_email">Email address</string>
     <string name="hint_password">********</string>
+    <string name="toolbar_menu_logout">Logout</string>
+    <string name="app_bar_title">ScholarsApp</string>
+    <string name="quiz_label_creator">Creator :</string>
+    <string name="quiz_label_status">Status :</string>
+    <string name="quiz_label_difficulty_level">Difficulty Level :</string>
 </resources>

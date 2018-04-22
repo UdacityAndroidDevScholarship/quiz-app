@@ -51,4 +51,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="MainMenu" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:tint">@android:color/white</item>
+    </style>
+
 </resources>

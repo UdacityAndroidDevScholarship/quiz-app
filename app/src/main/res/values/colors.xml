@@ -32,6 +32,8 @@
     <color name="dot_light4">#F48FB1</color>
     <color name="dot_light5">#EF9A9A</color>
 
+    <color name="quiz_date">#697584</color>
+
     <array name="dot_active">
         <item>@color/dot_dark1</item>
         <item>@color/dot_dark2</item>

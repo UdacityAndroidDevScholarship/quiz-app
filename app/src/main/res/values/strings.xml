@@ -13,4 +13,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="hint_email">Email address</string>
     <string name="hint_password">********</string>
+    <string name="creator_label">Creator :</string>
+    <string name="status_label">Status :</string>
+    <string name="difficulty_label">Difficulty Level :</string>
+    <string name="bookmark_description">bookmark quiz</string>
+    <string name="unattempted">Unattempted</string>
+    <string name="total_label">Total :</string>
+    <string name="logout">Logout</string>
 </resources>

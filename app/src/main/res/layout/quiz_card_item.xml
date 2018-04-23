@@ -2,11 +2,14 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quiz_card_item_cv_quiz"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/quiz_margin_normal_10"
     android:elevation="5dp"
-    android:padding="@dimen/quiz_padding_normal_5">
+    android:padding="@dimen/quiz_padding_normal_5"
+    app:cardCornerRadius="@dimen/quiz_card_radius_normal_2"
+    app:cardElevation="@dimen/quiz_card_elevation_normal_5">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -100,14 +103,15 @@
             android:id="@+id/quiz_card_item_tv_label_deadline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/quiz_card_item_tv_date"
-            android:layout_below="@+id/quiz_card_item_tv_quiz_name"
+            android:layout_alignEnd="@+id/quiz_card_item_iv_bookmark"
+            android:layout_alignTop="@+id/quiz_card_item_tv_creator_name"
             android:text="@string/quiz_deadline_value"
             android:textAllCaps="true"
-            android:textColor="@android:color/holo_green_dark" />
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="12sp" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/quiz_card_item_iv_bookmark"
             android:layout_width="@dimen/quiz_bookmark_image_height_width"
             android:layout_height="@dimen/quiz_bookmark_image_height_width"
             android:layout_alignEnd="@+id/quiz_card_item_tv_difficulty"

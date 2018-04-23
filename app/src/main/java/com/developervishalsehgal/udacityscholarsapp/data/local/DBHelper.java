@@ -3,7 +3,7 @@ package com.developervishalsehgal.udacityscholarsapp.data.local;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.developervishalsehgal.udacityscholarsapp.data.local.NotificationContract.*;
+import com.developervishalsehgal.udacityscholarsapp.data.local.NotificationContract.NotificationEntry;
 
 /**
  * Local database for the app. Contains only one database which all the related tables.
@@ -42,7 +42,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + NotificationContract.NotificationEntry.TABLE_NAME);
-        onCreate(db);
+
     }
 }

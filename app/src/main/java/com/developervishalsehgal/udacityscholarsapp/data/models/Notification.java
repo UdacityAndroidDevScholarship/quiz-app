@@ -30,35 +30,35 @@ public class Notification {
     @SerializedName("extra2")
     private String mExtra2;
 
-    public void setmTimestamp(long timestamp) {
+    public void setTimestamp(long timestamp) {
         this.mTimestamp = timestamp;
     }
 
-    public void setmTitle(String title) {
+    public void setTitle(String title) {
         this.mTitle = title;
     }
 
-    public void setmDescription(String description) {
+    public void setDescription(String description) {
         this.mDescription = description;
     }
 
-    public void setmFrom(String from) {
+    public void setFrom(String from) {
         this.mFrom = from;
     }
 
-    public void setmType(String type) {
+    public void setType(String type) {
         this.mType = type;
     }
 
-    public void setmAction(String action) {
+    public void setAction(String action) {
         this.mAction = action;
     }
 
-    public void setmExtra1(String extra1) {
+    public void setExtra1(String extra1) {
         this.mExtra1 = extra1;
     }
 
-    public void setmExtra2(String extra2) {
+    public void setExtra2(String extra2) {
         this.mExtra2 = extra2;
     }
 

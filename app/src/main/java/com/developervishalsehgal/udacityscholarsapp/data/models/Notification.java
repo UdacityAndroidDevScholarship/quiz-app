@@ -1,13 +1,33 @@
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Notification {
+
+    @Expose
+    @SerializedName("timestamp")
     private long mTimestamp;
+    @Expose
+    @SerializedName("title")
     private String mTitle;
+    @Expose
+    @SerializedName("description")
     private String mDescription;
+    @Expose
+    @SerializedName("from")
     private String mFrom;
+    @Expose
+    @SerializedName("type")
     private String mType;
+    @Expose
+    @SerializedName("action")
     private String mAction;
+    @Expose
+    @SerializedName("extra1")
     private String mExtra1;
+    @Expose
+    @SerializedName("extra2")
     private String mExtra2;
 
     public void setmTimestamp(long timestamp) {

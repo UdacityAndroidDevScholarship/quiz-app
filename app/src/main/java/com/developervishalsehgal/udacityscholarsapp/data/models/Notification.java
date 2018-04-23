@@ -47,75 +47,75 @@ public class Notification {
     @Exclude
     private String mKey;
 
-    public long getmTimeStamp() {
+    public long getTimeStamp() {
         return mTimeStamp;
     }
 
-    public String getmTitle() {
+    public String getTitle() {
         return mTitle;
     }
 
-    public String getmDescription() {
+    public String getDescription() {
         return mDescription;
     }
 
-    public String getmFrom() {
+    public String getFrom() {
         return mFrom;
     }
 
-    public String getmType() {
+    public String getType() {
         return mType;
     }
 
-    public String getmAction() {
+    public String getAction() {
         return mAction;
     }
 
-    public String getmExtra1() {
+    public String getExtra1() {
         return mExtra1;
     }
 
-    public String getmExtra2() {
+    public String getExtra2() {
         return mExtra2;
     }
 
-    public void setmTimeStamp(long timeStamp) {
+    public void setTimeStamp(long timeStamp) {
         this.mTimeStamp = timeStamp;
     }
 
-    public void setmTitle(String title) {
+    public void setTitle(String title) {
         this.mTitle = title;
     }
 
-    public void setmDescription(String description) {
+    public void setDescription(String description) {
         this.mDescription = description;
     }
 
-    public void setmFrom(String from) {
+    public void setFrom(String from) {
         this.mFrom = from;
     }
 
-    public void setmType(String type) {
+    public void setType(String type) {
         this.mType = type;
     }
 
-    public void setmAction(String action) {
+    public void setAction(String action) {
         this.mAction = action;
     }
 
-    public void setmExtra1(String extra1) {
+    public void setExtra1(String extra1) {
         this.mExtra1 = extra1;
     }
 
-    public void setmExtra2(String extra2) {
+    public void setExtra2(String extra2) {
         this.mExtra2 = extra2;
     }
 
-    public void setmKey(String key) {
+    public void setKey(String key) {
         this.mKey = key;
     }
 
-    public String getmKey() {
+    public String getKey() {
 
         return mKey;
     }

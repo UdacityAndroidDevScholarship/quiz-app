@@ -32,7 +32,7 @@ public interface DataHandler {
 
     void uploadProfilePic(Bitmap picBitmap, Callback<String> callback);
 
-    void setUserInfo(String userIdentifier, User currentUser, Callback<Void> callback);
+    void setUserInfo(User currentUser, Callback<Void> callback);
 
     void postComment(String discussionId, String quizId, Comment comment, Callback<Void> callback);
 
@@ -55,8 +55,6 @@ public interface DataHandler {
     void saveUserTrack(String userTrack);
 
     String getUserTrack();
-
-    List<Quiz> getQuizzes();
 
     /**
      * Generic callback interface for passing response to caller.

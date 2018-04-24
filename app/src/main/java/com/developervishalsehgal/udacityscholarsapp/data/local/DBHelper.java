@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Local database for the app. Contains only one database which all the related tables.
+ * Local database for the app. Contains only one database with all the related tables.
  * Notifications, Attempt Quiz, Create Quiz, Forums, Cache etc.
  *
  * TODO change the description after implementation

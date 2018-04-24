@@ -1,11 +1,17 @@
 package com.developervishalsehgal.udacityscholarsapp.data;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 
+import com.developervishalsehgal.udacityscholarsapp.application.AppClass;
+import com.developervishalsehgal.udacityscholarsapp.data.local.DBHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
 import com.developervishalsehgal.udacityscholarsapp.data.models.User;
+import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseHandler;
+import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseProvider;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -19,26 +25,49 @@ import java.util.List;
  */
 class AppDataHandler implements DataHandler {
 
+    private static AppDataHandler INSTANCE = null;
+
     private PrefsHelper mPreferences;
+    private DBHandler mDBHandler;
+    private FirebaseHandler mFirebaseHandler;
+
+    private AppDataHandler() {
+        Context context = AppClass.getAppContext();
+        mPreferences = PrefsHelper.getInstance(context);
+        mDBHandler = DBHandler.getInstance(context);
+        mFirebaseHandler = FirebaseProvider.provide();
+    }
+
+    static AppDataHandler getInstance() {
+        if (INSTANCE == null) {
+            synchronized (AppDataHandler.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new AppDataHandler();
+                }
+            }
+        }
+        return INSTANCE;
+    }
+
 
     @Override
-    public void fetchQuizzes(int limitToFirst, Callback<List<Quiz>> callback) {
-
+    public void fetchQuizzes(int limitToFirst, final Callback<List<Quiz>> callback) {
+        mFirebaseHandler.fetchQuizzes(limitToFirst, new FirebaseCallback<>(callback));
     }
 
     @Override
     public void updateSlackHandle(String slackHandle, Callback<Void> callback) {
-
+        mFirebaseHandler.updateSlackHandle(slackHandle, new FirebaseCallback<>(callback));
     }
 
     @Override
     public void updateUserName(String userName, Callback<Void> callback) {
-
+        mFirebaseHandler.updateUserName(userName, new FirebaseCallback<>(callback));
     }
 
     @Override
-    public void updateProfilePic(String profielPicUrl, Callback<Void> callback) {
-
+    public void updateProfilePic(String profilePicUrl, Callback<Void> callback) {
+        mFirebaseHandler.updateProfilePic(profilePicUrl, new FirebaseCallback<>(callback));
     }
 
     @Override
@@ -52,23 +81,23 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
-    public void setUserInfo(String userIdentifier, User currentUser, Callback<Void> callback) {
-
+    public void setUserInfo(User currentUser, Callback<Void> callback) {
+        mFirebaseHandler.setUserInfo(currentUser, new FirebaseCallback<>(callback));
     }
 
     @Override
     public void postComment(String discussionId, String quizId, Comment comment, Callback<Void> callback) {
-
+        mFirebaseHandler.postComment(discussionId, quizId, comment, new FirebaseCallback<>(callback));
     }
 
     @Override
     public void updateMyAttemptedQuizzes(QuizAttempted quizAttempt, Callback<Void> callback) {
-
+        mFirebaseHandler.updateMyAttemptedQuizzes(quizAttempt, new FirebaseCallback<>(callback));
     }
 
     @Override
     public void addBookmark(String quizIdentifier, Callback<Void> callback) {
-
+        mFirebaseHandler.addBookmark(quizIdentifier, new FirebaseCallback<>(callback));
     }
 
     @Override
@@ -111,9 +140,25 @@ class AppDataHandler implements DataHandler {
         return mPreferences.getUserTrack();
     }
 
-    @Override
-    public List<Quiz> getQuizzes() {
-        // should get it from firebase database
-        return null; // some mock data here
+    /**
+     * internal class for converting {@link FirebaseHandler} Callback to {@link DataHandler} Callback
+     * @param <T> type of response that is expected
+     */
+    class FirebaseCallback<T> implements FirebaseHandler.Callback<T> {
+        DataHandler.Callback<T> callback;
+
+        FirebaseCallback(DataHandler.Callback<T> callback) {
+            this.callback = callback;
+        }
+
+        @Override
+        public void onReponse(T result) {
+            this.callback.onResponse(result);
+        }
+
+        @Override
+        public void onError() {
+            this.callback.onError();
+        }
     }
 }

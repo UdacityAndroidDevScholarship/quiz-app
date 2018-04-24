@@ -31,35 +31,35 @@ public interface FirebaseHandler {
      */
     void fetchQuizzes(int limitToFirst, Callback<List<Quiz>> callback);
 
-    void updateSlackHandle(String myId, String slackHandle, Callback<Void> callback);
+    void updateSlackHandle(String slackHandle, Callback<Void> callback);
 
-    void updateUserName(String myId, String userName, Callback<Void> callback);
+    void updateUserName(String userName, Callback<Void> callback);
 
-    void updateProfilePic(String myId, String profielPicUrl, Callback<Void> callback);
+    void updateProfilePic(String profielPicUrl, Callback<Void> callback);
 
-    void uploadProfilePic(String myId, String localPicturePath, Callback<String> callback);
+    void uploadProfilePic(String localPicturePath, Callback<String> callback);
 
-    void uploadProfilePic(String myId, Bitmap picBitmap, Callback<String> callback);
+    void uploadProfilePic(Bitmap picBitmap, Callback<String> callback);
 
     void fetchUserInfo(String userIdentifier, Callback<User> callback);
 
-    void setUserInfo(String userIdentifier, User currentUser, Callback<Void> callback);
+    void setUserInfo(User currentUser, Callback<Void> callback);
 
     void postComment(String discussionId, String quizId, Comment comment, Callback<Void> callback);
 
-    void updateMyAttemptedQuizzes(String myId, QuizAttempted quizAttempt, Callback<Void> callback);
+    void updateMyAttemptedQuizzes(QuizAttempted quizAttempt, Callback<Void> callback);
 
-    void addBookmark(String myId, String quizIdentifier, Callback<Void> callback);
+    void addBookmark(String quizIdentifier, Callback<Void> callback);
 
-    void getMyBookmarks(String myId, Callback<String> callback);
+    void getMyBookmarks(Callback<String> callback);
 
-    void getMyPreferences(String myId, Callback<NotificationPrefs> callback);
+    void getMyPreferences(Callback<NotificationPrefs> callback);
 
-    void updateMyPrefs(String myId, NotificationPrefs prefs, Callback<Void> callback);
+    void updateMyPrefs(NotificationPrefs prefs, Callback<Void> callback);
 
-    void updateMyFCMToken(String myId, String fcmToken, Callback<Void> callback);
+    void updateMyFCMToken(String fcmToken, Callback<Void> callback);
 
-    void updateMyStatus(String myId, String newStatus, Callback<Void> callback);
+    void updateMyStatus(String newStatus, Callback<Void> callback);
 
     void destroy();
 

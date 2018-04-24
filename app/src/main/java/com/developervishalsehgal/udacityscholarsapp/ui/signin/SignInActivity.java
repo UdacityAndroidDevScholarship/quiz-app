@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
+import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -27,7 +28,6 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
     private static final int RC_SIGN_IN = 101;
 
-    private GoogleSignInOptions mGso;
     private GoogleSignInClient mGoogleSignInClient;
 
     private FirebaseAuth mAuth;
@@ -50,13 +50,13 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
         mAuth = FirebaseAuth.getInstance();
 
-        mGso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        GoogleSignInOptions mGso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.google_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, mGso);
 
-        // TODO Inject login presenter here
+        PresenterInjector.injectSignInPresenter(this);
 
         findViewById(R.id.google_signin_btn).setOnClickListener(new View.OnClickListener() {
             @Override

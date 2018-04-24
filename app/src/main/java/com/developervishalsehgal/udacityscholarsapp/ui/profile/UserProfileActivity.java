@@ -37,6 +37,11 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
     }
 
     @Override
+    public void loadUserTrack(String userTrack) {
+
+    }
+
+    @Override
     public void setPresenter(ProfileContract.Presenter presenter) {
 
     }

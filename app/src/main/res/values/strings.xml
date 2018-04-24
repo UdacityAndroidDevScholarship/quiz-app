@@ -15,7 +15,7 @@
     <string name="hint_password">********</string>
 
     <string name="google_web_client_id" translatable="false">897350396907-p9alch81qro22j44741h668glbn7uqic.apps.googleusercontent.com</string>
-    <string name="text_please_wait">Please wait...</string>
+    <string name="text_please_wait">Please wait…</string>
     <string name="something_went_wrong">Something went wrong. Please try again</string>
     <string name="unable_to_login">Unable to login with this account</string>
     <string name="text_proceed">Proceed >> </string>

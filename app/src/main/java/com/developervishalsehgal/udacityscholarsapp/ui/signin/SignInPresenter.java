@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.developervishalsehgal.udacityscholarsapp.data.DataHandler;
-import com.developervishalsehgal.udacityscholarsapp.data.models.User;
+import com.developervishalsehgal.udacityscholarsapp.data.DataHandlerProvider;
 
 public class SignInPresenter implements SignInContract.Presenter {
 
@@ -14,6 +14,8 @@ public class SignInPresenter implements SignInContract.Presenter {
 
     public SignInPresenter(SignInContract.View view) {
         this.mView = view;
+        this.mDataHandler = DataHandlerProvider.provide();
+        view.setPresenter(this);
     }
 
     @Override

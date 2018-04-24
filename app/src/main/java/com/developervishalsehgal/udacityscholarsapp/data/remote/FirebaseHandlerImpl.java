@@ -1,23 +1,21 @@
 package com.developervishalsehgal.udacityscholarsapp.data.remote;
 
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
 import com.developervishalsehgal.udacityscholarsapp.data.models.NotificationPrefs;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
 import com.developervishalsehgal.udacityscholarsapp.data.models.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,6 +49,9 @@ class FirebaseHandlerImpl implements FirebaseHandler {
 
     private List<ValueEventListener> mValueListeners;
 
+    // Private variables
+    FirebaseUser mCurrentUser;
+
     FirebaseHandlerImpl() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference rootRef = firebaseDatabase.getReference();
@@ -60,6 +61,8 @@ class FirebaseHandlerImpl implements FirebaseHandler {
         mUsersRef = rootRef.child(REF_USERS_NODE);
         mQuizzesRef = rootRef.child(REF_QUIZZES_NODE);
         mDiscussionsRef = rootRef.child(REF_DISCUSSION_NODE);
+
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
     }
 
 
@@ -99,28 +102,28 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
     @Override
-    public void updateSlackHandle(String myId, String slackHandle, final Callback<Void> callback) {
-        updateUserProperty(myId, KEY_SLACK_HANDLE, slackHandle, callback);
+    public void updateSlackHandle(String slackHandle, final Callback<Void> callback) {
+        updateUserProperty(KEY_SLACK_HANDLE, slackHandle, callback);
     }
 
     @Override
-    public void updateUserName(String myId, String userName, final Callback<Void> callback) {
-        updateUserProperty(myId, KEY_USER_NAME, userName, callback);
+    public void updateUserName(String userName, final Callback<Void> callback) {
+        updateUserProperty(KEY_USER_NAME, userName, callback);
     }
 
     @Override
-    public void updateProfilePic(String myId, String profilePicUrl, final Callback<Void> callback) {
-        updateUserProperty(myId, KEY_USER_PIC, profilePicUrl, callback);
+    public void updateProfilePic(String profilePicUrl, final Callback<Void> callback) {
+        updateUserProperty(KEY_USER_PIC, profilePicUrl, callback);
     }
 
     @Override
-    public void uploadProfilePic(String myId, String localPicturePath, Callback<String> callback) {
+    public void uploadProfilePic(String localPicturePath, Callback<String> callback) {
         // TODO user firebase storage here to upload the user profile pic and send the
         // (TODO contd.) public URL in callback response
     }
 
     @Override
-    public void uploadProfilePic(String myId, Bitmap picBitmap, Callback<String> callback) {
+    public void uploadProfilePic(Bitmap picBitmap, Callback<String> callback) {
         // TODO user firebase storage here to upload the user profile pic and send the
         // (TODO contd.) public URL in callback response
     }
@@ -131,14 +134,16 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
     @Override
-    public void setUserInfo(String userIdentifier, User currentUser, final Callback<Void> callback) {
+    public void setUserInfo(User currentUser, final Callback<Void> callback) {
 
         // Here we are not using setValue directly as that will overwrite the entire object and
         // we want to save bookmarks and attempted quizzes. Hence calling updateChildren
 
+        String userIdentifier = mCurrentUser.getUid();
+
         Map<String, Object> userData = new HashMap<>();
         userData.put(KEY_USER_EMAIL, currentUser.getEmail());
-        userData.put(KEY_FCM_TOKEN, currentUser.getFcmToken());
+        userData.put(KEY_FCM_TOKEN, FirebaseInstanceId.getInstance().getToken());
         userData.put(KEY_USER_PIC, currentUser.getImage());
         userData.put(KEY_USER_NAME, currentUser.getName());
         userData.put(KEY_SLACK_HANDLE, currentUser.getSlackHandle());
@@ -147,18 +152,8 @@ class FirebaseHandlerImpl implements FirebaseHandler {
         userData.put(KEY_NOTIF_PREFS, currentUser.getNotificationPrefs());
 
         mUsersRef.child(userIdentifier).updateChildren(userData)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        callback.onReponse(null);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        callback.onError();
-                    }
-                });
+                .addOnSuccessListener(aVoid -> callback.onReponse(null))
+                .addOnFailureListener(e -> callback.onError());
     }
 
     @Override
@@ -167,37 +162,37 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
     @Override
-    public void updateMyAttemptedQuizzes(String myId, QuizAttempted quizAttempt, Callback<Void> callback) {
+    public void updateMyAttemptedQuizzes(QuizAttempted quizAttempt, Callback<Void> callback) {
 
     }
 
     @Override
-    public void addBookmark(String myId, String quizIdentifier, Callback<Void> callback) {
+    public void addBookmark(String quizIdentifier, Callback<Void> callback) {
 
     }
 
     @Override
-    public void getMyBookmarks(String myId, Callback<String> callback) {
+    public void getMyBookmarks(Callback<String> callback) {
 
     }
 
     @Override
-    public void getMyPreferences(String myId, Callback<NotificationPrefs> callback) {
+    public void getMyPreferences(Callback<NotificationPrefs> callback) {
 
     }
 
     @Override
-    public void updateMyPrefs(String myId, NotificationPrefs prefs, Callback<Void> callback) {
+    public void updateMyPrefs(NotificationPrefs prefs, Callback<Void> callback) {
 
     }
 
     @Override
-    public void updateMyFCMToken(String myId, String fcmToken, Callback<Void> callback) {
+    public void updateMyFCMToken(String fcmToken, Callback<Void> callback) {
 
     }
 
     @Override
-    public void updateMyStatus(String myId, String newStatus, Callback<Void> callback) {
+    public void updateMyStatus(String newStatus, Callback<Void> callback) {
 
     }
 
@@ -211,20 +206,17 @@ class FirebaseHandlerImpl implements FirebaseHandler {
         }
     }
 
-    private void updateUserProperty(String userId, String property, String value,
-                                    final Callback<Void> callback) {
-        mUsersRef.child(userId).child(property).setValue(value)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        callback.onReponse(null);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        callback.onError();
-                    }
-                });
+    private void updateUserProperty(String property, String value, final Callback<Void> callback) {
+
+        try {
+            String currentUserId = mCurrentUser.getUid();
+
+            mUsersRef.child(currentUserId).child(property).setValue(value)
+                    .addOnCompleteListener(task -> callback.onReponse(null))
+                    .addOnFailureListener(e -> callback.onError());
+        } catch (Exception e) {
+            e.printStackTrace();
+            callback.onError();
+        }
     }
 }

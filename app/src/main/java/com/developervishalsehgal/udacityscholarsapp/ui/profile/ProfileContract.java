@@ -25,7 +25,7 @@ public interface ProfileContract {
 
         void loadEmailAddress(String emailAddress);
 
-        // TODO other profile related fields
+        void loadUserTrack(String userTrack);
 
     }
 
@@ -36,7 +36,7 @@ public interface ProfileContract {
 
         void saveProfile(Bitmap picture, String userName, String slackHandle, String status);
 
-        // TODO other profile presenter methods here
+
 
     }
 

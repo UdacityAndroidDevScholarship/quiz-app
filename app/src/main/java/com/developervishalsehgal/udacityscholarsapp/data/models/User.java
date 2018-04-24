@@ -43,6 +43,10 @@ public class User {
     private String mTrack;
 
     @Expose
+    @SerializedName("fcm-token")
+    private String mFcmToken;
+
+    @Expose
     @SerializedName("attempted")
     private List<QuizAttempted> mAttemptedList;
 
@@ -114,6 +118,14 @@ public class User {
 
     public void setTrack(String track) {
         mTrack = track;
+    }
+
+    public String getFcmToken() {
+        return mFcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.mFcmToken = fcmToken;
     }
 
     public List<QuizAttempted> getAttemptedList() {

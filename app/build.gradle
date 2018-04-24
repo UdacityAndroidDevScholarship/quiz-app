@@ -10,10 +10,33 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("keys/quiz_temp_key.jks")
+            storePassword "quizapprocks"
+            keyAlias "quizapptemp"
+            keyPassword "quizapprocks"
+        }
+        release {
+            storeFile file("keys/quiz_temp_key.jks")
+            storePassword "quizapprocks"
+            keyAlias "quizapptemp"
+            keyPassword "quizapprocks"
+        }
+    }
+
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
 }

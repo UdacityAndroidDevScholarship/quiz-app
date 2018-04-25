@@ -81,11 +81,6 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
-    public void setUserInfo(User currentUser, Callback<Void> callback) {
-        mFirebaseHandler.setUserInfo(currentUser, new FirebaseCallback<>(callback));
-    }
-
-    @Override
     public void postComment(String discussionId, String quizId, Comment comment, Callback<Void> callback) {
         mFirebaseHandler.postComment(discussionId, quizId, comment, new FirebaseCallback<>(callback));
     }
@@ -140,8 +135,43 @@ class AppDataHandler implements DataHandler {
         return mPreferences.getUserTrack();
     }
 
+    @Override
+    public void saveSlackHandle(String slackHandle) {
+        mPreferences.setSlackHandle(slackHandle);
+    }
+
+    @Override
+    public String getSlackHandle() {
+        return mPreferences.getSlackHandle();
+    }
+
+    @Override
+    public void saveStatus(String status) {
+        mPreferences.setUserStatus(status);
+    }
+
+    @Override
+    public String getStatus() {
+        return mPreferences.getUserStatus();
+    }
+
+    @Override
+    public void setUserInfo(Callback<Void> callback) {
+
+        User currentUser = new User();
+        currentUser.setImage(mPreferences.getUserPic());
+        currentUser.setName(mPreferences.getUserName());
+        currentUser.setEmail(mPreferences.getUserEmail());
+        currentUser.setSlackHandle(mPreferences.getSlackHandle());
+        currentUser.setStatus(mPreferences.getUserStatus());
+        currentUser.setTrack(mPreferences.getUserTrack());
+
+        mFirebaseHandler.setUserInfo(currentUser, new FirebaseCallback<>(callback));
+    }
+
     /**
      * internal class for converting {@link FirebaseHandler} Callback to {@link DataHandler} Callback
+     *
      * @param <T> type of response that is expected
      */
     class FirebaseCallback<T> implements FirebaseHandler.Callback<T> {

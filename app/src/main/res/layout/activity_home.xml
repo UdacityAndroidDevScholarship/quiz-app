@@ -6,70 +6,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
-    android:fitsSystemWindows="true"
-    android:visibility="invisible">
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:stateListAnimator="@animator/appbar_elevated">
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbarrnav"
+        android:stateListAnimator="@animator/appbar_elevated"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarrnav"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                android:textSize="30sp"
+                android:textColor="@color/blue_jeans"
+                android:layout_height="wrap_content"
+                android:text="Login success" />
+
+        </android.support.v7.widget.Toolbar>
+
         <RelativeLayout
             android:id="@+id/updatelist"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="56dp"
             android:background="@color/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
+
             <TextView
-                android:layout_width="wrap_content"
-                android:paddingStart="16dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Total : "
-                android:layout_alignParentStart="true"
-                android:textStyle="bold"
                 android:id="@+id/total"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
                 android:gravity="center"
-                android:text="0"
-                android:layout_toEndOf="@id/total"
-                android:id="@+id/total_quizzes_count"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-
-            <TextView
-                android:visibility="gone"
-                android:layout_width="wrap_content"
                 android:paddingStart="16dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Left : "
-                android:layout_toStartOf="@id/left_quizzes_count"
-                android:textStyle="bold"
-                android:id="@+id/left_quizzes"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                android:text="Total : "
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
 
             <TextView
-                android:visibility="gone"
+                android:id="@+id/total_quizzes_count"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_toEndOf="@id/total"
                 android:gravity="center"
                 android:text="0"
-                android:paddingEnd="16dp"
-                android:layout_alignParentEnd="true"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            <TextView
+                android:id="@+id/left_quizzes"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@id/left_quizzes_count"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:text="Left : "
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
                 android:id="@+id/left_quizzes_count"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:paddingEnd="16dp"
+                android:text="0"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:visibility="gone" />
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
 

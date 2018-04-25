@@ -2,9 +2,7 @@ package com.developervishalsehgal.udacityscholarsapp.ui.signin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
@@ -14,10 +12,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -58,12 +54,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
         PresenterInjector.injectSignInPresenter(this);
 
-        findViewById(R.id.google_signin_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mPresenter.handleLoginRequest();
-            }
-        });
+        findViewById(R.id.google_signin_btn).setOnClickListener(v -> mPresenter.handleLoginRequest());
     }
 
     @Override
@@ -142,22 +133,19 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential).addOnCompleteListener(this,
-                new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            if (user != null) {
-                                mPresenter.handleLoginSuccess(user.getEmail(), user.getDisplayName()
-                                        , user.getPhotoUrl());
-                            } else {
-                                mPresenter.handleLoginFailure(0, getString(R.string.unable_to_login));
-                            }
+                task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            mPresenter.handleLoginSuccess(user.getEmail(), user.getDisplayName()
+                                    , user.getPhotoUrl());
                         } else {
-                            // If sign in fails, display a message to the user.
-                            mPresenter.handleLoginFailure(0, getString(R.string.something_went_wrong));
+                            mPresenter.handleLoginFailure(0, getString(R.string.unable_to_login));
                         }
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        mPresenter.handleLoginFailure(0, getString(R.string.something_went_wrong));
                     }
                 });
 

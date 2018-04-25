@@ -19,4 +19,6 @@
     <string name="something_went_wrong">Something went wrong. Please try again</string>
     <string name="unable_to_login">Unable to login with this account</string>
     <string name="text_proceed">Proceed >> </string>
+    <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
+    <string name="profile_saved_successfully">Profile saved successfully</string>
 </resources>

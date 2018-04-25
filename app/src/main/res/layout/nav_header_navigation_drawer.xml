@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@drawable/nav_header"
+    android:background="@drawable/wallpaper"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
@@ -22,11 +22,11 @@
 
         <ImageView
             android:id="@+id/usericon_nav"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="94dp"
+            android:layout_height="74dp"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_picture" />
+            android:src="@drawable/profile" />
 
         <TextView
             android:id="@+id/username_nav"
@@ -34,12 +34,14 @@
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:text="Vishal Sehgal"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/user_emailid_nav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="sehgalvishal31@gmail.com" />
     </LinearLayout>
 </LinearLayout>

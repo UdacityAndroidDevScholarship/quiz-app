@@ -12,7 +12,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_user_profile);
 
     }
 

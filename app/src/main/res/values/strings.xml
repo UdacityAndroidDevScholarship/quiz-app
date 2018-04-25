@@ -7,7 +7,16 @@
     <string name="deadline">Deadline:</string>
 
 
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="udacity">Udacity</string>
+    <string name="quiz">Quiz</string>
+    <string name="sign_in">Sign In</string>
+    <string name="powered_by">Powered By</string>
+    <string name="skip">Skip</string>
+    <string name="add_profile_picture">Add Profile Picture</string>
+    <string name="username">Username</string>
+    <string name="slack_handle">Slack Handle</string>
+    <string name="select_track">Select Track</string>
+    <string name="submit">Submit</string>
 </resources>

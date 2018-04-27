@@ -24,7 +24,7 @@ public class User {
 
     @Expose
     @SerializedName("moderator")
-    private Boolean mModerator;
+    private boolean mModerator;
 
     @Expose
     @SerializedName("name")
@@ -76,11 +76,11 @@ public class User {
         mImage = image;
     }
 
-    public Boolean getModerator() {
+    public boolean getModerator() {
         return mModerator;
     }
 
-    public void setModerator(Boolean moderator) {
+    public void setModerator(boolean moderator) {
         mModerator = moderator;
     }
 

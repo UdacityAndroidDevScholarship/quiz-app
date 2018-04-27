@@ -20,7 +20,7 @@ public class Question {
 
     @Expose
     @SerializedName("marks")
-    private Long mMarks;
+    private long mMarks;
 
     @Expose
     @SerializedName("options")
@@ -48,7 +48,7 @@ public class Question {
         mDescription = description;
     }
 
-    public Long getMarks() {
+    public long getMarks() {
         return mMarks;
     }
 

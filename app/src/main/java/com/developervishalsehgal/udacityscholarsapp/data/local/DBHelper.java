@@ -5,9 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.developervishalsehgal.udacityscholarsapp.data.local.NotificationContract.*;
-import android.util.Log;
 
-import com.developervishalsehgal.udacityscholarsapp.data.local.QuestionsContract.QuestionsEntry;
+import com.developervishalsehgal.udacityscholarsapp.data.local.QuestionContract.*;
+import com.developervishalsehgal.udacityscholarsapp.data.local.OptionContract.*;
 
 /**
  * Local database for the app. Contains only one database which all the related tables.
@@ -15,7 +15,7 @@ import com.developervishalsehgal.udacityscholarsapp.data.local.QuestionsContract
  * TODO change the description after implementation
  *
  * @Author kaushald
- * @Author pramodbharti | Have implemented OnCreate() method for TABLE questions and options
+ * @Author pramodbharti | Have implemented OnCreate() method for TABLE Question and options
  *
  */
 public class DBHelper extends SQLiteOpenHelper {
@@ -38,21 +38,23 @@ public class DBHelper extends SQLiteOpenHelper {
             NotificationEntry.COLUMN_EXTRA_2 + " TEXT" +
             "); ";
     
-    private static final String SQL_QUESTIONS_CREATE = "CREATE TABLE " + QuestionsEntry.TABLE_QUESTIONS + " ("
-                + QuestionsEntry.COLUMN_QUESTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + QuestionsEntry.COLUMN_QUESTION_DESC + " TEXT NOT NULL, "
-                + QuestionsEntry.COLUMN_QUESTION_TYPE + " TEXT NOT NULL, "
-                + QuestionsEntry.COLUMN_QUESTION_MARKS + " INTEGER NOT NULL);";
+    private static final String CREATE_QUESTION_TABLE = "CREATE TABLE " +
+            QuestionEntry.TABLE_QUESTION + " (" +
+            QuestionEntry.COLUMN_QUESTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            QuestionEntry.COLUMN_QUESTION_DESC + " TEXT NOT NULL, " +
+            QuestionEntry.COLUMN_QUESTION_TYPE + " TEXT NOT NULL, " +
+            QuestionEntry.COLUMN_QUESTION_MARKS + " INTEGER NOT NULL);";
     
-    private static final String SQL_OPTIONS_CREATE = "CREATE TABLE " + QuestionsEntry.TABLE_OPTIONS + " ("
-                + QuestionsEntry.COLUMN_OPTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + QuestionsEntry.COLUMN_OPTION_QUESTION_ID + " INTEGER NOT NULL, "
-                + QuestionsEntry.COLUMN_OPTION_DESC + " TEXT NOT NULL, "
-                + QuestionsEntry.COLUMN_OPTION_IS_CORRECT + " BOOLEAN NOT NULL, "
-                + QuestionsEntry.COLUMN_OPTION_REMARKS + " TEXT, FOREIGN KEY("
-                + QuestionsEntry.COLUMN_OPTION_QUESTION_ID + ") REFERENCES "
-                + QuestionsEntry.TABLE_QUESTIONS + "("
-                + QuestionsEntry.COLUMN_QUESTION_ID + "));";
+    private static final String CREATE_OPTION_TABLE = "CREATE TABLE " +
+            OptionEntry.TABLE_OPTION + " (" +
+            OptionEntry.COLUMN_OPTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            OptionEntry.COLUMN_OPTION_QUESTION_ID + " INTEGER NOT NULL, " +
+            OptionEntry.COLUMN_OPTION_DESC + " TEXT NOT NULL, " +
+            OptionEntry.COLUMN_OPTION_IS_CORRECT + " BOOLEAN NOT NULL, " +
+            OptionEntry.COLUMN_OPTION_REMARKS + " TEXT, FOREIGN KEY(" +
+            OptionEntry.COLUMN_OPTION_QUESTION_ID + ") REFERENCES " +
+            QuestionEntry.TABLE_QUESTION + "(" +
+            QuestionEntry.COLUMN_QUESTION_ID + "));";
   
 
     //Delete(Drop) Table if DB version changes
@@ -66,8 +68,8 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_NOTIFICATION_TABLE);
-        db.execSQL(SQL_QUESTIONS_CREATE);
-        db.execSQL(SQL_OPTIONS_CREATE);
+        db.execSQL(CREATE_QUESTION_TABLE);
+        db.execSQL(CREATE_OPTION_TABLE);
     }
 
     @Override

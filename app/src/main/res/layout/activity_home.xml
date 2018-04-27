@@ -25,6 +25,7 @@
         <RelativeLayout
             android:id="@+id/updatelist"
             android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">

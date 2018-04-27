@@ -30,7 +30,6 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-
         <!--For Firebase cloud messaging-->
         <service
             android:name=".services.FBMessagingService"

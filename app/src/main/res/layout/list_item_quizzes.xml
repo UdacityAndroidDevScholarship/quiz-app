@@ -4,50 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
+    android:layout_marginEnd="@dimen/medium_margin"
+    android:layout_marginStart="@dimen/medium_margin"
     app:cardBackgroundColor="@color/colorPrimary"
-    app:cardCornerRadius="2dp"
-    app:cardElevation="4dp"
-    app:cardMaxElevation="4dp"
+    app:cardCornerRadius="@dimen/card_view_corner_radius"
+    app:cardElevation="@dimen/card_view_elevation"
+    app:cardMaxElevation="@dimen/card_view_elevation"
     app:cardUseCompatPadding="true">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="@dimen/medium_margin">
 
         <TextView
             android:id="@+id/tv_quiz_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toStartOf="@+id/tv_date_created"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Lesson 5 Quiz1 - Intents" />
+            tools:text="@string/dummy_quiz_name" />
 
         <TextView
             android:id="@+id/tv_date_created"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/medium_margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_quiz_name"
+            app:layout_constraintBottom_toTopOf="@+id/tv_quiz_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_creator_name"
-            tools:text="22 April 2018" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_quiz_name"
+            tools:text="@string/dummy_date_created" />
 
         <TextView
             android:id="@+id/tv_creator_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/medium_margin"
             android:text="@string/creator_label"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/tv_quiz_name"
@@ -57,11 +56,11 @@
             android:id="@+id/tv_creator_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/medium_margin"
             android:textColor="@color/colorAccent"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_creator_label"
             app:layout_constraintStart_toEndOf="@+id/tv_creator_label"
-            tools:text="Intkhab Ahmed" />
+            tools:text="@string/dummy_creator_name" />
 
         <TextView
             android:id="@+id/tv_deadline"
@@ -70,13 +69,13 @@
             android:textColor="@color/color_green_deadline"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_deadline_label"
             app:layout_constraintEnd_toEndOf="@+id/tv_date_created"
-            tools:text="None" />
+            tools:text="@string/dummy_deadline" />
 
         <TextView
             android:id="@+id/tv_completed_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/medium_margin"
             android:text="@string/status_label"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/tv_creator_label"
@@ -89,13 +88,13 @@
             android:textColor="@color/color_green_deadline"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_completed_label"
             app:layout_constraintStart_toStartOf="@+id/tv_creator_name"
-            tools:text="Completed" />
+            tools:text="@string/dummy_status" />
 
         <TextView
             android:id="@+id/tv_difficulty_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/medium_margin"
             android:text="@string/difficulty_label"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/tv_completed_label"
@@ -105,37 +104,36 @@
             android:id="@+id/tv_deadline_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/medium_margin"
             android:text="@string/deadline"
             android:textColor="@color/color_green_deadline"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_creator_name"
+            app:layout_constraintBottom_toTopOf="@+id/tv_creator_name"
             app:layout_constraintEnd_toStartOf="@+id/tv_deadline"
-            app:layout_constraintTop_toTopOf="@+id/tv_completion_status" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_creator_name" />
 
         <View
             android:id="@+id/difficulty_hard"
-            android:layout_width="32dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="4dp"
+            android:layout_width="@dimen/difficulty_view_width"
+            android:layout_height="@dimen/difficulty_view_height"
+            android:layout_marginStart="@dimen/difficulty_view_margin"
             android:background="@color/color_red_deadline"
             app:layout_constraintStart_toEndOf="@+id/difficulty_medium"
             app:layout_constraintTop_toTopOf="@+id/difficulty_medium" />
 
         <View
             android:id="@+id/difficulty_medium"
-            android:layout_width="32dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="4dp"
+            android:layout_width="@dimen/difficulty_view_width"
+            android:layout_height="@dimen/difficulty_view_height"
+            android:layout_marginStart="@dimen/difficulty_view_margin"
             android:background="@android:color/holo_orange_light"
             app:layout_constraintStart_toEndOf="@+id/difficulty_easy"
             app:layout_constraintTop_toTopOf="@+id/difficulty_easy" />
 
         <View
             android:id="@+id/difficulty_easy"
-            android:layout_width="32dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="@dimen/difficulty_view_width"
+            android:layout_height="@dimen/difficulty_view_height"
+            android:layout_marginStart="@dimen/difficulty_view_margin"
             android:background="@color/color_green_deadline"
             app:layout_constraintBottom_toTopOf="@+id/tv_difficulty_label"
             app:layout_constraintStart_toEndOf="@+id/tv_difficulty_label"

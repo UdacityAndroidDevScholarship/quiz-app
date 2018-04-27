@@ -28,4 +28,9 @@
     <string name="settings">Settings</string>
     <string name="about">About</string>
     <string name="new_label">New</string>
+    <string name="dummy_quiz_name">Lesson 5 Quiz1 - Intents</string>
+    <string name="dummy_date_created">22 April 2018</string>
+    <string name="dummy_creator_name">Dummy Moderator</string>
+    <string name="dummy_deadline">None</string>
+    <string name="dummy_status">Completed</string>
 </resources>

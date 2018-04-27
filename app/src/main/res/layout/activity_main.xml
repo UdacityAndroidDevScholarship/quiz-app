@@ -25,9 +25,7 @@
         android:layout_gravity="start"
         android:background="#fafafa"
         android:fitsSystemWindows="true"
+        app:menu="@menu/navigation_drawer_items"
         app:headerLayout="@layout/nav_header_navigation_drawer"
-        >
-        <include layout="@layout/navigation_menu"/>
-    </android.support.design.widget.NavigationView>
-
+        />
 </android.support.v4.widget.DrawerLayout>

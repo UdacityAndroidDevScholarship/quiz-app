@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_padding_8"
+    android:layout_marginEnd="@dimen/margin_normal_16"
+    android:layout_marginStart="@dimen/margin_normal_16"
+    android:layout_marginTop="@dimen/margin_padding_8"
+    android:background="?android:selectableItemBackground">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_list_quiz_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_padding_8"
+            android:layout_marginStart="@dimen/margin_normal_16"
+            android:layout_marginTop="@dimen/margin_normal_16"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintEnd_toStartOf="@+id/tv_list_quiz_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/tv_list_quiz_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_normal_16"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_list_quiz_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_list_quiz_name"
+            tools:text="@tools:sample/date/ddmmyy" />
+
+        <TextView
+            android:id="@+id/tv_list_quiz_creator_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/quiz_label_creator"
+            app:layout_constraintStart_toStartOf="@+id/tv_list_quiz_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_list_quiz_name" />
+
+        <TextView
+            android:id="@+id/tv_list_quiz_creator_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_list_quiz_creator_label"
+            app:layout_constraintEnd_toStartOf="@+id/tv_list_quiz_deadline"
+            app:layout_constraintStart_toEndOf="@+id/tv_list_quiz_creator_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_list_quiz_creator_label"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/tv_list_quiz_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/quiz_label_status"
+            app:layout_constraintStart_toStartOf="@+id/tv_list_quiz_creator_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_list_quiz_creator_label" />
+
+        <TextView
+            android:id="@+id/tv_list_quiz_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_list_quiz_label"
+            app:layout_constraintStart_toEndOf="@+id/tv_list_quiz_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_list_quiz_label"
+            tools:text="Completed" />
+
+        <TextView
+            android:id="@+id/tv_list_quiz_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_list_quiz_creator_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_list_quiz_creator_name"
+            tools:text="DEADLINE : NONE" />
+
+        <TextView
+            android:id="@+id/tv_list_quiz_difficulty_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/quiz_label_difficulty_level"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_list_quiz_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_list_quiz_label" />
+
+        <!--Use this view flipper to set child on the base of the difficulty-->
+        <ViewFlipper
+            android:id="@+id/view_flipper_difficulty_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_8"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_list_quiz_difficulty_label"
+            app:layout_constraintStart_toEndOf="@+id/tv_list_quiz_difficulty_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_list_quiz_difficulty_label">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_green_diff_high"
+                    android:layout_width="@dimen/nav_text_margin_32"
+                    android:layout_height="14dp"
+                    android:background="@drawable/quiz_difficulty_level_green"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_yellow_diff_high"
+                    android:layout_width="@dimen/nav_text_margin_32"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/quiz_difficulty_level_yellow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_green_diff_high"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_red_diff_high"
+                    android:layout_width="@dimen/nav_text_margin_32"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/quiz_difficulty_level_red"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_yellow_diff_high"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_green_medium_high"
+                    android:layout_width="@dimen/nav_text_margin_32"
+                    android:layout_height="14dp"
+                    android:background="@drawable/quiz_difficulty_level_green"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_yellow_medium_high"
+                    android:layout_width="@dimen/nav_text_margin_32"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/quiz_difficulty_level_yellow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_green_medium_high"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_green_low_high"
+                    android:layout_width="@dimen/nav_text_margin_32"
+                    android:layout_height="14dp"
+                    android:background="@drawable/quiz_difficulty_level_green"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+        </ViewFlipper>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_bookmark_border_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_flipper_difficulty_level"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_flipper_difficulty_level" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

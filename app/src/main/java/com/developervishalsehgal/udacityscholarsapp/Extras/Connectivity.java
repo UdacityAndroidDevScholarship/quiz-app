@@ -12,14 +12,14 @@ public class Connectivity {
         this.mContext = context;
 
     }
-    public Boolean isNetworkAvailable() {
+    public boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         assert connectivityManager != null;
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
-    public Boolean isOnline() {
+    public boolean isOnline() {
         try {
             Process p1 = Runtime.getRuntime().exec("ping -c 1 www.google.com");
             int returnVal = p1.waitFor();

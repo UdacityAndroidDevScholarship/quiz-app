@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/UdacityScholarsApp.iml" filepath="$PROJECT_DIR$/UdacityScholarsApp.iml" />
+      <module fileurl="file://D:\Projects\AndroidProjects\Collaborative projects\forked\quiz-app\UdacityScholarsApp.iml" filepath="D:\Projects\AndroidProjects\Collaborative projects\forked\quiz-app\UdacityScholarsApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/quiz-app.iml" filepath="$PROJECT_DIR$/.idea/quiz-app.iml" />
+      <module fileurl="file://D:\Projects\AndroidProjects\Collaborative projects\forked\quiz-app\app\app.iml" filepath="D:\Projects\AndroidProjects\Collaborative projects\forked\quiz-app\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quiz-app.iml" filepath="$PROJECT_DIR$/quiz-app.iml" />
+      <module fileurl="file://D:\Projects\AndroidProjects\Collaborative projects\forked\quiz-app\.idea\quiz-app.iml" filepath="D:\Projects\AndroidProjects\Collaborative projects\forked\quiz-app\.idea\quiz-app.iml" />
     </modules>
   </component>
 </project>

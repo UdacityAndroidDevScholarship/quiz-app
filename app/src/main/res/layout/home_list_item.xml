@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:id="@+id/rl_quiz_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="3dp"
+            android:background="@drawable/bg_gradient_green">
+            <LinearLayout
+                android:id="@+id/text_boxes"
+                android:padding="8dp"
+                android:layout_toEndOf="@id/quizz_thumb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textColor="@android:color/black"
+                        android:id="@+id/tv_quiz_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lesson 5 Quiz 1 - Intents"
+                        android:textStyle="bold"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:gravity="end"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/tv_quiz_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22 April 2018"
+                        android:textSize="10sp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textColor="@android:color/black"
+                        android:id="@+id/tv_quiz_creator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Creator : Abani Das"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:gravity="end"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/tv_quiz_deadline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Deadline : none"
+                        android:textAllCaps="true"
+                        android:textSize="10sp"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textColor="@android:color/black"
+                        android:id="@+id/tv_quiz_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status : " />
+
+                    <TextView
+                        android:textColor="@android:color/black"
+                        android:id="@+id/tv_quiz_status_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textColor="@android:color/black"
+                        android:id="@+id/tv_quiz_difficulty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Difficulty Level : "/>
+
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_toRightOf="@+id/tv_quiz_difficulty"
+                        android:id="@+id/img_difficulty"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="50dp"
+                        android:layout_height="15dp"
+                        android:background="@color/ufo_green"/>
+
+                    <ImageButton
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/btn_attempt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_bookmark_outline"
+                        android:background="@android:color/transparent"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <!--<FrameLayout
+                android:id="@+id/quizz_thumb"
+                android:layout_alignParentStart="true"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/serial_number"
+                    android:layout_gravity="bottom|start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No."
+                    android:padding="4dp"
+                    android:background="#53000000"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textColor="@android:color/white"/>
+            </FrameLayout>-->
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

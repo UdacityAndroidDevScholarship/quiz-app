@@ -12,4 +12,25 @@
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Quiz content margins -->
+    <dimen name="quiz_margin_normal_10">10dp</dimen>
+    <dimen name="quiz_margin_normal_5">5dp</dimen>
+    <dimen name="quiz_margin_normal_2">2dp</dimen>
+    <!-- Quiz content padding -->
+    <dimen name="quiz_padding_normal_5">5dp</dimen>
+    <dimen name="quiz_padding_normal_10">10dp</dimen>
+    <dimen name="quiz_padding_normal_15">15dp</dimen>
+    <!-- Quiz content card radius and elevation -->
+    <dimen name="quiz_card_radius_normal_2">2dp</dimen>
+    <dimen name="quiz_card_elevation_normal_5">5dp</dimen>
+    <!-- Quiz content textSize -->
+    <dimen name="quiz_text_size_normal">14sp</dimen>
+    <dimen name="quiz_text_size_small">8sp</dimen>
+    <!-- Quiz content image size -->
+    <dimen name="quiz_bookmark_image_height_width">25dp</dimen>
+    <dimen name="quiz_difficulty_level_image_height">20dp</dimen>
+    <dimen name="quiz_difficulty_level_image_width">100dp</dimen>
+
 </resources>

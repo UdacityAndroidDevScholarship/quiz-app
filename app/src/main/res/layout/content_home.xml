@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    tools:context=".ui.home.QuizHomeActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@drawable/ic_menu_udacity"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/quiz_content_home_title" />
+
+        <RelativeLayout
+            android:id="@+id/quiz_action"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/content_home_tv_label_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/quiz_margin_normal_5"
+                android:padding="@dimen/quiz_padding_normal_5"
+                android:text="@string/app_bar_total_label"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/quiz_text_size_normal" />
+
+            <TextView
+                android:id="@+id/content_home_tv_total_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/content_home_tv_label_total"
+                android:layout_alignBottom="@+id/content_home_tv_label_total"
+                android:layout_toEndOf="@+id/content_home_tv_label_total"
+                android:padding="@dimen/quiz_padding_normal_5"
+                android:text="@string/app_bar_total_count"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/quiz_text_size_normal" />
+
+            <Switch
+                android:id="@+id/content_home_sw_quiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/content_home_tv_total_count"
+                android:layout_alignBottom="@+id/content_home_tv_total_count"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/quiz_margin_normal_5"
+                android:padding="@dimen/quiz_padding_normal_5"
+                android:text="@string/app_bar_text_unattempted"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_quiz_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar_layout_home" />
+
+</android.support.constraint.ConstraintLayout>

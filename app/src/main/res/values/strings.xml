@@ -13,4 +13,21 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="hint_email">Email address</string>
     <string name="hint_password">********</string>
+    <string name="title_activity_quiz_home">QuizHomeActivity</string>
+
+    <!--Home Page text-->
+    <string name="quiz_content_home_title">ScholarsApp</string>
+    <string name="app_bar_total_label">Total: </string>
+    <string name="app_bar_total_count">10</string>
+    <string name="app_bar_text_unattempted">Unattempted</string>
+    <string name="quiz_title">Lesson N Quiz</string>
+    <string name="quiz_label_creator">Creator :</string>
+    <string name="quiz_label_status">Status :</string>
+    <string name="quiz_label_creator_value">Vishal Sehgal</string>
+    <string name="quiz_label_status_value">Completed</string>
+    <string name="quiz_label_difficulty_level">Difficulty Level :</string>
+    <string name="quiz_date_value">14 April 2018</string>
+    <string name="quiz_deadline_value">Deadline:None</string>
+    <string name="quiz_bookmark_image_desc">Bookmark</string>
+    <string name="action_settings">Settings</string>
 </resources>

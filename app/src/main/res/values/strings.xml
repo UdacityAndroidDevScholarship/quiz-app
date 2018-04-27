@@ -11,6 +11,25 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+<<<<<<< HEAD
+
+
+    //Navigation Drawer Menu Items
+    <string name="scoreboard">Scoreboard</string>
+    <string name="quizlist">QuizList</string>
+    <string name="oldquizzes">Old Quizzes</string>
+    <string name="notifications">Notifications</string>
+    <string name="resources">Resources</string>
+
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+
+    //Unread Notification
+    <string name="newnotification">New</string>
+    <string name="number">10</string>
+
+=======
     <string name="hint_email">Email address</string>
     <string name="hint_password">********</string>
+>>>>>>> abbbeab4993af3e5115631fabba76f953063b9ed
 </resources>

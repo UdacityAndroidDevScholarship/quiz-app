@@ -13,11 +13,16 @@
         layout="@layout/activity_splash_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
     <include
         layout="@layout/activity_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!--<include-->
+        <!--layout="@layout/activity_home"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
 
 
     <android.support.design.widget.NavigationView
@@ -25,9 +30,50 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#fafafa"
-        android:fitsSystemWindows="true"
+        android:background="#283747"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:menu="@menu/navigation_drawer_items"
         app:headerLayout="@layout/nav_header_navigation_drawer"
-        app:menu="@menu/navigation_drawer_items" />
+        android:fitsSystemWindows="true">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingBottom="10dp"
+                android:layout_gravity="bottom">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/udacitylogo" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/settings"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/settings"
+                android:paddingLeft="25dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="71dp"
+                android:layout_height="48dp"
+                android:text="@string/about"
+                android:paddingLeft="25dp"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

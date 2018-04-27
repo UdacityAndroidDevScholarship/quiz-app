@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="4dp"
+    app:cardMaxElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_quiz_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@+id/tv_date_created"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Lesson 5 Quiz1 - Intents" />
+
+        <TextView
+            android:id="@+id/tv_date_created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_quiz_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_creator_name"
+            tools:text="22 April 2018" />
+
+        <TextView
+            android:id="@+id/tv_creator_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/creator_label"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/tv_quiz_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_quiz_name" />
+
+        <TextView
+            android:id="@+id/tv_creator_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_creator_label"
+            app:layout_constraintStart_toEndOf="@+id/tv_creator_label"
+            tools:text="Intkhab Ahmed" />
+
+        <TextView
+            android:id="@+id/tv_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_green_deadline"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_deadline_label"
+            app:layout_constraintEnd_toEndOf="@+id/tv_date_created"
+            tools:text="None" />
+
+        <TextView
+            android:id="@+id/tv_completed_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/status_label"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/tv_creator_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_creator_label" />
+
+        <TextView
+            android:id="@+id/tv_completion_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_green_deadline"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_completed_label"
+            app:layout_constraintStart_toStartOf="@+id/tv_creator_name"
+            tools:text="Completed" />
+
+        <TextView
+            android:id="@+id/tv_difficulty_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/difficulty_label"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/tv_completed_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_completed_label" />
+
+        <TextView
+            android:id="@+id/tv_deadline_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/deadline"
+            android:textColor="@color/color_green_deadline"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_creator_name"
+            app:layout_constraintEnd_toStartOf="@+id/tv_deadline"
+            app:layout_constraintTop_toTopOf="@+id/tv_completion_status" />
+
+        <View
+            android:id="@+id/difficulty_hard"
+            android:layout_width="32dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="4dp"
+            android:background="@color/color_red_deadline"
+            app:layout_constraintStart_toEndOf="@+id/difficulty_medium"
+            app:layout_constraintTop_toTopOf="@+id/difficulty_medium" />
+
+        <View
+            android:id="@+id/difficulty_medium"
+            android:layout_width="32dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="4dp"
+            android:background="@android:color/holo_orange_light"
+            app:layout_constraintStart_toEndOf="@+id/difficulty_easy"
+            app:layout_constraintTop_toTopOf="@+id/difficulty_easy" />
+
+        <View
+            android:id="@+id/difficulty_easy"
+            android:layout_width="32dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/color_green_deadline"
+            app:layout_constraintBottom_toTopOf="@+id/tv_difficulty_label"
+            app:layout_constraintStart_toEndOf="@+id/tv_difficulty_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_difficulty_label" />
+
+        <ImageView
+            android:id="@+id/iv_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/bookmark_description"
+            app:layout_constraintBottom_toTopOf="@+id/difficulty_hard"
+            app:layout_constraintEnd_toEndOf="@+id/tv_deadline"
+            app:layout_constraintTop_toBottomOf="@+id/difficulty_hard"
+            app:srcCompat="@drawable/ic_bookmark_border_black_24dp" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

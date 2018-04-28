@@ -14,15 +14,15 @@ public class QuizAttempted {
 
     @Expose
     @SerializedName("lesson")
-    private Long mLesson;
+    private long mLesson;
 
     @Expose
     @SerializedName("max-marks")
-    private Long mMaxMarks;
+    private long mMaxMarks;
 
     @Expose
     @SerializedName("percentage")
-    private Long mPercentage;
+    private long mPercentage;
 
     @Expose
     @SerializedName("quiz-id")
@@ -38,7 +38,7 @@ public class QuizAttempted {
 
     @Expose
     @SerializedName("score")
-    private Long mScore;
+    private long mScore;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
@@ -46,27 +46,27 @@ public class QuizAttempted {
     @Exclude
     private String mKey;
 
-    public Long getLesson() {
+    public long getLesson() {
         return mLesson;
     }
 
-    public void setLesson(Long lesson) {
+    public void setLesson(long lesson) {
         mLesson = lesson;
     }
 
-    public Long getMaxMarks() {
+    public long getMaxMarks() {
         return mMaxMarks;
     }
 
-    public void setMaxMarks(Long maxMarks) {
+    public void setMaxMarks(long maxMarks) {
         mMaxMarks = maxMarks;
     }
 
-    public Long getPercentage() {
+    public long getPercentage() {
         return mPercentage;
     }
 
-    public void setPercentage(Long percentage) {
+    public void setPercentage(long percentage) {
         mPercentage = percentage;
     }
 
@@ -94,11 +94,11 @@ public class QuizAttempted {
         mRemarks = remarks;
     }
 
-    public Long getScore() {
+    public long getScore() {
         return mScore;
     }
 
-    public void setScore(Long score) {
+    public void setScore(long score) {
         mScore = score;
     }
 

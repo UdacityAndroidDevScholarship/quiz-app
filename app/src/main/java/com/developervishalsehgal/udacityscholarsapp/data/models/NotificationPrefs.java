@@ -14,19 +14,19 @@ public class NotificationPrefs {
 
     @Expose
     @SerializedName("comment-notifs")
-    private Boolean mCommentNotifs;
+    private boolean mCommentNotifs;
 
     @Expose
     @SerializedName("member-messages")
-    private Boolean mMemberMessages;
+    private boolean mMemberMessages;
 
     @Expose
     @SerializedName("moderator-messages")
-    private Boolean mModeratorMessages;
+    private boolean mModeratorMessages;
 
     @Expose
     @SerializedName("quiz-notifs")
-    private Boolean mQuizNotifs;
+    private boolean mQuizNotifs;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
@@ -34,35 +34,35 @@ public class NotificationPrefs {
     @Exclude
     private String mKey;
 
-    public Boolean getCommentNotifs() {
+    public boolean getCommentNotifs() {
         return mCommentNotifs;
     }
 
-    public void setCommentNotifs(Boolean commentNotifs) {
+    public void setCommentNotifs(boolean commentNotifs) {
         mCommentNotifs = commentNotifs;
     }
 
-    public Boolean getMemberMessages() {
+    public boolean getMemberMessages() {
         return mMemberMessages;
     }
 
-    public void setMemberMessages(Boolean memberMessages) {
+    public void setMemberMessages(boolean memberMessages) {
         mMemberMessages = memberMessages;
     }
 
-    public Boolean getModeratorMessages() {
+    public boolean getModeratorMessages() {
         return mModeratorMessages;
     }
 
-    public void setModeratorMessages(Boolean moderatorMessages) {
+    public void setModeratorMessages(boolean moderatorMessages) {
         mModeratorMessages = moderatorMessages;
     }
 
-    public Boolean getQuizNotifs() {
+    public boolean getQuizNotifs() {
         return mQuizNotifs;
     }
 
-    public void setQuizNotifs(Boolean quizNotifs) {
+    public void setQuizNotifs(boolean quizNotifs) {
         mQuizNotifs = quizNotifs;
     }
 

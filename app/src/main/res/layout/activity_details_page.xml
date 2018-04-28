@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/light_gray"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/details_page_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+        <ImageView
+            android:id="@+id/details_page_toolbar_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/udacity_toolbar_logo"/>
+        <TextView
+            android:id="@+id/details_page_toolbar_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/details_page_toobar_title_horizontal"
+            android:text="@string/details_page_setup_profile"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:textColor="@android:color/white" />
+    </android.support.v7.widget.Toolbar>
+
+    <!--For profile picture and email section -->
+    <LinearLayout
+        android:layout_below="@id/details_page_toolbar"
+        android:id="@+id/details_page_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:background="@drawable/details_page_linerlayout_border">
+
+
+
+        <RelativeLayout
+            android:id="@+id/details_page_relative_profileDp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/details_page_image_profile"
+                android:src="@drawable/details_page_profile_pic"
+                android:layout_width="@dimen/details_page_profile_pic_width"
+                android:layout_height="@dimen/details_page_profile_pic_height"
+                android:layout_marginTop="@dimen/details_page_image_vertical_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/details_page_image_vertical_margin"/>
+
+            <TextView
+                android:id="@+id/details_page_text_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/details_page_email_vertical_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_toEndOf="@id/details_page_image_profile"
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/details_page_email"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/details_page_email_text" />
+
+            <TextView
+                android:id="@+id/details_page_text_changeDp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/details_page_text_email"
+                android:layout_toEndOf="@id/details_page_image_profile"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:textColor="@color/light_blue"
+                android:text="@string/details_page_change_photo"
+                android:fontFamily="@font/roboto"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- below profile picture section -->
+    <RelativeLayout
+        android:layout_marginTop="@dimen/details_page_large_vertical_margin"
+        android:layout_below="@id/details_page_linear_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray">
+
+        <ImageView
+            android:id="@+id/details_page_image_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person"
+            android:layout_marginTop="@dimen/details_page_icon_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_alignParentStart="true"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/details_page_textinput_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/details_page_small_horizontal_margin"
+            android:layout_marginStart="@dimen/details_page_small_horizontal_margin"
+            android:layout_toEndOf="@id/details_page_image_name">
+
+            <EditText
+                android:id="@+id/details_page_edittext_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/details_page_small_horizontal_margin"
+                android:layout_marginTop="@dimen/details_page_large_vertical_margin"
+                android:padding="@dimen/details_page_padding"
+                android:fontFamily="@font/roboto"
+                android:hint="@string/details_page_name"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/opaque_black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/details_page_image_slack"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_icon_vertical_margin"
+            android:layout_below="@id/details_page_textinput_name"
+            android:src="@drawable/ic_slack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/details_page_textinput_slack_handle"
+            android:layout_toEndOf="@id/details_page_image_slack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_page_textinput_name"
+            android:layout_marginTop="@dimen/details_page_small_vertical_margin"
+            android:layout_marginEnd="@dimen/details_page_small_horizontal_margin"
+            android:layout_marginStart="@dimen/details_page_small_horizontal_margin">
+
+            <EditText
+                android:id="@+id/details_page_edittext_slack_handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:padding="@dimen/details_page_padding"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/details_page_small_horizontal_margin"
+                android:layout_marginTop="@dimen/details_page_large_vertical_margin"
+                android:fontFamily="@font/roboto"
+                android:hint="@string/details_page_slack_handle"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/opaque_black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/details_page_image_track"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_icon_vertical_margin"
+            android:layout_below="@id/details_page_textinput_slack_handle"
+            android:src="@drawable/ic_track"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/details_page_spinner_track"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_page_textinput_slack_handle"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_large_vertical_margin"
+            android:layout_toEndOf="@id/details_page_image_track"
+            android:entries="@array/datails_page_track_spinner"
+            android:fontFamily="@font/roboto"
+            android:spinnerMode="dialog"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/details_page_button_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@null"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/details_page_next_btn"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/details_page_button_text" />
+
+</RelativeLayout>

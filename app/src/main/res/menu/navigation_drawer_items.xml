@@ -24,4 +24,5 @@
         android:title="@string/resources"
         android:icon="@drawable/resources"/>
 
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 </menu>

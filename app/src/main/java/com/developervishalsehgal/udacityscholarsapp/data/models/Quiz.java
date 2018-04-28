@@ -56,7 +56,7 @@ public class Quiz {
 
     @Expose
     @SerializedName("rating")
-    private Double mRating;
+    private double mRating;
 
     @Expose
     @SerializedName("title")
@@ -152,7 +152,7 @@ public class Quiz {
         mRatedBy = ratedBy;
     }
 
-    public Double getRating() {
+    public double getRating() {
         return mRating;
     }
 

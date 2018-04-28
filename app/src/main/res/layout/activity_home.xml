@@ -36,8 +36,6 @@
                 android:text="Total : "
                 android:layout_alignParentStart="true"
                 android:textStyle="bold"
-
-
                 android:id="@+id/total"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 

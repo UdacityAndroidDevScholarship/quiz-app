@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--<color name="colorPrimary">#243447</color>-->
+    <!--<color name="colorPrimaryDark">#1b2836</color>-->
+    <!--<color name="colorAccent">#00B8D4</color>-->
+
     <color name="colorPrimary">#243447</color>
-    <color name="colorPrimaryDark">#1b2836</color>
-    <color name="colorAccent">#00B8D4</color>
+    <color name="colorPrimaryLight">#4e5d72</color>
+    <color name="colorPrimaryDark">#000D20</color>
+    <color name="white">#ffffff</color>
+    <color name="colorAccent">#02B4E1</color>
+    <color name="darkgrey">#6c6c6c</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#0000000</color>
+    <color name="bg">#283747</color>
+
+    //Nav Colors
+    <color name="red">#EC7063</color>
 
     <color name="color_green_deadline">#00c853</color>
     <color name="color_red_deadline">#d50000</color>

@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/scoreboard"
+        android:title="@string/scoreboard"
+        android:icon="@drawable/scoreboard"/>
+
+    <item android:id="@+id/quizlist"
+        android:title="@string/quizlist"
+        android:icon="@drawable/quizlist"
+        app:actionLayout="@layout/menu_counter_quizzes"/>
+
+    <item android:id="@+id/oldquizzes"
+        android:title="@string/createQuiz"
+        android:icon="@drawable/oldquizzes"/>
+
+    <item android:id="@+id/notifications"
+        android:title="@string/notifications"
+        android:icon="@drawable/notifications"
+        app:actionLayout="@layout/menu_counter_notification"/>
+
+    <item android:id="@+id/resources"
+        android:title="@string/resources"
+        android:icon="@drawable/resources"/>
 
 </menu>

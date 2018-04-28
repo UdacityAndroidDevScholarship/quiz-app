@@ -1,6 +1,12 @@
 
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
+<<<<<<< HEAD
+=======
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.gson.annotations.Expose;
+>>>>>>> upstream/development
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -8,6 +14,7 @@ import java.util.List;
 /**
  * Model class representing a quiz
  */
+<<<<<<< HEAD
 public class Quiz {
 
     @SerializedName("creator-id")
@@ -49,6 +56,69 @@ public class Quiz {
     @SerializedName("deadline")
     private String mDeadline;
 
+=======
+@IgnoreExtraProperties
+public class Quiz {
+
+    @Expose
+    @SerializedName("creator-id")
+    private String mCreatorId;
+
+    @Expose
+    @SerializedName("creator-name")
+    private String mCreatorName;
+
+    @Expose
+    @SerializedName("description")
+    private String mDescription;
+
+    @Expose
+    @SerializedName("difficulty")
+    private String mDifficulty;
+
+    @Expose
+    @SerializedName("files")
+    private List<String> mFiles;
+
+    @Expose
+    @SerializedName("last-modified")
+    private String mLastModified;
+
+    @Expose
+    @SerializedName("lesson")
+    private int mLesson;
+
+    @Expose
+    @SerializedName("max-marks")
+    private int mMaxMarks;
+
+    @Expose
+    @SerializedName("questions")
+    private List<Question> mQuestions;
+
+    @Expose
+    @SerializedName("rated-by")
+    private int mRatedBy;
+
+    @Expose
+    @SerializedName("rating")
+    private double mRating;
+
+    @Expose
+    @SerializedName("title")
+    private String mTitle;
+
+    @Expose
+    @SerializedName("deadline")
+    private String mDeadline;
+
+    /**
+     * This field should be used for storing key of realtime database snapshot, otherwise ignore it
+     */
+    @Exclude
+    private String mKey;
+
+>>>>>>> upstream/development
     public String getCreatorId() {
         return mCreatorId;
     }
@@ -129,7 +199,11 @@ public class Quiz {
         mRatedBy = ratedBy;
     }
 
+<<<<<<< HEAD
     public Double getRating() {
+=======
+    public double getRating() {
+>>>>>>> upstream/development
         return mRating;
     }
 
@@ -153,4 +227,15 @@ public class Quiz {
         mDeadline = deadline;
     }
 
+<<<<<<< HEAD
+=======
+    public String getKey() {
+        return mKey;
+    }
+
+    public void setKey(String key) {
+        this.mKey = key;
+    }
+
+>>>>>>> upstream/development
 }

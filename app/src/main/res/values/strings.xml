@@ -33,4 +33,5 @@
     <string name="dummy_creator_name">Dummy Moderator</string>
     <string name="dummy_deadline">None</string>
     <string name="dummy_status">Completed</string>
+    <string name="dummy_quiz_level">Hard</string>
 </resources>

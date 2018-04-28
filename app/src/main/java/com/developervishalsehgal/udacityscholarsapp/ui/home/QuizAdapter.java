@@ -25,12 +25,12 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
     @Override
     public void onBindViewHolder(QuizViewHolder holder, int position) {
-        holder.quizNameTextView.setText("Lesson 5 Quiz1 - Intents");
-        holder.quizCreatorTextView.setText("Intkhab Ahmed");
-        holder.dateCreatedTextView.setText("22 April 2018");
-        holder.deadlineTextView.setText("None");
-        holder.quizStatusTextView.setText("Completed");
-        showQuizDifficultyView(holder, "Hard");
+        holder.quizNameTextView.setText(mContext.getString(R.string.dummy_quiz_name));
+        holder.quizCreatorTextView.setText(mContext.getString(R.string.dummy_creator_name));
+        holder.dateCreatedTextView.setText(mContext.getString(R.string.dummy_date_created));
+        holder.deadlineTextView.setText(mContext.getString(R.string.dummy_deadline));
+        holder.quizStatusTextView.setText(mContext.getString(R.string.dummy_status));
+        showQuizDifficultyView(holder, mContext.getString(R.string.dummy_quiz_level));
     }
 
     @Override

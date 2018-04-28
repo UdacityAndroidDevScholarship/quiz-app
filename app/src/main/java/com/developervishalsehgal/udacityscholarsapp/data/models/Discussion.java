@@ -1,3 +1,4 @@
+
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;

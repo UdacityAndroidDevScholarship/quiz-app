@@ -136,7 +136,7 @@
             android:layout_marginStart="@dimen/difficulty_view_margin"
             android:background="@color/color_green_deadline"
             app:layout_constraintBottom_toTopOf="@+id/tv_difficulty_label"
-            app:layout_constraintStart_toEndOf="@+id/tv_difficulty_label"
+            app:layout_constraintStart_toEndOf="@+id/difficulty_view_group"
             app:layout_constraintTop_toBottomOf="@+id/tv_difficulty_label" />
 
         <ImageView
@@ -148,5 +148,19 @@
             app:layout_constraintEnd_toEndOf="@+id/tv_deadline"
             app:layout_constraintTop_toBottomOf="@+id/difficulty_hard"
             app:srcCompat="@drawable/ic_bookmark_border_black_24dp" />
+
+        <android.support.constraint.Group
+            android:id="@+id/difficulty_view_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:visibility="visible"
+            app:constraint_referenced_ids="difficulty_easy, difficulty_medium, difficulty_hard"
+            app:layout_constraintBottom_toTopOf="@+id/tv_difficulty_label"
+            app:layout_constraintStart_toEndOf="@+id/tv_difficulty_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_difficulty_label">
+
+        </android.support.constraint.Group>
+
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

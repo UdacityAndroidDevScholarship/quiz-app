@@ -14,7 +14,7 @@
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
     <!-- Quizzes List Item layout dimensions -->
     <dimen name="medium_margin">8dp</dimen>
-    <dimen name="difficulty_view_width">56dp</dimen>
+    <dimen name="difficulty_view_width">48dp</dimen>
     <dimen name="difficulty_view_height">16dp</dimen>
     <dimen name="difficulty_view_margin">4dp</dimen>
     <dimen name="card_view_elevation">4dp</dimen>

@@ -1,10 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.profile.UserProfileActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</android.support.constraint.ConstraintLayout>
+    <data>
+        <variable
+            name="user"
+            type="com.developervishalsehgal.udacityscholarsapp.data.models.User" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/details_page_profile_pic_width"
+            android:layout_height="@dimen/details_page_profile_pic_height"
+            app:imageResource="@{user.image}"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_image_vertical_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/name_til"
+            android:layout_width="@dimen/details_page_item_width"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/details_page_small_vertical_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_small_vertical_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{user.name}"
+                android:hint="Name" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/slackHandle_til"
+            android:layout_width="@dimen/details_page_item_width"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/details_page_small_vertical_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_small_vertical_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_til">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/slackHandle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{user.slackHandle}"
+                android:hint="Slack Handle" />
+        </android.support.design.widget.TextInputLayout>
+
+        <EditText
+            android:id="@+id/email_tv"
+            android:layout_width="@dimen/details_page_item_width"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/details_page_small_vertical_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_small_vertical_margin"
+            android:textSize="@dimen/details_page_email_text"
+            android:text="@{user.email}"
+            android:focusable="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slackHandle_til"/>
+
+        <TextView
+            android:id="@+id/courseTrack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@{user.track}"
+            android:textColor="@color/colorAccent"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+            android:layout_marginTop="@dimen/details_page_large_vertical_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_tv"/>
+
+        <Button
+            android:layout_width="@dimen/details_page_profile_next_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/details_page_next_btn"
+            android:theme="@style/next_button"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/details_page_button_text"
+            android:layout_marginTop="@dimen/details_page_icon_vertical_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/courseTrack"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

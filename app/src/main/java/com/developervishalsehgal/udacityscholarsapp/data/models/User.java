@@ -60,6 +60,15 @@ public class User {
     @Exclude
     private String mKey;
 
+    public User(String mEmail, String mImage, String mName,
+                String mSlackHandle, String mTrack) {
+        this.mEmail = mEmail;
+        this.mImage = mImage;
+        this.mName = mName;
+        this.mSlackHandle = mSlackHandle;
+        this.mTrack = mTrack;
+    }
+
     public String getEmail() {
         return mEmail;
     }

@@ -45,7 +45,7 @@
 
 Please describe the feature you want to add to the project.
 
-## UI Enchancement Request
+## UI Enhancement Request
 
 #### Description
 

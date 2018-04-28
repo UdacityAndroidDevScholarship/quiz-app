@@ -1,12 +1,9 @@
 
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
-<<<<<<< HEAD
-=======
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.annotations.Expose;
->>>>>>> upstream/development
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -14,22 +11,6 @@ import java.util.List;
 /**
  * Model class representing a quiz question
  */
-<<<<<<< HEAD
-public class Question {
-
-    @SerializedName("description")
-    private String mDescription;
-
-    @SerializedName("marks")
-    private Long mMarks;
-
-    @SerializedName("options")
-    private List<Option> mOptions;
-
-    @SerializedName("type")
-    private String mType;
-
-=======
 @IgnoreExtraProperties
 public class Question {
 
@@ -59,7 +40,6 @@ public class Question {
     @Exclude
     private String mKey;
 
->>>>>>> upstream/development
     public String getDescription() {
         return mDescription;
     }
@@ -68,11 +48,7 @@ public class Question {
         mDescription = description;
     }
 
-<<<<<<< HEAD
-    public Long getMarks() {
-=======
     public long getMarks() {
->>>>>>> upstream/development
         return mMarks;
     }
 
@@ -96,8 +72,6 @@ public class Question {
         mType = type;
     }
 
-<<<<<<< HEAD
-=======
     public String getFiles() {
         return mFiles;
     }
@@ -114,5 +88,4 @@ public class Question {
         this.mKey = key;
     }
 
->>>>>>> upstream/development
 }

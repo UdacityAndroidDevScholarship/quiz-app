@@ -1,12 +1,8 @@
-
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
-<<<<<<< HEAD
-=======
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.annotations.Expose;
->>>>>>> upstream/development
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -14,29 +10,6 @@ import java.util.List;
 /**
  * Model class representing a Quiz Discussion
  */
-<<<<<<< HEAD
-public class Discussion {
-
-    @SerializedName("deadline")
-    private String mDeadline;
-
-    @SerializedName("quiz-id")
-    private String mQuizId;
-
-    @SerializedName("quiz-title")
-    private String mQuizTitle;
-
-    @SerializedName("comments")
-    private List<Comment> mComments;
-
-    public String getDeadline() {
-        return mDeadline;
-    }
-
-    public void setDeadline(String deadline) {
-        mDeadline = deadline;
-    }
-=======
 @IgnoreExtraProperties
 public class Discussion {
 
@@ -57,7 +30,6 @@ public class Discussion {
      */
     @Exclude
     private String mKey;
->>>>>>> upstream/development
 
     public String getQuizId() {
         return mQuizId;
@@ -82,8 +54,6 @@ public class Discussion {
     public void setComments(List<Comment> comments) {
         this.mComments = comments;
     }
-<<<<<<< HEAD
-=======
 
     public String getKey() {
         return mKey;
@@ -92,5 +62,4 @@ public class Discussion {
     public void setKey(String key) {
         this.mKey = key;
     }
->>>>>>> upstream/development
 }

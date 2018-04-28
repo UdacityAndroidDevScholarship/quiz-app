@@ -1,63 +1,14 @@
 
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
-<<<<<<< HEAD
-=======
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.annotations.Expose;
->>>>>>> upstream/development
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Model class representing a quiz attempted by a user
  */
-<<<<<<< HEAD
-public class QuizAttempted {
-
-    @SerializedName("lesson")
-    private Long mLesson;
-
-    @SerializedName("max-marks")
-    private Long mMaxMarks;
-
-    @SerializedName("percentage")
-    private Long mPercentage;
-
-    @SerializedName("quiz-id")
-    private String mQuizId;
-
-    @SerializedName("quiz-title")
-    private String mQuizTitle;
-
-    @SerializedName("remarks")
-    private String mRemarks;
-
-    @SerializedName("score")
-    private Long mScore;
-
-    public Long getLesson() {
-        return mLesson;
-    }
-
-    public void setLesson(Long lesson) {
-        mLesson = lesson;
-    }
-
-    public Long getMaxMarks() {
-        return mMaxMarks;
-    }
-
-    public void setMaxMarks(Long maxMarks) {
-        mMaxMarks = maxMarks;
-    }
-
-    public Long getPercentage() {
-        return mPercentage;
-    }
-
-    public void setPercentage(Long percentage) {
-=======
 @IgnoreExtraProperties
 public class QuizAttempted {
 
@@ -116,7 +67,6 @@ public class QuizAttempted {
     }
 
     public void setPercentage(long percentage) {
->>>>>>> upstream/development
         mPercentage = percentage;
     }
 
@@ -144,16 +94,6 @@ public class QuizAttempted {
         mRemarks = remarks;
     }
 
-<<<<<<< HEAD
-    public Long getScore() {
-        return mScore;
-    }
-
-    public void setScore(Long score) {
-        mScore = score;
-    }
-
-=======
     public long getScore() {
         return mScore;
     }
@@ -170,5 +110,4 @@ public class QuizAttempted {
         this.mKey = key;
     }
 
->>>>>>> upstream/development
 }

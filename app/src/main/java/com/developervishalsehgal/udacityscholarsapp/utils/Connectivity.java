@@ -9,11 +9,7 @@ import android.net.NetworkInfo;
  */
 public class Connectivity {
 
-<<<<<<< HEAD:app/src/main/java/com/developervishalsehgal/udacityscholarsapp/utils/Connectivity.java
-    public static Boolean isNetworkAvailable(Context context) {
-=======
     public static boolean isNetworkAvailable(Context context) {
->>>>>>> upstream/development:app/src/main/java/com/developervishalsehgal/udacityscholarsapp/utils/Connectivity.java
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         assert connectivityManager != null;
@@ -21,11 +17,7 @@ public class Connectivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
-<<<<<<< HEAD:app/src/main/java/com/developervishalsehgal/udacityscholarsapp/utils/Connectivity.java
-    public static Boolean isOnline() {
-=======
     public static boolean isOnline() {
->>>>>>> upstream/development:app/src/main/java/com/developervishalsehgal/udacityscholarsapp/utils/Connectivity.java
         try {
             Process p1 = Runtime.getRuntime().exec("ping -c 1 www.google.com");
             int returnVal = p1.waitFor();

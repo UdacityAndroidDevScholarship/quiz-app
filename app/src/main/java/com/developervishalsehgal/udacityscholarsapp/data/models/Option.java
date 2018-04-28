@@ -1,30 +1,14 @@
 
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
-<<<<<<< HEAD
-=======
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.annotations.Expose;
->>>>>>> upstream/development
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Model class representing a quiz's options
  */
-<<<<<<< HEAD
-public class Option {
-
-    @SerializedName("description")
-    private String mDescription;
-
-    @SerializedName("is-correct")
-    private Boolean mIsCorrect;
-
-    @SerializedName("remarks")
-    private String mRemarks;
-
-=======
 @IgnoreExtraProperties
 public class Option {
 
@@ -46,7 +30,6 @@ public class Option {
     @Exclude
     private String mKey;
 
->>>>>>> upstream/development
     public String getDescription() {
         return mDescription;
     }
@@ -55,19 +38,11 @@ public class Option {
         mDescription = description;
     }
 
-<<<<<<< HEAD
-    public Boolean isCorrect() {
-        return mIsCorrect;
-    }
-
-    public void setIsCorrect(Boolean isCorrect) {
-=======
     public boolean isCorrect() {
         return mIsCorrect;
     }
 
     public void setIsCorrect(boolean isCorrect) {
->>>>>>> upstream/development
         mIsCorrect = isCorrect;
     }
 
@@ -79,8 +54,6 @@ public class Option {
         mRemarks = remarks;
     }
 
-<<<<<<< HEAD
-=======
     public String getKey() {
         return mKey;
     }
@@ -89,5 +62,4 @@ public class Option {
         this.mKey = key;
     }
 
->>>>>>> upstream/development
 }

@@ -1,12 +1,9 @@
 
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
-<<<<<<< HEAD
-=======
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.annotations.Expose;
->>>>>>> upstream/development
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -14,49 +11,6 @@ import java.util.List;
 /**
  * Model class representing a quiz
  */
-<<<<<<< HEAD
-public class Quiz {
-
-    @SerializedName("creator-id")
-    private String mCreatorId;
-
-    @SerializedName("creator-name")
-    private String mCreatorName;
-
-    @SerializedName("description")
-    private String mDescription;
-
-    @SerializedName("difficulty")
-    private String mDifficulty;
-
-    @SerializedName("files")
-    private List<String> mFiles;
-
-    @SerializedName("last-modified")
-    private String mLastModified;
-
-    @SerializedName("lesson")
-    private int mLesson;
-
-    @SerializedName("max-marks")
-    private int mMaxMarks;
-
-    @SerializedName("questions")
-    private List<Question> mQuestions;
-
-    @SerializedName("rated-by")
-    private int mRatedBy;
-
-    @SerializedName("rating")
-    private Double mRating;
-
-    @SerializedName("title")
-    private String mTitle;
-
-    @SerializedName("deadline")
-    private String mDeadline;
-
-=======
 @IgnoreExtraProperties
 public class Quiz {
 
@@ -118,7 +72,6 @@ public class Quiz {
     @Exclude
     private String mKey;
 
->>>>>>> upstream/development
     public String getCreatorId() {
         return mCreatorId;
     }
@@ -199,11 +152,7 @@ public class Quiz {
         mRatedBy = ratedBy;
     }
 
-<<<<<<< HEAD
-    public Double getRating() {
-=======
     public double getRating() {
->>>>>>> upstream/development
         return mRating;
     }
 
@@ -227,8 +176,6 @@ public class Quiz {
         mDeadline = deadline;
     }
 
-<<<<<<< HEAD
-=======
     public String getKey() {
         return mKey;
     }
@@ -237,5 +184,4 @@ public class Quiz {
         this.mKey = key;
     }
 
->>>>>>> upstream/development
 }

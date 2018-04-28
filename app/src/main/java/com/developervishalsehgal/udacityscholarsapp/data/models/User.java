@@ -1,12 +1,9 @@
 
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
-<<<<<<< HEAD
-=======
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.annotations.Expose;
->>>>>>> upstream/development
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -14,37 +11,6 @@ import java.util.List;
 /**
  * Model class representing a scholar, will mostly be used to represent current scholar
  */
-<<<<<<< HEAD
-public class User {
-
-    @SerializedName("email")
-    private String mEmail;
-
-    @SerializedName("image")
-    private String mImage;
-
-    @SerializedName("moderator")
-    private Boolean mModerator;
-
-    @SerializedName("name")
-    private String mName;
-
-    @SerializedName("slack-handle")
-    private String mSlackHandle;
-
-    @SerializedName("status")
-    private String mStatus;
-
-    @SerializedName("track")
-    private String mTrack;
-
-    @SerializedName("attempted")
-    private List<QuizAttempted> mAttemptedList;
-
-    @SerializedName("prefs")
-    private NotificationPrefs mNotificationPrefs;
-
-=======
 @IgnoreExtraProperties
 public class User {
 
@@ -94,7 +60,6 @@ public class User {
     @Exclude
     private String mKey;
 
->>>>>>> upstream/development
     public String getEmail() {
         return mEmail;
     }
@@ -111,19 +76,11 @@ public class User {
         mImage = image;
     }
 
-<<<<<<< HEAD
-    public Boolean getModerator() {
-        return mModerator;
-    }
-
-    public void setModerator(Boolean moderator) {
-=======
     public boolean getModerator() {
         return mModerator;
     }
 
     public void setModerator(boolean moderator) {
->>>>>>> upstream/development
         mModerator = moderator;
     }
 
@@ -174,8 +131,6 @@ public class User {
     public void setNotificationPrefs(NotificationPrefs notificationPrefs) {
         this.mNotificationPrefs = notificationPrefs;
     }
-<<<<<<< HEAD
-=======
 
     public List<String> getBookmarks() {
         return mBookmarks;
@@ -192,5 +147,4 @@ public class User {
     public void setKey(String key) {
         this.mKey = key;
     }
->>>>>>> upstream/development
 }

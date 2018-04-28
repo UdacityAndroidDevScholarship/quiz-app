@@ -9,10 +9,27 @@
     <!--Sign In page text-->
     <string name="sigin_text_almost_there">Almost there, Sign In to continue</string>
 
+
+    <string name="details_page_email">example@gmail.com</string>
+    <string name="details_page_name">Name</string>
+    <string name="details_page_slack_handle">Slack Handle</string>
+    <string name="details_page_next_btn">Next</string>
+    <string name="details_page_change_photo">Change Profile Photo</string>
+    <string name="details_page_select_track">Select Your Track</string>
+    <string name="details_page_setup_profile">Setup Profile</string>
+    <string-array name="datails_page_track_spinner">
+        <item>Select Your Track</item>
+        <item>Android Basic</item>
+        <item>Android Intermediate</item>
+        <item>Web Specialist</item>
+        <item>Mobile Specialist</item>
+    </string-array>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="hint_email">Email address</string>
     <string name="hint_password">********</string>
+    <!-- Quizzes List Item helper strings -->
     <string name="creator_label">Creator :</string>
     <string name="status_label">Status :</string>
     <string name="difficulty_label">Difficulty Level :</string>

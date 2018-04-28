@@ -45,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
             "FOREIGN KEY("+ FilesContract.FilesEntry.COLUMN_QUESTION_ID+") REFERENCES " +
             QuestionContract.QuestionEntry.TABLE_NAME + "(" + QuestionContract.QuestionEntry._ID + ")" +
             ");";*/
-  
+
     //Create a Table to hold Notification data
     private static final String CREATE_NOTIFICATION_TABLE = "CREATE TABLE " +
             NotificationEntry.TABLE_NAME + " (" +

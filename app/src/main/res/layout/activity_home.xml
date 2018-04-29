@@ -12,43 +12,34 @@
         android:id="@+id/app_bar_layout_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stateListAnimator="@animator/appbar_elevated"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:stateListAnimator="@animator/appbar_elevated">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbarrnav"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
+            app:title="@string/app_name"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:textSize="30sp"
-                android:textColor="@color/blue_jeans"
-                android:layout_height="wrap_content"
-                android:text="Login success" />
-
-        </android.support.v7.widget.Toolbar>
-
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
         <RelativeLayout
             android:id="@+id/updatelist"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <TextView
                 android:id="@+id/total"
                 android:layout_width="wrap_content"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
                 android:gravity="center"
-                android:paddingStart="16dp"
-                android:text="Total : "
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textStyle="bold" />
+                android:text="@string/total_label"
+                android:textStyle="bold"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
             <TextView
                 android:id="@+id/total_quizzes_count"
@@ -56,40 +47,31 @@
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@id/total"
                 android:gravity="center"
-                android:text="0"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+                tools:text="20"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
-            <TextView
-                android:id="@+id/left_quizzes"
+            <Switch
+                android:id="@+id/unattempted_switch"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_toStartOf="@id/left_quizzes_count"
-                android:gravity="center"
-                android:paddingStart="16dp"
-                android:text="Left : "
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textStyle="bold"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/left_quizzes_count"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:gravity="center"
-                android:paddingEnd="16dp"
-                android:text="0"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:visibility="gone" />
+                android:layout_centerVertical="true"
+                android:switchPadding="8dp"
+                android:text="@string/unattempted" />
+
+
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/content_main"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_quizzes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:background="#0a0a0a"
         android:focusableInTouchMode="true"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
+        tools:listitem="@layout/list_item_quizzes"
+        tools:itemCount="4"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 </android.support.design.widget.CoordinatorLayout>

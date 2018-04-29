@@ -37,6 +37,7 @@ public class DBHelper extends SQLiteOpenHelper {
             QuestionContract.QuestionEntry.TABLE_NAME + "(" + QuestionContract.QuestionEntry._ID + ")" +
             ");";
 
+    // We don't want to include files yet.
     /*private static final String CREATE_FILES_TABLE = "CREATE TABLE " +
             FilesContract.FilesEntry.TABLE_NAME + " (" +
             FilesContract.FilesEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -60,7 +61,7 @@ public class DBHelper extends SQLiteOpenHelper {
             NotificationEntry.COLUMN_EXTRA_2 + " TEXT" +
             "); ";
 
-    public DBHelper(Context context) {
+    DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -68,7 +69,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_QUESTIONS_TABLE);
         db.execSQL(CREATE_OPTIONS_TABLE);
-        // db.execSQL(CREATE_FILES_TABLE);
+        // db.execSQL(CREATE_FILES_TABLE); We don't want to include files yet.
         db.execSQL(CREATE_NOTIFICATION_TABLE);
     }
 

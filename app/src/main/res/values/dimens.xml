@@ -12,6 +12,26 @@
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
+
+    //Nav Dimens
+    <dimen name="pad_main">15dp</dimen>
+    <dimen name="pad_b_main">10dp</dimen>
+    <dimen name="img_view_main">50dp</dimen>
+    <dimen name="dim_one">48dp</dimen>
+    <dimen name="dim_two">25dp</dimen>
+    <dimen name="dim_three">71dp</dimen>
+
+    <dimen name="img_btn">40dp</dimen>
+    <dimen name="neg_dim">-45dp</dimen>
+    <dimen name="i_h_dim">74dp</dimen>
+    <dimen name="i_w_dim">94dp</dimen>
+
+    <dimen name="menu_mar">12dp</dimen>
+    <dimen name="menu_mar_one">10dp</dimen>
+
+    <dimen name="draw_r">40dp</dimen>
+    <dimen name="draw_pad">5dp</dimen>
+
     <!-- Quizzes List Item layout dimensions -->
     <dimen name="medium_margin">8dp</dimen>
     <dimen name="difficulty_view_width">48dp</dimen>

@@ -16,7 +16,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     public ProfilePresenter(ProfileContract.View view) {
         this.mView = view;
         this.mDataHandler = DataHandlerProvider.provide();
-
+        this.mView.setPresenter(this);
     }
 
     @Override

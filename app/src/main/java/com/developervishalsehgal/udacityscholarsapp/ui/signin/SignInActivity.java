@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.profile.UserProfileActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -60,6 +61,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     @Override
     public void loginSuccess() {
         // TODO Login has succeeded, notify user and navigate to home activity
+        navigateToProfile();
     }
 
     @Override
@@ -96,7 +98,8 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
     @Override
     public void navigateToProfile() {
-        // TODO - First time sign in navigate to profile
+        Intent signInIntent = new Intent(this, UserProfileActivity.class);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     @Override

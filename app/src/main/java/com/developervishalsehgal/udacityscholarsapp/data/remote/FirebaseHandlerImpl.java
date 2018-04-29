@@ -50,7 +50,6 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     private List<ValueEventListener> mValueListeners;
 
     // Private variables
-    FirebaseUser mCurrentUser;
 
     FirebaseHandlerImpl() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -61,8 +60,6 @@ class FirebaseHandlerImpl implements FirebaseHandler {
         mUsersRef = rootRef.child(REF_USERS_NODE);
         mQuizzesRef = rootRef.child(REF_QUIZZES_NODE);
         mDiscussionsRef = rootRef.child(REF_DISCUSSION_NODE);
-
-        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
     }
 
 
@@ -138,8 +135,8 @@ class FirebaseHandlerImpl implements FirebaseHandler {
 
         // Here we are not using setValue directly as that will overwrite the entire object and
         // we want to save bookmarks and attempted quizzes. Hence calling updateChildren
-
-        String userIdentifier = mCurrentUser.getUid();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String userIdentifier = firebaseUser.getUid();
 
         Map<String, Object> userData = new HashMap<>();
         userData.put(KEY_USER_EMAIL, currentUser.getEmail());
@@ -209,7 +206,8 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     private void updateUserProperty(String property, String value, final Callback<Void> callback) {
 
         try {
-            String currentUserId = mCurrentUser.getUid();
+            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            String currentUserId = firebaseUser.getUid();
 
             mUsersRef.child(currentUserId).child(property).setValue(value)
                     .addOnCompleteListener(task -> callback.onReponse(null))

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
+import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 
 /**
  * Profile activity for the app.
@@ -18,7 +19,7 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        // TODO Inject presenter here
+        PresenterInjector.injectProfilePresenter(this);
 
         findViewById(R.id.btn_profile_proceed).setOnClickListener(v -> {
             // TODO replace these values with actual values from text fields

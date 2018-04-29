@@ -28,6 +28,8 @@ dependencies {
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    //Library for circular image
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
 
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"

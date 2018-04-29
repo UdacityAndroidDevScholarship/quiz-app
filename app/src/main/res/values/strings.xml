@@ -51,4 +51,12 @@
     <string name="dummy_deadline">None</string>
     <string name="dummy_status">Completed</string>
     <string name="dummy_quiz_level">Hard</string>
+
+    <string name="google_web_client_id" translatable="false">897350396907-p9alch81qro22j44741h668glbn7uqic.apps.googleusercontent.com</string>
+    <string name="text_please_wait">Please wait…</string>
+    <string name="something_went_wrong">Something went wrong. Please try again</string>
+    <string name="unable_to_login">Unable to login with this account</string>
+    <string name="text_proceed">Proceed >> </string>
+    <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
+    <string name="profile_saved_successfully">Profile saved successfully</string>
 </resources>

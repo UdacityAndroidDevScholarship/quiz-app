@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.developervishalsehgal.udacityscholarsapp.data.DataHandler;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 
 public class HomePresenter implements HomeContract.Presenter{
 
@@ -16,6 +17,11 @@ public class HomePresenter implements HomeContract.Presenter{
 
     @Override
     public void destroy() {
+
+    }
+
+    @Override
+    public void onQuizClicked(Quiz quiz) {
 
     }
 }

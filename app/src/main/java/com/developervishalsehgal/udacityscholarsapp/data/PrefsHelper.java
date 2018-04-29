@@ -42,6 +42,9 @@ class PrefsHelper {
     private static final String KEY_SLACK_HANDLE = "key_slack_handle";
     private String mSlackHandle;
 
+    private static final String KEY_USER_STATUS = "key_user_status";
+    private String mUserStatus;
+
     private static final String KEY_USER_TRACK = "key_user_track";
     private String mUserTrack;
 
@@ -93,6 +96,18 @@ class PrefsHelper {
         return mSlackHandle;
     }
 
+    public void setUserStatus(String userStatus) {
+        this.mUserStatus = userStatus;
+        mPrefs.edit().putString(KEY_USER_STATUS, userStatus).apply();
+    }
+
+    public String getUserStatus() {
+        if (mUserStatus == null) {
+            mUserStatus = mPrefs.getString(KEY_USER_STATUS, null);
+        }
+        return mUserStatus;
+    }
+
     public void setUserTrack(String userTrack) {
         this.mUserTrack = userTrack;
         mPrefs.edit().putString(KEY_USER_TRACK, userTrack).apply();
@@ -106,7 +121,13 @@ class PrefsHelper {
     }
 
     public void destroy() {
-        // TODO remove all the cache. i.e. clear all local variables
+        mPrefs.edit().clear().apply();
+        mUserStatus = null;
+        mImageUrl = null;
+        mSlackHandle = null;
+        mUserEmail = null;
+        mUserTrack = null;
+        mUserName = null;
     }
 
 }

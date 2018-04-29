@@ -1,6 +1,5 @@
 *.iml
 .gradle
-/.idea
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
@@ -11,3 +10,4 @@
 /.idea
 .idea
 app/google-services.json
+/app/debug

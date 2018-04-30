@@ -15,9 +15,9 @@ public class NotificationContract{
         public static final String COLUMN_TIMESTAMP = "timestamp";
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_DESCRIPTION = "description";
-        public static final String COLUMN_FROM = "from";
+        public static final String COLUMN_FROM = "sender";
         public static final String COLUMN_TYPE = "type";
-        public static final String COLUMN_ACTION = "action";
+        public static final String COLUMN_ACTION = "action_extra";
         public static final String COLUMN_EXTRA_1 = "extra1";
         public static final String COLUMN_EXTRA_2 = "extra2";
     }

@@ -3,7 +3,8 @@ package com.developervishalsehgal.udacityscholarsapp.data.local;
 import android.provider.BaseColumns;
 
 /**
- * Files table contract based on schema by @pramodbharti
+ * Files table contract based on schema by @pramodbharti. This class is kept for future when we
+ * do implement FilesContract. Right now it is not implemented
  */
 public class FilesContract {
 

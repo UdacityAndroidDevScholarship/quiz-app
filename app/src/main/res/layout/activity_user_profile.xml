@@ -1,164 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profile.UserProfileActivity">
 
-    <View
-        android:id="@+id/view"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/user_profile_header_view"
-        android:background="@drawable/user_profile_gradient"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/btn_edit_profile"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@android:color/transparent"
-        android:foreground="?selectableItemBackground"
-        android:padding="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_edit" />
-
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/user_image"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:src="@drawable/akshit"
-        app:civ_border_width="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="0.107" />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
-        android:focusedByDefault="false"
-        android:hint="Your Name"
-        android:imeOptions="actionDone"
-        android:inputType="text"
-        android:text="Akshit Jain"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_image" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_margin="32dp"
-        android:elevation="6dp"
-        app:cardCornerRadius="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username">
-
-
-        <RelativeLayout
+        <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/user_profile_header_view"
+            android:background="@drawable/user_profile_gradient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Slack Handle -->
-            <TextView
-                android:id="@+id/slack_handle_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="20dp"
-                android:text="Slack Handle"
-                android:textSize="18sp" />
+        <ImageButton
+            android:id="@+id/btn_edit_profile"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            android:foreground="?selectableItemBackground"
+            android:padding="6dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_edit" />
 
-            <EditText
-                android:id="@+id/slack_handle"
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/user_image"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/akshit"
+            app:civ_border_width="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintVertical_bias="0.107" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/name_hint"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:text="Akshit Jain"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_image" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:elevation="6dp"
+            app:cardCornerRadius="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username">
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/slack_handle_text"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:hint="Your slack handle"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:text="\@akshit.udacity" />
+                android:layout_height="wrap_content">
 
-            <!-- Scholarship track -->
-            <TextView
-                android:id="@+id/scholarship_track_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/slack_handle"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="20dp"
-                android:text="Scholarship Track"
-                android:textSize="18sp" />
+                <!-- Slack Handle -->
+                <android.support.design.widget.TextInputLayout
+                    android:id="@id/slack_handle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/slack_handle_hint">
 
-            <EditText
-                android:id="@+id/scholarship_track"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/scholarship_track_text"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:enabled="false"
-                android:text="Android Developer Track" />
+                    <EditText
+                        android:id="@+id/slack_handle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"/>
 
-            <!-- Email -->
-            <TextView
-                android:id="@+id/email_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/scholarship_track"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="20dp"
-                android:text="Email"
-                android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/email_text"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:enabled="false"
-                android:text="abcxyz@gmail.com" />
 
-        </RelativeLayout>
+                <!-- Scholarship track -->
+                <TextView
+                    android:id="@+id/scholarship_track_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/slack_handle"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/track"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp" />
 
-    </android.support.v7.widget.CardView>
+                <EditText
+                    android:id="@+id/scholarship_track"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/scholarship_track_text"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:enabled="false"
+                    android:text="Android Developer Track" />
 
-    <Button
-        android:id="@+id/btn_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="102dp"
-        android:layout_marginStart="102dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/btn_submit_bg"
-        android:padding="8dp"
-        android:text="Submit"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+                <!-- Email -->
+                <TextView
+                    android:id="@+id/email_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/scholarship_track"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/email"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorAccent"/>
 
-</android.support.constraint.ConstraintLayout>
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/email_text"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:enabled="false"
+                    android:text="abcxyz@gmail.com" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="102dp"
+            android:layout_marginStart="102dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/btn_submit_bg"
+            android:padding="8dp"
+            android:text="@string/btn_submit"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/scholars_18"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_submit" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/india_2018"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

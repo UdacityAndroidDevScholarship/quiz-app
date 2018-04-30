@@ -13,4 +13,13 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="hint_email">Email address</string>
     <string name="hint_password">********</string>
+
+    <!-- Profile UI Page -->
+    <string name="btn_submit">Submit</string>
+    <string name="slack_handle_hint">Your slack handle</string>
+    <string name="name_hint">Your name</string>
+    <string name="scholars_18">Google Udacity Scholars</string>
+    <string name="email">Email</string>
+    <string name="slack">Slack Handle</string>
+    <string name="track">Scholarship Track</string>
 </resources>

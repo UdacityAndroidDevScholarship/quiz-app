@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="available_tracks">
+        <item>Android developer</item>
+<!--        <item>Android basic</item>
+        <item>Mobile web</item>
+        <item>Mobile web specialist</item>-->
+    </string-array>
+</resources>

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ public class NotificationTab3 extends Fragment {
     //Layout code for TAB3(Resource) content
     private RecyclerView mRecyclerView;
     private NotificationAdapter mNotificationAdapter;
-    private final String tabName = "TAB3";
+    private final String TAB_NAME = "TAB3";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,12 +32,26 @@ public class NotificationTab3 extends Fragment {
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
         //Initialising Notification Adapter to pass context, active tab , itemClickListener
-        mNotificationAdapter = new NotificationAdapter(context,tabName,new NotificationAdapter.NotificationItemClickListener(){
+        mNotificationAdapter = new NotificationAdapter(context,TAB_NAME,new NotificationAdapter.NotificationItemClickListener(){
             @Override
             public void onItemClick(View v, int position) {}
         });
-
         mRecyclerView.setAdapter(mNotificationAdapter);
+
+        //Code to Delete an item when swiped Right/Left
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                //implements swipe functionality
+                return false;
+            }
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                //Can implement remove item function on database here
+                mNotificationAdapter.notifyDataSetChanged();
+            }
+        }).attachToRecyclerView(mRecyclerView);
+
         return rootView;
     }
 }

@@ -38,4 +38,12 @@
     <dimen name="details_page_button_text">24sp</dimen>
     <dimen name="details_page_email_text">18sp</dimen>
 
+    <!-- Values for activity_home.xml -->
+    <dimen name="quiz_filter_button_margin_end">16dp</dimen>
+
+    <!-- Values for home_quiz_list_filter.xml-->
+    <dimen name="radio_group_quiz_filter_padding">32dp</dimen>
+    <dimen name="radio_button_quiz_filter_drawable_padding">8dp</dimen>
+    <dimen name="radio_button_quiz_filter_padding_vertical">8dp</dimen>
+    <dimen name="radio_button_quiz_filter_text_size">22sp</dimen>
 </resources>

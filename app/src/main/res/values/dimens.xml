@@ -37,5 +37,39 @@
 
     <dimen name="details_page_button_text">24sp</dimen>
     <dimen name="details_page_email_text">18sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+    <!-- Notification Activity dimesions-->
+    <dimen name="notification_card_margin_start">8dp</dimen>
+    <dimen name="notification_card_margin_end">8dp</dimen>
+
+    <dimen name="notification_profile_margin_start">8dp</dimen>
+    <dimen name="notification_profile_margin_bottom">8dp</dimen>
+    <dimen name="notification_profile_margin_top">8dp</dimen>
+
+    <dimen name="notification_name_margin_start">8dp</dimen>
+    <dimen name="notification_name_margin_end">8dp</dimen>
+    <dimen name="notification_name_margin_top">8dp</dimen>
+
+    <dimen name="notification_date_margin_end">8dp</dimen>
+    <dimen name="notification_date_margin_top">8dp</dimen>
+
+    <dimen name="notification_description_margin_bottom">8dp</dimen>
+    <dimen name="notification_description_margin_top">4dp</dimen>
+    <dimen name="notification_description_margin_end">8dp</dimen>
+
+    <!-- Notification Detail Activity dimesions-->
+    <dimen name="notification_detail_name_margin_start">16dp</dimen>
+    <dimen name="notification_detail_name_margin_top">24dp</dimen>
+
+    <dimen name="notification_detail_date_margin_start">8dp</dimen>
+    <dimen name="notification_detail_date_margin_end">8dp</dimen>
+
+    <dimen name="notification_detail_description_margin_bottom">8dp</dimen>
+    <dimen name="notification_detail_description_margin_top">16dp</dimen>
+    <dimen name="notification_detail_description_margin_start">16dp</dimen>
+    <dimen name="notification_detail_description_margin_end">16dp</dimen>
+
 
 </resources>

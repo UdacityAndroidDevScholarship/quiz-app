@@ -23,15 +23,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.profile.UserProfileActivity">
+        <activity android:name=".ui.home.HomeActivity">
             <!--Adding this intent filter here to silence the warning ,this should be a part of home
             activity or quiz details activity-->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.profile.UserProfileActivity">
 
-        <!--For Firebase cloud messaging-->
+            <!--
+            Adding this intent filter here to silence the warning ,this should be a part of home
+            activity or quiz details activity
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+
+        <!-- For Firebase cloud messaging -->
         <service
             android:name=".services.FBMessagingService"
             android:exported="false">
@@ -40,7 +50,7 @@
             </intent-filter>
         </service>
 
-        <!--For Firebase cloud messaging token refresh-->
+        <!-- For Firebase cloud messaging token refresh -->
         <service
             android:name=".services.FCMTokenFetcher"
             android:exported="false">
@@ -48,6 +58,7 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,5 +1,6 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.signin;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.developervishalsehgal.udacityscholarsapp.ui.BasePresenter;
@@ -19,9 +20,13 @@ public interface SignInContract {
 
         void loginSuccess();
 
-        void loginFailure();
+        void loginFailure(int statusCode, String message);
 
-        void showNetworkError();
+        void startSignIn();
+
+        void navigateToHome();
+
+        void navigateToProfile();
     }
 
     /**
@@ -29,8 +34,11 @@ public interface SignInContract {
      */
     interface Presenter extends BasePresenter {
 
-        void handleLoginRequest(Bundle data);
+        void handleLoginRequest();
 
+        void handleLoginSuccess(String email, String displayName, Uri photoUrl);
+
+        void handleLoginFailure(int statusCode, String message);
     }
 
 }

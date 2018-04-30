@@ -7,6 +7,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Model class representing a quiz
@@ -184,4 +185,31 @@ public class Quiz {
         this.mKey = key;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Quiz quiz = (Quiz) o;
+        return mLesson == quiz.mLesson &&
+                mMaxMarks == quiz.mMaxMarks &&
+                mRatedBy == quiz.mRatedBy &&
+                Double.compare(quiz.mRating, mRating) == 0 &&
+                Objects.equals(mCreatorId, quiz.mCreatorId) &&
+                Objects.equals(mCreatorName, quiz.mCreatorName) &&
+                Objects.equals(mDescription, quiz.mDescription) &&
+                Objects.equals(mDifficulty, quiz.mDifficulty) &&
+                Objects.equals(mFiles, quiz.mFiles) &&
+                Objects.equals(mLastModified, quiz.mLastModified) &&
+                Objects.equals(mQuestions, quiz.mQuestions) &&
+                Objects.equals(mTitle, quiz.mTitle) &&
+                Objects.equals(mDeadline, quiz.mDeadline);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mCreatorId, mCreatorName, mDescription, mDifficulty, mFiles,
+                mLastModified, mLesson, mMaxMarks, mQuestions, mRatedBy, mRating,
+                mTitle, mDeadline);
+    }
 }

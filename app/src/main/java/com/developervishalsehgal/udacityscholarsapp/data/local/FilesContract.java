@@ -6,7 +6,11 @@ import android.provider.BaseColumns;
  * Files table contract based on schema by @pramodbharti. This class is kept for future when we
  * do implement FilesContract. Right now it is not implemented
  */
-public class FilesContract {
+class FilesContract {
+
+    private FilesContract() {
+        // To prevent accidental initialization
+    }
 
     /**
      * Files Entry class defining the Files table columns.

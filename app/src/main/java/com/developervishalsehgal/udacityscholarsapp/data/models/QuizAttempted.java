@@ -6,6 +6,8 @@ import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 /**
  * Model class representing a quiz attempted by a user
  */
@@ -110,4 +112,22 @@ public class QuizAttempted {
         this.mKey = key;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        QuizAttempted that = (QuizAttempted) o;
+        return mLesson == that.mLesson &&
+                mMaxMarks == that.mMaxMarks &&
+                mPercentage == that.mPercentage &&
+                mScore == that.mScore &&
+                Objects.equals(mQuizId, that.mQuizId) &&
+                Objects.equals(mQuizTitle, that.mQuizTitle);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mLesson, mMaxMarks, mPercentage, mQuizId, mQuizTitle, mScore);
+    }
 }

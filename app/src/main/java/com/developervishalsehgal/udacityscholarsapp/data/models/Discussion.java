@@ -7,6 +7,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Model class representing a Quiz Discussion
@@ -62,5 +63,20 @@ public class Discussion {
 
     public void setKey(String key) {
         this.mKey = key;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Discussion that = (Discussion) o;
+        return Objects.equals(mQuizId, that.mQuizId) &&
+                Objects.equals(mQuizTitle, that.mQuizTitle);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mQuizId, mQuizTitle);
     }
 }

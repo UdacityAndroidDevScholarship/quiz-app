@@ -9,30 +9,37 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
+import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements HomeContract.View {
-    private RecyclerView mQuizRecyclerView;
+public class HomeActivity extends AppCompatActivity implements HomeContract.View,
+        QuizAdapter.QuizItemListener {
+
     private QuizAdapter mQuizAdapter;
+
+    private HomeContract.Presenter mPresenter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Injecting presenter reference
+        PresenterInjector.injectHomePresenter(this);
+
         Toolbar toolbar = findViewById(R.id.toolbarrnav);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) {
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_udacity));
         }
 
-        mQuizRecyclerView = findViewById(R.id.recyclerview_quizzes);
+        RecyclerView mQuizRecyclerView = findViewById(R.id.recyclerview_quizzes);
         mQuizRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false);
@@ -54,8 +61,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         int itemId = item.getItemId();
         switch (itemId) {
             case R.id.logout:
-                //Todo: Implement logout functionality
-                Toast.makeText(this,"Action logout", Toast.LENGTH_LONG).show();
+                // TODO: Show a confirmation {@link AlertDialog} here. When user cliks OK. call
+                // TODO: mPresenter.logout();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -63,21 +70,69 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void loadQuizzes(List<Quiz> quizzes) {
+        mQuizAdapter.addQuizzes(quizzes);
+        mQuizAdapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public void navigateToQuizDesc(Quiz quiz) {
+        // TODO: Navigate to QuizDescription Activity, use the quiz object above to extract quiz
+        // TODO: details etc and pass as intent parameter.
+    }
+
+    @Override
+    public void navigateToScoreboard() {
+        // TODO: Navigate to Scoreboard screen
+    }
+
+    @Override
+    public void navigateToCreateQuiz() {
+        // TODO: Navigate to Create Quiz screen
+    }
+
+    @Override
+    public void navigateToNotifications() {
+        // TODO: Navigate to Notifications screen
+    }
+
+    @Override
+    public void navigateToResources() {
+        // TODO: Navigate to Resources screen / tab
+    }
+
+    @Override
+    public void navigateToSettings() {
+        // TODO: Navigate to Settings screen
+    }
+
+    @Override
+    public void navigateToAboutScreen() {
+        // TODO: Navigate to About screen
+    }
+
+    @Override
+    public void navigateToLogin() {
+        // TODO: This should only be called when user clicks on logout. Kill current activity
+        // TODO: and launch login activity
     }
 
     @Override
     public void setPresenter(HomeContract.Presenter presenter) {
-
+        this.mPresenter = presenter;
     }
 
     @Override
     public void showLoading() {
-
+        // TODO: Show progress bar / dialog here
     }
 
     @Override
     public void hideLoading() {
+        // TODO: Hide progress bar / dialog here
+    }
 
+    @Override
+    public void onQuizClicked(Quiz quiz) {
+        mPresenter.onQuizClicked(quiz);
     }
 }

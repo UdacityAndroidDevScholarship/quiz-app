@@ -1,6 +1,5 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,37 +7,46 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder> {
 
-    private Context mContext;
+    private List<Quiz> mQuizList;
+    private QuizItemListener mQuizItemListener;
 
-    QuizAdapter(Context mContext) {
-        this.mContext = mContext;
+    QuizAdapter(QuizItemListener quizItemListener) {
+        mQuizList = new ArrayList<>();
+        this.mQuizItemListener = quizItemListener;
     }
 
     @Override
     public QuizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.list_item_quizzes, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_item_quizzes, parent, false);
         return new QuizViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(QuizViewHolder holder, int position) {
-        holder.quizNameTextView.setText(mContext.getString(R.string.dummy_quiz_name));
-        holder.quizCreatorTextView.setText(mContext.getString(R.string.dummy_creator_name));
-        holder.dateCreatedTextView.setText(mContext.getString(R.string.dummy_date_created));
-        holder.deadlineTextView.setText(mContext.getString(R.string.dummy_deadline));
-        holder.quizStatusTextView.setText(mContext.getString(R.string.dummy_status));
-        showQuizDifficultyView(holder, mContext.getString(R.string.dummy_quiz_level));
+        holder.bind(position);
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return mQuizList.size();
     }
 
-    class QuizViewHolder extends RecyclerView.ViewHolder{
+    void addQuizzes(List<Quiz> quizList){
+        // Removing the quizzes before adding it. This ensures no duplication
+        this.mQuizList.removeAll(quizList);
+        this.mQuizList.addAll(quizList);
+    }
+
+    class QuizViewHolder extends RecyclerView.ViewHolder {
+
         TextView quizNameTextView;
         TextView quizCreatorTextView;
         TextView quizStatusTextView;
@@ -47,6 +55,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         View easyLevelView;
         View mediumLevelView;
         View hardLevelView;
+
         QuizViewHolder(View itemView) {
             super(itemView);
             quizNameTextView = itemView.findViewById(R.id.tv_quiz_name);
@@ -57,6 +66,16 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             easyLevelView = itemView.findViewById(R.id.difficulty_easy);
             mediumLevelView = itemView.findViewById(R.id.difficulty_medium);
             hardLevelView = itemView.findViewById(R.id.difficulty_hard);
+        }
+
+        void bind(int position) {
+            Quiz currentQuiz = mQuizList.get(position);
+
+            // Attaching click listener to each quiz item
+            itemView.setOnClickListener(v -> mQuizItemListener.onQuizClicked(currentQuiz));
+
+            // TODO: bind the POJO with layout elements here
+            showQuizDifficultyView(this, currentQuiz.getDifficulty());
         }
     }
 
@@ -77,5 +96,9 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                 holder.mediumLevelView.setVisibility(View.VISIBLE);
                 holder.hardLevelView.setVisibility(View.VISIBLE);
         }
+    }
+
+    interface QuizItemListener {
+        void onQuizClicked(Quiz quiz);
     }
 }

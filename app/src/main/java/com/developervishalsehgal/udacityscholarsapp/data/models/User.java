@@ -7,6 +7,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Model class representing a scholar, will mostly be used to represent current scholar
@@ -158,5 +159,24 @@ public class User {
 
     public void setKey(String key) {
         this.mKey = key;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return mModerator == user.mModerator &&
+                Objects.equals(mEmail, user.mEmail) &&
+                Objects.equals(mImage, user.mImage) &&
+                Objects.equals(mName, user.mName) &&
+                Objects.equals(mSlackHandle, user.mSlackHandle) &&
+                Objects.equals(mTrack, user.mTrack);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mEmail, mImage, mModerator, mName, mSlackHandle, mTrack);
     }
 }

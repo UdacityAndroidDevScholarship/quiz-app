@@ -6,6 +6,8 @@ import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 /**
  * Model class representing a quiz's options
  */
@@ -62,4 +64,19 @@ public class Option {
         this.mKey = key;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Option option = (Option) o;
+        return mIsCorrect == option.mIsCorrect &&
+                Objects.equals(mDescription, option.mDescription) &&
+                Objects.equals(mRemarks, option.mRemarks);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mDescription, mIsCorrect, mRemarks);
+    }
 }

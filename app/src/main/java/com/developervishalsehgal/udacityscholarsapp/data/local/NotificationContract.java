@@ -6,9 +6,13 @@ import android.provider.BaseColumns;
  * Created by dell on 4/21/2018.
  */
 
-public class NotificationContract{
+class NotificationContract {
 
-    public static final class NotificationEntry implements BaseColumns{
+    private NotificationContract() {
+        // To prevent accidental initialization
+    }
+
+    public static final class NotificationEntry implements BaseColumns {
         //DEFINING TABLE_NAME
         public static final String TABLE_NAME = "notification";
         //DEFINING COLUMN_NAMES

@@ -5,7 +5,11 @@ import android.provider.BaseColumns;
 /**
  * Question Contract Class based on schema by @pramodbharti
  */
-public class QuestionContract {
+class QuestionContract {
+
+    private QuestionContract() {
+        // To prevent accidental initialization
+    }
 
     /**
      * Question Entry Class defining the columns of Question Table.

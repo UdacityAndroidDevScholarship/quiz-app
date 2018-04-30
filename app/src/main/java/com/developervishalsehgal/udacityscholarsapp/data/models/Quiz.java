@@ -67,6 +67,9 @@ public class Quiz {
     @SerializedName("deadline")
     private String mDeadline;
 
+    @Exclude
+    private boolean attempted;
+
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
@@ -183,6 +186,14 @@ public class Quiz {
 
     public void setKey(String key) {
         this.mKey = key;
+    }
+
+    public boolean isAttempted() {
+        return attempted;
+    }
+
+    public void setAttempted(boolean attempted) {
+        this.attempted = attempted;
     }
 
     @Override

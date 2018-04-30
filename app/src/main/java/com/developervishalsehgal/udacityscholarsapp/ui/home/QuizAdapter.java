@@ -13,25 +13,41 @@ import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Adapter class for a {@link Quiz} list that is displayed on home screen
+ */
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder> {
+
+    private static final String DIFFICULTY_LEVEL_EASY = "easy";
+    private static final String DIFFICULTY_LEVEL_MEDIUM = "medium";
+    @SuppressWarnings("unused")
+    private static final String DIFFICULTY_LEVEL_HARD = "hard";
+    @SuppressWarnings("unused")
+    private static final String DIFFICULTY_LEVEL_IMPOSSIBLE = "impossible";
 
     private List<Quiz> mQuizList;
     private QuizItemListener mQuizItemListener;
 
+    /**
+     * Parameterized constructor. Takes Quiz iteraction listener as parameter
+     *
+     * @param quizItemListener a {@link QuizItemListener} for listening to click events on quiz items
+     */
     QuizAdapter(@NonNull QuizItemListener quizItemListener) {
         mQuizList = new ArrayList<>();
         this.mQuizItemListener = quizItemListener;
     }
 
+    @NonNull
     @Override
-    public QuizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public QuizViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_quizzes, parent, false);
         return new QuizViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(QuizViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull QuizViewHolder holder, int position) {
         holder.bind(position);
     }
 
@@ -56,6 +72,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
      *
      * @param quizList a {@link List} of {@link Quiz}es to be added to current list
      */
+    @SuppressWarnings("unused")
     void addQuizzes(@NonNull List<Quiz> quizList) {
         // Removing the quizzes before adding, this ensure no duplication of quizzes
         this.mQuizList.removeAll(quizList);
@@ -63,6 +80,9 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         notifyDataSetChanged();
     }
 
+    /**
+     * {@link android.support.v7.widget.RecyclerView.ViewHolder} object for quiz item.
+     */
     class QuizViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvQuizName;
@@ -92,30 +112,41 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             // Attaching click listener to each quiz item
             itemView.setOnClickListener(v -> mQuizItemListener.onQuizClicked(currentQuiz));
 
-            // TODO: bind the POJO with layout elements here
+
             showQuizDifficultyView(this, currentQuiz.getDifficulty());
         }
     }
 
-    private void showQuizDifficultyView(QuizViewHolder holder, String difficultyLevel) {
-        switch (difficultyLevel) {
-            case "Easy":
+    /**
+     * Shows and hides difficulty level views based on quiz difficulty
+     *
+     * @param holder          the {@link QuizViewHolder} object representing the current quiz
+     * @param difficultyLevel difficulty level of the quiz
+     */
+    private void showQuizDifficultyView(@NonNull QuizViewHolder holder, @NonNull String difficultyLevel) {
+        switch (difficultyLevel.toLowerCase()) {
+            case DIFFICULTY_LEVEL_EASY:
                 holder.easyLevelView.setVisibility(View.VISIBLE);
                 holder.mediumLevelView.setVisibility(View.INVISIBLE);
                 holder.hardLevelView.setVisibility(View.INVISIBLE);
-                return;
-            case "Medium":
+                break;
+            case DIFFICULTY_LEVEL_MEDIUM:
                 holder.easyLevelView.setVisibility(View.VISIBLE);
                 holder.mediumLevelView.setVisibility(View.VISIBLE);
                 holder.hardLevelView.setVisibility(View.INVISIBLE);
-                return;
-            case "Hard":
+                break;
+            default:
                 holder.easyLevelView.setVisibility(View.VISIBLE);
                 holder.mediumLevelView.setVisibility(View.VISIBLE);
                 holder.hardLevelView.setVisibility(View.VISIBLE);
+                break;
+
         }
     }
 
+    /**
+     * Callback interface for listening to click events on quiz items
+     */
     interface QuizItemListener {
         void onQuizClicked(Quiz quiz);
     }

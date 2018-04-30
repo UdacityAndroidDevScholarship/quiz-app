@@ -19,6 +19,8 @@ public interface HomeContract {
     interface View extends BaseView<Presenter> {
         void loadQuizzes(List<Quiz> quizzes);
 
+        void onQuizLoadError();
+
         void navigateToQuizDesc(Quiz quiz);
 
         void navigateToScoreboard();

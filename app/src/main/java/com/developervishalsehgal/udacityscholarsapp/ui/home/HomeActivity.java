@@ -74,6 +74,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     }
 
     @Override
+    public void onQuizLoadError() {
+        // TODO: show an alert or toast saying "quiz can't be loaded at the moment, check network connection and try again"
+    }
+
+    @Override
     public void navigateToQuizDesc(Quiz quiz) {
         // TODO: Navigate to QuizDescription Activity, use the quiz object above to extract quiz
         // TODO: details etc and pass as intent parameter.

@@ -32,11 +32,11 @@ task clean(type: Delete) {
 ext {
     // Sdk and tools
     minSdkVersion = 21
-    targetSdkVersion = 26
-    compileSdkVersion = 26
+    targetSdkVersion = 27
+    compileSdkVersion = 27
     // App dependencies
-    supportLibVersion = "26.1.0"
-    glideVersion = '4.2.0'
+    supportLibVersion = "27.1.1"
+    glideVersion = '4.4.0'
     firebaseVersion = '15.0.0'
     junitVersion = '4.12'
     constraintLayoutVersion = '1.1.0'

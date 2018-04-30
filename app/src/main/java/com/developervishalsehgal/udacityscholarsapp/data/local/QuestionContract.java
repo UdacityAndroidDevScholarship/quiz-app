@@ -8,7 +8,7 @@ import android.provider.BaseColumns;
 class QuestionContract {
 
     private QuestionContract() {
-        // To prevent accidental initialization
+        // To prevent accidental instantiation
     }
 
     /**

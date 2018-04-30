@@ -70,8 +70,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void loadQuizzes(List<Quiz> quizzes) {
-        mQuizAdapter.addQuizzes(quizzes);
-        mQuizAdapter.notifyDataSetChanged();
+        mQuizAdapter.loadQuizzes(quizzes);
     }
 
     @Override

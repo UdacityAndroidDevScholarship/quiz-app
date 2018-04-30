@@ -9,7 +9,7 @@ import android.provider.BaseColumns;
 class FilesContract {
 
     private FilesContract() {
-        // To prevent accidental initialization
+        // To prevent accidental instantiation
     }
 
     /**

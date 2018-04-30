@@ -1,5 +1,6 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
     private List<Quiz> mQuizList;
     private QuizItemListener mQuizItemListener;
 
-    QuizAdapter(QuizItemListener quizItemListener) {
+    QuizAdapter(@NonNull QuizItemListener quizItemListener) {
         mQuizList = new ArrayList<>();
         this.mQuizItemListener = quizItemListener;
     }
@@ -39,30 +40,47 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         return mQuizList.size();
     }
 
-    void addQuizzes(List<Quiz> quizList){
-        // Removing the quizzes before adding it. This ensures no duplication
+    /**
+     * Clears current quiz list and displays the new list
+     *
+     * @param quizList a {@link List} of {@link Quiz}es to be displayed.
+     */
+    void loadQuizzes(@NonNull List<Quiz> quizList) {
+        this.mQuizList.clear();
+        this.mQuizList.addAll(quizList);
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Add new quizzes to current list
+     *
+     * @param quizList a {@link List} of {@link Quiz}es to be added to current list
+     */
+    void addQuizzes(@NonNull List<Quiz> quizList) {
+        // Removing the quizzes before adding, this ensure no duplication of quizzes
         this.mQuizList.removeAll(quizList);
         this.mQuizList.addAll(quizList);
+        notifyDataSetChanged();
     }
 
     class QuizViewHolder extends RecyclerView.ViewHolder {
 
-        TextView quizNameTextView;
-        TextView quizCreatorTextView;
-        TextView quizStatusTextView;
-        TextView dateCreatedTextView;
-        TextView deadlineTextView;
+        TextView tvQuizName;
+        TextView tvQuizCreator;
+        TextView tvQuizStatus;
+        TextView tvDateCreated;
+        TextView tvDeadline;
         View easyLevelView;
         View mediumLevelView;
         View hardLevelView;
 
         QuizViewHolder(View itemView) {
             super(itemView);
-            quizNameTextView = itemView.findViewById(R.id.tv_quiz_name);
-            quizCreatorTextView = itemView.findViewById(R.id.tv_creator_name);
-            quizStatusTextView = itemView.findViewById(R.id.tv_completion_status);
-            dateCreatedTextView = itemView.findViewById(R.id.tv_date_created);
-            deadlineTextView = itemView.findViewById(R.id.tv_deadline);
+            tvQuizName = itemView.findViewById(R.id.tv_quiz_name);
+            tvQuizCreator = itemView.findViewById(R.id.tv_creator_name);
+            tvQuizStatus = itemView.findViewById(R.id.tv_completion_status);
+            tvDateCreated = itemView.findViewById(R.id.tv_date_created);
+            tvDeadline = itemView.findViewById(R.id.tv_deadline);
             easyLevelView = itemView.findViewById(R.id.difficulty_easy);
             mediumLevelView = itemView.findViewById(R.id.difficulty_medium);
             hardLevelView = itemView.findViewById(R.id.difficulty_hard);

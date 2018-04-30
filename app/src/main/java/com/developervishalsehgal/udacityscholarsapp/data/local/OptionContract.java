@@ -8,7 +8,7 @@ import android.provider.BaseColumns;
 class OptionContract {
 
     private OptionContract(){
-        // To prevent accidental initialization
+        // To prevent accidental instantiation
     }
 
     public static final class OptionEntry implements BaseColumns {

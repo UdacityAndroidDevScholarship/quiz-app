@@ -9,7 +9,7 @@ import android.provider.BaseColumns;
 class NotificationContract {
 
     private NotificationContract() {
-        // To prevent accidental initialization
+        // To prevent accidental instantiation
     }
 
     public static final class NotificationEntry implements BaseColumns {

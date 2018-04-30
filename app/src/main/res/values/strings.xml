@@ -51,4 +51,10 @@
     <string name="dummy_deadline">None</string>
     <string name="dummy_status">Completed</string>
     <string name="dummy_quiz_level">Hard</string>
+
+    <!-- added for filter radio button texts -->
+    <string name="action_filter_all">All</string>
+    <string name="action_filter_attempted">Attempted</string>
+    <string name="action_filter_unattempted">Un-attempted</string>
+    <string name="action_filter_bookmarks">Bookmarks</string>
 </resources>

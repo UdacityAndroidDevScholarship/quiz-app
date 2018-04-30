@@ -74,6 +74,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
 
+    <!-- Bottom sheet for the filter quizzes action -->
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
@@ -97,7 +98,7 @@
 
                 <RadioButton android:id="@+id/radio_all_quizzes"
                     android:checked="true"
-                    android:text="All"
+                    android:text="@string/action_filter_all"
                     style="@style/RadioButtonFilterStyle"/>
 
                 <ImageView
@@ -107,7 +108,7 @@
 
                 <RadioButton android:id="@+id/radio_attemped_quizzes"
                     android:layout_marginTop="@dimen/margin_radio_button"
-                    android:text="Attempted"
+                    android:text="@string/action_filter_attempted"
                     style="@style/RadioButtonFilterStyle"/>
 
                 <ImageView
@@ -117,7 +118,7 @@
 
                 <RadioButton android:id="@+id/radio_unattemped_quizzes"
                     android:layout_marginTop="@dimen/margin_radio_button"
-                    android:text="Un-attempted"
+                    android:text="@string/action_filter_unattempted"
                     style="@style/RadioButtonFilterStyle"/>
 
                 <ImageView
@@ -127,7 +128,7 @@
 
                 <RadioButton android:id="@+id/radio_bookmarked_quizzes"
                     android:layout_marginTop="@dimen/margin_radio_button"
-                    android:text="Bookmarks"
+                    android:text="@string/action_filter_bookmarks"
                     style="@style/RadioButtonFilterStyle"/>
 
                 <ImageView

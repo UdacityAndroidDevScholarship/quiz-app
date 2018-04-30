@@ -24,7 +24,7 @@ public class User {
 
     @Expose
     @SerializedName("moderator")
-    private Boolean mModerator;
+    private boolean mModerator;
 
     @Expose
     @SerializedName("name")
@@ -41,6 +41,10 @@ public class User {
     @Expose
     @SerializedName("track")
     private String mTrack;
+
+    @Expose
+    @SerializedName("fcm-token")
+    private String mFcmToken;
 
     @Expose
     @SerializedName("attempted")
@@ -76,11 +80,11 @@ public class User {
         mImage = image;
     }
 
-    public Boolean getModerator() {
+    public boolean getModerator() {
         return mModerator;
     }
 
-    public void setModerator(Boolean moderator) {
+    public void setModerator(boolean moderator) {
         mModerator = moderator;
     }
 
@@ -114,6 +118,14 @@ public class User {
 
     public void setTrack(String track) {
         mTrack = track;
+    }
+
+    public String getFcmToken() {
+        return mFcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.mFcmToken = fcmToken;
     }
 
     public List<QuizAttempted> getAttemptedList() {

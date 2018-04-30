@@ -9,7 +9,7 @@ import android.net.NetworkInfo;
  */
 public class Connectivity {
 
-    public static Boolean isNetworkAvailable(Context context) {
+    public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         assert connectivityManager != null;
@@ -17,7 +17,7 @@ public class Connectivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
-    public static Boolean isOnline() {
+    public static boolean isOnline() {
         try {
             Process p1 = Runtime.getRuntime().exec("ping -c 1 www.google.com");
             int returnVal = p1.waitFor();

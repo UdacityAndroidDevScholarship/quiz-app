@@ -18,7 +18,7 @@ public class Option {
 
     @Expose
     @SerializedName("is-correct")
-    private Boolean mIsCorrect;
+    private boolean mIsCorrect;
 
     @Expose
     @SerializedName("remarks")
@@ -38,11 +38,11 @@ public class Option {
         mDescription = description;
     }
 
-    public Boolean isCorrect() {
+    public boolean isCorrect() {
         return mIsCorrect;
     }
 
-    public void setIsCorrect(Boolean isCorrect) {
+    public void setIsCorrect(boolean isCorrect) {
         mIsCorrect = isCorrect;
     }
 

@@ -12,6 +12,9 @@
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
+
+    <dimen name="user_profile_header_view">160dp</dimen>
+
     <!-- Quizzes List Item layout dimensions -->
     <dimen name="medium_margin">8dp</dimen>
     <dimen name="difficulty_view_width">48dp</dimen>

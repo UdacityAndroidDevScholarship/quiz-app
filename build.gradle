@@ -35,7 +35,7 @@ ext {
     targetSdkVersion = 26
     compileSdkVersion = 26
     // App dependencies
-    supportLibVersion = "27.1.1"
+    supportLibVersion = "26.1.0"
     glideVersion = '4.2.0'
     firebaseVersion = '15.0.0'
     junitVersion = '4.12'

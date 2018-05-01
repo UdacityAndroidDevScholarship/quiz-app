@@ -59,4 +59,6 @@
     <string name="text_proceed">Proceed >> </string>
     <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
     <string name="profile_saved_successfully">Profile saved successfully</string>
+    <string name="notification_id_key">notification_id</string>
+    <string name="default_notification_id">0</string>
 </resources>

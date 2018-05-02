@@ -3,10 +3,12 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Model class representing a scholar, will mostly be used to represent current scholar
@@ -15,54 +17,65 @@ import java.util.List;
 public class User {
 
     @Expose
+    @PropertyName("email")
     @SerializedName("email")
-    private String mEmail;
+    String mEmail;
 
     @Expose
+    @PropertyName("image")
     @SerializedName("image")
-    private String mImage;
+    String mImage;
 
     @Expose
+    @PropertyName("moderator")
     @SerializedName("moderator")
-    private boolean mModerator;
+    boolean mModerator;
 
     @Expose
+    @PropertyName("name")
     @SerializedName("name")
-    private String mName;
+    String mName;
 
     @Expose
+    @PropertyName("slack-handle")
     @SerializedName("slack-handle")
-    private String mSlackHandle;
+    String mSlackHandle;
 
     @Expose
+    @PropertyName("status")
     @SerializedName("status")
-    private String mStatus;
+    String mStatus;
 
     @Expose
+    @PropertyName("track")
     @SerializedName("track")
-    private String mTrack;
+    String mTrack;
 
     @Expose
+    @PropertyName("fcm-token")
     @SerializedName("fcm-token")
-    private String mFcmToken;
+    String mFcmToken;
 
     @Expose
+    @PropertyName("attempted")
     @SerializedName("attempted")
-    private List<QuizAttempted> mAttemptedList;
+    List<QuizAttempted> mAttemptedList;
 
     @Expose
+    @PropertyName("prefs")
     @SerializedName("prefs")
-    private NotificationPrefs mNotificationPrefs;
+    NotificationPrefs mNotificationPrefs;
 
     @Expose
+    @PropertyName("bookmarks")
     @SerializedName("bookmarks")
-    private List<String> mBookmarks;
+    List<String> mBookmarks;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public String getEmail() {
         return mEmail;
@@ -158,5 +171,24 @@ public class User {
 
     public void setKey(String key) {
         this.mKey = key;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return mModerator == user.mModerator &&
+                Objects.equals(mEmail, user.mEmail) &&
+                Objects.equals(mImage, user.mImage) &&
+                Objects.equals(mName, user.mName) &&
+                Objects.equals(mSlackHandle, user.mSlackHandle) &&
+                Objects.equals(mTrack, user.mTrack);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mEmail, mImage, mModerator, mName, mSlackHandle, mTrack);
     }
 }

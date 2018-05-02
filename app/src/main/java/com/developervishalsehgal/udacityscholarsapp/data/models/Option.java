@@ -3,8 +3,11 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.Objects;
 
 /**
  * Model class representing a quiz's options
@@ -13,22 +16,25 @@ import com.google.gson.annotations.SerializedName;
 public class Option {
 
     @Expose
+    @PropertyName("description")
     @SerializedName("description")
-    private String mDescription;
+    String mDescription;
 
     @Expose
+    @PropertyName("ic-correct")
     @SerializedName("is-correct")
-    private boolean mIsCorrect;
+    boolean mIsCorrect;
 
     @Expose
+    @PropertyName("remarks")
     @SerializedName("remarks")
-    private String mRemarks;
+    String mRemarks;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public String getDescription() {
         return mDescription;
@@ -62,4 +68,19 @@ public class Option {
         this.mKey = key;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Option option = (Option) o;
+        return mIsCorrect == option.mIsCorrect &&
+                Objects.equals(mDescription, option.mDescription) &&
+                Objects.equals(mRemarks, option.mRemarks);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mDescription, mIsCorrect, mRemarks);
+    }
 }

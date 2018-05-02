@@ -3,10 +3,12 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Model class representing a Quiz Discussion
@@ -15,22 +17,25 @@ import java.util.List;
 public class Discussion {
 
     @Expose
+    @PropertyName("quiz-id")
     @SerializedName("quiz-id")
-    private String mQuizId;
+    String mQuizId;
 
     @Expose
+    @PropertyName("quiz-title")
     @SerializedName("quiz-title")
-    private String mQuizTitle;
+    String mQuizTitle;
 
     @Expose
+    @PropertyName("comments")
     @SerializedName("comments")
-    private List<Comment> mComments;
+    List<Comment> mComments;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public String getQuizId() {
         return mQuizId;
@@ -62,5 +67,20 @@ public class Discussion {
 
     public void setKey(String key) {
         this.mKey = key;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Discussion that = (Discussion) o;
+        return Objects.equals(mQuizId, that.mQuizId) &&
+                Objects.equals(mQuizTitle, that.mQuizTitle);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mQuizId, mQuizTitle);
     }
 }

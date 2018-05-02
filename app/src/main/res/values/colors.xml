@@ -38,6 +38,8 @@
     <color name="dot_light3">#CE93D8</color>
     <color name="dot_light4">#F48FB1</color>
     <color name="dot_light5">#EF9A9A</color>
+    <color name="dark_green">#22C461</color>
+    <color name="dark_red">#DC1A2E</color>
 
     <array name="dot_active">
         <item>@color/dot_dark1</item>

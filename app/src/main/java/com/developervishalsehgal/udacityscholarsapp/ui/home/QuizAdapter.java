@@ -1,6 +1,8 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,13 +109,36 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         }
 
         void bind(int position) {
+
+            Context context = itemView.getContext();
+
             Quiz currentQuiz = mQuizList.get(position);
+
+            // Binding the data
+            tvQuizName.setText(currentQuiz.getTitle());
+            tvQuizCreator.setText(currentQuiz.getCreatorName());
+            tvDateCreated.setText(currentQuiz.getLastModified());
+
+            if (currentQuiz.getDeadline() == null || currentQuiz.getDeadline().isEmpty()) {
+                tvDeadline.setText(context.getString(R.string.txt_deadline_none));
+                tvDeadline.setTextColor(ContextCompat.getColor(context, R.color.dark_green));
+            } else {
+                tvDeadline.setText(currentQuiz.getDeadline());
+                tvDeadline.setTextColor(ContextCompat.getColor(context, R.color.dark_red));
+            }
+
+            if (currentQuiz.isAttempted()) {
+                tvQuizStatus.setText(context.getString(R.string.txt_status_completed));
+                tvQuizStatus.setTextColor(ContextCompat.getColor(context, R.color.dark_green));
+            } else {
+                tvQuizStatus.setText(context.getString(R.string.txt_status_pending));
+                tvQuizStatus.setTextColor(ContextCompat.getColor(context, R.color.dark_red));
+            }
+
+            showQuizDifficultyView(this, currentQuiz.getDifficulty());
 
             // Attaching click listener to each quiz item
             itemView.setOnClickListener(v -> mQuizItemListener.onQuizClicked(currentQuiz));
-
-
-            showQuizDifficultyView(this, currentQuiz.getDifficulty());
         }
     }
 

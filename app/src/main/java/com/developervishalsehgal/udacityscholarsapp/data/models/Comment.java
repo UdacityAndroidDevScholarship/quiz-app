@@ -3,6 +3,7 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,30 +13,35 @@ import java.util.Objects;
 public class Comment {
 
     @Expose
+    @PropertyName("comment")
     @SerializedName("comment")
-    private String mComment;
+    String mComment;
 
     @Expose
+    @PropertyName("comment-by")
     @SerializedName("comment-by")
-    private String mCommentBy;
+    String mCommentBy;
 
     @Expose
+    @PropertyName("commented-on")
     @SerializedName("commented-on")
-    private long mCommentedOn;
+    long mCommentedOn;
 
     @Expose
+    @PropertyName("commenter-id")
     @SerializedName("commenter-id")
-    private String mCommenterId;
+    String mCommenterId;
 
     @Expose
+    @PropertyName("commenter-pic")
     @SerializedName("commenter-pic")
-    private String mImageUrl;
+    String mImageUrl;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public String getComment() {
         return mComment;

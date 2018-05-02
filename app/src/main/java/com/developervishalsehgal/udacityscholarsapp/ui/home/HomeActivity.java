@@ -2,11 +2,14 @@ package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -23,6 +26,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     private HomeContract.Presenter mPresenter;
 
+    // UI Elements
+    private DrawerLayout mDrawerLayout;
+    //////////////
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +38,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         // Injecting presenter reference
         PresenterInjector.injectHomePresenter(this);
 
+        initializeUI();
+
+        mPresenter.start(getIntent().getExtras());
+    }
+
+    private void initializeUI() {
         Toolbar toolbar = findViewById(R.id.toolbarrnav);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -49,7 +62,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         mQuizRecyclerView.setAdapter(mQuizAdapter);
 
-        mPresenter.start(getIntent().getExtras());
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+
     }
 
     @Override
@@ -62,6 +76,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         switch (itemId) {
+            case android.R.id.home:
+                if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
+                    mDrawerLayout.closeDrawer(Gravity.START);
+                } else {
+                    mDrawerLayout.openDrawer(Gravity.START);
+                }
+                break;
             case R.id.logout:
                 // TODO: Show a confirmation {@link AlertDialog} here. When user cliks OK. call
                 // TODO: mPresenter.logout();

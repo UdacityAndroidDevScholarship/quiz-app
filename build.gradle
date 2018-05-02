@@ -36,7 +36,7 @@ ext {
     compileSdkVersion = 27
     // App dependencies
     supportLibVersion = "27.1.1"
-    glideVersion = '4.4.0'
+    glideVersion = '4.7.1'
     firebaseVersion = '15.0.0'
     junitVersion = '4.12'
     constraintLayoutVersion = '1.1.0'

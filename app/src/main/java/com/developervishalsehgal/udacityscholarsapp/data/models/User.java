@@ -3,6 +3,7 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -16,54 +17,65 @@ import java.util.Objects;
 public class User {
 
     @Expose
+    @PropertyName("email")
     @SerializedName("email")
-    private String mEmail;
+    String mEmail;
 
     @Expose
+    @PropertyName("image")
     @SerializedName("image")
-    private String mImage;
+    String mImage;
 
     @Expose
+    @PropertyName("moderator")
     @SerializedName("moderator")
-    private boolean mModerator;
+    boolean mModerator;
 
     @Expose
+    @PropertyName("name")
     @SerializedName("name")
-    private String mName;
+    String mName;
 
     @Expose
+    @PropertyName("slack-handle")
     @SerializedName("slack-handle")
-    private String mSlackHandle;
+    String mSlackHandle;
 
     @Expose
+    @PropertyName("status")
     @SerializedName("status")
-    private String mStatus;
+    String mStatus;
 
     @Expose
+    @PropertyName("track")
     @SerializedName("track")
-    private String mTrack;
+    String mTrack;
 
     @Expose
+    @PropertyName("fcm-token")
     @SerializedName("fcm-token")
-    private String mFcmToken;
+    String mFcmToken;
 
     @Expose
+    @PropertyName("attempted")
     @SerializedName("attempted")
-    private List<QuizAttempted> mAttemptedList;
+    List<QuizAttempted> mAttemptedList;
 
     @Expose
+    @PropertyName("prefs")
     @SerializedName("prefs")
-    private NotificationPrefs mNotificationPrefs;
+    NotificationPrefs mNotificationPrefs;
 
     @Expose
+    @PropertyName("bookmarks")
     @SerializedName("bookmarks")
-    private List<String> mBookmarks;
+    List<String> mBookmarks;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public String getEmail() {
         return mEmail;

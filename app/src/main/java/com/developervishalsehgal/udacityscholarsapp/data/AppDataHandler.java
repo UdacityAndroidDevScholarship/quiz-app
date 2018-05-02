@@ -11,7 +11,6 @@ import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
 import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseProvider;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -107,12 +106,14 @@ class AppDataHandler implements DataHandler {
 
     @Override
     public void uploadProfilePic(String localPicturePath, Callback<String> callback) {
-
+        // TODO: Implement this feature using firebase storage
+        throw new RuntimeException("Feature not implemented");
     }
 
     @Override
     public void uploadProfilePic(Bitmap picBitmap, Callback<String> callback) {
-
+        // TODO: Implement this feature using firebase storage
+        throw new RuntimeException("Feature not implemented");
     }
 
     @Override

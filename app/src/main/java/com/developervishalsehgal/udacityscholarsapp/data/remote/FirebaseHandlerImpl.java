@@ -51,7 +51,7 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     private List<ValueEventListener> mValueListeners;
 
     // Private variables
-    private String firebaseUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
     FirebaseHandlerImpl() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -124,7 +124,11 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             }
         };
 
-        mUsersRef.child(firebaseUserId).child(KEY_USER_ATTEMPTED_QUIZ)
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        mUsersRef.child(mCurrentUser.getUid()).child(KEY_USER_ATTEMPTED_QUIZ)
                 .addValueEventListener(listener);
         mValueListeners.add(listener);
     }
@@ -177,7 +181,11 @@ class FirebaseHandlerImpl implements FirebaseHandler {
         userData.put(KEY_USER_TRACK, currentUser.getTrack());
         userData.put(KEY_NOTIF_PREFS, currentUser.getNotificationPrefs());
 
-        mUsersRef.child(firebaseUserId).updateChildren(userData)
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        mUsersRef.child(mCurrentUser.getUid()).updateChildren(userData)
                 .addOnSuccessListener(aVoid -> callback.onReponse(null))
                 .addOnFailureListener(e -> callback.onError());
     }
@@ -235,7 +243,12 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     private void updateUserProperty(String property, String value, final Callback<Void> callback) {
 
         try {
-            mUsersRef.child(firebaseUserId).child(property).setValue(value)
+
+            if (mCurrentUser == null) {
+                mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+            }
+
+            mUsersRef.child(mCurrentUser.getUid()).child(property).setValue(value)
                     .addOnCompleteListener(task -> callback.onReponse(null))
                     .addOnFailureListener(e -> callback.onError());
         } catch (Exception e) {

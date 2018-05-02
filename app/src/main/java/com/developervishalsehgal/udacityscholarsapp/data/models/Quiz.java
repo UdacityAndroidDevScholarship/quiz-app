@@ -3,10 +3,12 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -16,65 +18,78 @@ import java.util.Objects;
 public class Quiz {
 
     @Expose
+    @PropertyName("creator-id")
     @SerializedName("creator-id")
-    private String mCreatorId;
+    String mCreatorId;
 
     @Expose
+    @PropertyName("creator-name")
     @SerializedName("creator-name")
-    private String mCreatorName;
+    String mCreatorName;
 
     @Expose
+    @PropertyName("description")
     @SerializedName("description")
-    private String mDescription;
+    String mDescription;
 
     @Expose
+    @PropertyName("difficulty")
     @SerializedName("difficulty")
-    private String mDifficulty;
+    String mDifficulty;
 
     @Expose
+    @PropertyName("files")
     @SerializedName("files")
-    private List<String> mFiles;
+    Map<String, String> mFiles;
 
     @Expose
+    @PropertyName("last-modified")
     @SerializedName("last-modified")
-    private String mLastModified;
+    String mLastModified;
 
     @Expose
+    @PropertyName("lesson")
     @SerializedName("lesson")
-    private int mLesson;
+    int mLesson;
 
     @Expose
+    @PropertyName("max-marks")
     @SerializedName("max-marks")
-    private int mMaxMarks;
+    int mMaxMarks;
 
     @Expose
+    @PropertyName("questions")
     @SerializedName("questions")
-    private List<Question> mQuestions;
+    Map<String, Question> mQuestions;
 
     @Expose
+    @PropertyName("rated-by")
     @SerializedName("rated-by")
-    private int mRatedBy;
+    int mRatedBy;
 
     @Expose
+    @PropertyName("rating")
     @SerializedName("rating")
-    private double mRating;
+    double mRating;
 
     @Expose
+    @PropertyName("title")
     @SerializedName("title")
-    private String mTitle;
+    String mTitle;
 
     @Expose
+    @PropertyName("deadline")
     @SerializedName("deadline")
-    private String mDeadline;
+    String mDeadline;
 
     @Exclude
-    private boolean attempted;
+    boolean attempted;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public String getCreatorId() {
         return mCreatorId;
@@ -108,11 +123,11 @@ public class Quiz {
         mDifficulty = difficulty;
     }
 
-    public List<String> getFiles() {
+    public Map<String, String> getFiles() {
         return mFiles;
     }
 
-    public void setFiles(List<String> files) {
+    public void setFiles(Map<String, String> files) {
         mFiles = files;
     }
 
@@ -140,11 +155,11 @@ public class Quiz {
         mMaxMarks = maxMarks;
     }
 
-    public List<Question> getQuestions() {
+    public Map<String, Question> getQuestions() {
         return mQuestions;
     }
 
-    public void setQuestions(List<Question> questions) {
+    public void setQuestions(Map<String, Question> questions) {
         mQuestions = questions;
     }
 

@@ -3,6 +3,7 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,38 +16,45 @@ import java.util.Objects;
 public class QuizAttempted {
 
     @Expose
+    @PropertyName("lesson")
     @SerializedName("lesson")
-    private long mLesson;
+    long mLesson;
 
     @Expose
+    @PropertyName("max-marks")
     @SerializedName("max-marks")
-    private long mMaxMarks;
+    long mMaxMarks;
 
     @Expose
+    @PropertyName("percentage")
     @SerializedName("percentage")
-    private long mPercentage;
+    long mPercentage;
 
     @Expose
+    @PropertyName("quiz-id")
     @SerializedName("quiz-id")
-    private String mQuizId;
+    String mQuizId;
 
     @Expose
+    @PropertyName("quiz-title")
     @SerializedName("quiz-title")
-    private String mQuizTitle;
+    String mQuizTitle;
 
     @Expose
+    @PropertyName("remarks")
     @SerializedName("remarks")
-    private String mRemarks;
+    String mRemarks;
 
     @Expose
+    @PropertyName("score")
     @SerializedName("score")
-    private long mScore;
+    long mScore;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public long getLesson() {
         return mLesson;

@@ -2,6 +2,7 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,46 +13,55 @@ import com.google.gson.annotations.SerializedName;
 public class Resource {
 
     @Expose
+    @PropertyName("category")
     @SerializedName("category")
-    private String mCategory;
+    String mCategory;
 
     @Expose
+    @PropertyName("description")
     @SerializedName("description")
-    private String mDescription;
+    String mDescription;
 
     @Expose
+    @PropertyName("tags")
     @SerializedName("tags")
-    private String mTags;
+    String mTags;
 
     @Expose
+    @PropertyName("title")
     @SerializedName("title")
-    private String mTitle;
+    String mTitle;
 
     @Expose
+    @PropertyName("url")
     @SerializedName("url")
-    private String mUrl;
+    String mUrl;
 
     @Expose
+    @PropertyName("timestamp")
     @SerializedName("timestamp")
-    private long mTimestamp;
+    long mTimestamp;
 
     @Expose
+    @PropertyName("uploaded-by")
     @SerializedName("uploaded-by")
-    private String mUploadedBy;
+    String mUploadedBy;
 
     @Expose
+    @PropertyName("uploader-id")
     @SerializedName("uploader-id")
-    private String mUploaderId;
+    String mUploaderId;
 
     @Expose
+    @PropertyName("uploader-pic")
     @SerializedName("uploader-pic")
-    private String mUploaderPic;
+    String mUploaderPic;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public String getCategory() {
         return mCategory;

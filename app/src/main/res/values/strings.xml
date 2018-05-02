@@ -69,4 +69,9 @@
     <string name="text_proceed">Proceed >> </string>
     <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
     <string name="profile_saved_successfully">Profile saved successfully</string>
+    <string name="track_android_dev">Android Developer Track</string>
+    <string name="msg_login_successful">Login successful</string>
+    <string name="txt_status_completed">Completed</string>
+    <string name="txt_status_pending">Not started</string>
+    <string name="txt_deadline_none">DEADLINE NONE</string>
 </resources>

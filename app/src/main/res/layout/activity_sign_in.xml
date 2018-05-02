@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
+    <ProgressBar
+        android:id="@+id/pb_signin"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="#FFFFFF"
+        android:indeterminate="true"
+        android:indeterminateTint="#2ba400"
+        android:max="100"
+        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/sigin_image_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:contentDescription="@string/app_name"
         android:src="@mipmap/signin_logo" />
 
     <TextView
         android:id="@+id/signin_text_almost_there"
-        android:layout_marginTop="16dp"
-        android:layout_below="@id/sigin_image_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/sigin_image_logo"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/sigin_text_almost_there"
         android:textColor="#90ffffff" />

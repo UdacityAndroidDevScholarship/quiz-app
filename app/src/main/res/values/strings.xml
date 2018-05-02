@@ -29,6 +29,16 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="hint_email">Email address</string>
     <string name="hint_password">********</string>
+
+    <!-- Profile UI Page -->
+    <string name="btn_submit">Submit</string>
+    <string name="slack_handle_hint">Your slack handle</string>
+    <string name="name_hint">Your name</string>
+    <string name="scholars_18">Google Udacity Scholars</string>
+    <string name="email">Email</string>
+    <string name="slack">Slack Handle</string>
+    <string name="track">Scholarship Track</string>
+
     <!-- Quizzes List Item helper strings -->
     <string name="creator_label">Creator :</string>
     <string name="status_label">Status :</string>
@@ -65,4 +75,11 @@
     <string name="radio_quiz_filter_attempted">Attempted</string>
     <string name="radio_quiz_filter_un_attempted">Un-attempted</string>
     <string name="radio_quiz_filter_bookmarks">Bookmarks</string>
+
+    <string name="track_android_dev">Android Developer Track</string>
+    <string name="msg_login_successful">Login successful</string>
+    <string name="txt_status_completed">Completed</string>
+    <string name="txt_status_pending">Not started</string>
+    <string name="txt_deadline_none">DEADLINE NONE</string>
+  
 </resources>

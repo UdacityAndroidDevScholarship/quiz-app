@@ -12,6 +12,9 @@
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
+
+    <dimen name="user_profile_header_view">100dp</dimen>
+  
     <!-- Quizzes List Item layout dimensions -->
     <dimen name="medium_margin">8dp</dimen>
     <dimen name="difficulty_view_width">48dp</dimen>
@@ -46,4 +49,22 @@
     <dimen name="radio_button_quiz_filter_drawable_padding">8dp</dimen>
     <dimen name="radio_button_quiz_filter_padding_vertical">8dp</dimen>
     <dimen name="radio_button_quiz_filter_text_size">22sp</dimen>
+
+    <!--Text related-->
+    <dimen name="text_large">24sp</dimen>
+    <dimen name="text_regular">20sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+
+    <!--Box related-->
+    <dimen name="box_large">120dp</dimen>
+    <dimen name="box_regular">80dp</dimen>
+    <dimen name="box_medium">60dp</dimen>
+
+    <!--Margin related-->
+    <dimen name="margin_x_large">32dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_regular">12dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
 </resources>

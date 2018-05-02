@@ -3,10 +3,13 @@ package com.developervishalsehgal.udacityscholarsapp.ui.signin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.profile.UserProfileActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -28,6 +31,10 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     private GoogleSignInClient mGoogleSignInClient;
 
     private FirebaseAuth mAuth;
+
+    private Bundle extras;
+
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onStart() {
@@ -53,20 +60,25 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, mGso);
 
+        mProgressBar = findViewById(R.id.pb_signin);
+
         PresenterInjector.injectSignInPresenter(this);
 
         findViewById(R.id.google_signin_btn).setOnClickListener(v -> mPresenter.handleLoginRequest());
+
+        extras = getIntent().getExtras();
+        mPresenter.start(extras);
     }
 
     @Override
     public void loginSuccess() {
-        // TODO Login has succeeded, notify user and navigate to home activity
+        Toast.makeText(this, getString(R.string.msg_login_successful), Toast.LENGTH_SHORT).show();
         navigateToProfile();
     }
 
     @Override
     public void loginFailure(int statusCode, String message) {
-        // TODO Login failed, notify user
+        Toast.makeText(this, getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -76,13 +88,13 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
     @Override
     public void showLoading() {
-        // TODO show progress bar / dialog here
         Toast.makeText(this, getString(R.string.text_please_wait), Toast.LENGTH_SHORT).show();
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoading() {
-        // TODO hide progress bar / dialog here
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -93,13 +105,19 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
     @Override
     public void navigateToHome() {
-        // TODO - Intent homeIntent = new Intent(this, Home)
+        Intent homeIntent = new Intent(this, HomeActivity.class);
+        if (extras != null) {
+            homeIntent.putExtras(extras);
+        }
+        startActivity(homeIntent);
+        this.finish();
     }
 
     @Override
     public void navigateToProfile() {
         Intent signInIntent = new Intent(this, UserProfileActivity.class);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        startActivity(signInIntent);
+        this.finish();
     }
 
     @Override

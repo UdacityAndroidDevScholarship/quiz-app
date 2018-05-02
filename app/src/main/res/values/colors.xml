@@ -56,4 +56,7 @@
     <item>@color/dot_light4</item>
     <item>@color/dot_light5</item>
     </array>
+
+    <!-- added for radio button divider -->
+    <color name="translucent_white">#77FFFFFF</color>
 </resources>

@@ -50,14 +50,14 @@
                 tools:text="20"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
-            <Switch
-                android:id="@+id/unattempted_switch"
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:switchPadding="8dp"
-                android:text="@string/unattempted" />
+                android:layout_margin="12dp"
+                android:background="@drawable/ic_filter_quiz"
+                android:id="@+id/btn_action_filter" />
 
 
         </RelativeLayout>
@@ -74,4 +74,70 @@
         tools:itemCount="4"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
+
+    <!-- Bottom sheet for the filter quizzes action -->
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:background="@android:color/holo_orange_light"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/radio_group_padding"
+                android:paddingRight="@dimen/radio_group_padding"
+                android:paddingBottom="@dimen/radio_group_padding">
+
+                <RadioButton android:id="@+id/radio_all_quizzes"
+                    android:checked="true"
+                    android:text="@string/action_filter_all"
+                    style="@style/RadioButtonFilterStyle"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/translucent_white"/>
+
+                <RadioButton android:id="@+id/radio_attemped_quizzes"
+                    android:layout_marginTop="@dimen/margin_radio_button"
+                    android:text="@string/action_filter_attempted"
+                    style="@style/RadioButtonFilterStyle"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/translucent_white"/>
+
+                <RadioButton android:id="@+id/radio_unattemped_quizzes"
+                    android:layout_marginTop="@dimen/margin_radio_button"
+                    android:text="@string/action_filter_unattempted"
+                    style="@style/RadioButtonFilterStyle"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/translucent_white"/>
+
+                <RadioButton android:id="@+id/radio_bookmarked_quizzes"
+                    android:layout_marginTop="@dimen/margin_radio_button"
+                    android:text="@string/action_filter_bookmarks"
+                    style="@style/RadioButtonFilterStyle"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/translucent_white"/>
+
+            </RadioGroup>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

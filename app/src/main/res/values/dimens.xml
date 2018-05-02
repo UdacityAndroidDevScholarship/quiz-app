@@ -12,9 +12,8 @@
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
-
     <dimen name="user_profile_header_view">100dp</dimen>
-  
+
     <!-- Quizzes List Item layout dimensions -->
     <dimen name="medium_margin">8dp</dimen>
     <dimen name="difficulty_view_width">48dp</dimen>
@@ -41,6 +40,11 @@
     <dimen name="details_page_button_text">24sp</dimen>
     <dimen name="details_page_email_text">18sp</dimen>
 
+    <!-- added for filter radio buttons -->
+    <dimen name="radio_group_padding">28dp</dimen>
+    <dimen name="text_radio_button">24sp</dimen>
+    <dimen name="margin_radio_button">12dp</dimen>
+
     <!--Text related-->
     <dimen name="text_large">24sp</dimen>
     <dimen name="text_regular">20sp</dimen>
@@ -58,5 +62,4 @@
     <dimen name="margin_regular">12dp</dimen>
     <dimen name="margin_medium">8dp</dimen>
     <dimen name="margin_small">4dp</dimen>
-
 </resources>

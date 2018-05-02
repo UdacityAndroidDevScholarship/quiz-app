@@ -12,4 +12,32 @@
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
+
+    <dimen name="user_profile_header_view">160dp</dimen>
+  
+    <!-- Quizzes List Item layout dimensions -->
+    <dimen name="medium_margin">8dp</dimen>
+    <dimen name="difficulty_view_width">48dp</dimen>
+    <dimen name="difficulty_view_height">16dp</dimen>
+    <dimen name="difficulty_view_margin">4dp</dimen>
+    <dimen name="card_view_elevation">4dp</dimen>
+    <dimen name="card_view_corner_radius">2dp</dimen>
+    <!-- details page ACTIVITY dimesions-->
+    <dimen name="details_page_profile_pic_height">100dp</dimen>
+    <dimen name="details_page_profile_pic_width">100dp</dimen>
+
+    <dimen name="details_page_toobar_title_horizontal">48dp</dimen>
+
+    <dimen name="details_page_image_vertical_margin">36dp</dimen>
+    <dimen name="details_page_email_vertical_margin">58dp</dimen>
+
+    <dimen name="details_page_large_vertical_margin">32dp</dimen>
+    <dimen name="details_page_small_vertical_margin">8dp</dimen>
+    <dimen name="details_page_small_horizontal_margin">8dp</dimen>
+
+    <dimen name="details_page_icon_vertical_margin">26dp</dimen>
+    <dimen name="details_page_padding">16dp</dimen>
+
+    <dimen name="details_page_button_text">24sp</dimen>
+    <dimen name="details_page_email_text">18sp</dimen>
 </resources>

@@ -9,8 +9,64 @@
     <!--Sign In page text-->
     <string name="sigin_text_almost_there">Almost there, Sign In to continue</string>
 
+
+    <string name="details_page_email">example@gmail.com</string>
+    <string name="details_page_name">Name</string>
+    <string name="details_page_slack_handle">Slack Handle</string>
+    <string name="details_page_next_btn">Next</string>
+    <string name="details_page_change_photo">Change Profile Photo</string>
+    <string name="details_page_select_track">Select Your Track</string>
+    <string name="details_page_setup_profile">Setup Profile</string>
+    <string-array name="datails_page_track_spinner">
+        <item>Select Your Track</item>
+        <item>Android Basic</item>
+        <item>Android Intermediate</item>
+        <item>Web Specialist</item>
+        <item>Mobile Specialist</item>
+    </string-array>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="hint_email">Email address</string>
     <string name="hint_password">********</string>
+
+    <!-- Profile UI Page -->
+    <string name="btn_submit">Submit</string>
+    <string name="slack_handle_hint">Your slack handle</string>
+    <string name="name_hint">Your name</string>
+    <string name="scholars_18">Google Udacity Scholars</string>
+    <string name="email">Email</string>
+    <string name="slack">Slack Handle</string>
+    <string name="track">Scholarship Track</string>
+
+    <!-- Quizzes List Item helper strings -->
+    <string name="creator_label">Creator :</string>
+    <string name="status_label">Status :</string>
+    <string name="difficulty_label">Difficulty Level :</string>
+    <string name="bookmark_description">bookmark quiz</string>
+    <string name="unattempted">Unattempted</string>
+    <string name="total_label">Total :</string>
+    <string name="logout">Logout</string>
+    <string name="scoreboard">Scoreboard</string>
+    <string name="quiz_list">QuizList</string>
+    <string name="old_quizzes">Old Quizzes</string>
+    <string name="notifications">Notifications</string>
+    <string name="resources">Resources</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="new_label">New</string>
+    <string name="dummy_quiz_name">Lesson 5 Quiz1 - Intents</string>
+    <string name="dummy_date_created">22 April 2018</string>
+    <string name="dummy_creator_name">Dummy Moderator</string>
+    <string name="dummy_deadline">None</string>
+    <string name="dummy_status">Completed</string>
+    <string name="dummy_quiz_level">Hard</string>
+
+    <string name="google_web_client_id" translatable="false">897350396907-p9alch81qro22j44741h668glbn7uqic.apps.googleusercontent.com</string>
+    <string name="text_please_wait">Please wait…</string>
+    <string name="something_went_wrong">Something went wrong. Please try again</string>
+    <string name="unable_to_login">Unable to login with this account</string>
+    <string name="text_proceed">Proceed >> </string>
+    <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
+    <string name="profile_saved_successfully">Profile saved successfully</string>
 </resources>

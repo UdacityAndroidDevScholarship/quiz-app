@@ -48,6 +48,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mQuizAdapter = new QuizAdapter(this);
 
         mQuizRecyclerView.setAdapter(mQuizAdapter);
+
+        mPresenter.start(getIntent().getExtras());
     }
 
     @Override

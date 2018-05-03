@@ -3,6 +3,7 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,26 +14,30 @@ import com.google.gson.annotations.SerializedName;
 public class NotificationPrefs {
 
     @Expose
+    @PropertyName("comment-notifs")
     @SerializedName("comment-notifs")
-    private boolean mCommentNotifs;
+     boolean mCommentNotifs;
 
     @Expose
+    @PropertyName("member-messages")
     @SerializedName("member-messages")
-    private boolean mMemberMessages;
+     boolean mMemberMessages;
 
     @Expose
+    @PropertyName("moderator-messages")
     @SerializedName("moderator-messages")
-    private boolean mModeratorMessages;
+     boolean mModeratorMessages;
 
     @Expose
+    @PropertyName("quiz-notifs")
     @SerializedName("quiz-notifs")
-    private boolean mQuizNotifs;
+     boolean mQuizNotifs;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+     String mKey;
 
     public boolean getCommentNotifs() {
         return mCommentNotifs;

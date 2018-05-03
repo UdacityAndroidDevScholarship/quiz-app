@@ -5,7 +5,11 @@ import android.provider.BaseColumns;
 /**
  * Option Contract Class based on the schema by @pramodbharti
  */
-public class OptionContract {
+class OptionContract {
+
+    private OptionContract(){
+        // To prevent accidental instantiation
+    }
 
     public static final class OptionEntry implements BaseColumns {
 

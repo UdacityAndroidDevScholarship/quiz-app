@@ -18,6 +18,24 @@ public interface HomeContract {
      */
     interface View extends BaseView<Presenter> {
         void loadQuizzes(List<Quiz> quizzes);
+
+        void onQuizLoadError();
+
+        void navigateToQuizDesc(Quiz quiz);
+
+        void navigateToScoreboard();
+
+        void navigateToCreateQuiz();
+
+        void navigateToNotifications();
+
+        void navigateToResources();
+
+        void navigateToSettings();
+
+        void navigateToAboutScreen();
+
+        void navigateToLogin();
     }
 
     /**
@@ -25,6 +43,16 @@ public interface HomeContract {
      */
     interface Presenter extends BasePresenter {
         void onQuizClicked(Quiz quiz);
+
+        void onLogoutClicked();
+
+        void onAllQuizSelected();
+
+        void onAttemptedQuizSelected();
+
+        void onUnAttemptedQuizSelected();
+
+        void onBookmarkQuizSelected();
     }
 
 }

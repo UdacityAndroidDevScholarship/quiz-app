@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,4 +13,87 @@
     android:layout_height="match_parent"
     tools:context=".ui.profile.UserProfileActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/header_cover_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/desert"
+        android:onClick="onClick"/>
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/profile_picture"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:src="@drawable/avatar_1"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="4dp"
+        app:civ_shadow="true"
+        app:civ_shadow_radius="10"
+        app:civ_shadow_color="#8BC34A"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/header_cover_image"
+        android:layout_marginTop="-60dp"
+        android:onClick="onClick"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@id/profile_picture"
+            android:layout_margin="16dp">
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/username"
+                android:fontFamily="@font/roboto_medium" />
+
+            <EditText
+                android:id="@+id/slack_handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/slack_handle"
+                android:layout_below="@+id/username"
+                android:fontFamily="@font/roboto_medium" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:inputType="none"
+                android:text="@string/email"
+                android:layout_below="@id/slack_handle"
+                android:fontFamily="@font/roboto_medium"/>
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clickable="false"
+                android:entries="@array/tracks"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_below="@id/email"></Spinner>
+
+            <Button
+                android:id="@+id/submit_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit_button"
+                android:layout_below="@+id/spinner"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:onClick="onClick"/>
+
+        </RelativeLayout>
+
+</RelativeLayout>
+
+</ScrollView>

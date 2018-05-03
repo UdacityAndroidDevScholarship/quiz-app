@@ -13,4 +13,19 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="hint_email">Email address</string>
     <string name="hint_password">********</string>
+
+    <!-- Dummy values for profile screen -->
+    <string name="username">Shubham</string>
+    <string name="slack_handle">\@shubham</string>
+    <string name="email">shubham@android.com</string>
+    <string name="submit_button">submit</string>
+
+    <!-- Tracks in the course-->
+    <string-array name="tracks">
+        <item>Android Developer Track</item>
+        <item>Android Basic Track</item>
+        <item>Website Designing Track</item>
+    </string-array>
+
+
 </resources>

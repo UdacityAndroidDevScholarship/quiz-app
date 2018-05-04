@@ -12,6 +12,7 @@
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
+
     <!-- Quizzes List Item layout dimensions -->
     <dimen name="medium_margin">8dp</dimen>
     <dimen name="difficulty_view_width">48dp</dimen>
@@ -19,6 +20,7 @@
     <dimen name="difficulty_view_margin">4dp</dimen>
     <dimen name="card_view_elevation">4dp</dimen>
     <dimen name="card_view_corner_radius">2dp</dimen>
+
     <!-- details page ACTIVITY dimesions-->
     <dimen name="details_page_profile_pic_height">100dp</dimen>
     <dimen name="details_page_profile_pic_width">100dp</dimen>
@@ -41,6 +43,10 @@
     <dimen name="appbar_padding_top">8dp</dimen>
 
     <!-- Notification Activity dimesions-->
+    <dimen name="notification_list_items_layout_margin">2dp</dimen>
+    <dimen name="notification_list_items_name_text_size">15sp</dimen>
+    <dimen name="notification_list_items_date_text_size">12sp</dimen>
+
     <dimen name="notification_card_margin_start">8dp</dimen>
     <dimen name="notification_card_margin_end">8dp</dimen>
 
@@ -60,6 +66,9 @@
     <dimen name="notification_description_margin_end">8dp</dimen>
 
     <!-- Notification Detail Activity dimesions-->
+    <dimen name="notification_detail_name_text_size">16sp</dimen>
+    <dimen name="notification_detail_description_text_size">15sp</dimen>
+
     <dimen name="notification_detail_name_margin_start">16dp</dimen>
     <dimen name="notification_detail_name_margin_top">24dp</dimen>
 

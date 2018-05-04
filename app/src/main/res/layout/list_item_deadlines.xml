@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:padding="2dp">
+        android:padding="@dimen/notification_list_items_layout_margin">
 
         <ImageView
             android:id="@+id/iv_deadline_icon"
@@ -39,7 +39,7 @@
             android:ellipsize="end"
             android:text="@string/tab2_deadline_name"
             android:textColor="@android:color/white"
-            android:textSize="15sp"
+            android:textSize="@dimen/notification_list_items_name_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/tv_deadline_date"
             app:layout_constraintStart_toEndOf="@+id/iv_deadline_icon"
@@ -53,7 +53,7 @@
             android:layout_marginTop="@dimen/notification_date_margin_top"
             android:text="@string/tab2_deadline_date"
             android:textColor="@android:color/darker_gray"
-            android:textSize="12sp"
+            android:textSize="@dimen/notification_list_items_date_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_deadline_name"
             app:layout_constraintTop_toTopOf="parent" />

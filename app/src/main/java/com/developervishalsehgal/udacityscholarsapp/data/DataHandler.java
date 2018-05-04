@@ -3,6 +3,7 @@ package com.developervishalsehgal.udacityscholarsapp.data;
 import android.graphics.Bitmap;
 
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
 import com.developervishalsehgal.udacityscholarsapp.data.models.User;
@@ -192,6 +193,14 @@ public interface DataHandler {
      * @return status of current user if present, null otherwise
      */
     String getStatus();
+
+    void setUserInfo(Callback<Void> callback);
+
+    void addNotification(Notification notification);
+
+    List<Notification> getAllNotifications(int startFrom, int limit);
+
+    List<Notification> searchNotifications(String query, int startFrom, int limit);
 
     /**
      * Generic callback interface for passing response to caller.

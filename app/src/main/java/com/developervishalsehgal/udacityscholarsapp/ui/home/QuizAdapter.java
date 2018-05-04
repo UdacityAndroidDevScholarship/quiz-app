@@ -135,7 +135,18 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                 tvQuizStatus.setTextColor(ContextCompat.getColor(context, R.color.dark_red));
             }
 
-            showQuizDifficultyView(this, currentQuiz.getDifficulty());
+            boolean isMedium = DIFFICULTY_LEVEL_MEDIUM.equalsIgnoreCase(currentQuiz
+                    .getDifficulty().trim());
+            boolean isHard = DIFFICULTY_LEVEL_HARD.equalsIgnoreCase(currentQuiz
+                    .getDifficulty().trim());
+
+            // Setting difficult levels
+            // hard is visible for hard difficulty only
+            hardLevelView.setVisibility(isHard ? View.VISIBLE : View.INVISIBLE);
+            // Medium is visible for medium and hard difficulty
+            mediumLevelView.setVisibility((isHard || isMedium) ? View.VISIBLE : View.INVISIBLE);
+            // Easy level is always visible irrespective of difficulty level
+            easyLevelView.setVisibility(View.VISIBLE);
 
             // Attaching click listener to each quiz item
             itemView.setOnClickListener(v -> mQuizItemListener.onQuizClicked(currentQuiz));
@@ -143,36 +154,14 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
     }
 
     /**
-     * Shows and hides difficulty level views based on quiz difficulty
-     *
-     * @param holder          the {@link QuizViewHolder} object representing the current quiz
-     * @param difficultyLevel difficulty level of the quiz
-     */
-    private void showQuizDifficultyView(@NonNull QuizViewHolder holder, @NonNull String difficultyLevel) {
-        switch (difficultyLevel.toLowerCase()) {
-            case DIFFICULTY_LEVEL_EASY:
-                holder.easyLevelView.setVisibility(View.VISIBLE);
-                holder.mediumLevelView.setVisibility(View.INVISIBLE);
-                holder.hardLevelView.setVisibility(View.INVISIBLE);
-                break;
-            case DIFFICULTY_LEVEL_MEDIUM:
-                holder.easyLevelView.setVisibility(View.VISIBLE);
-                holder.mediumLevelView.setVisibility(View.VISIBLE);
-                holder.hardLevelView.setVisibility(View.INVISIBLE);
-                break;
-            default:
-                holder.easyLevelView.setVisibility(View.VISIBLE);
-                holder.mediumLevelView.setVisibility(View.VISIBLE);
-                holder.hardLevelView.setVisibility(View.VISIBLE);
-                break;
-
-        }
-    }
-
-    /**
      * Callback interface for listening to click events on quiz items
      */
     interface QuizItemListener {
+        /**
+         * Called when quiz is clicked
+         *
+         * @param quiz the Quiz that was clicked
+         */
         void onQuizClicked(Quiz quiz);
     }
 }

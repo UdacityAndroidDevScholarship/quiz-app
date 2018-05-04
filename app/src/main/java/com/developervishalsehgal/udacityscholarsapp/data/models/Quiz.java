@@ -216,10 +216,15 @@ public class Quiz {
 
     /**
      * All the questions, attempts, correct answers etc. Should be used carefully. We will be using
-     * the same
+     * the same model to store question and scholar's answer
      */
     public void reset(){
-
+        for (Map.Entry<String, Question> questionEntry : mQuestions.entrySet()) {
+            Map<String, Option> options = questionEntry.getValue().getOptions();
+            for (Map.Entry<String, Option> optionEntry : options.entrySet()) {
+                optionEntry.getValue().setIsCorrect(false);
+            }
+        }
     }
 
     @Override

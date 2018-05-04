@@ -8,10 +8,10 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <include
+    <!--<include
         layout="@layout/activity_splash_screen"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" />-->
 
     <include
         layout="@layout/activity_home"
@@ -25,7 +25,6 @@
         android:layout_gravity="start"
         android:background="#fafafa"
         android:fitsSystemWindows="true"
-        app:menu="@menu/navigation_drawer_items"
         app:headerLayout="@layout/nav_header_navigation_drawer"
-        />
+        app:menu="@menu/navigation_drawer_items" />
 </android.support.v4.widget.DrawerLayout>

@@ -82,6 +82,9 @@ public class Quiz {
     @SerializedName("deadline")
     String mDeadline;
 
+    /**
+     * For local usage only, it is not stored in database
+     */
     @Exclude
     boolean attempted;
 
@@ -209,6 +212,14 @@ public class Quiz {
 
     public void setAttempted(boolean attempted) {
         this.attempted = attempted;
+    }
+
+    /**
+     * All the questions, attempts, correct answers etc. Should be used carefully. We will be using
+     * the same
+     */
+    public void reset(){
+
     }
 
     @Override

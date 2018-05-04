@@ -56,4 +56,7 @@
     <item>@color/dot_light4</item>
     <item>@color/dot_light5</item>
     </array>
+
+    <color name="divider_light">#BDBDBD</color>
+    <color name="ripple_color">#bdbdbd</color>
 </resources>

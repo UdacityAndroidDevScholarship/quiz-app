@@ -20,6 +20,7 @@ public class SignInPresenter implements SignInContract.Presenter {
 
     @Override
     public void handleLoginRequest() {
+        mView.showLoading();
         mView.startSignIn();
     }
 
@@ -28,12 +29,13 @@ public class SignInPresenter implements SignInContract.Presenter {
         mDataHandler.saveUserEmail(email);
         mDataHandler.saveUserName(displayName);
         mDataHandler.saveUserPic(photoUrl.toString());
-
+        mView.hideLoading();
         mView.loginSuccess();
     }
 
     @Override
     public void handleLoginFailure(int statusCode, String message) {
+        mView.hideLoading();
         mView.loginFailure(statusCode, message);
     }
 

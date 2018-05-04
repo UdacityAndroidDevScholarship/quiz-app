@@ -1,11 +1,10 @@
 package com.developervishalsehgal.udacityscholarsapp.services;
 
-import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
-import com.developervishalsehgal.udacityscholarsapp.utils.NotificationUtils;
 import android.util.Log;
 
 import com.developervishalsehgal.udacityscholarsapp.data.DataHandlerProvider;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
+import com.developervishalsehgal.udacityscholarsapp.utils.NotificationUtils;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -13,11 +12,6 @@ import java.util.Map;
 
 public class FBMessagingService extends FirebaseMessagingService{
     private static final String TAG = FBMessagingService.class.getSimpleName();
-    private static final String KEY_TITLE = "title";
-    private static final String KEY_DESCRIPTION = "description";
-    private static final String KEY_FROM = "from";
-    private static final String KEY_TYPE = "type";
-    private static final String KEY_ACTION = "action";
     private static final String KEY_EXTRA_TYPE_1 = "extra1";
     private static final String KEY_EXTRA_TYPE_2 = "extra2";
 

@@ -6,7 +6,6 @@ import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
-import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 
 import java.util.List;
 
@@ -194,7 +193,7 @@ public interface DataHandler {
      */
     String getStatus();
 
-    void setUserInfo(Callback<Void> callback);
+
 
     void addNotification(Notification notification);
 

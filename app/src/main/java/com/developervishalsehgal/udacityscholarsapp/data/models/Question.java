@@ -3,10 +3,13 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Model class representing a quiz question
@@ -15,30 +18,35 @@ import java.util.List;
 public class Question {
 
     @Expose
+    @PropertyName("description")
     @SerializedName("description")
-    private String mDescription;
+    String mDescription;
 
     @Expose
+    @PropertyName("marks")
     @SerializedName("marks")
-    private long mMarks;
+    long mMarks;
 
     @Expose
+    @PropertyName("options")
     @SerializedName("options")
-    private List<Option> mOptions;
+    Map<String, Option> mOptions;
 
     @Expose
+    @PropertyName("type")
     @SerializedName("type")
-    private String mType;
+    String mType;
 
     @Expose
+    @PropertyName("files")
     @SerializedName("files")
-    private String mFiles;
+    Map<String, String> mFiles;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public String getDescription() {
         return mDescription;
@@ -56,11 +64,11 @@ public class Question {
         mMarks = marks;
     }
 
-    public List<Option> getOptions() {
+    public Map<String, Option> getOptions() {
         return mOptions;
     }
 
-    public void setOptions(List<Option> options) {
+    public void setOptions(Map<String, Option> options) {
         mOptions = options;
     }
 
@@ -72,11 +80,11 @@ public class Question {
         mType = type;
     }
 
-    public String getFiles() {
+    public Map<String, String> getFiles() {
         return mFiles;
     }
 
-    public void setFiles(String files) {
+    public void setFiles(Map<String, String> files) {
         this.mFiles = files;
     }
 
@@ -88,4 +96,20 @@ public class Question {
         this.mKey = key;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Question question = (Question) o;
+        return mMarks == question.mMarks &&
+                Objects.equals(mDescription, question.mDescription) &&
+                Objects.equals(mOptions, question.mOptions) &&
+                Objects.equals(mType, question.mType);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mDescription, mMarks, mOptions, mType);
+    }
 }

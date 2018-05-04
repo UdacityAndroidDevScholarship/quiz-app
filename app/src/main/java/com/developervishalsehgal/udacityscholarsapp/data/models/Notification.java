@@ -1,5 +1,7 @@
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
+import java.util.Objects;
+
 /**
  * Created by dell on 4/21/2018.
  */
@@ -79,5 +81,26 @@ public class Notification {
 
     public void setExtra2(String extra2) {
         this.mExtra2 = extra2;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Notification that = (Notification) o;
+        return mTimeStamp == that.mTimeStamp &&
+                Objects.equals(mDescription, that.mDescription) &&
+                Objects.equals(mTitle, that.mTitle) &&
+                Objects.equals(mFrom, that.mFrom) &&
+                Objects.equals(mType, that.mType) &&
+                Objects.equals(mAction, that.mAction) &&
+                Objects.equals(mExtra1, that.mExtra1) &&
+                Objects.equals(mExtra2, that.mExtra2);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mTimeStamp, mDescription, mTitle, mFrom, mType, mAction, mExtra1, mExtra2);
     }
 }

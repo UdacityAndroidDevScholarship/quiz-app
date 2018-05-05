@@ -194,8 +194,6 @@ public interface DataHandler {
      */
     String getStatus();
 
-    void setUserInfo(Callback<Void> callback);
-
     void addNotification(Notification notification);
 
     List<Notification> getAllNotifications(int startFrom, int limit);

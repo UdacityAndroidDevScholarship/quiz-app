@@ -6,7 +6,7 @@ import com.developervishalsehgal.udacityscholarsapp.ui.BaseView;
 public interface QuizDetailsContract {
 
     /**
-     * Quiz View
+     * Quiz Details View
      */
     interface View extends BaseView<Presenter> {
 
@@ -31,7 +31,7 @@ public interface QuizDetailsContract {
     }
 
     /**
-     * Quiz Presenter
+     * Quiz Details Presenter
      */
     interface Presenter extends BasePresenter {
         void onDiscussionClicked();

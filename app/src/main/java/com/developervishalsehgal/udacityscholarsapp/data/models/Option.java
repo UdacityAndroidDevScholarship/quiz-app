@@ -20,6 +20,10 @@ public class Option {
     @SerializedName("description")
     String mDescription;
 
+    /**
+     * Since we are using the same model to store correct answers and scholar's answers, this field
+     * can represent either
+     */
     @Expose
     @PropertyName("ic-correct")
     @SerializedName("is-correct")

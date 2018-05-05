@@ -47,13 +47,8 @@
     <string name="unattempted">Unattempted</string>
     <string name="total_label">Total :</string>
     <string name="logout">Logout</string>
-    <string name="scoreboard">Scoreboard</string>
     <string name="quiz_list">QuizList</string>
     <string name="old_quizzes">Old Quizzes</string>
-    <string name="notifications">Notifications</string>
-    <string name="resources">Resources</string>
-    <string name="settings">Settings</string>
-    <string name="about">About</string>
     <string name="new_label">New</string>
     <string name="dummy_quiz_name">Lesson 5 Quiz1 - Intents</string>
     <string name="dummy_date_created">22 April 2018</string>
@@ -70,9 +65,6 @@
     <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
     <string name="profile_saved_successfully">Profile saved successfully</string>
 
-    <string name="title_activity_notification">Notifications</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- NotificationActivity Helper Strings  -->
     <string name="notification_activity_title">Notifications</string>
@@ -106,13 +98,35 @@
     <string name="notification_detail_title_new_quiz">New Quiz Launched</string>
     <string name="notification_detail_title_deadline">Deadline Approaching</string>
     <string name="notification_detail_title_resource">New Resource Shared</string>
-
     <!-- NotificationDetail Activity Strings -->
+
+    <!-- Values for home_quiz_list_filter.xml -->
+    <string name="radio_quiz_filter_all">All</string>
+    <string name="radio_quiz_filter_attempted">Attempted</string>
+    <string name="radio_quiz_filter_un_attempted">Un-attempted</string>
+    <string name="radio_quiz_filter_bookmarks">Bookmarks</string>
 
     <string name="track_android_dev">Android Developer Track</string>
     <string name="msg_login_successful">Login successful</string>
     <string name="txt_status_completed">Completed</string>
     <string name="txt_status_pending">Not started</string>
     <string name="txt_deadline_none">DEADLINE NONE</string>
+
+    //Navigation Drawer Menu Items
+    <string name="scoreboard">Scoreboard</string>
+    <string name="quizlist">QuizList</string>
+    <string name="createQuiz">Create Quiz</string>
+    <string name="notifications">Notifications</string>
+    <string name="resources">Resources</string>
+
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+
+    <string name="name">Vishal Sehgal</string>
+    <string name="emailid">sehgalvishal31@gmail.com</string>
+
+    //Unread Notification
+    <string name="newnotification">15</string>
+    <string name="number">10</string>
 
 </resources>

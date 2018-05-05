@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import com.developervishalsehgal.udacityscholarsapp.application.AppClass;
 import com.developervishalsehgal.udacityscholarsapp.data.local.DBHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
 import com.developervishalsehgal.udacityscholarsapp.data.models.User;
@@ -203,6 +204,21 @@ class AppDataHandler implements DataHandler {
         currentUser.setTrack(mPreferences.getUserTrack());
 
         mFirebaseHandler.setUserInfo(currentUser, new FirebaseCallback<>(callback));
+    }
+
+    @Override
+    public void addNotification(Notification notification) {
+        mDBHandler.addNotification(notification);
+    }
+
+    @Override
+    public List<Notification> getAllNotifications(int startFrom, int limit) {
+        return mDBHandler.getAllNotification(startFrom, limit);
+    }
+
+    @Override
+    public List<Notification> searchNotifications(String query, int startFrom, int limit) {
+        return mDBHandler.searchNotifications(query, startFrom, limit);
     }
 
     /**

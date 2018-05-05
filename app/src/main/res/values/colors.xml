@@ -4,6 +4,14 @@
     <color name="colorPrimaryDark">#1b2836</color>
     <color name="colorAccent">#00b8d4</color>
 
+    <color name="colorPrimaryLight">#4e5d72</color>
+    <color name="white">#ffffff</color>
+    <color name="darkgrey">#6c6c6c</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#0000000</color>
+    <color name="bg">#283747</color>
+    <color name="red">#EC7063</color>
+
     <color name="opaque_white">#90ffffff</color>
 
     <color name="opaque_black">#90000000</color>
@@ -56,4 +64,7 @@
     <item>@color/dot_light4</item>
     <item>@color/dot_light5</item>
     </array>
+
+    <color name="divider_light">#BDBDBD</color>
+    <color name="ripple_color">#bdbdbd</color>
 </resources>

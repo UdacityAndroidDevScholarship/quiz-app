@@ -43,8 +43,8 @@ public class Resource {
     long mTimestamp;
 
     @Expose
-    @PropertyName("uploaded-by")
-    @SerializedName("uploaded-by")
+    @PropertyName("shared-by")
+    @SerializedName("shared-by")
     String mUploadedBy;
 
     @Expose

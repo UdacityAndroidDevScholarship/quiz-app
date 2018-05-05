@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/home_quiz_list_filter_radio_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="@dimen/radio_group_quiz_filter_padding"
+    android:visibility="gone">
+
+    <RadioButton
+        android:id="@+id/radio_quiz_filter_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:buttonTint="@android:color/white"
+        android:checked="true"
+        android:drawablePadding="@dimen/radio_button_quiz_filter_drawable_padding"
+        android:layoutDirection="rtl"
+        android:paddingBottom="@dimen/radio_button_quiz_filter_padding_vertical"
+        android:paddingTop="@dimen/radio_button_quiz_filter_padding_vertical"
+        android:text="@string/radio_quiz_filter_all"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/radio_button_quiz_filter_text_size" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_light" />
+
+    <RadioButton
+        android:id="@+id/radio_quiz_filter_attempted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:buttonTint="@android:color/white"
+        android:drawablePadding="@dimen/radio_button_quiz_filter_drawable_padding"
+        android:layoutDirection="rtl"
+        android:paddingBottom="@dimen/radio_button_quiz_filter_padding_vertical"
+        android:paddingTop="@dimen/radio_button_quiz_filter_padding_vertical"
+        android:text="@string/radio_quiz_filter_attempted"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/radio_button_quiz_filter_text_size" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_light" />
+
+    <RadioButton
+        android:id="@+id/radio_quiz_filter_un_attempted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:buttonTint="@android:color/white"
+        android:drawablePadding="@dimen/radio_button_quiz_filter_drawable_padding"
+        android:layoutDirection="rtl"
+        android:paddingBottom="@dimen/radio_button_quiz_filter_padding_vertical"
+        android:paddingTop="@dimen/radio_button_quiz_filter_padding_vertical"
+        android:text="@string/radio_quiz_filter_un_attempted"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/radio_button_quiz_filter_text_size" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_light" />
+
+    <RadioButton
+        android:id="@+id/radio_quiz_filter_bookmarks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:buttonTint="@android:color/white"
+        android:drawablePadding="@dimen/radio_button_quiz_filter_drawable_padding"
+        android:layoutDirection="rtl"
+        android:paddingBottom="@dimen/radio_button_quiz_filter_padding_vertical"
+        android:paddingTop="@dimen/radio_button_quiz_filter_padding_vertical"
+        android:text="@string/radio_quiz_filter_bookmarks"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/radio_button_quiz_filter_text_size" />
+
+</RadioGroup>

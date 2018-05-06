@@ -81,6 +81,23 @@
     <dimen name="notification_detail_description_margin_start">16dp</dimen>
     <dimen name="notification_detail_description_margin_end">16dp</dimen>
 
+    <!-- Notification Detail Activity dimesions-->
+    <dimen name="quiz_details_cross_margins">30dp</dimen>
+    <dimen name="quiz_details_help_button_margins">40dp</dimen>
+    <dimen name="quiz_details_cardview_corner_radius">30dp</dimen>
+    <dimen name="quiz_details_scrollview_layout_height">200dp</dimen>
+
+    <dimen name="quiz_details_fab_layout_height">68dp</dimen>
+    <dimen name="quiz_details_fab_layout_width">60dp</dimen>
+
+    <dimen name="text_size_26">26sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+
     <!-- Values for activity_home.xml -->
     <dimen name="quiz_filter_button_margin_end">16dp</dimen>
 

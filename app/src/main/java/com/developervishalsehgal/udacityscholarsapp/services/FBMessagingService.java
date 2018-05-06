@@ -1,6 +1,7 @@
 package com.developervishalsehgal.udacityscholarsapp.services;
 
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
+import com.developervishalsehgal.udacityscholarsapp.utils.AppConstants;
 import com.developervishalsehgal.udacityscholarsapp.utils.NotificationUtils;
 
 import android.support.annotation.NonNull;
@@ -19,14 +20,6 @@ import java.util.Map;
 public class FBMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = FBMessagingService.class.getSimpleName();
-
-    private static final String KEY_TITLE = "title";
-    private static final String KEY_DESCRIPTION = "description";
-    private static final String KEY_FROM = "from";
-    private static final String KEY_TYPE = "type";
-    private static final String KEY_ACTION = "action";
-    private static final String KEY_EXTRA_1 = "extra_1";
-    private static final String KEY_EXTRA_2 = "extra_2";
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -57,14 +50,14 @@ public class FBMessagingService extends FirebaseMessagingService {
 
         Notification notification = new Notification();
 
-        notification.setTitle(receivedData.get(KEY_TITLE));
-        notification.setAction(receivedData.get(KEY_ACTION));
-        notification.setDescription(receivedData.get(KEY_DESCRIPTION));
-        notification.setFrom(receivedData.get(KEY_FROM));
-        notification.setType(receivedData.get(KEY_TYPE));
+        notification.setTitle(receivedData.get(AppConstants.KEY_TITLE));
+        notification.setAction(receivedData.get(AppConstants.KEY_ACTION));
+        notification.setDescription(receivedData.get(AppConstants.KEY_DESCRIPTION));
+        notification.setFrom(receivedData.get(AppConstants.KEY_FROM));
+        notification.setType(receivedData.get(AppConstants.KEY_TYPE));
         notification.setTimeStamp(System.currentTimeMillis() / 1000);
-        notification.setExtra1(receivedData.get(KEY_EXTRA_1));
-        notification.setExtra2(receivedData.get(KEY_EXTRA_2));
+        notification.setExtra1(receivedData.get(AppConstants.KEY_EXTRA_1));
+        notification.setExtra2(receivedData.get(AppConstants.KEY_EXTRA_2));
 
         return notification;
     }

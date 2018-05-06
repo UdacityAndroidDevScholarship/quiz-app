@@ -65,6 +65,41 @@
     <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
     <string name="profile_saved_successfully">Profile saved successfully</string>
 
+
+    <!-- NotificationActivity Helper Strings  -->
+    <string name="notification_activity_title">Notifications</string>
+    <string name="notification_tab_1">New Quiz</string>
+    <string name="notification_tab_2">Deadlines</string>
+    <string name="notification_tab_3">Resources</string>
+
+    <!-- Notification Tab 1 Strings -->
+    <string name="tab1_quiz_name">Quiz Name</string>
+    <string name="tab1_quiz_date">22 April 2018</string>
+    <string name="tab1_quiz_description">Hi a new quiz for session 2 is out.Please do checkout and attempt it.The deadline for this quiz is 20 april 2018.</string>
+    <!-- Notification Tab 1 Strings -->
+
+    <!-- Notification Tab 2 Strings -->
+    <string name="tab2_deadline_name">Deadline Title</string>
+    <string name="tab2_deadline_date">22 April 2018</string>
+    <string name="tab2_deadline_description">Hi the deadline for quiz from session 4 is approaching soon.Please do checkout and attempt it.</string>
+    <!-- Notification Tab 2 Strings -->
+
+    <!-- Notification Tab 3 Strings -->
+    <string name="tab3_resource_name">Resource Name</string>
+    <string name="tab3_resource_date">22 April 2018</string>
+    <string name="tab3_resource_description">Hi a new resource has been shared by Vishal Sehgal from session 2.Please do have a look.</string>
+    <!-- Notification Tab 3 Strings -->
+
+    <!-- NotificationDetail Activity Strings -->
+    <string name="notification_detail_name">Notification Name</string>
+    <string name="notification_detail_date">15 April 2018</string>
+    <string name="notification_detail_description">Lorem ipsum dolor sit amet, eu mea feugiat gloriatur, dicit scripserit ex qui. Tantas accumsan eligendi et pri, te cibo dolores evertitur sed, consequat adipiscing voluptatum cu pro. Ei nam iudico percipit perfecto. Tation populo repudiare ex quo, sit appetere electram et, id debitis splendide vis.</string>
+    <string name="notification_detail_activity_title">NotificationDetail</string>
+    <string name="notification_detail_title_new_quiz">New Quiz Launched</string>
+    <string name="notification_detail_title_deadline">Deadline Approaching</string>
+    <string name="notification_detail_title_resource">New Resource Shared</string>
+    <!-- NotificationDetail Activity Strings -->
+
     <!-- Values for home_quiz_list_filter.xml -->
     <string name="radio_quiz_filter_all">All</string>
     <string name="radio_quiz_filter_attempted">Attempted</string>
@@ -76,7 +111,6 @@
     <string name="txt_status_completed">Completed</string>
     <string name="txt_status_pending">Not started</string>
     <string name="txt_deadline_none">DEADLINE NONE</string>
-
 
     //Navigation Drawer Menu Items
     <string name="scoreboard">Scoreboard</string>

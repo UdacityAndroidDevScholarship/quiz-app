@@ -6,34 +6,30 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
-import com.developervishalsehgal.udacityscholarsapp.data.local.NotificationContract;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeActivity;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class NotificationUtils {
 
     /**
      * Description - creates a notification channel based on given channelId and channelName if the channel does not exists
-     * @param context - Context of the calling activity
-     * @param channelId - Id for the notification channel
+     *
+     * @param context     - Context of the calling activity
+     * @param channelId   - Id for the notification channel
      * @param channelName - Name for the notification channel
      */
     @TargetApi(26)
     private static void createNotificationChannel(Context context, String channelId, String channelName) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        if(notificationManager != null && notificationManager.getNotificationChannel(channelId) == null) {
+        if (notificationManager != null && notificationManager.getNotificationChannel(channelId) == null) {
             NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
             notificationManager.createNotificationChannel(notificationChannel);
         }
@@ -42,13 +38,14 @@ public class NotificationUtils {
     /**
      * Description - creates a notification based on passed notification object and a notification channel for the given channelId
      * if it does not exist
-     * @param context - Context of the calling activity
+     *
+     * @param context      - Context of the calling activity
      * @param notification - Model object of notification
-     * @param channelId - Id for the notification channel
+     * @param channelId    - Id for the notification channel
      */
     public static void createNotification(Context context, Notification notification, String channelId) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        if(Build.VERSION.SDK_INT >= 26) {
+        if (Build.VERSION.SDK_INT >= 26) {
             createNotificationChannel(context, channelId, notification.getType());
         }
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId);
@@ -68,26 +65,24 @@ public class NotificationUtils {
             builder.setPriority(NotificationCompat.PRIORITY_HIGH);
         }
         if (notificationManager != null) {
-            notificationManager.notify((int)(System.currentTimeMillis()/1000), builder.build());
+            notificationManager.notify((int) (System.currentTimeMillis() / 1000), builder.build());
         }
     }
 
     /**
-     *
      * @param context - Context of the calling activity
      * @return - returns PendingIntent
      */
     private static PendingIntent createContentIntent(Context context, String action, String extra1, String extra2) {
         Intent intent = new Intent(context, HomeActivity.class);
-        intent.putExtra(NotificationContract.NotificationEntry.COLUMN_ACTION, action);
-        intent.putExtra(NotificationContract.NotificationEntry.COLUMN_EXTRA_1, extra1);
-        intent.putExtra(NotificationContract.NotificationEntry.COLUMN_EXTRA_2, extra2);
+        intent.putExtra(AppConstants.KEY_ACTION, action);
+        intent.putExtra(AppConstants.KEY_EXTRA_1, extra1);
+        intent.putExtra(AppConstants.KEY_EXTRA_2, extra2);
         return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     /**
-     *
-     * @param context - Context of the calling activity
+     * @param context          - Context of the calling activity
      * @param notificationType - Type of notification
      * @return Bitmap - returns Bitmap object according to type of notification
      */
@@ -95,25 +90,24 @@ public class NotificationUtils {
         @DrawableRes int drawableResourceId;
         switch (notificationType) {
             case "quiz":
-                drawableResourceId =  R.drawable.ic_udacity;
+                drawableResourceId = R.drawable.ic_udacity;
                 break;
             case "resource":
-                drawableResourceId =  R.drawable.ic_udacity;
+                drawableResourceId = R.drawable.ic_udacity;
                 break;
             case "discussion":
-                drawableResourceId =  R.drawable.ic_udacity;
+                drawableResourceId = R.drawable.ic_udacity;
                 break;
             case "announcement":
-                drawableResourceId =  R.drawable.ic_udacity;
+                drawableResourceId = R.drawable.ic_udacity;
                 break;
             default:
-                drawableResourceId =  0;
+                drawableResourceId = 0;
         }
         return BitmapFactory.decodeResource(context.getResources(), drawableResourceId);
     }
 
     /**
-     *
      * @param notificationType - Type of notification
      * @return DrawableResource - image resource according to type of notification
      */
@@ -128,8 +122,8 @@ public class NotificationUtils {
                 return R.drawable.ic_udacity;
             case "announcement":
                 return R.drawable.ic_udacity;
-                default:
-                    return 0;
+            default:
+                return 0;
         }
     }
 }

@@ -14,7 +14,7 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:scaleType="fitCenter"
         android:layout_gravity="end"
-        android:background="@color/transparent"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_edit_nav" />
 
     <LinearLayout

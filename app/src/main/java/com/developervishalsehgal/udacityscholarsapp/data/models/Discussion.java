@@ -31,6 +31,33 @@ public class Discussion {
     @SerializedName("comments")
     List<Comment> mComments;
 
+    @Expose
+    @PropertyName("slack-handle")
+    @SerializedName("slack-handle")
+    String mSlackHandle;
+
+    @Expose
+    @PropertyName("name")
+    @SerializedName("name")
+    String mName;
+
+    public String getmSlackHandle() {
+        return mSlackHandle;
+    }
+
+    public void setmSlackHandle(String mSlackHandle) {
+        this.mSlackHandle = mSlackHandle;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    public void setmName(String mName) {
+        this.mName = mName;
+    }
+
+
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */

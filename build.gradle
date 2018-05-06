@@ -12,7 +12,7 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:3.2.0'
+        classpath 'com.google.gms:google-services:3.3.0'
     }
 }
 
@@ -36,6 +36,7 @@ ext {
     compileSdkVersion = 27
     // App dependencies
     supportLibVersion = "27.1.1"
+    firebaseVersion = "15.0.0"
     glideVersion = '4.7.1'
     junitVersion = '4.12'
     constraintLayoutVersion = '1.1.0'

@@ -95,4 +95,9 @@
     <string name="newnotification">15</string>
     <string name="number">10</string>
 
+    //discussion
+    <string name="dummy_discussion_name">Vishal Sehgal</string>
+    <string name="dummy_discussion_timestamp">10:45 PM</string>
+
+    <string name="discussion_hint">Type a message</string>
 </resources>

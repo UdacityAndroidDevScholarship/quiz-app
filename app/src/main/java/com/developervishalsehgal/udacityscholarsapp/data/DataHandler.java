@@ -3,10 +3,10 @@ package com.developervishalsehgal.udacityscholarsapp.data;
 import android.graphics.Bitmap;
 
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Discussion;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
-import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 
 import java.util.List;
 
@@ -109,6 +109,22 @@ public interface DataHandler {
      * @param callback       callback for status of operation
      */
     void addBookmark(String quizIdentifier, Callback<Void> callback);
+
+    /**
+     * Fetches discussion history for quiz discussion
+     *
+     * @param noOfDays how many days old the discussion to fetch.pass 0 to fetch all
+     * @param callback     Callback for receiving result
+     */
+    void fetchDiscussionHistory(int noOfDays, Callback<List<Discussion>> callback);
+
+
+    /**
+     * Sends the message of the user about the quiz discussion to the community
+     * @param discussion message the user has sent to the community
+     * @param callback   callback for status of operation
+     */
+    void sendDiscussionMessage(Discussion discussion, Callback<Void> callback);
 
     /**
      * Saves user name locally

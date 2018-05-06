@@ -123,5 +123,6 @@
     <dimen name="menu_mar_one">10dp</dimen>
     <dimen name="draw_r">40dp</dimen>
     <dimen name="draw_pad">5dp</dimen>
+    <dimen name="appbar_padding_top">16dp</dimen>
 
 </resources>

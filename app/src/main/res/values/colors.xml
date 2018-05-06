@@ -8,7 +8,7 @@
     <color name="white">#ffffff</color>
     <color name="darkgrey">#6c6c6c</color>
     <color name="black">#000000</color>
-    <color name="transparent">#0000000</color>
+    <color name="transparent">#00ffffff</color>
     <color name="bg">#283747</color>
     <color name="red">#EC7063</color>
 

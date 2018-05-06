@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
@@ -95,6 +96,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         View easyLevelView;
         View mediumLevelView;
         View hardLevelView;
+        ImageView imgHelp;
 
         QuizViewHolder(View itemView) {
             super(itemView);
@@ -106,6 +108,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             easyLevelView = itemView.findViewById(R.id.difficulty_easy);
             mediumLevelView = itemView.findViewById(R.id.difficulty_medium);
             hardLevelView = itemView.findViewById(R.id.difficulty_hard);
+            imgHelp = itemView.findViewById(R.id.iv_help);
         }
 
         void bind(int position) {
@@ -150,6 +153,8 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
             // Attaching click listener to each quiz item
             itemView.setOnClickListener(v -> mQuizItemListener.onQuizClicked(currentQuiz));
+
+
         }
     }
 

@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import com.developervishalsehgal.udacityscholarsapp.application.AppClass;
 import com.developervishalsehgal.udacityscholarsapp.data.local.DBHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Discussion;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
@@ -242,5 +243,15 @@ class AppDataHandler implements DataHandler {
         public void onError() {
             this.callback.onError();
         }
+    }
+
+    @Override
+    public void fetchDiscussionHistory(int noOfDays, Callback<List<Discussion>> callback) {
+
+    }
+
+    @Override
+    public void sendDiscussionMessage(Discussion discussion, Callback<Void> callback) {
+
     }
 }

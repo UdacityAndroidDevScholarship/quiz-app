@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
+import com.developervishalsehgal.udacityscholarsapp.utils.DateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,11 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
         return mCommentList.size();
     }
 
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
+
     public void addMessage(Comment comment){
         mCommentList.add(comment);
         notifyDataSetChanged();
@@ -81,7 +87,7 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
 
             tvUserName.setText(comment.getCommentBy());
             tvMessage.setText(comment.getComment());
-            tvTimeStamp.setText(comment.getImage());
+            tvTimeStamp.setText(DateUtils.getDateForDiscussion());
 
             if(comment.getImage()!=null){
                 Glide.with(context).load(comment.getImage()).into(imgUserProfile);

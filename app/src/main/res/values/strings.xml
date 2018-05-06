@@ -134,4 +134,5 @@
     <string name="dummy_discussion_timestamp">10:45 PM</string>
 
     <string name="discussion_hint">Type a message</string>
+    <string name="discussion_title">Help/Discussion</string>
 </resources>

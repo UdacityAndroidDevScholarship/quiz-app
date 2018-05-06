@@ -140,6 +140,14 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_difficulty_label" />
 
         <ImageView
+            android:id="@+id/iv_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toLeftOf="@+id/iv_bookmark"
+            android:src="@drawable/ic_bookmark_border_black_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/difficulty_hard"
+            app:layout_constraintTop_toBottomOf="@+id/difficulty_hard"/>
+        <ImageView
             android:id="@+id/iv_bookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

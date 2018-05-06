@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
-import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,10 +15,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
@@ -31,12 +27,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         QuizAdapter.QuizItemListener {
 
     /* static constants for quiz filter */
-    private static final int QUIZ_FILTER_VIEW_SLIDE_DOWN_ANIMATION_DURATION = 600;
-    private static final int QUIZ_FILTER_VIEW_SLIDE_UP_ANIMATION_DURATION = 450;
-    private static final int QUIZ_FILTER_VIEW_TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN = -1000;
-    private static final int QUIZ_FILTER_VIEW_ANIMATION_SLIDE_DOWN_TRANSLATE_Y = 0;
-    private static final int QUIZ_FILTER_VIEW_ANIMATION_SLIDE_UP_TRANSLATE_Y = -1000;
-    private static final int QUIZ_FILTER_VIEW_SLIDE_UP_DELAY_ON_CHECKED_CHANGED = 350;
+    private static final int SLIDE_DOWN_ANIMATION_DURATION = 600;
+    private static final int SLIDE_UP_ANIMATION_DURATION = 450;
+    private static final int TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN = -1000;
+    private static final int ANIMATION_SLIDE_DOWN_TRANSLATE_Y = 0;
+    private static final int ANIMATION_SLIDE_UP_TRANSLATE_Y = -1000;
+    private static final int SLIDE_UP_DELAY_ON_CHECKED_CHANGED = 350;
 
     private QuizAdapter mQuizAdapter;
 
@@ -44,8 +40,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     // UI Elements
     private DrawerLayout mDrawerLayout;
-    private RecyclerView mQuizRecyclerView;
-    //Reference of the quiz filter list layout
+    // Reference of the quiz filter list layout
     private RadioGroup mHomeQuizListFilterRadioGroup;
     //////////////
 
@@ -71,16 +66,16 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_udacity));
         }
 
-        RecyclerView mQuizRecyclerView = findViewById(R.id.recyclerview_quizzes);
-        mQuizRecyclerView.setHasFixedSize(true);
+        RecyclerView quizRecyclerView = findViewById(R.id.recyclerview_quizzes);
+        quizRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false);
-        mQuizRecyclerView.setLayoutManager(linearLayoutManager);
+        quizRecyclerView.setLayoutManager(linearLayoutManager);
 
         mQuizAdapter = new QuizAdapter(this);
 
-        mQuizRecyclerView.setAdapter(mQuizAdapter);
-      
+        quizRecyclerView.setAdapter(mQuizAdapter);
+
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
     }
@@ -182,6 +177,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mPresenter.onQuizClicked(quiz);
     }
 
+    @Override
+    public void onBookmarkStatusChanged(Quiz quiz) {
+        mPresenter.onBookmarkStatusChange(quiz);
+    }
+
     /**
      * Initializes quiz filter
      */
@@ -190,7 +190,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         (findViewById(R.id.quiz_filter_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mHomeQuizListFilterRadioGroup.getVisibility() == View.GONE)
+                if (mHomeQuizListFilterRadioGroup.getVisibility() == View.GONE)
                     toggleQuizFilterView(true);
                 else
                     toggleQuizFilterView(false);
@@ -204,42 +204,44 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mHomeQuizListFilterRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                onQuizFilterItemCheckedChanged(radioGroup,i);
+                onQuizFilterItemCheckedChanged(radioGroup, i);
             }
         });
     }
 
     /**
      * Hides or shows the quiz filter view
+     *
      * @param show if true, will show the view else will hide it.
      */
     private void toggleQuizFilterView(boolean show) {
-        if(show) {
-            mHomeQuizListFilterRadioGroup.setTranslationY(QUIZ_FILTER_VIEW_TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN);
+        if (show) {
+            mHomeQuizListFilterRadioGroup.setTranslationY(TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN);
             mHomeQuizListFilterRadioGroup.setVisibility(View.VISIBLE);
             mHomeQuizListFilterRadioGroup.animate()
                     .setInterpolator(new FastOutSlowInInterpolator())
-                    .setDuration(QUIZ_FILTER_VIEW_SLIDE_DOWN_ANIMATION_DURATION)
-                    .translationY(QUIZ_FILTER_VIEW_ANIMATION_SLIDE_DOWN_TRANSLATE_Y);
+                    .setDuration(SLIDE_DOWN_ANIMATION_DURATION)
+                    .translationY(ANIMATION_SLIDE_DOWN_TRANSLATE_Y);
         } else {
             mHomeQuizListFilterRadioGroup.animate()
                     .setInterpolator(new FastOutLinearInInterpolator())
-                    .setDuration(QUIZ_FILTER_VIEW_SLIDE_UP_ANIMATION_DURATION)
-                    .translationY(QUIZ_FILTER_VIEW_ANIMATION_SLIDE_UP_TRANSLATE_Y)
+                    .setDuration(SLIDE_UP_ANIMATION_DURATION)
+                    .translationY(ANIMATION_SLIDE_UP_TRANSLATE_Y)
                     .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                mHomeQuizListFilterRadioGroup.setVisibility(View.GONE);
-                            }
-                    }
-            );
+                                       @Override
+                                       public void run() {
+                                           mHomeQuizListFilterRadioGroup.setVisibility(View.GONE);
+                                       }
+                                   }
+                    );
         }
     }
 
     /**
      * This method will be invoked when quiz filter option is changed.
+     *
      * @param radioGroup RadioGroup reference
-     * @param id id of the radio button
+     * @param id         id of the radio button
      */
     private void onQuizFilterItemCheckedChanged(RadioGroup radioGroup, int id) {
         //Hide the quiz filter view after few ms
@@ -248,17 +250,21 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             public void run() {
                 toggleQuizFilterView(false);
             }
-        },QUIZ_FILTER_VIEW_SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
+        }, SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
 
         //Perform action based on selected quiz filter
         switch (id) {
             case R.id.radio_quiz_filter_all:
+                mPresenter.onAllQuizSelected();
                 break;
             case R.id.radio_quiz_filter_attempted:
+                mPresenter.onAttemptedQuizSelected();
                 break;
             case R.id.radio_quiz_filter_un_attempted:
+                mPresenter.onUnAttemptedQuizSelected();
                 break;
             case R.id.radio_quiz_filter_bookmarks:
+                mPresenter.onBookmarkSelected();
                 break;
         }
     }

@@ -8,6 +8,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -59,7 +60,7 @@ public class User {
     @Expose
     @PropertyName("attempted")
     @SerializedName("attempted")
-    List<QuizAttempted> mAttemptedList;
+    Map<String, QuizAttempted> mAttemptedList;
 
     @Expose
     @PropertyName("prefs")
@@ -69,7 +70,7 @@ public class User {
     @Expose
     @PropertyName("bookmarks")
     @SerializedName("bookmarks")
-    List<String> mBookmarks;
+    Map<String, Boolean> mBookmarks;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
@@ -141,11 +142,11 @@ public class User {
         this.mFcmToken = fcmToken;
     }
 
-    public List<QuizAttempted> getAttemptedList() {
+    public Map<String, QuizAttempted> getAttemptedList() {
         return mAttemptedList;
     }
 
-    public void setAttemptedList(List<QuizAttempted> attemptedList) {
+    public void setAttemptedList(Map<String, QuizAttempted> attemptedList) {
         this.mAttemptedList = attemptedList;
     }
 
@@ -157,11 +158,11 @@ public class User {
         this.mNotificationPrefs = notificationPrefs;
     }
 
-    public List<String> getBookmarks() {
+    public Map<String, Boolean> getBookmarks() {
         return mBookmarks;
     }
 
-    public void setBookmarks(List<String> bookmarks) {
+    public void setBookmarks(Map<String, Boolean> bookmarks) {
         this.mBookmarks = bookmarks;
     }
 

@@ -7,7 +7,6 @@ import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -86,7 +85,13 @@ public class Quiz {
      * For local usage only, it is not stored in database
      */
     @Exclude
-    boolean attempted;
+    boolean mAttempted;
+
+    /**
+     * For local usage only, it is not stored in database
+     */
+    @Exclude
+    boolean mIsBookmarked;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
@@ -207,18 +212,26 @@ public class Quiz {
     }
 
     public boolean isAttempted() {
-        return attempted;
+        return mAttempted;
     }
 
     public void setAttempted(boolean attempted) {
-        this.attempted = attempted;
+        this.mAttempted = attempted;
+    }
+
+    public boolean isBookmarked() {
+        return mIsBookmarked;
+    }
+
+    public void setBookmarked(boolean bookmarked) {
+        mIsBookmarked = bookmarked;
     }
 
     /**
      * All the questions, attempts, correct answers etc. Should be used carefully. We will be using
      * the same model to store question and scholar's answer
      */
-    public void reset(){
+    public void reset() {
         for (Map.Entry<String, Question> questionEntry : mQuestions.entrySet()) {
             Map<String, Option> options = questionEntry.getValue().getOptions();
             for (Map.Entry<String, Option> optionEntry : options.entrySet()) {

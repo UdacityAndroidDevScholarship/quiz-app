@@ -53,13 +53,13 @@ public interface FirebaseHandler {
 
     void addBookmark(String quizIdentifier, Callback<Void> callback);
 
-    void getMyBookmarks(Callback<String> callback);
+    void getMyBookmarks(Callback<List<String>> callback);
 
     void getMyPreferences(Callback<NotificationPrefs> callback);
 
     void updateMyPrefs(NotificationPrefs prefs, Callback<Void> callback);
 
-    void updateMyFCMToken(String fcmToken, Callback<Void> callback);
+    void updateMyFCMToken(String fcmToken);
 
     void updateMyStatus(String newStatus, Callback<Void> callback);
 

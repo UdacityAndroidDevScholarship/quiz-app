@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
@@ -96,6 +97,8 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         View mediumLevelView;
         View hardLevelView;
 
+        ImageView ivBookmark;
+
         QuizViewHolder(View itemView) {
             super(itemView);
             tvQuizName = itemView.findViewById(R.id.tv_quiz_name);
@@ -106,6 +109,8 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             easyLevelView = itemView.findViewById(R.id.difficulty_easy);
             mediumLevelView = itemView.findViewById(R.id.difficulty_medium);
             hardLevelView = itemView.findViewById(R.id.difficulty_hard);
+
+            ivBookmark = itemView.findViewById(R.id.iv_bookmark);
         }
 
         void bind(int position) {
@@ -135,6 +140,12 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                 tvQuizStatus.setTextColor(ContextCompat.getColor(context, R.color.dark_red));
             }
 
+            if (currentQuiz.isBookmarked()) {
+                ivBookmark.setImageResource(R.drawable.ic_bookmark_black_24dp);
+            } else {
+                ivBookmark.setImageResource(R.drawable.ic_bookmark_border_black_24dp);
+            }
+
             boolean isMedium = DIFFICULTY_LEVEL_MEDIUM.equalsIgnoreCase(currentQuiz
                     .getDifficulty().trim());
             boolean isHard = DIFFICULTY_LEVEL_HARD.equalsIgnoreCase(currentQuiz
@@ -150,6 +161,11 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
             // Attaching click listener to each quiz item
             itemView.setOnClickListener(v -> mQuizItemListener.onQuizClicked(currentQuiz));
+            ivBookmark.setOnClickListener(v -> {
+                // Toggle bookmark status
+                currentQuiz.setBookmarked(!currentQuiz.isBookmarked());
+                mQuizItemListener.onBookmarkStatusChanged(currentQuiz);
+            });
         }
     }
 
@@ -163,5 +179,12 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
          * @param quiz the Quiz that was clicked
          */
         void onQuizClicked(Quiz quiz);
+
+        /**
+         * Called when quiz is clicked
+         *
+         * @param quiz the Quiz that was clicked
+         */
+        void onBookmarkStatusChanged(Quiz quiz);
     }
 }

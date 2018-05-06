@@ -64,6 +64,21 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".ui.notification.NotificationActivity"
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity
+            android:name=".ui.notification.NotificationDetail"
+            android:label="@string/notification_detail_activity_title"
+            android:parentActivityName=".ui.notification.NotificationActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.notification.NotificationActivity"/>
+        </activity>
     </application>
 
 </manifest>

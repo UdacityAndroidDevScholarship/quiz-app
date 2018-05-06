@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notification_detail_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationDetail">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/tv_notification_detail_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/notification_detail_name_margin_start"
+        android:layout_marginTop="@dimen/notification_detail_name_margin_top"
+        android:text="@string/notification_detail_name"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/notification_detail_name_text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tv_notification_detail_date"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <TextView
+        android:id="@+id/tv_notification_detail_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/notification_detail_date_margin_end"
+        android:layout_marginStart="@dimen/notification_detail_date_margin_start"
+        android:text="@string/notification_detail_date"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_notification_detail_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.674"
+        app:layout_constraintStart_toEndOf="@+id/tv_notification_detail_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_notification_detail_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_notification_detail_description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/notification_detail_description_margin_bottom"
+        android:layout_marginStart="@dimen/notification_detail_description_margin_start"
+        android:layout_marginEnd="@dimen/notification_detail_description_margin_end"
+        android:layout_marginTop="@dimen/notification_detail_description_margin_top"
+        android:text="@string/notification_detail_description"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="@dimen/notification_detail_description_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_notification_detail_name"
+        app:layout_constraintVertical_bias="0.245" />
+
+</android.support.constraint.ConstraintLayout>

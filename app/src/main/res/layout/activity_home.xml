@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeactivitycoordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:stateListAnimator="@animator/appbar_elevated">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarrnav"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:title="@string/app_name"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <RelativeLayout
+            android:id="@+id/updatelist"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:gravity="center"
+                android:text="@string/total_label"
+                android:textStyle="bold"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:id="@+id/total_quizzes_count"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/total"
+                android:gravity="center"
+                tools:text="20"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <Switch
+                android:id="@+id/unattempted_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:switchPadding="8dp"
+                android:text="@string/unattempted" />
+
+
+        </RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_quizzes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:background="#0a0a0a"
+        android:focusableInTouchMode="true"
+        tools:listitem="@layout/list_item_quizzes"
+        tools:itemCount="4"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+</android.support.design.widget.CoordinatorLayout>

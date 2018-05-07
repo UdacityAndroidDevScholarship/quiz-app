@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.developervishalsehgal.udacityscholarsapp"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("keys/quiz_temp_key.jks")
+            storePassword "quizapprocks"
+            keyAlias "quizapptemp"
+            keyPassword "quizapprocks"
+        }
+        release {
+            storeFile file("keys/quiz_temp_key.jks")
+            storePassword "quizapprocks"
+            keyAlias "quizapptemp"
+            keyPassword "quizapprocks"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:26.1.0"
+    implementation "com.google.firebase:firebase-auth:$rootProject.firebaseVersion"
+    implementation "com.google.firebase:firebase-database:$rootProject.firebaseVersion"
+    implementation "com.google.firebase:firebase-messaging:$rootProject.firebaseVersion"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.supportLibVersion"
+    implementation "com.android.support:design:$rootProject.supportLibVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    implementation "com.android.support:support-v4:$rootProject.supportLibVersion"
+    implementation "com.google.firebase:firebase-auth:$rootProject.firebaseVersion"
+    implementation "com.google.android.gms:play-services-auth:$rootProject.firebaseVersion"
+    implementation "com.google.firebase:firebase-database:$rootProject.firebaseVersion"
+    implementation "com.google.firebase:firebase-core:$rootProject.firebaseVersion"
+
+    implementation group: 'com.google.code.gson', name: 'gson', version: "$rootProject.gsonVersion"
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+}
+
+apply plugin: 'com.google.gms.google-services'

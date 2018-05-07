@@ -42,6 +42,9 @@ public class Question {
     @SerializedName("files")
     Map<String, String> mFiles;
 
+    @Exclude
+    String mExtra;
+
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
@@ -96,6 +99,14 @@ public class Question {
         this.mKey = key;
     }
 
+    public String getExtra() {
+        return mExtra;
+    }
+
+    public void setExtra(String extra) {
+        this.mExtra = extra;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -117,7 +128,7 @@ public class Question {
      * Clears all the isCorrect flag from options of this question.
      */
     public void resetOptions() {
-        for(Option optionEntry : mOptions.values()){
+        for (Option optionEntry : mOptions.values()) {
             optionEntry.setIsCorrect(false);
         }
     }

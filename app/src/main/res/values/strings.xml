@@ -128,5 +128,7 @@
     //Unread Notification
     <string name="newnotification">15</string>
     <string name="number">10</string>
+    <string name="subjective_hint">Enter your answer here</string>
+    <string name="invalid_input_provided">Invalid parameter provided while launching quiz.</string>
 
 </resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:layout_margin="@dimen/margin_regular"
+    android:buttonTint="@color/white"
+    android:checked="true"
+    android:drawablePadding="@dimen/margin_medium"
+    android:layoutDirection="ltr"
+    android:paddingBottom="@dimen/margin_medium"
+    android:paddingTop="@dimen/margin_medium"
+    android:text="@string/radio_quiz_filter_all"
+    android:textAlignment="textStart"
+    android:textColor="@color/white"
+    android:textSize="@dimen/text_large">
+
+</CheckBox>

@@ -24,11 +24,13 @@ public interface AttemptQuizContract {
 
         void showSubmitButton();
 
+        void showNextButton();
+
         void loadQuestion(Question question);
 
         void loadQuestionForReview(Question question, Question attemptedQuestion);
 
-        void loadAttemptedStatusText(String attemptedQuestionStatus);
+        void loadAttemptedStatusText(int currentQuestionNumber, int totalQuestions);
 
         void loadTitle(String quizTitle);
 

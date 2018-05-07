@@ -16,7 +16,6 @@ import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseProvider
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This is the implementation of {@link DataHandler} interface. This class should either directly
@@ -96,6 +95,11 @@ class AppDataHandler implements DataHandler {
                 });
             }
         });
+    }
+
+    @Override
+    public void fetchQuizById(String quizId, Callback<Quiz> callback) {
+        mFirebaseHandler.fetchQuizById(quizId, new FirebaseCallback<>(callback));
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.developervishalsehgal.udacityscholarsapp.data.DataHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.DataHandlerProvider;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Question;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
+import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,8 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
     private List<Question> mQuestions;
     private List<Question> mUserAttempts;
 
+    private boolean mIsEvaluated = false;
+
     public AttemptQuizPresenter(AttemptQuizContract.View view) {
         this.mView = view;
         this.mDataHandler = DataHandlerProvider.provide();
@@ -33,28 +36,93 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
     @Override
     public void onNextClicked(Question userAttempt) {
 
-        if (mPointer == (mQuestions.size() - 1)) {
-            // submit button clicked
-            mView.showSubmitConfirmation();
-        } else {
-            mPointer++;
-            mView.loadQuestion(mUserAttempts.get(mPointer));
+        if (mPointer < mQuestions.size()) {
+
+            if (mPointer == (mQuestions.size() - 1)) {
+                // Last question reached
+                if (!mIsEvaluated) {
+                    mView.showSubmitConfirmation();
+                } else {
+                    mView.dismissView();
+                }
+            } else {
+
+                // Update user's attempt
+                mUserAttempts.set(mPointer, userAttempt);
+
+                mPointer++;
+                if (!mIsEvaluated) {
+                    mView.loadQuestion(mUserAttempts.get(mPointer));
+                } else {
+                    mView.loadQuestionForReview(mQuestions.get(mPointer), mUserAttempts.get(mPointer));
+                }
+            }
+            updateQuestionStatus();
         }
     }
 
     @Override
     public void onPreviousClicked() {
-        if (mPointer == 0) {
+        if (mPointer > 0) {
             // First question
-        } else {
             mPointer--;
-            mView.loadQuestion(mUserAttempts.get(mPointer));
+
+            if (!mIsEvaluated) {
+                mView.loadQuestion(mUserAttempts.get(mPointer));
+            } else {
+                mView.loadQuestionForReview(mQuestions.get(mPointer), mUserAttempts.get(mPointer));
+            }
+
+            if (mPointer == 0) {
+                mView.disablePreviousButton();
+            }
+            updateQuestionStatus();
         }
     }
 
     @Override
     public void onSubmitClicked() {
+        if (!mIsEvaluated) {
 
+            int maxMarks = mSelectedQuiz.getMaxMarks();
+
+            int userScore = 0;
+
+            // Evaluating user's score based on performance
+            for (Question userAttempt : mUserAttempts) {
+                if (mQuestions.contains(userAttempt)) {
+                    userScore += userAttempt.getMarks();
+                }
+            }
+
+            int finalUserScore = userScore;
+
+            double userPercentage = 100 * (((double) finalUserScore) / maxMarks);
+
+            QuizAttempted quizAttempted = new QuizAttempted();
+            quizAttempted.setKey(mSelectedQuiz.getKey());
+            quizAttempted.setQuizId(mSelectedQuiz.getKey());
+            quizAttempted.setLesson(mSelectedQuiz.getLesson());
+            quizAttempted.setMaxMarks(maxMarks);
+            quizAttempted.setPercentage((int) userPercentage);
+            quizAttempted.setQuizTitle(mSelectedQuiz.getTitle());
+            quizAttempted.setScore(userScore);
+
+            mDataHandler.updateMyAttemptedQuizzes(quizAttempted, new DataHandler.Callback<Void>() {
+                @Override
+                public void onResponse(Void result) {
+                    mView.loadResultSummary(finalUserScore, maxMarks, userPercentage);
+                }
+
+                @Override
+                public void onError() {
+                    mView.showError();
+                }
+            });
+
+        } else {
+            mView.dismissView();
+        }
     }
 
     @Override
@@ -71,11 +139,13 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
         mDataHandler.fetchQuizById(quizId, new DataHandler.Callback<Quiz>() {
             @Override
             public void onResponse(Quiz result) {
+                mView.hideLoading();
                 displayQuiz(result);
             }
 
             @Override
             public void onError() {
+                mView.hideLoading();
                 mView.showError();
             }
         });
@@ -104,8 +174,7 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
         this.mDataHandler = null;
     }
 
-    private void updateQuestionStatus(){
-
-        mView.loadAttemptedStatusText(null);
+    private void updateQuestionStatus() {
+        mView.loadAttemptedStatusText(mPointer + 1, mQuestions.size());
     }
 }

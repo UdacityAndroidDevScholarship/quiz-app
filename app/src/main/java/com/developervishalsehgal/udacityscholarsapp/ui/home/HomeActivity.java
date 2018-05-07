@@ -1,5 +1,6 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -20,6 +21,8 @@ import android.widget.RadioGroup;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
+import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
 
 import java.util.List;
 
@@ -119,6 +122,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void navigateToQuizDesc(Quiz quiz) {
         // TODO: Navigate to QuizDescription Activity, use the quiz object above to extract quiz
         // TODO: details etc and pass as intent parameter.
+
+        // TODO remove below code, only for testing
+        Intent attemptQuizIntent = new Intent(this, AttemptQuizActivity.class);
+        attemptQuizIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, quiz.getKey());
+        startActivity(attemptQuizIntent);
     }
 
     @Override

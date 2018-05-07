@@ -33,6 +33,8 @@ public interface FirebaseHandler {
 
     void fetchAttemptedQuizzes(Callback<List<QuizAttempted>> callback);
 
+    void fetchQuizById(String quizId, Callback<Quiz> callback);
+
     void updateSlackHandle(String slackHandle, Callback<Void> callback);
 
     void updateUserName(String userName, Callback<Void> callback);
@@ -67,7 +69,7 @@ public interface FirebaseHandler {
 
     /**
      * Generic callback interface for passing response to caller.
-     *
+     * <p>
      * TODO Replace all such callbacks with reactive programing, just pass observables
      *
      * @param <T> Type of expected response

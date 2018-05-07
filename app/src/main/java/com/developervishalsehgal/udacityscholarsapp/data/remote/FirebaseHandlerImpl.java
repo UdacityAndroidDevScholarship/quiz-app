@@ -138,6 +138,29 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
     @Override
+    public void fetchQuizById(String quizId, Callback<Quiz> callback) {
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    Quiz singleQuiz = snapshot.getValue(Quiz.class);
+                    callback.onReponse(singleQuiz);
+                } else {
+                    callback.onError();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mQuizzesRef.child(quizId).addValueEventListener(listener);
+        mValueListeners.add(listener);
+    }
+
+    @Override
     public void updateSlackHandle(String slackHandle, final Callback<Void> callback) {
         updateUserProperty(KEY_SLACK_HANDLE, slackHandle, callback);
     }

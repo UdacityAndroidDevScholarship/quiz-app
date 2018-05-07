@@ -1,7 +1,9 @@
-package com.developervishalsehgal.udacityscholarsapp;
+package com.developervishalsehgal.udacityscholarsapp.ui.discussion;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.developervishalsehgal.udacityscholarsapp.R;
 
 public class QuizDiscussionActivity extends AppCompatActivity {
 

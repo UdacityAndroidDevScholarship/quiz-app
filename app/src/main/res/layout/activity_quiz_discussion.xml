@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.developervishalsehgal.udacityscholarsapp.QuizDiscussionActivity">
+    tools:context="com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_discussion"

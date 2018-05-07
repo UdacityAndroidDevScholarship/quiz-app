@@ -67,7 +67,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".ui.details.QuizDetailsActivity" />
-        <activity android:name=".QuizDiscussionActivity"></activity>
+        <activity android:name=".ui.discussion.QuizDiscussionActivity"></activity>
     </application>
 
 </manifest>

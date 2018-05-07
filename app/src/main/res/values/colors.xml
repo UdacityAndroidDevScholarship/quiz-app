@@ -11,6 +11,8 @@
     <color name="light_blue">#ADD8E6</color>
 
     <color name="materialBlack">#383838</color>
+    <color name="senderMessage">#E2E2E2</color>
+    <color name="userMessage">#AAFFAA</color>
 
 
     <color name="color_green_deadline">#00c853</color>

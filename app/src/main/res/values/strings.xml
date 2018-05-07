@@ -63,4 +63,5 @@
     <string name="released_on">Released on</string>
     <string name="your_score">Your score</string>
     <string name="type_your_message_here">Type your message here</string>
+    <string name="sender_image">Sender image</string>
 </resources>

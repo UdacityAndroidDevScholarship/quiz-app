@@ -3,33 +3,45 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.Objects;
 
 @IgnoreExtraProperties
 public class Comment {
 
     @Expose
+    @PropertyName("comment")
     @SerializedName("comment")
-    private String mComment;
+    String mComment;
 
     @Expose
+    @PropertyName("comment-by")
     @SerializedName("comment-by")
-    private String mCommentBy;
+    String mCommentBy;
 
     @Expose
+    @PropertyName("commented-on")
     @SerializedName("commented-on")
-    private String mCommentedOn;
+    long mCommentedOn;
 
     @Expose
+    @PropertyName("commenter-id")
     @SerializedName("commenter-id")
-    private String mCommenterId;
+    String mCommenterId;
+
+    @Expose
+    @PropertyName("commenter-pic")
+    @SerializedName("commenter-pic")
+    String mImageUrl;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public String getComment() {
         return mComment;
@@ -47,11 +59,11 @@ public class Comment {
         mCommentBy = commentBy;
     }
 
-    public String getCommentedOn() {
+    public long getCommentedOn() {
         return mCommentedOn;
     }
 
-    public void setCommentedOn(String commentedOn) {
+    public void setCommentedOn(long commentedOn) {
         mCommentedOn = commentedOn;
     }
 
@@ -69,5 +81,31 @@ public class Comment {
 
     public void setKey(String key) {
         this.mKey = key;
+    }
+
+    public String getImage() {
+        return mImageUrl;
+    }
+
+    public void setImage(String imageUrl) {
+        this.mImageUrl = imageUrl;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Comment comment = (Comment) o;
+        return mCommentedOn == comment.mCommentedOn &&
+                Objects.equals(mComment, comment.mComment) &&
+                Objects.equals(mCommentBy, comment.mCommentBy) &&
+                Objects.equals(mCommenterId, comment.mCommenterId) &&
+                Objects.equals(mImageUrl, comment.mImageUrl);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mComment, mCommentBy, mCommentedOn, mCommenterId);
     }
 }

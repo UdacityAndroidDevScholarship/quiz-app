@@ -79,6 +79,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.notification.NotificationActivity"/>
         </activity>
+        <activity android:name=".ui.discussion.QuizDiscussionActivity"
+            android:label="@string/quiz_discussion_activity_title"/>
+
     </application>
 
 </manifest>

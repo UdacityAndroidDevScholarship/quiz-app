@@ -129,4 +129,9 @@
     <string name="newnotification">15</string>
     <string name="number">10</string>
 
+    //Discussion Screen
+    <string name="chat_message_hint">Type a message</string>
+    <string name="message_send_button">Message Send Button</string>
+    <string name="quiz_discussion_activity_title">Help / Discussion</string>
+
 </resources>

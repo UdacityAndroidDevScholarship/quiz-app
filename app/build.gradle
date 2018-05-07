@@ -74,6 +74,9 @@ dependencies {
     implementation "com.google.firebase:firebase-messaging:15.0.2"
     // Ends
 
+    //Bubble Chat layout
+    implementation 'com.daasuu:BubbleLayout:1.2.0'
+
     implementation group: 'com.google.code.gson', name: 'gson', version: "$rootProject.gsonVersion"
 
 }

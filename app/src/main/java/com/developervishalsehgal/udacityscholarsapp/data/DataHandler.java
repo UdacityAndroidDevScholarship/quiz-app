@@ -3,10 +3,10 @@ package com.developervishalsehgal.udacityscholarsapp.data;
 import android.graphics.Bitmap;
 
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Discussion;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
-import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 
 import java.util.List;
 
@@ -199,6 +199,22 @@ public interface DataHandler {
     List<Notification> getAllNotifications(int startFrom, int limit);
 
     List<Notification> searchNotifications(String query, int startFrom, int limit);
+
+    /**
+     * Fetches messages based on parameters passed
+     *
+     * @param limitToFirst how many messages to be fetched? pass 0 to fetch all
+     * @param callback     Callback for receiving result
+     */
+    void fetchDiscussions(int limitToFirst, Callback<Discussion> callback);
+
+    /**
+     * Fetches messages based on parameters passed
+     *
+     * @param comment  the comment object to send
+     * @param callback Callback for sending message
+     */
+    void sendQuizDiscussionMessage(Comment comment, Callback<Void> callback);
 
     /**
      * Generic callback interface for passing response to caller.

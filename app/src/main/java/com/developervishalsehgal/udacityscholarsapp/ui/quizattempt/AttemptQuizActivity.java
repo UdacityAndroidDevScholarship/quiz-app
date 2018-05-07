@@ -35,6 +35,9 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     // UI Elements
     Toolbar mToolbar;
+
+    TextView mTvQuestionDesc;
+
     RadioGroup mRgSingleChoice;
     LinearLayout mLLMultipleChoice;
     EditText mEtSubjective;
@@ -66,6 +69,8 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_clear_black_24dp));
         }
+
+        mTvQuestionDesc = findViewById(R.id.tv_question_description);
 
         mRgSingleChoice = findViewById(R.id.rg_single_choice_holder);
         mLLMultipleChoice = findViewById(R.id.ll_multiple_choice_holder);
@@ -181,6 +186,8 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     private void populateQuestionDetails(Question question) {
 
+        mTvQuestionDesc.setText(question.getDescription());
+
         // Remove all subview before adding new ones
         mLLMultipleChoice.removeAllViews();
         mRgSingleChoice.removeAllViews();
@@ -205,7 +212,9 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                 radioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
                     // Since it is single choice question, reset everything before setting
                     question.resetOptions();
-                    singleOption.setIsCorrect(isChecked);
+                    if (isChecked) {
+                        option.getValue().setIsCorrect(true);
+                    }
                 });
 
                 radioButton.setChecked(singleOption.isCorrect());
@@ -230,7 +239,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
                 checkBox.setText(singleOption.getDescription());
                 checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                    singleOption.setIsCorrect(isChecked);
+                    option.getValue().setIsCorrect(isChecked);
                 });
 
                 checkBox.setChecked(singleOption.isCorrect());

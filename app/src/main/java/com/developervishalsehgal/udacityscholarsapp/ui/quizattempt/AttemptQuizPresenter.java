@@ -57,6 +57,7 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
                     mView.loadQuestionForReview(mQuestions.get(mPointer), mUserAttempts.get(mPointer));
                 }
             }
+            mView.enablePreviousButton();
             updateQuestionStatus();
         }
     }
@@ -166,6 +167,8 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
         mView.disablePreviousButton();
 
         mView.loadQuestion(mUserAttempts.get(mPointer));
+
+        mView.loadTitle(mSelectedQuiz.getTitle());
     }
 
     @Override

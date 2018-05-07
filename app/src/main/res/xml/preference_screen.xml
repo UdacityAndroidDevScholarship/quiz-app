@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="App">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/get_notifications_key"
+            android:title="@string/get_notifications_label" />
+
+        <ListPreference
+            android:defaultValue="@string/default_theme_value"
+            android:entries="@array/theme_label_preference"
+            android:entryValues="@array/theme_value_preference"
+            android:key="@string/theme_key_preference"
+            android:summary="@string/default_theme_value"
+            android:title="@string/theme_title_preference" />
+
+        <Preference
+            android:enabled="true"
+            android:title="@string/logout_preference" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

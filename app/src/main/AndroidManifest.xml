@@ -24,8 +24,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.home.HomeActivity">
-            <!--Adding this intent filter here to silence the warning ,this should be a part of home
-            activity or quiz details activity-->
+
+            <!--
+            Adding this intent filter here to silence the warning ,this should be a part of home
+            activity or quiz details activity
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
@@ -62,6 +65,10 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".ui.details.QuizDetailsActivity" />
+        <activity android:name=".ui.discussion.QuizDiscussionActivity" />
+        <activity android:name=".ui.settings.SettingsActivity"></activity>
     </application>
 
 </manifest>

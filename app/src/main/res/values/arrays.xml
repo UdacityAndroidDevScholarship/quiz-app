@@ -6,4 +6,15 @@
         <item>Mobile web</item>
         <item>Mobile web specialist</item>-->
     </string-array>
+
+    <string-array name="entries_array">
+        <item>DarkLabel</item>
+        <item>LightLabel</item>
+    </string-array>
+
+    <string-array name="entry_values_array">
+        <item>darkTheme</item>
+        <item>lightTheme</item>
+    </string-array>
+
 </resources>

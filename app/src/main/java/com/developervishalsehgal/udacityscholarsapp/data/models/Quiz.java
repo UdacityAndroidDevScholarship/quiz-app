@@ -3,10 +3,13 @@ package com.developervishalsehgal.udacityscholarsapp.data.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Model class representing a quiz
@@ -15,62 +18,81 @@ import java.util.List;
 public class Quiz {
 
     @Expose
+    @PropertyName("creator-id")
     @SerializedName("creator-id")
-    private String mCreatorId;
+    String mCreatorId;
 
     @Expose
+    @PropertyName("creator-name")
     @SerializedName("creator-name")
-    private String mCreatorName;
+    String mCreatorName;
 
     @Expose
+    @PropertyName("description")
     @SerializedName("description")
-    private String mDescription;
+    String mDescription;
 
     @Expose
+    @PropertyName("difficulty")
     @SerializedName("difficulty")
-    private String mDifficulty;
+    String mDifficulty;
 
     @Expose
+    @PropertyName("files")
     @SerializedName("files")
-    private List<String> mFiles;
+    Map<String, String> mFiles;
 
     @Expose
+    @PropertyName("last-modified")
     @SerializedName("last-modified")
-    private String mLastModified;
+    String mLastModified;
 
     @Expose
+    @PropertyName("lesson")
     @SerializedName("lesson")
-    private int mLesson;
+    int mLesson;
 
     @Expose
+    @PropertyName("max-marks")
     @SerializedName("max-marks")
-    private int mMaxMarks;
+    int mMaxMarks;
 
     @Expose
+    @PropertyName("questions")
     @SerializedName("questions")
-    private List<Question> mQuestions;
+    Map<String, Question> mQuestions;
 
     @Expose
+    @PropertyName("rated-by")
     @SerializedName("rated-by")
-    private int mRatedBy;
+    int mRatedBy;
 
     @Expose
+    @PropertyName("rating")
     @SerializedName("rating")
-    private double mRating;
+    double mRating;
 
     @Expose
+    @PropertyName("title")
     @SerializedName("title")
-    private String mTitle;
+    String mTitle;
 
     @Expose
+    @PropertyName("deadline")
     @SerializedName("deadline")
-    private String mDeadline;
+    String mDeadline;
+
+    /**
+     * For local usage only, it is not stored in database
+     */
+    @Exclude
+    boolean attempted;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    private String mKey;
+    String mKey;
 
     public String getCreatorId() {
         return mCreatorId;
@@ -104,11 +126,11 @@ public class Quiz {
         mDifficulty = difficulty;
     }
 
-    public List<String> getFiles() {
+    public Map<String, String> getFiles() {
         return mFiles;
     }
 
-    public void setFiles(List<String> files) {
+    public void setFiles(Map<String, String> files) {
         mFiles = files;
     }
 
@@ -136,11 +158,11 @@ public class Quiz {
         mMaxMarks = maxMarks;
     }
 
-    public List<Question> getQuestions() {
+    public Map<String, Question> getQuestions() {
         return mQuestions;
     }
 
-    public void setQuestions(List<Question> questions) {
+    public void setQuestions(Map<String, Question> questions) {
         mQuestions = questions;
     }
 
@@ -184,4 +206,52 @@ public class Quiz {
         this.mKey = key;
     }
 
+    public boolean isAttempted() {
+        return attempted;
+    }
+
+    public void setAttempted(boolean attempted) {
+        this.attempted = attempted;
+    }
+
+    /**
+     * All the questions, attempts, correct answers etc. Should be used carefully. We will be using
+     * the same model to store question and scholar's answer
+     */
+    public void reset(){
+        for (Map.Entry<String, Question> questionEntry : mQuestions.entrySet()) {
+            Map<String, Option> options = questionEntry.getValue().getOptions();
+            for (Map.Entry<String, Option> optionEntry : options.entrySet()) {
+                optionEntry.getValue().setIsCorrect(false);
+            }
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Quiz quiz = (Quiz) o;
+        return mLesson == quiz.mLesson &&
+                mMaxMarks == quiz.mMaxMarks &&
+                mRatedBy == quiz.mRatedBy &&
+                Double.compare(quiz.mRating, mRating) == 0 &&
+                Objects.equals(mCreatorId, quiz.mCreatorId) &&
+                Objects.equals(mCreatorName, quiz.mCreatorName) &&
+                Objects.equals(mDescription, quiz.mDescription) &&
+                Objects.equals(mDifficulty, quiz.mDifficulty) &&
+                Objects.equals(mFiles, quiz.mFiles) &&
+                Objects.equals(mLastModified, quiz.mLastModified) &&
+                Objects.equals(mQuestions, quiz.mQuestions) &&
+                Objects.equals(mTitle, quiz.mTitle) &&
+                Objects.equals(mDeadline, quiz.mDeadline);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mCreatorId, mCreatorName, mDescription, mDifficulty, mFiles,
+                mLastModified, mLesson, mMaxMarks, mQuestions, mRatedBy, mRating,
+                mTitle, mDeadline);
+    }
 }

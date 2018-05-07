@@ -1,11 +1,11 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
-import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,14 +16,12 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.settings.SettingsActivity;
 
 import java.util.List;
 
@@ -102,9 +100,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     mDrawerLayout.openDrawer(Gravity.START);
                 }
                 break;
-            case R.id.logout:
-                // TODO: Show a confirmation {@link AlertDialog} here. When user cliks OK. call
-                // TODO: mPresenter.logout();
+            case R.id.action_settings_menu:
+                Intent intent = new Intent(HomeActivity.this , SettingsActivity.class);
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);

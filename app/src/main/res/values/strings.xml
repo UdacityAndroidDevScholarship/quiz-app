@@ -128,5 +128,6 @@
     //Unread Notification
     <string name="newnotification">15</string>
     <string name="number">10</string>
+    <string name="string_settings">Settings</string>
 
 </resources>

@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/logout"
-        android:title="@string/logout"
+        android:id="@+id/action_settings_menu"
+        android:title="@string/string_settings"
         app:showAsAction="never"/>
 </menu>

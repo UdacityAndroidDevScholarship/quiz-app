@@ -2,8 +2,18 @@
 <resources>
     <string-array name="available_tracks">
         <item>Android developer</item>
-<!--        <item>Android basic</item>
-        <item>Mobile web</item>
-        <item>Mobile web specialist</item>-->
+        <!--        <item>Android basic</item>
+                <item>Mobile web</item>
+                <item>Mobile web specialist</item>-->
+    </string-array>
+
+    <string-array name="theme_label_preference">
+        <item>@string/dark_theme_label</item>
+        <item>@string/light_theme_label</item>
+    </string-array>
+
+    <string-array name="theme_value_preference">
+        <item>@string/dark_theme_value</item>
+        <item>@string/light_theme_value</item>
     </string-array>
 </resources>

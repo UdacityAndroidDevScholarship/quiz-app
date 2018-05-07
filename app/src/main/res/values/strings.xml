@@ -59,4 +59,7 @@
     <string name="text_proceed">Proceed >> </string>
     <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
     <string name="profile_saved_successfully">Profile saved successfully</string>
+    <string name="author">Author</string>
+    <string name="released_on">Released on</string>
+    <string name="your_score">Your score</string>
 </resources>

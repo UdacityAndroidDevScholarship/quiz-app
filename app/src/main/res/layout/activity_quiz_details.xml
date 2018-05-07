@@ -4,6 +4,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.developervishalsehgal.udacityscholarsapp.QuizDetailsActivity">
+    android:background="@android:color/white"
+    tools:context=".ui.details.QuizDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_quiz_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_quiz_details"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/quiz_title_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:textColor="@color/materialBlack"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar_quiz_details"
+        tools:text="Lesson 5 Quiz 1 - Intents" />
+
+    <TextView
+        android:id="@+id/author_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/author"
+        android:textAllCaps="true"
+        android:textColor="@color/materialBlack"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@id/quiz_title_details"
+        app:layout_constraintTop_toBottomOf="@id/quiz_title_details" />
+
+    <TextView
+        android:id="@+id/author_name_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/materialBlack"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/author_details"
+        app:layout_constraintTop_toBottomOf="@id/author_details"
+        tools:text="Vishal Sehgal" />
+
+    <TextView
+        android:id="@+id/released_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/released_on"
+        android:textAllCaps="true"
+        android:textColor="@color/materialBlack"
+        android:textSize="14sp"
+        app:layout_constraintRight_toRightOf="@id/quiz_title_details"
+        app:layout_constraintTop_toBottomOf="@id/quiz_title_details" />
+
+    <TextView
+        android:id="@+id/released_on_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/materialBlack"
+        android:textSize="16sp"
+        app:layout_constraintRight_toRightOf="@id/released_details"
+        app:layout_constraintTop_toBottomOf="@id/author_details"
+        tools:text="14th April, 2018" />
+
+    <TextView
+        android:id="@+id/deadline_label_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/deadline"
+        android:textAllCaps="true"
+        android:textColor="@color/materialBlack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/author_name_details" />
+
+    <TextView
+        android:id="@+id/deadline_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/color_green_deadline"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deadline_label_details"
+        tools:text="14th April, 2018" />
+
+    <TextView
+        android:id="@+id/score_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="32dp"
+        android:textColor="@color/materialBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="Unattempted" />
+
+    <TextView
+        android:id="@+id/your_score_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/your_score"
+        android:textAllCaps="true"
+        android:textColor="@color/blue_jeans"
+        app:layout_constraintBottom_toTopOf="@id/score_details"
+        app:layout_constraintLeft_toLeftOf="@id/score_details" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_start_quiz"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:scrollbars="vertical"
+        android:textColor="@color/materialBlack"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/your_score_details"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        app:layout_constraintTop_toBottomOf="@id/deadline_details" />
 
 </android.support.constraint.ConstraintLayout>

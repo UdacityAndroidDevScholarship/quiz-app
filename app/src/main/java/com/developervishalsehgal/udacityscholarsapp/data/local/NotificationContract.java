@@ -6,7 +6,7 @@ import android.provider.BaseColumns;
  * Created by dell on 4/21/2018.
  */
 
-public class NotificationContract {
+class NotificationContract {
 
     private NotificationContract() {
         // To prevent accidental instantiation

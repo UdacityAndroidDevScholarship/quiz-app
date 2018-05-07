@@ -115,7 +115,7 @@ public interface DataHandler {
      * @param quizIdentifier id of the quiz to be bookmarked
      * @param callback       callback for status of operation
      */
-    void addBookmark(String quizIdentifier, Callback<Void> callback);
+    void updateQuizBookmarkStatus(String quizIdentifier, boolean isBookmarked, Callback<Void> callback);
 
     /**
      * Gets user's bookmarked quizzes

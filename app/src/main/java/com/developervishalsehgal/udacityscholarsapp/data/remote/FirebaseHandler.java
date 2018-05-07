@@ -51,7 +51,7 @@ public interface FirebaseHandler {
 
     void updateMyAttemptedQuizzes(QuizAttempted quizAttempt, Callback<Void> callback);
 
-    void addBookmark(String quizIdentifier, Callback<Void> callback);
+    void updateQuizBookmarkStatus(String quizIdentifier, boolean isBookmarked, Callback<Void> callback);
 
     void getMyBookmarks(Callback<List<String>> callback);
 

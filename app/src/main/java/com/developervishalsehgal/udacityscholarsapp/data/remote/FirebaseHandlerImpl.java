@@ -251,13 +251,13 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
     @Override
-    public void addBookmark(String quizIdentifier, Callback<Void> callback) {
+    public void updateQuizBookmarkStatus(String quizIdentifier, boolean isBookmarked, Callback<Void> callback) {
         if (mCurrentUser == null) {
             mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         }
 
         mUsersRef.child(mCurrentUser.getUid()).child(KEY_USER_BOOKMARKS).child(quizIdentifier)
-                .setValue(true)
+                .setValue(isBookmarked)
                 .addOnSuccessListener(aVoid -> callback.onReponse(null))
                 .addOnFailureListener(e -> callback.onError());
     }
@@ -315,7 +315,9 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         }
 
-        mUsersRef.child(mCurrentUser.getUid()).child(KEY_FCM_TOKEN).setValue(fcmToken);
+        if (mCurrentUser != null) {
+            mUsersRef.child(mCurrentUser.getUid()).child(KEY_FCM_TOKEN).setValue(fcmToken);
+        }
 
     }
 

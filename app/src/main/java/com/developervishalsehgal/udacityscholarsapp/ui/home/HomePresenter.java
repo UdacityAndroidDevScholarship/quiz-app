@@ -100,7 +100,7 @@ public class HomePresenter implements HomeContract.Presenter {
     public void onBookmarkSelected() {
         List<Quiz> bookmarkedQuizzes = new ArrayList<>();
         for (Quiz quiz : mQuizzes) {
-            if (!quiz.isBookmarked()) {
+            if (quiz.isBookmarked()) {
                 bookmarkedQuizzes.add(quiz);
             }
         }
@@ -109,7 +109,7 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void onBookmarkStatusChange(Quiz quiz) {
-        mDataHandler.addBookmark(quiz.getKey(), new DataHandler.Callback<Void>() {
+        mDataHandler.updateQuizBookmarkStatus(quiz.getKey(), quiz.isBookmarked(), new DataHandler.Callback<Void>() {
             @Override
             public void onResponse(Void result) {
 

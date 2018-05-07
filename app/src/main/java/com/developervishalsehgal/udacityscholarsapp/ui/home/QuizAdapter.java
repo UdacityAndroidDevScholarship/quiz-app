@@ -14,6 +14,7 @@ import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -67,6 +68,18 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
     void loadQuizzes(@NonNull List<Quiz> quizList) {
         this.mQuizList.clear();
         this.mQuizList.addAll(quizList);
+
+        // Sort the quizzes
+        Collections.sort(mQuizList, (q1, q2) -> {
+            if (q1.isBookmarked() != q2.isBookmarked()) {
+                return Boolean.compare(q2.isBookmarked(), q1.isBookmarked());
+            } else if (q1.isAttempted() != q2.isAttempted()) {
+                return Boolean.compare(q2.isAttempted(), q1.isAttempted());
+            } else {
+                return q1.getTitle().compareTo(q2.getTitle());
+            }
+        });
+
         notifyDataSetChanged();
     }
 
@@ -115,9 +128,9 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
         void bind(int position) {
 
-            Context context = itemView.getContext();
+            final Context context = itemView.getContext();
 
-            Quiz currentQuiz = mQuizList.get(position);
+            final Quiz currentQuiz = mQuizList.get(position);
 
             // Binding the data
             tvQuizName.setText(currentQuiz.getTitle());
@@ -146,18 +159,19 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                 ivBookmark.setImageResource(R.drawable.ic_bookmark_border_black_24dp);
             }
 
-            boolean isMedium = DIFFICULTY_LEVEL_MEDIUM.equalsIgnoreCase(currentQuiz
-                    .getDifficulty().trim());
-            boolean isHard = DIFFICULTY_LEVEL_HARD.equalsIgnoreCase(currentQuiz
-                    .getDifficulty().trim());
-
-            // Setting difficult levels
-            // hard is visible for hard difficulty only
-            hardLevelView.setVisibility(isHard ? View.VISIBLE : View.INVISIBLE);
-            // Medium is visible for medium and hard difficulty
-            mediumLevelView.setVisibility((isHard || isMedium) ? View.VISIBLE : View.INVISIBLE);
-            // Easy level is always visible irrespective of difficulty level
-            easyLevelView.setVisibility(View.VISIBLE);
+            if (DIFFICULTY_LEVEL_HARD.equalsIgnoreCase(currentQuiz.getDifficulty().trim())) {
+                hardLevelView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_red_deadline));
+                mediumLevelView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_orange_light));
+                easyLevelView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_green_deadline));
+            } else if (DIFFICULTY_LEVEL_MEDIUM.equalsIgnoreCase(currentQuiz.getDifficulty().trim())) {
+                hardLevelView.setBackgroundColor(ContextCompat.getColor(context, R.color.transparent));
+                mediumLevelView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_orange_light));
+                easyLevelView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_green_deadline));
+            } else {
+                hardLevelView.setBackgroundColor(ContextCompat.getColor(context, R.color.transparent));
+                mediumLevelView.setBackgroundColor(ContextCompat.getColor(context, R.color.transparent));
+                easyLevelView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_green_deadline));
+            }
 
             // Attaching click listener to each quiz item
             itemView.setOnClickListener(v -> mQuizItemListener.onQuizClicked(currentQuiz));

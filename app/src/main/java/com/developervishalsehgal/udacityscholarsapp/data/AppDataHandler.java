@@ -151,8 +151,8 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
-    public void addBookmark(String quizIdentifier, Callback<Void> callback) {
-        mFirebaseHandler.addBookmark(quizIdentifier, new FirebaseCallback<>(callback));
+    public void updateQuizBookmarkStatus(String quizIdentifier, boolean isBookmarked, Callback<Void> callback) {
+        mFirebaseHandler.updateQuizBookmarkStatus(quizIdentifier, isBookmarked, new FirebaseCallback<>(callback));
     }
 
     @Override

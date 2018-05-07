@@ -187,26 +187,19 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
      */
     private void initQuizFilter() {
         //Set quiz filter button behavior
-        (findViewById(R.id.quiz_filter_button)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mHomeQuizListFilterRadioGroup.getVisibility() == View.GONE)
-                    toggleQuizFilterView(true);
-                else
-                    toggleQuizFilterView(false);
-            }
+        (findViewById(R.id.quiz_filter_button)).setOnClickListener(view -> {
+            if (mHomeQuizListFilterRadioGroup.getVisibility() == View.GONE)
+                toggleQuizFilterView(true);
+            else
+                toggleQuizFilterView(false);
         });
 
         //Get reference to the quiz list filter layout and radio buttons
         mHomeQuizListFilterRadioGroup = findViewById(R.id.home_quiz_list_filter_radio_group);
         //Set radio group checked change listener so we can perform an action when a different
         //quiz filter is selected.
-        mHomeQuizListFilterRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                onQuizFilterItemCheckedChanged(radioGroup, i);
-            }
-        });
+        mHomeQuizListFilterRadioGroup.setOnCheckedChangeListener(
+                this::onQuizFilterItemCheckedChanged);
     }
 
     /**
@@ -227,12 +220,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     .setInterpolator(new FastOutLinearInInterpolator())
                     .setDuration(SLIDE_UP_ANIMATION_DURATION)
                     .translationY(ANIMATION_SLIDE_UP_TRANSLATE_Y)
-                    .withEndAction(new Runnable() {
-                                       @Override
-                                       public void run() {
-                                           mHomeQuizListFilterRadioGroup.setVisibility(View.GONE);
-                                       }
-                                   }
+                    .withEndAction(() -> mHomeQuizListFilterRadioGroup.setVisibility(View.GONE)
                     );
         }
     }
@@ -245,12 +233,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
      */
     private void onQuizFilterItemCheckedChanged(RadioGroup radioGroup, int id) {
         //Hide the quiz filter view after few ms
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                toggleQuizFilterView(false);
-            }
-        }, SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
+        new Handler().postDelayed(() -> toggleQuizFilterView(false), SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
 
         //Perform action based on selected quiz filter
         switch (id) {

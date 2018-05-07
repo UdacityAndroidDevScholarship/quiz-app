@@ -43,6 +43,9 @@
             </intent-filter>
         </activity>
 
+        <!-- For quiz Details Activity -->
+        <activity android:name=".QuizDetailsActivity" />
+
         <!-- For Firebase cloud messaging -->
         <service
             android:name=".services.FBMessagingService"

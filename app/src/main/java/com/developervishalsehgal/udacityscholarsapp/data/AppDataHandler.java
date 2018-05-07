@@ -6,12 +6,12 @@ import android.graphics.Bitmap;
 import com.developervishalsehgal.udacityscholarsapp.application.AppClass;
 import com.developervishalsehgal.udacityscholarsapp.data.local.DBHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
 import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseProvider;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -52,7 +52,42 @@ class AppDataHandler implements DataHandler {
 
     @Override
     public void fetchQuizzes(int limitToFirst, final Callback<List<Quiz>> callback) {
-        mFirebaseHandler.fetchQuizzes(limitToFirst, new FirebaseCallback<>(callback));
+        // Fetch all the quizzes
+        mFirebaseHandler.fetchQuizzes(limitToFirst, new FirebaseCallback<List<Quiz>>(callback) {
+            @Override
+            public void onReponse(List<Quiz> quizzes) {
+
+                // Fetch quizzes attempted by user
+                mFirebaseHandler.fetchAttemptedQuizzes(new FirebaseHandler.Callback<List<QuizAttempted>>() {
+                    @Override
+                    public void onReponse(List<QuizAttempted> attempts) {
+
+                        // Mark attempted quizzes
+                        for (Quiz singleQuiz : quizzes) {
+                            for (QuizAttempted attempt : attempts) {
+                                if (singleQuiz.getKey().equalsIgnoreCase(attempt.getQuizId())) {
+                                    singleQuiz.setAttempted(true);
+                                    break;
+                                }
+                            }
+                        }
+
+                        // return the marked response
+                        callback.onResponse(quizzes);
+                    }
+
+                    @Override
+                    public void onError() {
+                        callback.onError();
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void fetchAttemptedQuizzes(Callback<List<QuizAttempted>> callback) {
+        mFirebaseHandler.fetchAttemptedQuizzes(new FirebaseCallback<>(callback));
     }
 
     @Override
@@ -72,12 +107,14 @@ class AppDataHandler implements DataHandler {
 
     @Override
     public void uploadProfilePic(String localPicturePath, Callback<String> callback) {
-
+        // TODO: Implement this feature using firebase storage
+        throw new RuntimeException("Feature not implemented");
     }
 
     @Override
     public void uploadProfilePic(Bitmap picBitmap, Callback<String> callback) {
-
+        // TODO: Implement this feature using firebase storage
+        throw new RuntimeException("Feature not implemented");
     }
 
     @Override
@@ -167,6 +204,21 @@ class AppDataHandler implements DataHandler {
         currentUser.setTrack(mPreferences.getUserTrack());
 
         mFirebaseHandler.setUserInfo(currentUser, new FirebaseCallback<>(callback));
+    }
+
+    @Override
+    public void addNotification(Notification notification) {
+        mDBHandler.addNotification(notification);
+    }
+
+    @Override
+    public List<Notification> getAllNotifications(int startFrom, int limit) {
+        return mDBHandler.getAllNotification(startFrom, limit);
+    }
+
+    @Override
+    public List<Notification> searchNotifications(String query, int startFrom, int limit) {
+        return mDBHandler.searchNotifications(query, startFrom, limit);
     }
 
     /**

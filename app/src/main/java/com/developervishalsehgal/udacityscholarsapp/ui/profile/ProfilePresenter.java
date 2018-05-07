@@ -20,9 +20,10 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     }
 
     @Override
-    public void saveProfile(Bitmap picture, String slackHandle, String status) {
+    public void saveProfile(Bitmap picture, String slackHandle, String courseTrack) {
 
         // Upload the image in firebase storage
+        // This is yet to be implemented. THROWS RUNTIME EXCEPTION.
         mDataHandler.uploadProfilePic(picture, new DataHandler.Callback<String>() {
             @Override
             public void onResponse(String result) {
@@ -31,7 +32,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
                     mDataHandler.saveUserPic(result);
                 }
                 mDataHandler.saveSlackHandle(slackHandle);
-                mDataHandler.saveStatus(status);
+                mDataHandler.saveUserTrack(courseTrack);
 
                 mDataHandler.setUserInfo(new DataHandler.Callback<Void>() {
                     @Override
@@ -54,13 +55,18 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     }
 
     @Override
-    public void saveProfile(String pictureUrl, String slackHandle, String status) {
+    public void saveProfile(String pictureUrl, String slackHandle, String courseTrack) {
 
         if (pictureUrl != null && !pictureUrl.isEmpty()) {
             mDataHandler.saveUserPic(pictureUrl);
         }
+
+        if (!slackHandle.startsWith("@")) {
+            slackHandle = "@" + slackHandle;
+        }
+
         mDataHandler.saveSlackHandle(slackHandle);
-        mDataHandler.saveStatus(status);
+        mDataHandler.saveUserTrack(courseTrack);
 
         mDataHandler.setUserInfo(new DataHandler.Callback<Void>() {
             @Override
@@ -77,6 +83,12 @@ public class ProfilePresenter implements ProfileContract.Presenter {
 
     @Override
     public void start(@Nullable Bundle extras) {
+        // Updating UI with data we have
+        mView.loadEmailAddress(mDataHandler.getUserEmail());
+        mView.loadSlackHandle(mDataHandler.getSlackHandle());
+        mView.loadUserName(mDataHandler.getUserName());
+        mView.loadUserPic(mDataHandler.getUserPic());
+        mView.loadUserTrack(mDataHandler.getUserTrack());
 
     }
 

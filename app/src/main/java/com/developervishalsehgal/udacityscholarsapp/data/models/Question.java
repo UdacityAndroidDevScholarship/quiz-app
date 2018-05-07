@@ -112,4 +112,13 @@ public class Question {
 
         return Objects.hash(mDescription, mMarks, mOptions, mType);
     }
+
+    /**
+     * Clears all the isCorrect flag from options of this question.
+     */
+    public void resetOptions() {
+        for(Option optionEntry : mOptions.values()){
+            optionEntry.setIsCorrect(false);
+        }
+    }
 }

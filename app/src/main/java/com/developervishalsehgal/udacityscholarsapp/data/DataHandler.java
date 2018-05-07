@@ -37,6 +37,14 @@ public interface DataHandler {
     void fetchQuizzes(int limitToFirst, Callback<List<Quiz>> callback);
 
     /**
+     * Fetches quizzes based on parameters passed
+     *
+     * @param quizId   Id of the quiz to be fetched
+     * @param callback Callback for receiving result
+     */
+    void fetchQuizById(String quizId, Callback<Quiz> callback);
+
+    /**
      * Fetches quizzes already attempted by current user
      *
      * @param callback Callback for receiving result

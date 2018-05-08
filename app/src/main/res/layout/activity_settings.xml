@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.developervishalsehgal.udacityscholarsapp.ui.home.SettingsActivity">
+    
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_settings_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        style="@style/SettingsToolbarTheme"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="App"
+        android:background="@color/colorPrimaryDark"
+        android:padding="@dimen/pad_b_main"
+        android:textColor="@color/blue_jeans"/>
+    <fragment
+        android:id="@+id/frag_settings"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:name="com.developervishalsehgal.udacityscholarsapp.ui.home.fragments.SettingsFragment" />
+</LinearLayout>

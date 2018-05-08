@@ -1,5 +1,6 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
@@ -28,7 +30,7 @@ import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View,
-        QuizAdapter.QuizItemListener {
+        QuizAdapter.QuizItemListener, View.OnClickListener {
 
     /* static constants for quiz filter */
     private static final int QUIZ_FILTER_VIEW_SLIDE_DOWN_ANIMATION_DURATION = 600;
@@ -41,6 +43,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private QuizAdapter mQuizAdapter;
 
     private HomeContract.Presenter mPresenter;
+
+    TextView settings;
 
     // UI Elements
     private DrawerLayout mDrawerLayout;
@@ -78,6 +82,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mQuizRecyclerView.setLayoutManager(linearLayoutManager);
 
         mQuizAdapter = new QuizAdapter(this);
+
+        settings = (TextView) findViewById(R.id.settings);
+        settings.setOnClickListener(this);
 
         mQuizRecyclerView.setAdapter(mQuizAdapter);
       
@@ -259,6 +266,16 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             case R.id.radio_quiz_filter_un_attempted:
                 break;
             case R.id.radio_quiz_filter_bookmarks:
+                break;
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.settings:
+                Intent settingsActivityIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsActivityIntent);
                 break;
         }
     }

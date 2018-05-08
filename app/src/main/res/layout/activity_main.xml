@@ -55,6 +55,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dim_one"
                 android:text="@string/settings"
+                android:drawableLeft="@drawable/ic_settings"
+                android:gravity="center"
+                android:drawablePadding="@dimen/draw_pad"
                 android:paddingLeft="@dimen/dim_two"
                 android:paddingTop="@dimen/pad_main"
                 android:textColor="@color/white" />

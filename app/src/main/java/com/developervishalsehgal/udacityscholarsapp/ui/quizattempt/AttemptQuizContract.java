@@ -50,7 +50,9 @@ public interface AttemptQuizContract {
      * Quiz Presenter
      */
     interface Presenter extends BasePresenter {
-        void onNextClicked(Question userAttempt);
+        void onNextClicked();
+
+        void onReviewClicked();
 
         void onPreviousClicked();
 

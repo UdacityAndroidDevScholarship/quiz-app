@@ -1,12 +1,12 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.quizattempt;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     LinearLayout mLLMultipleChoice;
     EditText mEtSubjective;
 
+    ScrollView mSvQuestionOptionsHolder;
     FrameLayout mAllTypeHolder;
     private ImageView mImgNextQuestion, mImgPrevQuestion;
 
@@ -79,6 +81,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
         mLLMultipleChoice = findViewById(R.id.ll_multiple_choice_holder);
         mEtSubjective = findViewById(R.id.et_subjective_holder);
 
+        mSvQuestionOptionsHolder = findViewById(R.id.question_hierarchy_holder);
         mAllTypeHolder = findViewById(R.id.fl_all_options_type_holder);
 
         mImgNextQuestion = findViewById(R.id.img_quiz_attempt_next);
@@ -87,6 +90,12 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
         mImgPrevQuestion.setOnClickListener(this);
 
         mTvQuestionStatus = findViewById(R.id.tv_attemt_quiz_status);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.start(getIntent().getExtras());
     }
 
     @Override
@@ -124,12 +133,12 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     @Override
     public void loadQuestion(Question question) {
         this.mCurrentQuestion = question;
-        populateQuestionDetails(mCurrentQuestion);
+        populateQuestionDetails(mCurrentQuestion, null);
     }
 
     @Override
     public void loadQuestionForReview(Question question, Question attemptedQuestion) {
-
+        populateQuestionDetails(question, attemptedQuestion);
     }
 
     @Override
@@ -145,7 +154,21 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     @Override
     public void loadResultSummary(int score, int total, double percentage) {
-        Log.d("", "");
+        new AlertDialog.Builder(this)
+                .setMessage(String.format(Locale.getDefault(), "You've got %d out of %d. " +
+                        "You have scored %.2f%%", score, total, (float) percentage))
+                .setTitle(R.string.quiz_summary_msg)
+                .setCancelable(false)
+                .setPositiveButton(R.string.quiz_review_confirmation, (dialog, which) -> {
+                    mPresenter.onReviewClicked();
+                    dialog.dismiss();
+                })
+                .setNegativeButton(R.string.user_confirmation_cancel, (dialog, which) -> {
+                    dialog.dismiss();
+                    dismissView();
+                })
+                .create()
+                .show();
     }
 
     @Override
@@ -156,8 +179,8 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     @Override
     public void showInvalidInput() {
-        Toast.makeText(this, getString(R.string.invalid_input_provided), Toast.LENGTH_SHORT)
-                .show();
+        Toast.makeText(this, getString(R.string.invalid_input_provided),
+                Toast.LENGTH_SHORT).show();
         dismissView();
     }
 
@@ -197,9 +220,12 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     }
 
-    private void populateQuestionDetails(Question question) {
+    private void populateQuestionDetails(@NonNull Question question, @Nullable Question attempt) {
 
-        mTvQuestionDesc.setText(question.getDescription());
+        mSvQuestionOptionsHolder.fullScroll(ScrollView.FOCUS_UP);
+
+        mTvQuestionDesc.setText(String.format(Locale.getDefault(), "%s [%d marks]"
+                , question.getDescription(), question.getMarks()));
 
         // Remove all subview before adding new ones
         mLLMultipleChoice.removeAllViews();
@@ -279,7 +305,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.img_quiz_attempt_next:
-                mPresenter.onNextClicked(mCurrentQuestion);
+                mPresenter.onNextClicked();
                 break;
             case R.id.img_quiz_attempt_previous:
                 mPresenter.onPreviousClicked();

@@ -134,5 +134,7 @@
     <string name="quiz_submit_confirmation_title">Submit response?</string>
     <string name="user_confirmation_yes">Yes</string>
     <string name="user_confirmation_cancel">Cancel</string>
+    <string name="quiz_summary_msg">Here is your score</string>
+    <string name="quiz_review_confirmation">Review</string>
 
 </resources>

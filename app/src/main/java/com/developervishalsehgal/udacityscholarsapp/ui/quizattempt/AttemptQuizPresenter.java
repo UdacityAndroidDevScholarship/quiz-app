@@ -34,7 +34,7 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
     }
 
     @Override
-    public void onNextClicked(Question userAttempt) {
+    public void onNextClicked() {
 
         if (mPointer < mQuestions.size()) {
 
@@ -46,9 +46,6 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
                     mView.dismissView();
                 }
             } else {
-
-                // Update user's attempt
-                mUserAttempts.set(mPointer, userAttempt);
 
                 mPointer++;
 
@@ -67,6 +64,14 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
             mView.enablePreviousButton();
             updateQuestionStatus();
         }
+    }
+
+    @Override
+    public void onReviewClicked() {
+        mIsEvaluated = true;
+        mPointer = 0;
+        mView.disablePreviousButton();
+        mView.loadQuestionForReview(mQuestions.get(mPointer), mUserAttempts.get(mPointer));
     }
 
     @Override
@@ -129,8 +134,6 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
                     mView.showError();
                 }
             });
-
-            mIsEvaluated = true;
 
         } else {
             mView.dismissView();

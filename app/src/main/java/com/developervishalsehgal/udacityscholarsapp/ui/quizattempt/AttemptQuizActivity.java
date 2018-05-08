@@ -1,9 +1,12 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.quizattempt;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -142,7 +145,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     @Override
     public void loadResultSummary(int score, int total, double percentage) {
-
+        Log.d("", "");
     }
 
     @Override
@@ -160,8 +163,18 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     @Override
     public void showSubmitConfirmation() {
-        // TODO: show alert dialog for submitting the quiz
-        // TODO: on okay press call mPresenter.onSubmitClicked(); else dismiss the alert
+        new AlertDialog.Builder(this)
+                .setMessage(R.string.quiz_submit_confirmation_msg)
+                .setTitle(R.string.quiz_submit_confirmation_title)
+                .setCancelable(true)
+                .setPositiveButton(R.string.user_confirmation_yes, (dialog, which) -> {
+                    mPresenter.onSubmitClicked();
+                })
+                .setNegativeButton(R.string.user_confirmation_cancel, (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .create()
+                .show();
     }
 
     @Override

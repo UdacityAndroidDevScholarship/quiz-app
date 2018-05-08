@@ -130,5 +130,9 @@
     <string name="number">10</string>
     <string name="subjective_hint">Enter your answer here</string>
     <string name="invalid_input_provided">Invalid parameter provided while launching quiz.</string>
+    <string name="quiz_submit_confirmation_msg">Are you sure you want submit your response for this quiz?</string>
+    <string name="quiz_submit_confirmation_title">Submit response?</string>
+    <string name="user_confirmation_yes">Yes</string>
+    <string name="user_confirmation_cancel">Cancel</string>
 
 </resources>

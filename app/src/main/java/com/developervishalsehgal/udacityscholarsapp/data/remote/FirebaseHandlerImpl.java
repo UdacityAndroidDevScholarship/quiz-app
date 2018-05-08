@@ -144,6 +144,7 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot != null) {
                     Quiz singleQuiz = snapshot.getValue(Quiz.class);
+                    singleQuiz.setKey(snapshot.getKey());
                     callback.onReponse(singleQuiz);
                 } else {
                     callback.onError();

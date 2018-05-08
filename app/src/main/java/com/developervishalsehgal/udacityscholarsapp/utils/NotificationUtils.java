@@ -20,7 +20,6 @@ import com.developervishalsehgal.udacityscholarsapp.data.local.NotificationContr
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeActivity;
 
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class NotificationUtils {
 

@@ -79,6 +79,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.notification.NotificationActivity"/>
         </activity>
+        <activity android:name=".settings.SettingsActivity"
+            android:label="@string/settings"
+            android:parentActivityName=".ui.home.HomeActivity"/>
     </application>
 
 </manifest>

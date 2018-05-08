@@ -216,7 +216,6 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                         option.getValue().setIsCorrect(true);
                     }
                 });
-
                 radioButton.setChecked(singleOption.isCorrect());
 
                 mRgSingleChoice.addView(radioButton, index);

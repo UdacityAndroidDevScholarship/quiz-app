@@ -7,6 +7,7 @@ import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -99,130 +100,203 @@ public class Quiz {
     @Exclude
     String mKey;
 
+    public Quiz() {
+    }
+
+    /**
+     * Copy constructor
+     *
+     * @param toClone Quiz object to be shallow copied
+     */
+    public Quiz(Quiz toClone) {
+        mCreatorId = toClone.mCreatorId;
+        mCreatorName = toClone.mCreatorName;
+        mDescription = toClone.mDescription;
+        mDifficulty = toClone.mDifficulty;
+        mLastModified = toClone.mLastModified;
+        mLesson = toClone.mLesson;
+        mMaxMarks = toClone.mMaxMarks;
+        mRatedBy = toClone.mRatedBy;
+        mRating = toClone.mRating;
+        mTitle = toClone.mTitle;
+        mDeadline = toClone.mDeadline;
+        mAttempted = toClone.mAttempted;
+        mIsBookmarked = toClone.mIsBookmarked;
+
+        if (toClone.mFiles != null) {
+            Map<String, String> files = new HashMap<>();
+            for (Map.Entry<String, String> fileEntry : toClone.mFiles.entrySet()) {
+                files.put(fileEntry.getKey(), fileEntry.getValue());
+            }
+            mFiles = files;
+        }
+
+        if (toClone.mQuestions != null) {
+            Map<String, Question> questions = new HashMap<>();
+            for (Map.Entry<String, Question> questionEntry : toClone.mQuestions.entrySet()) {
+                questions.put(questionEntry.getKey(), new Question(questionEntry.getValue()));
+            }
+            mQuestions = questions;
+        }
+
+    }
+
+    @Exclude
     public String getCreatorId() {
         return mCreatorId;
     }
 
+    @Exclude
     public void setCreatorId(String creatorId) {
         mCreatorId = creatorId;
     }
 
+    @Exclude
     public String getCreatorName() {
         return mCreatorName;
     }
 
+    @Exclude
     public void setCreatorName(String creatorName) {
         mCreatorName = creatorName;
     }
 
+    @Exclude
     public String getDescription() {
         return mDescription;
     }
 
+    @Exclude
     public void setDescription(String description) {
         mDescription = description;
     }
 
+    @Exclude
     public String getDifficulty() {
         return mDifficulty;
     }
 
+    @Exclude
     public void setDifficulty(String difficulty) {
         mDifficulty = difficulty;
     }
 
+    @Exclude
     public Map<String, String> getFiles() {
         return mFiles;
     }
 
+    @Exclude
     public void setFiles(Map<String, String> files) {
         mFiles = files;
     }
 
+    @Exclude
     public String getLastModified() {
         return mLastModified;
     }
 
+    @Exclude
     public void setLastModified(String lastModified) {
         mLastModified = lastModified;
     }
 
+    @Exclude
     public int getLesson() {
         return mLesson;
     }
 
+    @Exclude
     public void setLesson(int lesson) {
         mLesson = lesson;
     }
 
+    @Exclude
     public int getMaxMarks() {
         return mMaxMarks;
     }
 
+    @Exclude
     public void setMaxMarks(int maxMarks) {
         mMaxMarks = maxMarks;
     }
 
+    @Exclude
     public Map<String, Question> getQuestions() {
         return mQuestions;
     }
 
+    @Exclude
     public void setQuestions(Map<String, Question> questions) {
         mQuestions = questions;
     }
 
+    @Exclude
     public int getRatedBy() {
         return mRatedBy;
     }
 
+    @Exclude
     public void setRatedBy(int ratedBy) {
         mRatedBy = ratedBy;
     }
 
+    @Exclude
     public double getRating() {
         return mRating;
     }
 
+    @Exclude
     public void setRating(Double rating) {
         mRating = rating;
     }
 
+    @Exclude
     public String getTitle() {
         return mTitle;
     }
 
+    @Exclude
     public void setTitle(String title) {
         mTitle = title;
     }
 
+    @Exclude
     public String getDeadline() {
         return mDeadline;
     }
 
+    @Exclude
     public void setDeadline(String deadline) {
         mDeadline = deadline;
     }
 
+    @Exclude
     public String getKey() {
         return mKey;
     }
 
+    @Exclude
     public void setKey(String key) {
         this.mKey = key;
     }
 
+    @Exclude
     public boolean isAttempted() {
         return mAttempted;
     }
 
+    @Exclude
     public void setAttempted(boolean attempted) {
         this.mAttempted = attempted;
     }
 
+    @Exclude
     public boolean isBookmarked() {
         return mIsBookmarked;
     }
 
+    @Exclude
     public void setBookmarked(boolean bookmarked) {
         mIsBookmarked = bookmarked;
     }

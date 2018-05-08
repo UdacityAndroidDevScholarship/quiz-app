@@ -1,6 +1,8 @@
 
 package com.developervishalsehgal.udacityscholarsapp.data.models;
 
+import android.support.annotation.NonNull;
+
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.PropertyName;
@@ -25,7 +27,7 @@ public class Option {
      * can represent either
      */
     @Expose
-    @PropertyName("ic-correct")
+    @PropertyName("is-correct")
     @SerializedName("is-correct")
     boolean mIsCorrect;
 
@@ -40,34 +42,57 @@ public class Option {
     @Exclude
     String mKey;
 
+    public Option() {
+
+    }
+
+    /**
+     * Copy constructor
+     *
+     * @param toClone Option object to be shallow copied
+     */
+    public Option(@NonNull Option toClone) {
+        mDescription = toClone.mDescription;
+        mIsCorrect = toClone.mIsCorrect;
+        mRemarks = toClone.mRemarks;
+    }
+
+    @Exclude
     public String getDescription() {
         return mDescription;
     }
 
+    @Exclude
     public void setDescription(String description) {
         mDescription = description;
     }
 
+    @Exclude
     public boolean isCorrect() {
         return mIsCorrect;
     }
 
+    @Exclude
     public void setIsCorrect(boolean isCorrect) {
         mIsCorrect = isCorrect;
     }
 
+    @Exclude
     public String getRemarks() {
         return mRemarks;
     }
 
+    @Exclude
     public void setRemarks(String remarks) {
         mRemarks = remarks;
     }
 
+    @Exclude
     public String getKey() {
         return mKey;
     }
 
+    @Exclude
     public void setKey(String key) {
         this.mKey = key;
     }

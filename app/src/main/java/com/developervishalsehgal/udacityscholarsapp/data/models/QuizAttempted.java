@@ -17,37 +17,30 @@ public class QuizAttempted {
 
     @Expose
     @PropertyName("lesson")
-    @SerializedName("lesson")
     long mLesson;
 
     @Expose
     @PropertyName("max-marks")
-    @SerializedName("max-marks")
     long mMaxMarks;
 
     @Expose
     @PropertyName("percentage")
-    @SerializedName("percentage")
     long mPercentage;
 
     @Expose
     @PropertyName("quiz-id")
-    @SerializedName("quiz-id")
     String mQuizId;
 
     @Expose
     @PropertyName("quiz-title")
-    @SerializedName("quiz-title")
     String mQuizTitle;
 
     @Expose
     @PropertyName("remarks")
-    @SerializedName("remarks")
     String mRemarks;
 
     @Expose
     @PropertyName("score")
-    @SerializedName("score")
     long mScore;
 
     /**
@@ -56,66 +49,82 @@ public class QuizAttempted {
     @Exclude
     String mKey;
 
+    @Exclude
     public long getLesson() {
         return mLesson;
     }
 
+    @Exclude
     public void setLesson(long lesson) {
         mLesson = lesson;
     }
 
+    @Exclude
     public long getMaxMarks() {
         return mMaxMarks;
     }
 
+    @Exclude
     public void setMaxMarks(long maxMarks) {
         mMaxMarks = maxMarks;
     }
 
+    @Exclude
     public long getPercentage() {
         return mPercentage;
     }
 
+    @Exclude
     public void setPercentage(long percentage) {
         mPercentage = percentage;
     }
 
+    @Exclude
     public String getQuizId() {
         return mQuizId;
     }
 
+    @Exclude
     public void setQuizId(String quizId) {
         mQuizId = quizId;
     }
 
+    @Exclude
     public String getQuizTitle() {
         return mQuizTitle;
     }
 
+    @Exclude
     public void setQuizTitle(String quizTitle) {
         mQuizTitle = quizTitle;
     }
 
+    @Exclude
     public String getRemarks() {
         return mRemarks;
     }
 
+    @Exclude
     public void setRemarks(String remarks) {
         mRemarks = remarks;
     }
 
+    @Exclude
     public long getScore() {
         return mScore;
     }
 
+    @Exclude
     public void setScore(long score) {
         mScore = score;
     }
 
+    @Exclude
     public String getKey() {
         return mKey;
     }
 
+    @Exclude
     public void setKey(String key) {
         this.mKey = key;
     }

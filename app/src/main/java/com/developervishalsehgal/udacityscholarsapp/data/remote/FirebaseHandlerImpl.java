@@ -268,7 +268,10 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         }
 
-        mUsersRef.child(mCurrentUser.getUid()).child(quizAttempt.getQuizId()).setValue(quizAttempt)
+        mUsersRef.child(mCurrentUser.getUid())
+                .child(KEY_USER_ATTEMPTED_QUIZ)
+                .child(quizAttempt.getQuizId())
+                .setValue(quizAttempt)
                 .addOnSuccessListener(aVoid -> callback.onReponse(null))
                 .addOnFailureListener(e -> callback.onError());
 

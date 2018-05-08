@@ -84,6 +84,8 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
             if (mPointer == 0) {
                 mView.disablePreviousButton();
             }
+
+            mView.showNextButton();
             updateQuestionStatus();
         }
     }
@@ -162,14 +164,18 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
 
     }
 
+    @SuppressWarnings("unchecked")
     private void displayQuiz(Quiz currentQuiz) {
         mSelectedQuiz = currentQuiz;
         mQuestions = new ArrayList<>(mSelectedQuiz.getQuestions().values());
-        mUserAttempts = new ArrayList<>(mSelectedQuiz.getQuestions().values());
+        mUserAttempts = new ArrayList<>();
+        // mUserAttempts = (List<Question>) (new ArrayList<>(mSelectedQuiz.getQuestions().values())).clone();
 
         // Clear all is-correct flags from user attempts, it will be used to store user's answers
-        for (Question question : mUserAttempts) {
-            question.resetOptions();
+        for (Question question : mQuestions) {
+            Question copyQuestion = new Question(question);
+            copyQuestion.resetOptions();
+            mUserAttempts.add(copyQuestion);
         }
 
         // Since we are currently in first question

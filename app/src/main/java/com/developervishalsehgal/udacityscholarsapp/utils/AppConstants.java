@@ -3,7 +3,7 @@ package com.developervishalsehgal.udacityscholarsapp.utils;
 public class AppConstants {
 
     public static final String QUESTION_SINGLE_CHOICE = "single-choice";
-    public static final String QUESTION_MULTIPLE_CHOICE = "single-choice";
+    public static final String QUESTION_MULTIPLE_CHOICE = "multiple-choice";
     public static final String QUESTION_SUBJECTIVE_TYPE = "subjective";
 
     public AppConstants() {

@@ -211,8 +211,8 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                 radioButton.setText(singleOption.getDescription());
                 radioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
                     // Since it is single choice question, reset everything before setting
-                    question.resetOptions();
                     if (isChecked) {
+                        question.resetOptions();
                         option.getValue().setIsCorrect(true);
                     }
                 });

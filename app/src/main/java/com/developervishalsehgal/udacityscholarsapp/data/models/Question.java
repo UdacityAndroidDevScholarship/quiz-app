@@ -128,8 +128,10 @@ public class Question {
      * Clears all the isCorrect flag from options of this question.
      */
     public void resetOptions() {
-        for (Option optionEntry : mOptions.values()) {
-            optionEntry.setIsCorrect(false);
+        if (mOptions != null) {
+            for (Map.Entry<String, Option> optionEntry : mOptions.entrySet()) {
+                optionEntry.getValue().setIsCorrect(false);
+            }
         }
     }
 }

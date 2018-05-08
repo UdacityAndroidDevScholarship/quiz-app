@@ -129,4 +129,7 @@
     <string name="newnotification">15</string>
     <string name="number">10</string>
 
+    <!--Quiz Discussion Screen-->
+    <string name="title_activity_quiz_discussion">Help/ Discussion</string>
+
 </resources>

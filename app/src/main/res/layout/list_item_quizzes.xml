@@ -107,9 +107,8 @@
             android:layout_marginEnd="@dimen/medium_margin"
             android:text="@string/deadline"
             android:textColor="@color/color_green_deadline"
-            app:layout_constraintBottom_toTopOf="@+id/tv_creator_name"
-            app:layout_constraintEnd_toStartOf="@+id/tv_deadline"
-            app:layout_constraintTop_toBottomOf="@+id/tv_creator_name" />
+            app:layout_constraintBottom_toBottomOf="@+id/tv_completion_status"
+            app:layout_constraintEnd_toStartOf="@+id/tv_deadline"/>
 
         <View
             android:id="@+id/difficulty_hard"

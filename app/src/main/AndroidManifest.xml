@@ -32,6 +32,11 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.settings.SettingsActivity"
+            android:label="@string/settings"
+            android:theme="@style/SettingsTheme"
+            android:parentActivityName=".ui.home.HomeActivity">
+        </activity>
         <activity android:name=".ui.profile.UserProfileActivity">
 
             <!--

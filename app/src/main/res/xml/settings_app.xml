@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+    android:title="App">
+
+    <SwitchPreference
+        android:key="@string/notification_key"
+        android:title="@string/app_notification_label"
+        android:defaultValue="true"
+        android:summaryOn="@string/app_notfication_summary_on"
+        android:summaryOff="@string/app_notfication_summary_off"/>
+
+    <ListPreference
+        android:key="@string/theme_key"
+        android:title="@string/app_theme_label"
+        android:defaultValue="@string/app_theme_light"
+        android:summary="@string/app_theme_light"
+        android:entries="@array/settings_themes"
+        android:entryValues="@array/settings_theme_values"/>
+
+    <Preference
+        android:key="@string/signout_key"
+        android:title="@string/singout_label" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

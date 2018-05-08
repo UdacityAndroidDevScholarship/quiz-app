@@ -6,4 +6,14 @@
         <item>Mobile web</item>
         <item>Mobile web specialist</item>-->
     </string-array>
+
+    <array name="settings_themes">
+        <item>Dark</item>
+        <item>Light</item>
+    </array>
+    
+    <array name="settings_theme_values">
+        <item>Dark</item>
+        <item>Light</item>
+    </array>
 </resources>

@@ -1,5 +1,6 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.settings.SettingsActivity;
 
 import java.util.List;
 
@@ -102,6 +104,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     mDrawerLayout.openDrawer(Gravity.START);
                 }
                 break;
+            case R.id.settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsIntent);
             case R.id.logout:
                 // TODO: Show a confirmation {@link AlertDialog} here. When user cliks OK. call
                 // TODO: mPresenter.logout();

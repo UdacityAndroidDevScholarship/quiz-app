@@ -78,6 +78,7 @@
     <string name="are_you_sure_n_nthis_will_log_you_out_from_the_device">Are you sure?\nThis will log you out from the device!</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+    <string name="sign_out">Sign Out</string>
 
 
 </resources>

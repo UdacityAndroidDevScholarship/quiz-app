@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:title="@string/pref_notification_title"
+        android:key="@string/pref_notification_key"
+        android:summaryOn="@string/pref_notification_summary_on"
+        android:summaryOff="@string/pref_notification_summary_off" />
+    <ListPreference
+        android:defaultValue="@string/pref_theme_label_dark"
+        android:title="@string/pref_theme_title"
+        android:key="@string/pref_theme_key"
+        android:entries="@array/pref_theme_options_labels"
+        android:entryValues="@array/pref_theme_options_value" />
+
+    <com.developervishalsehgal.udacityscholarsapp.ui.home.SignOutDialogPreference
+        android:title="@string/pref_dialog_title_label"
+        android:dialogIcon="@drawable/udacity_toolbar_logo"
+        android:textColor="@color/white"/>
+
+</PreferenceScreen>

@@ -8,11 +8,26 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomPreferenceTheme" parent="PreferenceThemeOverlay.v14.Material">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/colorAccent</item>
+        <item name="android:colorControlHighlight">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="DarkDialogStyle" parent="android:Theme.Material.Dialog">
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="ToolbarStyle" parent="android:Theme.Holo">
+        <item name="android:homeAsUpIndicator">@color/white</item>
+    </style>
 
     <style name="next_button" parent="Theme.AppCompat.Light">
         <item name="colorControlHighlight">#89b345</item>
@@ -46,6 +61,14 @@
         <item name="android:windowTranslucentNavigation">false</item>
     </style>
 
+    <style name="SettingsTheme" parent="AppTheme">
+        <item name="preferenceTheme">@style/CustomPreferenceTheme</item>
+    </style>
+
+    <style name="SettingsToolbarTheme">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/colorPrimaryLight</item>
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

@@ -31,6 +31,8 @@ public interface FirebaseHandler {
      */
     void fetchQuizzes(int limitToFirst, Callback<List<Quiz>> callback);
 
+    void fetchAttemptedQuizzes(Callback<List<QuizAttempted>> callback);
+
     void updateSlackHandle(String slackHandle, Callback<Void> callback);
 
     void updateUserName(String userName, Callback<Void> callback);

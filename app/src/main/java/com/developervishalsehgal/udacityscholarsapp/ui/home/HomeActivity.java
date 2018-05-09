@@ -3,6 +3,7 @@ package com.developervishalsehgal.udacityscholarsapp.ui.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
@@ -22,13 +23,14 @@ import android.widget.RadioGroup;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
 
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View,
-        QuizAdapter.QuizItemListener {
+        QuizAdapter.QuizItemListener, NavigationView.OnNavigationItemSelectedListener {
 
     /* static constants for quiz filter */
     private static final int SLIDE_DOWN_ANIMATION_DURATION = 600;
@@ -44,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     // UI Elements
     private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
     // Reference of the quiz filter list layout
     private RadioGroup mHomeQuizListFilterRadioGroup;
     //////////////
@@ -82,6 +85,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
+        mNavigationView = findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -142,7 +148,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void navigateToNotifications() {
-        // TODO: Navigate to Notifications screen
+        Intent notificationActivityIntent = new Intent(this, NotificationActivity.class);
+        startActivity(notificationActivityIntent);
     }
 
     @Override
@@ -161,9 +168,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     }
 
     @Override
-    public void navigateToLogin() {
-        // TODO: This should only be called when user clicks on logout. Kill current activity
-        // TODO: and launch login activity
+    public void navigateToEditProfile() {
+        // TODO: Navigate to edit profile activity
     }
 
     @Override
@@ -259,5 +265,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 mPresenter.onBookmarkSelected();
                 break;
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
     }
 }

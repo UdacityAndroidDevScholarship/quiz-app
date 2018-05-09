@@ -178,6 +178,11 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             ivBookmark.setOnClickListener(v -> {
                 // Toggle bookmark status
                 currentQuiz.setBookmarked(!currentQuiz.isBookmarked());
+                if (currentQuiz.isBookmarked()) {
+                    ivBookmark.setImageResource(R.drawable.ic_bookmark_black_24dp);
+                } else {
+                    ivBookmark.setImageResource(R.drawable.ic_bookmark_border_black_24dp);
+                }
                 mQuizItemListener.onBookmarkStatusChanged(currentQuiz);
             });
         }

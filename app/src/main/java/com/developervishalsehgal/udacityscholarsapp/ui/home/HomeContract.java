@@ -52,7 +52,9 @@ public interface HomeContract {
 
         void onUnAttemptedQuizSelected();
 
-        void onBookmarkQuizSelected();
+        void onBookmarkSelected();
+
+        void onBookmarkStatusChange(Quiz quiz);
     }
 
 }

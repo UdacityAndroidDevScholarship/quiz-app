@@ -71,7 +71,9 @@
         <activity
             android:name=".ui.notification.NotificationActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+        </activity>
+
         <activity
             android:name=".ui.notification.NotificationDetail"
             android:label="@string/notification_detail_activity_title"
@@ -80,7 +82,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.notification.NotificationActivity" />
         </activity>
+
         <activity android:name=".ui.quizdetails.QuizDetailsActivity" />
+
     </application>
 
 </manifest>

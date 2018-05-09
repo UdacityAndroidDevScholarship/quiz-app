@@ -128,6 +128,16 @@
     //Unread Notification
     <string name="newnotification">15</string>
     <string name="number">10</string>
+    <string name="subjective_hint">Enter your answer here</string>
+    <string name="invalid_input_provided">Invalid parameter provided while launching quiz.</string>
+    <string name="quiz_submit_confirmation_msg">Are you sure you want submit your response for this quiz?</string>
+    <string name="quiz_submit_confirmation_title">Submit response?</string>
+    <string name="user_confirmation_yes">Yes</string>
+    <string name="user_confirmation_cancel">Cancel</string>
+    <string name="quiz_summary_msg">Here is your score</string>
+    <string name="quiz_review_confirmation">Review</string>
+    <string name="quiz_dismiss_confirmation_msg">Are you sure you want to quiz? All your responses will be lost.</string>
+    <string name="quiz_dismiss_confirmation_title">Quitting the quiz?</string>
 
     <!-- Values for activity_quiz_details.xml -->
     <string name="toolbar_title">Quiz Details</string>

@@ -65,6 +65,21 @@
     <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
     <string name="profile_saved_successfully">Profile saved successfully</string>
 
+    <!-- Quiz Details Strings  -->
+    <string name="quiz_details_toolbar_title">Quiz Details</string>
+    <string name="quiz_details_quiz_title">Lesson 5 Quiz 1 - Intent</string>
+    <string name="quiz_details_author_label">Author :</string>
+    <string name="quiz_details_author">Author</string>
+    <string name="quiz_details_release_lable">Released On :</string>
+    <string name="quiz_details_release">14 April 2018</string>
+    <string name="quiz_details_deadline_label">Deadline :</string>
+    <string name="quiz_details_deadline">14 May 2018</string>
+    <string name="quiz_details_description">This quiz is all about intents,
+        intents are used to signal the android studio system that a certain event has occurred.
+        Intents often describe the action which should be performed and provide data upon which such an action should be done.
+        For example, your application can start a browser component for a certain URL via an intent. </string>
+    <string name="quiz_details_your_score_label">Your Score</string>
+    <string name="quiz_details_score">Unattempted</string>
 
     <!-- NotificationActivity Helper Strings  -->
     <string name="notification_activity_title">Notifications</string>

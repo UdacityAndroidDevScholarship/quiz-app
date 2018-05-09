@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v4.widget.DrawerLayout;
@@ -18,6 +21,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.RadioGroup;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
@@ -50,6 +54,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     // Reference of the quiz filter list layout
     private RadioGroup mHomeQuizListFilterRadioGroup;
     //////////////
+    boolean twiceClicked = false;
+    Snackbar snackbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,15 +92,16 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.nav_view);
+        mNavigationView.setItemIconTintList(null);
         mNavigationView.setNavigationItemSelectedListener(this);
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main_menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -270,5 +277,46 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            if (twiceClicked) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                startActivity(intent);
+                snackbar.dismiss();
+
+            } else {
+
+                twiceClicked = true;
+
+
+                snackbar = Snackbar.make(findViewById(R.id.homeactivitycoordinator), "Press back again to exit.", Snackbar.LENGTH_LONG);
+                final View snackbarView = snackbar.getView();
+                snackbar.show();
+                snackbarView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        snackbarView.getViewTreeObserver().removeOnPreDrawListener(this);
+                        ((CoordinatorLayout.LayoutParams) snackbarView.getLayoutParams()).setBehavior(null);
+                        return true;
+                    }
+                });
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        twiceClicked = false;
+                    }
+                }, 3000);
+            }
+
+        }
+
     }
 }

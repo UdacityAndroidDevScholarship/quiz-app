@@ -25,7 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.HomeActivity">
+        <activity android:name=".ui.home.HomeActivity"
+            android:theme="@style/AppTheme">
 
             <!--
             Adding this intent filter here to silence the warning ,this should be a part of home

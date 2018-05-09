@@ -63,6 +63,36 @@ public class HomePresenter implements HomeContract.Presenter {
     }
 
     @Override
+    public void onNavigationItemSelected(int navItemSpecifier) {
+        switch (navItemSpecifier) {
+            case HomeContract.NAVIGATION_ABOUT:
+                mView.navigateToAboutScreen();
+                break;
+            case HomeContract.NAVIGATION_CREATE_QUIZ:
+                mView.navigateToCreateQuiz();
+                break;
+            case HomeContract.NAVIGATION_EDIT_PROFILE:
+                mView.navigateToEditProfile();
+                break;
+            case HomeContract.NAVIGATION_NOTIFICATIONS:
+                mView.navigateToNotifications();
+                break;
+            case HomeContract.NAVIGATION_RESOURCES:
+                mView.navigateToResources();
+                break;
+            case HomeContract.NAVIGATION_SETTINGS:
+                mView.navigateToSettings();
+                break;
+            case HomeContract.NAVIGATION_SCOREBOARD:
+                mView.navigateToScoreboard();
+                break;
+            default:
+                break;
+
+        }
+    }
+
+    @Override
     public void onLogoutClicked() {
         // TODO: Clear all local storage. SQLite, Shared Preferences, perform firebase logout and
         // navigate to login screen again

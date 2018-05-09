@@ -3,6 +3,7 @@ package com.developervishalsehgal.udacityscholarsapp.ui.quizattempt;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,8 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     private AttemptQuizContract.Presenter mPresenter;
 
     private Question mCurrentQuestion;
+
+    private boolean mIsEvaluated;
 
     // UI Elements
     Toolbar mToolbar;
@@ -102,7 +105,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                dismissView();
+                showQuizQuizConfirmation();
                 break;
             default:
                 break;
@@ -137,8 +140,8 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     }
 
     @Override
-    public void loadQuestionForReview(Question question, Question attemptedQuestion) {
-        populateQuestionDetails(question, attemptedQuestion);
+    public void loadQuestionForReview(Question attemptedQuestion, Question question) {
+        populateQuestionDetails(attemptedQuestion, question);
     }
 
     @Override
@@ -192,6 +195,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                 .setCancelable(true)
                 .setPositiveButton(R.string.user_confirmation_yes, (dialog, which) -> {
                     mPresenter.onSubmitClicked();
+                    mIsEvaluated = true;
                 })
                 .setNegativeButton(R.string.user_confirmation_cancel, (dialog, which) -> {
                     dialog.dismiss();
@@ -220,26 +224,32 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     }
 
-    private void populateQuestionDetails(@NonNull Question question, @Nullable Question attempt) {
-
-        mSvQuestionOptionsHolder.fullScroll(ScrollView.FOCUS_UP);
+    private void populateQuestionDetails(@NonNull Question userAttempt, @Nullable Question question) {
 
         mTvQuestionDesc.setText(String.format(Locale.getDefault(), "%s [%d marks]"
-                , question.getDescription(), question.getMarks()));
+                , userAttempt.getDescription(), userAttempt.getMarks()));
 
         // Remove all subview before adding new ones
         mLLMultipleChoice.removeAllViews();
         mRgSingleChoice.removeAllViews();
 
         // Type of question
-        String type = question.getType();
+        String type = userAttempt.getType();
+
+        boolean isReviewMode = (question != null);
+        if (isReviewMode) {
+            boolean isAttemptCorrect = userAttempt.equals(question);
+            mTvQuestionDesc.setTextColor(isAttemptCorrect ? ContextCompat.getColor(this,
+                    R.color.color_green_deadline) : ContextCompat.getColor(this,
+                    R.color.color_red_deadline));
+        }
 
         if (AppConstants.QUESTION_SINGLE_CHOICE.equalsIgnoreCase(type)) {
             mLLMultipleChoice.setVisibility(View.GONE);
             mEtSubjective.setVisibility(View.GONE);
             mRgSingleChoice.setVisibility(View.VISIBLE);
 
-            Map<String, Option> options = question.getOptions();
+            Map<String, Option> options = userAttempt.getOptions();
 
             int index = 0;
             for (Map.Entry<String, Option> option : options.entrySet()) {
@@ -251,11 +261,28 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                 radioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
                     // Since it is single choice question, reset everything before setting
                     if (isChecked) {
-                        question.resetOptions();
+                        userAttempt.resetOptions();
                         option.getValue().setIsCorrect(true);
                     }
                 });
+
                 radioButton.setChecked(singleOption.isCorrect());
+
+                // Review mode changes
+                if (isReviewMode) {
+                    radioButton.setEnabled(false);
+                    Option correctOption = question.getOptions().get(option.getKey());
+
+                    if (singleOption.isCorrect()) {
+                        radioButton.setTextColor(ContextCompat.getColor(this,
+                                R.color.color_red_deadline));
+                    }
+
+                    if (correctOption.isCorrect()) {
+                        radioButton.setTextColor(ContextCompat.getColor(this,
+                                R.color.color_green_deadline));
+                    }
+                }
 
                 mRgSingleChoice.addView(radioButton, index);
                 index++;
@@ -267,7 +294,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
             mEtSubjective.setVisibility(View.GONE);
             mRgSingleChoice.setVisibility(View.GONE);
 
-            Map<String, Option> options = question.getOptions();
+            Map<String, Option> options = userAttempt.getOptions();
 
             int index = 0;
             for (Map.Entry<String, Option> option : options.entrySet()) {
@@ -281,6 +308,22 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                 });
 
                 checkBox.setChecked(singleOption.isCorrect());
+
+                // Review mode changes
+                if (isReviewMode) {
+                    Option correctOption = question.getOptions().get(option.getKey());
+                    checkBox.setEnabled(false);
+
+                    if (singleOption.isCorrect()) {
+                        checkBox.setTextColor(ContextCompat.getColor(this,
+                                R.color.color_red_deadline));
+                    }
+
+                    if (correctOption.isCorrect()) {
+                        checkBox.setTextColor(ContextCompat.getColor(this,
+                                R.color.color_green_deadline));
+                    }
+                }
 
                 mLLMultipleChoice.addView(checkBox, index);
                 index++;
@@ -299,6 +342,18 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                 }
             });
         }
+
+        // Move scroll view to top every time question is populated
+        mSvQuestionOptionsHolder.fullScroll(ScrollView.FOCUS_UP);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mIsEvaluated) {
+            super.onBackPressed();
+        } else {
+            showQuizQuizConfirmation();
+        }
     }
 
     @Override
@@ -313,5 +368,21 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
             default:
                 break;
         }
+    }
+
+    private void showQuizQuizConfirmation() {
+        new AlertDialog.Builder(this)
+                .setMessage(R.string.quiz_dismiss_confirmation_msg)
+                .setTitle(R.string.quiz_dismiss_confirmation_title)
+                .setCancelable(true)
+                .setPositiveButton(R.string.user_confirmation_yes, (dialog, which) -> {
+                    dialog.dismiss();
+                    dismissView();
+                })
+                .setNegativeButton(R.string.user_confirmation_cancel, (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .create()
+                .show();
     }
 }

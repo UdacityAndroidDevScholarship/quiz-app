@@ -78,10 +78,14 @@ class FirebaseHandlerImpl implements FirebaseHandler {
                 if (snapshot != null) {
                     List<Quiz> quizList = new ArrayList<>();
                     for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                        Quiz singleQuiz = childSnapshot.getValue(Quiz.class);
-                        if (singleQuiz != null) {
-                            singleQuiz.setKey(childSnapshot.getKey());
-                            quizList.add(singleQuiz);
+                        try {
+                            Quiz singleQuiz = childSnapshot.getValue(Quiz.class);
+                            if (singleQuiz != null && singleQuiz.getTitle() != null) {
+                                singleQuiz.setKey(childSnapshot.getKey());
+                                quizList.add(singleQuiz);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     }
                     callback.onReponse(quizList);
@@ -112,10 +116,14 @@ class FirebaseHandlerImpl implements FirebaseHandler {
                 if (snapshot != null) {
                     List<QuizAttempted> quizzesAttempted = new ArrayList<>();
                     for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                        QuizAttempted singleQuizAttempted = childSnapshot.getValue(QuizAttempted.class);
-                        if (singleQuizAttempted != null) {
-                            singleQuizAttempted.setKey(childSnapshot.getKey());
-                            quizzesAttempted.add(singleQuizAttempted);
+                        try {
+                            QuizAttempted singleQuizAttempted = childSnapshot.getValue(QuizAttempted.class);
+                            if (singleQuizAttempted != null && singleQuizAttempted.getQuizTitle() != null) {
+                                singleQuizAttempted.setKey(childSnapshot.getKey());
+                                quizzesAttempted.add(singleQuizAttempted);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     }
                     callback.onReponse(quizzesAttempted);

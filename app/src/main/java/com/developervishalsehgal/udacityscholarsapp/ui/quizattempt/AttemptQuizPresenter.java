@@ -52,7 +52,7 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
                 if (!mIsEvaluated) {
                     mView.loadQuestion(mUserAttempts.get(mPointer));
                 } else {
-                    mView.loadQuestionForReview(mQuestions.get(mPointer), mUserAttempts.get(mPointer));
+                    mView.loadQuestionForReview(mUserAttempts.get(mPointer), mQuestions.get(mPointer));
                 }
 
                 // Last question reached, show submit button
@@ -72,6 +72,9 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
         mPointer = 0;
         mView.disablePreviousButton();
         mView.loadQuestionForReview(mQuestions.get(mPointer), mUserAttempts.get(mPointer));
+        mView.disablePreviousButton();
+        mView.showNextButton();
+        updateQuestionStatus();
     }
 
     @Override

@@ -136,5 +136,7 @@
     <string name="user_confirmation_cancel">Cancel</string>
     <string name="quiz_summary_msg">Here is your score</string>
     <string name="quiz_review_confirmation">Review</string>
+    <string name="quiz_dismiss_confirmation_msg">Are you sure you want to quiz? All your responses will be lost.</string>
+    <string name="quiz_dismiss_confirmation_title">Quitting the quiz?</string>
 
 </resources>

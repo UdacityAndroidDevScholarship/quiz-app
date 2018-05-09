@@ -33,6 +33,8 @@ public interface FirebaseHandler {
 
     void fetchAttemptedQuizzes(Callback<List<QuizAttempted>> callback);
 
+    void fetchQuizById(String quizId, Callback<Quiz> callback);
+
     void updateSlackHandle(String slackHandle, Callback<Void> callback);
 
     void updateUserName(String userName, Callback<Void> callback);
@@ -51,15 +53,15 @@ public interface FirebaseHandler {
 
     void updateMyAttemptedQuizzes(QuizAttempted quizAttempt, Callback<Void> callback);
 
-    void addBookmark(String quizIdentifier, Callback<Void> callback);
+    void updateQuizBookmarkStatus(String quizIdentifier, boolean isBookmarked, Callback<Void> callback);
 
-    void getMyBookmarks(Callback<String> callback);
+    void getMyBookmarks(Callback<List<String>> callback);
 
     void getMyPreferences(Callback<NotificationPrefs> callback);
 
     void updateMyPrefs(NotificationPrefs prefs, Callback<Void> callback);
 
-    void updateMyFCMToken(String fcmToken, Callback<Void> callback);
+    void updateMyFCMToken(String fcmToken);
 
     void updateMyStatus(String newStatus, Callback<Void> callback);
 
@@ -67,7 +69,7 @@ public interface FirebaseHandler {
 
     /**
      * Generic callback interface for passing response to caller.
-     *
+     * <p>
      * TODO Replace all such callbacks with reactive programing, just pass observables
      *
      * @param <T> Type of expected response

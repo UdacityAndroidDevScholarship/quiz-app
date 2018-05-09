@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".ui.quizattempt.AttemptQuizActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stateListAnimator="@animator/appbar_elevated"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_attempt_quiz"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@drawable/ic_clear_black_24dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/app_name" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:id="@+id/question_hierarchy_holder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_large"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@+id/img_quiz_attempt_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar_layout_home">
+
+        <LinearLayout
+            android:id="@+id/question_option_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_question_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_large"
+                tools:text="URIs identify and URLs locate; however, locators are also identifiers, so every URL is also a URI, but there are URIs which are not URLs. Which of the following is(are) URIs, but NOT URL(s)?" />
+
+            <FrameLayout
+                android:id="@+id/fl_all_options_type_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:id="@+id/rg_single_choice_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/margin_regular"
+                    android:visibility="gone">
+                    <!--Holds options for SINGLE choice questions -->
+                </RadioGroup>
+
+                <LinearLayout
+                    android:id="@+id/ll_multiple_choice_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <!--Holds options for MULTIPLE choice questions -->
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_subjective_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_regular"
+                    android:hint="@string/subjective_hint"
+                    android:inputType="text"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/bit_dark_gray"
+                    android:textSize="@dimen/text_large"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <ImageView
+        android:id="@+id/img_quiz_attempt_next"
+        android:layout_width="@dimen/box_medium"
+        android:layout_height="@dimen/box_medium"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_next_circle_filled" />
+
+    <ImageView
+        android:id="@+id/img_quiz_attempt_previous"
+        android:layout_width="@dimen/box_medium"
+        android:layout_height="@dimen/box_medium"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginStart="@dimen/margin_large"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_previous_circle_filled" />
+
+    <TextView
+        android:id="@+id/tv_attemt_quiz_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_regular"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_quiz_attempt_next"
+        app:layout_constraintEnd_toStartOf="@+id/img_quiz_attempt_next"
+        app:layout_constraintStart_toEndOf="@+id/img_quiz_attempt_previous"
+        app:layout_constraintTop_toTopOf="@+id/img_quiz_attempt_next"
+        tools:text=" 1 of 20" />
+
+
+</android.support.constraint.ConstraintLayout>

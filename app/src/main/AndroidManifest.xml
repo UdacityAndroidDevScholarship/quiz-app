@@ -16,8 +16,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        tools:replace="android:allowBackup"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
         <activity android:name=".ui.signin.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +26,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.home.HomeActivity">
-            <!--Adding this intent filter here to silence the warning ,this should be a part of home
-            activity or quiz details activity-->
+
+            <!--
+            Adding this intent filter here to silence the warning ,this should be a part of home
+            activity or quiz details activity
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
@@ -67,18 +70,17 @@
 
         <activity
             android:name=".ui.notification.NotificationActivity"
-            android:theme="@style/AppTheme"
-            android:launchMode="singleTop">
-
-        </activity>
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.notification.NotificationDetail"
             android:label="@string/notification_detail_activity_title"
             android:parentActivityName=".ui.notification.NotificationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.notification.NotificationActivity"/>
+                android:value=".ui.notification.NotificationActivity" />
         </activity>
+        <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
     </application>
 
 </manifest>

@@ -48,6 +48,7 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
     }
 
     private void initializeUI() {
+
         mImgUserPic = findViewById(R.id.img_user_pic);
         mEtSlackHandle = findViewById(R.id.tiet_slack_handle);
         mEtCourseTrack = findViewById(R.id.et_scholarship_track);
@@ -146,6 +147,9 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
                 mPresenter.saveProfile("", mEtSlackHandle.getText().toString()
                         , mEtCourseTrack.getText().toString());
                 break;
+            case R.id.img_user_pic:
+                Intent intent = new Intent(this,com.developervishalsehgal.udacityscholarsapp.ui.avatar.avatar_selection.class);
+                startActivity(intent);
             default:
                 break;
         }

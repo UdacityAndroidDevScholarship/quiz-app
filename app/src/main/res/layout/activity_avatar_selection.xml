@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.developervishalsehgal.udacityscholarsapp.ui.avatar.avatar_selection">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:rowCount="4"
+        android:columnCount="2"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/pic1"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:src="@drawable/avatar_1"
+            android:onClick="onClick"
+            android:padding="2dp" />
+
+        <ImageView
+            android:id="@+id/pic2"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:src="@drawable/avatar_2"
+            android:onClick="onClick"
+            android:padding="2dp"/>
+
+        <ImageView
+            android:id="@+id/pic3"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:src="@drawable/avatar_3"
+            android:onClick="onClick"
+            android:padding="2dp"/>
+
+        <ImageView
+            android:id="@+id/pic4"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:src="@drawable/avatar_8"
+            android:onClick="onClick"
+            android:padding="2dp"/>
+
+        <ImageView
+            android:id="@+id/pic5"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:src="@drawable/avatar_5"
+            android:onClick="onClick"
+            android:padding="2dp"/>
+
+        <ImageView
+            android:id="@+id/pic6"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:src="@drawable/avatar_6"
+            android:onClick="onClick"
+            android:padding="2dp"/>
+
+        <ImageView
+            android:id="@+id/pic7"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:src="@drawable/avatar_7"
+            android:onClick="onClick"
+            android:padding="2dp"/>
+
+        <ImageView
+            android:id="@+id/pic8"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:src="@drawable/avatar_4"
+            android:onClick="onClick"
+            android:padding="2dp"/>
+    </GridLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

@@ -16,8 +16,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        tools:replace="android:allowBackup"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
         <activity android:name=".ui.signin.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +26,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.home.HomeActivity">
-            <!--Adding this intent filter here to silence the warning ,this should be a part of home
-            activity or quiz details activity-->
+
+            <!--
+            Adding this intent filter here to silence the warning ,this should be a part of home
+            activity or quiz details activity
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
@@ -64,6 +67,8 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".ui.avatar.avatar_selection"></activity>
     </application>
 
 </manifest>

@@ -74,7 +74,9 @@
         <activity
             android:name=".ui.notification.NotificationActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme">
+        </activity>
+
         <activity
             android:name=".ui.notification.NotificationDetail"
             android:label="@string/notification_detail_activity_title"
@@ -83,13 +85,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.notification.NotificationActivity" />
         </activity>
+
+      
         <activity
             android:name=".ui.discussion.QuizDiscussionActivity"
             android:label="@string/title_activity_quiz_discussion"
             android:parentActivityName=".ui.home.HomeActivity"
             android:theme="@style/AppTheme">
         </activity>
+      
         <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
-    </application>
+    
+  </application>
 
 </manifest>

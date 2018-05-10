@@ -143,6 +143,19 @@
     <string name="quiz_dismiss_confirmation_msg">Are you sure you want to QUIT? All your responses will be lost.</string>
     <string name="quiz_dismiss_confirmation_title">Quitting the quiz?</string>
 
-    //Home Screen Back Button
+
+    <!-- Values for activity_quiz_details.xml -->
+    <string name="toolbar_title">Quiz Details</string>
+    <string name="label_author">Author :</string>
+    <string name="dummy_author">Vishal Sehgal</string>
+    <string name="label_released">Released on :</string>
+    <string name="label_deadline">DEADLINE :</string>
+    <string name="dummy_deadline_date">14 May 2018</string>
+    <string name="dummy_about">This Quiz is all about intents. Intents are used to signal to the Android system that a certain event has occured. Intents often describe the action which should be performed and provide data upon which such an action should be done.</string>
+    <string name="your_score">Your Score</string>
+    <string name="quiz_status">Unattempted</string>
+
+    <!-- Home Screen Back Button -->
     <string name="home_back_btn_msg">Press back again to exit.</string>
+
 </resources>

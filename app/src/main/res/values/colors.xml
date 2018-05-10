@@ -21,6 +21,10 @@
     <color name="bit_dark_gray">#22ffffff</color>
     <color name="light_blue">#ADD8E6</color>
 
+    <color name="materialBlack">#383838</color>
+    <color name="senderMessage">#E2E2E2</color>
+    <color name="userMessage">#AAFFAA</color>
+
 
     <color name="color_green_deadline">#22C461</color>
     <color name="color_red_deadline">#DC1A2E</color>
@@ -62,11 +66,11 @@
     </array>
 
     <array name="dot_inactive">
-    <item>@color/dot_light1</item>
-    <item>@color/dot_light2</item>
-    <item>@color/dot_light3</item>
-    <item>@color/dot_light4</item>
-    <item>@color/dot_light5</item>
+        <item>@color/dot_light1</item>
+        <item>@color/dot_light2</item>
+        <item>@color/dot_light3</item>
+        <item>@color/dot_light4</item>
+        <item>@color/dot_light5</item>
     </array>
 
     <color name="divider_light">#BDBDBD</color>

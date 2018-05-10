@@ -64,6 +64,26 @@
     <string name="text_proceed">Proceed >> </string>
     <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
     <string name="profile_saved_successfully">Profile saved successfully</string>
+    <string name="author">Author</string>
+    <string name="released_on">Released on</string>
+    <string name="your_score">Your score</string>
+    <string name="type_your_message_here">Type your message here</string>
+    <string name="sender_image">Sender image</string>
+
+    <string name="get_notifications_label">Get Notifications</string>
+    <string name="get_notifications_key">getNotifications</string>
+    <string name="theme_title_preference">Theme</string>
+    <string name="theme_key_preference">Theme</string>
+    <string name="logout_preference">Logout</string>
+    <string name="default_theme_value">Dark</string>
+    <string name="dark_theme_label">Dark</string>
+    <string name="light_theme_label">Light</string>
+    <string name="dark_theme_value">Dark</string>
+    <string name="light_theme_value">Light</string>
+    <string name="are_you_sure_n_nthis_will_log_you_out_from_the_device">Are you sure?\nThis will log you out from the device!</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="sign_out">Sign Out</string>
 
 
     <!-- NotificationActivity Helper Strings  -->

@@ -22,7 +22,7 @@
         <ImageButton
             android:layout_marginRight="10dp"
             android:layout_alignParentEnd="true"
-            android:id="@+id/editor"
+            android:id="@+id/nav_drawer_edit_profile"
             android:layout_alignParentTop="true"
             android:layout_width="@dimen/img_btn"
             android:layout_height="@dimen/img_btn"

@@ -110,7 +110,7 @@
     <string name="msg_login_successful">Login successful</string>
     <string name="txt_status_completed">Completed</string>
     <string name="txt_status_pending">Not started</string>
-    <string name="txt_deadline_none">DEADLINE NONE</string>
+    <string name="txt_deadline_none">NONE</string>
 
     //Navigation Drawer Menu Items
     <string name="scoreboard">Scoreboard</string>

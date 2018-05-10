@@ -14,7 +14,7 @@
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/sign_in_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
@@ -27,7 +27,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.home.HomeActivity"
+
+            android:launchMode="singleTop"
+            
+
             android:theme="@style/homeactivity">
+
 
             <!--
             Adding this intent filter here to silence the warning ,this should be a part of home
@@ -71,6 +76,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+
         <activity
             android:name=".ui.notification.NotificationActivity"
             android:launchMode="singleTop"
@@ -83,7 +89,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.notification.NotificationActivity" />
         </activity>
+
+
+        <activity android:name=".ui.SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".ui.home.HomeActivity"
+            ></activity>
+
+
         <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
+
     </application>
 
 </manifest>

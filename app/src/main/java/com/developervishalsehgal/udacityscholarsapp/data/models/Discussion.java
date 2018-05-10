@@ -37,34 +37,42 @@ public class Discussion {
     @Exclude
     String mKey;
 
+    @Exclude
     public String getQuizId() {
         return mQuizId;
     }
 
+    @Exclude
     public void setQuizId(String quizId) {
         mQuizId = quizId;
     }
 
+    @Exclude
     public String getQuizTitle() {
         return mQuizTitle;
     }
 
+    @Exclude
     public void setQuizTitle(String quizTitle) {
         mQuizTitle = quizTitle;
     }
 
+    @Exclude
     public List<Comment> getComments() {
         return mComments;
     }
 
+    @Exclude
     public void setComments(List<Comment> comments) {
         this.mComments = comments;
     }
 
+    @Exclude
     public String getKey() {
         return mKey;
     }
 
+    @Exclude
     public void setKey(String key) {
         this.mKey = key;
     }

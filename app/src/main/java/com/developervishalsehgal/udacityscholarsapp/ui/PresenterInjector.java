@@ -6,6 +6,8 @@ import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.home.HomePresenter;
 import com.developervishalsehgal.udacityscholarsapp.ui.profile.ProfileContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.profile.ProfilePresenter;
+import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
+import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizPresenter;
 import com.developervishalsehgal.udacityscholarsapp.ui.signin.SignInContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.signin.SignInPresenter;
 
@@ -30,4 +32,7 @@ public class PresenterInjector {
         new QuizDiscussionPresenter(discussionView);
     }
 
+    public static void injectQuizAttemptPresenter(AttemptQuizContract.View attemptQuizView) {
+        new AttemptQuizPresenter(attemptQuizView);
+    }
 }

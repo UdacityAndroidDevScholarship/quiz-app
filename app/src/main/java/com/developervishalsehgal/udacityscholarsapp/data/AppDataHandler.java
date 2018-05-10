@@ -14,6 +14,8 @@ import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseProvider;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -58,24 +60,34 @@ class AppDataHandler implements DataHandler {
             @Override
             public void onReponse(List<Quiz> quizzes) {
 
-                // Fetch quizzes attempted by user
-                mFirebaseHandler.fetchAttemptedQuizzes(new FirebaseHandler.Callback<List<QuizAttempted>>() {
+                // Fetch user info to get bookmarks and attempted quizzes
+                mFirebaseHandler.fetchUserInfo(null, new FirebaseHandler.Callback<User>() {
                     @Override
-                    public void onReponse(List<QuizAttempted> attempts) {
+                    public void onReponse(User result) {
+                        Collection<QuizAttempted> attemptedQuizzes = new HashSet<>();
+                        if (result.getAttemptedList() != null) {
+                            attemptedQuizzes = result.getAttemptedList().values();
+                        }
+                        Collection<String> userBookmarks = new HashSet<>();
+                        if (result.getBookmarks() != null) {
+                            userBookmarks = result.getBookmarks().keySet();
+                        }
 
                         // Mark attempted quizzes
                         for (Quiz singleQuiz : quizzes) {
-                            for (QuizAttempted attempt : attempts) {
+                            for (QuizAttempted attempt : attemptedQuizzes) {
                                 if (singleQuiz.getKey().equalsIgnoreCase(attempt.getQuizId())) {
                                     singleQuiz.setAttempted(true);
                                     break;
                                 }
                             }
+                            // set user bookmarks
+                            singleQuiz.setBookmarked(userBookmarks.contains(singleQuiz.getKey()));
                         }
 
-                        // return the marked response
                         callback.onResponse(quizzes);
                     }
+
 
                     @Override
                     public void onError() {
@@ -87,6 +99,11 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
+    public void fetchQuizById(String quizId, Callback<Quiz> callback) {
+        mFirebaseHandler.fetchQuizById(quizId, new FirebaseCallback<>(callback));
+    }
+
+    @Override
     public void fetchAttemptedQuizzes(Callback<List<QuizAttempted>> callback) {
         mFirebaseHandler.fetchAttemptedQuizzes(new FirebaseCallback<>(callback));
     }
@@ -94,6 +111,11 @@ class AppDataHandler implements DataHandler {
     @Override
     public void updateSlackHandle(String slackHandle, Callback<Void> callback) {
         mFirebaseHandler.updateSlackHandle(slackHandle, new FirebaseCallback<>(callback));
+    }
+
+    @Override
+    public void updateFCMToken(String fcmToken) {
+        mFirebaseHandler.updateMyFCMToken(fcmToken);
     }
 
     @Override
@@ -119,7 +141,12 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
-    public void postComment(String discussionId, String quizId, Comment comment, Callback<Void> callback) {
+    public void postComment(String discussionId, String quizId, String scholarComment, Callback<Void> callback) {
+        Comment comment = new Comment();
+        comment.setComment(scholarComment);
+        comment.setCommentBy(mPreferences.getUserName());
+        comment.setCommentedOn(System.currentTimeMillis() / 1000);
+        comment.setImage(mPreferences.getUserPic());
         mFirebaseHandler.postComment(discussionId, quizId, comment, new FirebaseCallback<>(callback));
     }
 
@@ -129,8 +156,13 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
-    public void addBookmark(String quizIdentifier, Callback<Void> callback) {
-        mFirebaseHandler.addBookmark(quizIdentifier, new FirebaseCallback<>(callback));
+    public void updateQuizBookmarkStatus(String quizIdentifier, boolean isBookmarked, Callback<Void> callback) {
+        mFirebaseHandler.updateQuizBookmarkStatus(quizIdentifier, isBookmarked, new FirebaseCallback<>(callback));
+    }
+
+    @Override
+    public void getMyBookmarks(Callback<List<String>> callback) {
+        mFirebaseHandler.getMyBookmarks(new FirebaseCallback<>(callback));
     }
 
     @Override

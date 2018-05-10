@@ -18,14 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
-        <activity android:name=".ui.signin.SignInActivity">
+        <activity android:name=".ui.signin.SignInActivity"
+            android:theme="@style/homeactivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.HomeActivity">
+        <activity android:name=".ui.home.HomeActivity"
+            android:theme="@style/homeactivity">
 
             <!--
             Adding this intent filter here to silence the warning ,this should be a part of home
@@ -35,7 +37,8 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.profile.UserProfileActivity">
+        <activity android:name=".ui.profile.UserProfileActivity"
+            android:theme="@style/homeactivity">
 
             <!--
             Adding this intent filter here to silence the warning ,this should be a part of home
@@ -71,7 +74,7 @@
         <activity
             android:name=".ui.notification.NotificationActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.notification.NotificationDetail"
             android:label="@string/notification_detail_activity_title"
@@ -86,6 +89,7 @@
             android:parentActivityName=".ui.home.HomeActivity"
             android:theme="@style/AppTheme">
         </activity>
+        <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
     </application>
 
 </manifest>

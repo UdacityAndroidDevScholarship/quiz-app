@@ -37,6 +37,14 @@ public interface DataHandler {
     void fetchQuizzes(int limitToFirst, Callback<List<Quiz>> callback);
 
     /**
+     * Fetches quizzes based on parameters passed
+     *
+     * @param quizId   Id of the quiz to be fetched
+     * @param callback Callback for receiving result
+     */
+    void fetchQuizById(String quizId, Callback<Quiz> callback);
+
+    /**
      * Fetches quizzes already attempted by current user
      *
      * @param callback Callback for receiving result
@@ -50,6 +58,13 @@ public interface DataHandler {
      * @param callback    callback for status of operation
      */
     void updateSlackHandle(String slackHandle, Callback<Void> callback);
+
+    /**
+     * Updates user's FCM token
+     *
+     * @param fcmToken new FCM token
+     */
+    void updateFCMToken(String fcmToken);
 
     /**
      * Updates user's name in user's profile
@@ -89,10 +104,10 @@ public interface DataHandler {
      *
      * @param discussionId id of discussion
      * @param quizId       id of the quiz this discussion belongs to
-     * @param comment      {@link Comment} object representing user's comment
+     * @param comment      scholar's comment
      * @param callback     callback for status of operation
      */
-    void postComment(String discussionId, String quizId, Comment comment, Callback<Void> callback);
+    void postComment(String discussionId, String quizId, String comment, Callback<Void> callback);
 
     /**
      * Updates user's attempted quizzes in remote database
@@ -108,7 +123,14 @@ public interface DataHandler {
      * @param quizIdentifier id of the quiz to be bookmarked
      * @param callback       callback for status of operation
      */
-    void addBookmark(String quizIdentifier, Callback<Void> callback);
+    void updateQuizBookmarkStatus(String quizIdentifier, boolean isBookmarked, Callback<Void> callback);
+
+    /**
+     * Gets user's bookmarked quizzes
+     *
+     * @param callback callback for getting list of user bookmarks
+     */
+    void getMyBookmarks(Callback<List<String>> callback);
 
     /**
      * Saves user name locally

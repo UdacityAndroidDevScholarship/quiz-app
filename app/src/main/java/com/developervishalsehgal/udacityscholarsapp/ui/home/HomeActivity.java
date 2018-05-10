@@ -43,6 +43,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private static final int ANIMATION_SLIDE_DOWN_TRANSLATE_Y = 0;
     private static final int ANIMATION_SLIDE_UP_TRANSLATE_Y = -1000;
     private static final int SLIDE_UP_DELAY_ON_CHECKED_CHANGED = 350;
+    private static final int BACK_PRESS_DURATION = 3000;
 
     private QuizAdapter mQuizAdapter;
 
@@ -296,7 +297,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 twiceClicked = true;
 
 
-                snackbar = Snackbar.make(findViewById(R.id.homeactivitycoordinator), "Press back again to exit.", Snackbar.LENGTH_LONG);
+                snackbar = Snackbar.make(findViewById(R.id.homeactivitycoordinator), getResources().getString(R.string.home_back_btn_msg), Snackbar.LENGTH_LONG);
                 final View snackbarView = snackbar.getView();
                 snackbar.show();
                 snackbarView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -313,7 +314,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     public void run() {
                         twiceClicked = false;
                     }
-                }, 3000);
+                }, BACK_PRESS_DURATION);
             }
 
         }

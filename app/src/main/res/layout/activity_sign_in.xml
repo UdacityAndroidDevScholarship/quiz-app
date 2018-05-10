@@ -19,12 +19,12 @@
 
     <ImageView
         android:id="@+id/sigin_image_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="189dp"
+        android:layout_height="139dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:contentDescription="@string/app_name"
-        android:src="@mipmap/signin_logo" />
+        android:src="@drawable/sign_in_logo" />
 
     <TextView
         android:id="@+id/signin_text_almost_there"

@@ -46,7 +46,7 @@
                 <ImageView
                     android:layout_width="@dimen/img_view_main"
                     android:layout_height="@dimen/img_view_main"
-                    android:src="@drawable/udacitylogo" />
+                    android:src="@drawable/sign_in_logo" />
 
             </LinearLayout>
 

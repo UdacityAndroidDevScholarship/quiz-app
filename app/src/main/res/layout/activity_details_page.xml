@@ -14,9 +14,9 @@
         android:background="@color/colorPrimary">
         <ImageView
             android:id="@+id/details_page_toolbar_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/udacity_toolbar_logo"/>
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:src="@drawable/sign_in_logo"/>
         <TextView
             android:id="@+id/details_page_toolbar_settings"
             android:layout_width="wrap_content"

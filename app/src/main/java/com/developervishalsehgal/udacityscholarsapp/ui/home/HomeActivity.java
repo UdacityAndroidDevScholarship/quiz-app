@@ -3,8 +3,12 @@ package com.developervishalsehgal.udacityscholarsapp.ui.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v4.widget.DrawerLayout;
@@ -17,18 +21,20 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.RadioGroup;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
 
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View,
-        QuizAdapter.QuizItemListener {
+        QuizAdapter.QuizItemListener, NavigationView.OnNavigationItemSelectedListener {
 
     /* static constants for quiz filter */
     private static final int SLIDE_DOWN_ANIMATION_DURATION = 600;
@@ -37,6 +43,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private static final int ANIMATION_SLIDE_DOWN_TRANSLATE_Y = 0;
     private static final int ANIMATION_SLIDE_UP_TRANSLATE_Y = -1000;
     private static final int SLIDE_UP_DELAY_ON_CHECKED_CHANGED = 350;
+    private static final int BACK_PRESS_DURATION = 3000;
 
     private QuizAdapter mQuizAdapter;
 
@@ -44,9 +51,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     // UI Elements
     private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
     // Reference of the quiz filter list layout
     private RadioGroup mHomeQuizListFilterRadioGroup;
     //////////////
+    boolean twiceClicked = false;
+    Snackbar snackbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,13 +92,17 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
+        mNavigationView = findViewById(R.id.nav_view);
+        mNavigationView.setItemIconTintList(null);
+        mNavigationView.setNavigationItemSelectedListener(this);
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main_menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -142,7 +156,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void navigateToNotifications() {
-        // TODO: Navigate to Notifications screen
+        Intent notificationActivityIntent = new Intent(this, NotificationActivity.class);
+        startActivity(notificationActivityIntent);
     }
 
     @Override
@@ -161,9 +176,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     }
 
     @Override
-    public void navigateToLogin() {
-        // TODO: This should only be called when user clicks on logout. Kill current activity
-        // TODO: and launch login activity
+    public void navigateToEditProfile() {
+        // TODO: Navigate to edit profile activity
     }
 
     @Override
@@ -259,5 +273,51 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 mPresenter.onBookmarkSelected();
                 break;
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            if (twiceClicked) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                startActivity(intent);
+                snackbar.dismiss();
+
+            } else {
+
+                twiceClicked = true;
+
+
+                snackbar = Snackbar.make(findViewById(R.id.homeactivitycoordinator), getResources().getString(R.string.home_back_btn_msg), Snackbar.LENGTH_LONG);
+                final View snackbarView = snackbar.getView();
+                snackbar.show();
+                snackbarView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        snackbarView.getViewTreeObserver().removeOnPreDrawListener(this);
+                        ((CoordinatorLayout.LayoutParams) snackbarView.getLayoutParams()).setBehavior(null);
+                        return true;
+                    }
+                });
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        twiceClicked = false;
+                    }
+                }, BACK_PRESS_DURATION);
+            }
+
+        }
+
     }
 }

@@ -136,8 +136,9 @@
     <string name="user_confirmation_cancel">Cancel</string>
     <string name="quiz_summary_msg">Here is your score</string>
     <string name="quiz_review_confirmation">Review</string>
-    <string name="quiz_dismiss_confirmation_msg">Are you sure you want to quiz? All your responses will be lost.</string>
+    <string name="quiz_dismiss_confirmation_msg">Are you sure you want to QUIT? All your responses will be lost.</string>
     <string name="quiz_dismiss_confirmation_title">Quitting the quiz?</string>
+
 
     <!-- Values for activity_quiz_details.xml -->
     <string name="toolbar_title">Quiz Details</string>
@@ -149,5 +150,8 @@
     <string name="dummy_about">This Quiz is all about intents. Intents are used to signal to the Android system that a certain event has occured. Intents often describe the action which should be performed and provide data upon which such an action should be done.</string>
     <string name="your_score">Your Score</string>
     <string name="quiz_status">Unattempted</string>
+
+    <!-- Home Screen Back Button -->
+    <string name="home_back_btn_msg">Press back again to exit.</string>
 
 </resources>

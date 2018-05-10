@@ -20,7 +20,7 @@
     <dimen name="difficulty_view_width">48dp</dimen>
     <dimen name="difficulty_view_height">16dp</dimen>
     <dimen name="difficulty_view_margin">4dp</dimen>
-    <dimen name="card_view_elevation">4dp</dimen>
+    <dimen name="card_view_elevation">2dp</dimen>
     <dimen name="card_view_corner_radius">2dp</dimen>
 
     <!-- details page ACTIVITY dimesions-->
@@ -138,7 +138,7 @@
     <dimen name="i_w_dim">94dp</dimen>
     <dimen name="menu_mar">12dp</dimen>
     <dimen name="menu_mar_one">10dp</dimen>
-    <dimen name="draw_r">40dp</dimen>
+    <dimen name="draw_r">5dp</dimen>
     <dimen name="draw_pad">5dp</dimen>
     <dimen name="appbar_padding_top">16dp</dimen>
 

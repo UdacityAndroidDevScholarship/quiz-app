@@ -139,4 +139,6 @@
     <string name="quiz_dismiss_confirmation_msg">Are you sure you want to QUIT? All your responses will be lost.</string>
     <string name="quiz_dismiss_confirmation_title">Quitting the quiz?</string>
 
+    //Home Screen Back Button
+    <string name="home_back_btn_msg">Press back again to exit.</string>
 </resources>

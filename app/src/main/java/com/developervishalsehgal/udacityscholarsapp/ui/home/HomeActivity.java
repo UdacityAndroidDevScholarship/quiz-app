@@ -27,6 +27,7 @@ import android.widget.RadioGroup;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
@@ -87,7 +88,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         quizRecyclerView.setLayoutManager(linearLayoutManager);
 
         mQuizAdapter = new QuizAdapter(this);
-
         quizRecyclerView.setAdapter(mQuizAdapter);
 
         initQuizFilter();
@@ -137,7 +137,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void navigateToQuizDesc(Quiz quiz) {
         // TODO: Navigate to QuizDescription Activity, use the quiz object above to extract quiz
         // TODO: details etc and pass as intent parameter.
-
         // TODO remove below code, only for testing
         Intent attemptQuizIntent = new Intent(this, AttemptQuizActivity.class);
         attemptQuizIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, quiz.getKey());

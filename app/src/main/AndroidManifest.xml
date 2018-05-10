@@ -86,8 +86,16 @@
                 android:value=".ui.notification.NotificationActivity" />
         </activity>
 
-        <activity android:name=".ui.quizdetails.QuizDetailsActivity" />
-
-    </application>
+      
+        <activity
+            android:name=".ui.discussion.QuizDiscussionActivity"
+            android:label="@string/title_activity_quiz_discussion"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+      
+        <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
+    
+  </application>
 
 </manifest>

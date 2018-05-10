@@ -1,5 +1,7 @@
 package com.developervishalsehgal.udacityscholarsapp.ui;
 
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionContract;
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionPresenter;
 import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.home.HomePresenter;
 import com.developervishalsehgal.udacityscholarsapp.ui.profile.ProfileContract;
@@ -24,6 +26,10 @@ public class PresenterInjector {
 
     public static void injectHomePresenter(HomeContract.View homeView) {
         new HomePresenter(homeView);
+    }
+
+    public static void injectQuizDiscussionPresenter(QuizDiscussionContract.View discussionView) {
+        new QuizDiscussionPresenter(discussionView);
     }
 
     public static void injectQuizAttemptPresenter(AttemptQuizContract.View attemptQuizView) {

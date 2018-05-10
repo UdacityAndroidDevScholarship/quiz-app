@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import com.developervishalsehgal.udacityscholarsapp.application.AppClass;
 import com.developervishalsehgal.udacityscholarsapp.data.local.DBHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Discussion;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
@@ -251,6 +252,16 @@ class AppDataHandler implements DataHandler {
     @Override
     public List<Notification> searchNotifications(String query, int startFrom, int limit) {
         return mDBHandler.searchNotifications(query, startFrom, limit);
+    }
+
+    @Override
+    public void fetchDiscussions(int limitToFirst, Callback<Discussion> callback) {
+
+    }
+
+    @Override
+    public void sendQuizDiscussionMessage(Comment comment, Callback<Void> callback) {
+
     }
 
     /**

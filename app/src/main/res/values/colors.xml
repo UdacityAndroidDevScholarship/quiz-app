@@ -62,13 +62,14 @@
     </array>
 
     <array name="dot_inactive">
-    <item>@color/dot_light1</item>
-    <item>@color/dot_light2</item>
-    <item>@color/dot_light3</item>
-    <item>@color/dot_light4</item>
-    <item>@color/dot_light5</item>
+        <item>@color/dot_light1</item>
+        <item>@color/dot_light2</item>
+        <item>@color/dot_light3</item>
+        <item>@color/dot_light4</item>
+        <item>@color/dot_light5</item>
     </array>
 
     <color name="divider_light">#BDBDBD</color>
     <color name="ripple_color">#bdbdbd</color>
+    <color name="bubble_background">#FFF6EA</color>
 </resources>

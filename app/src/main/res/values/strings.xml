@@ -128,6 +128,12 @@
     //Unread Notification
     <string name="newnotification">15</string>
     <string name="number">10</string>
+
+    //Discussion Screen
+    <string name="chat_message_hint">Type a message</string>
+    <string name="message_send_button">Message Send Button</string>
+    <string name="quiz_discussion_activity_title">Help / Discussion</string>
+
     <string name="subjective_hint">Enter your answer here</string>
     <string name="invalid_input_provided">Invalid parameter provided while launching quiz.</string>
     <string name="quiz_submit_confirmation_msg">Are you sure you want submit your response for this quiz?</string>

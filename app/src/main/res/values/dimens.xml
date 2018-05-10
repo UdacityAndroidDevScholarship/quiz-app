@@ -12,7 +12,7 @@
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
-  
+
     <dimen name="user_profile_header_view">100dp</dimen>
 
     <!-- Quizzes List Item layout dimensions -->
@@ -42,7 +42,7 @@
     <dimen name="details_page_button_text">24sp</dimen>
     <dimen name="details_page_email_text">18sp</dimen>
 
-    
+
     <!-- Notification Activity dimesions-->
     <dimen name="notification_list_items_layout_margin">2dp</dimen>
     <dimen name="notification_list_items_name_text_size">15sp</dimen>
@@ -124,5 +124,14 @@
     <dimen name="draw_r">5dp</dimen>
     <dimen name="draw_pad">5dp</dimen>
     <dimen name="appbar_padding_top">16dp</dimen>
+
+    //Discussion Item dimensions
+    <dimen name="bubble_arrow_height">16dp</dimen>
+    <dimen name="bubble_arrow_width">16dp</dimen>
+    <dimen name="bubble_corner_radius">16dp</dimen>
+    <dimen name="bubble_side_margin">72dp</dimen>
+    <dimen name="bubble_arrow_position">10dp</dimen>
+    <dimen name="chat_profile_image_size">56dp</dimen>
+    <dimen name="chat_send_button_size">48dp</dimen>
 
 </resources>

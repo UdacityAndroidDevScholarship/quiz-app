@@ -112,6 +112,20 @@
     <string name="txt_status_pending">Not started</string>
     <string name="txt_deadline_none">DEADLINE NONE</string>
 
+    <!-- Quiz Details Activity Strings -->
+    <string name="activity_title">Quiz Details</string>
+    <string name="quiz_details_status">Unattempted</string>
+    <string name="quiz_details_score_label">Your Score</string>
+    <string name="quiz_details_description">This quiz is all about intents,blah,blah,blah, intents are used to signal the android studio system that a certain event has occured.Intents often describe the action which should be performed and provide data upon which such an action should be done.For example, your application can start a browser component for a certain URL via an intent.</string>
+    <string name="quiz_details_deadline_label">DEADLINE :</string>
+    <string name="quiz_details_deadline_value">14 May 2018</string>
+    <string name="quiz_details_released_label">Released on :</string>
+    <string name="quiz_details_released_value">14 April 2018</string>
+    <string name="quiz_details_author_name">Vishal Sehgal</string>
+    <string name="quiz_details_author_label">Author :</string>
+    <string name="quiz_details_quiz_title">Lesson 5 Quiz 1 - Intents</string>
+    <string name="quiz_details_btn_play_description">Start Quiz</string>
+
     //Navigation Drawer Menu Items
     <string name="scoreboard">Scoreboard</string>
     <string name="quizlist">QuizList</string>

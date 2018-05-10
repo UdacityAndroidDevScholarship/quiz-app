@@ -81,6 +81,21 @@
     <dimen name="notification_detail_description_margin_start">16dp</dimen>
     <dimen name="notification_detail_description_margin_end">16dp</dimen>
 
+    <!-- Values for Quiz Details -->
+    <dimen name="quiz_details_toolbar_btn_size">36dp</dimen>
+    <dimen name="quiz_details_card_corner_radius">20dp</dimen>
+    <dimen name="quiz_details_toolbar_title_margin_start">25dp</dimen>
+    <dimen name="quiz_details_toolbar_btn_margin">10dp</dimen>
+    <dimen name="quiz_details_sub_text_size">15sp</dimen>
+    <dimen name="quiz_details_score_label_text_size">22sp</dimen>
+    <dimen name="quiz_details_status_text_size">17sp</dimen>
+    <dimen name="quiz_details_btn_play_size">68dp</dimen>
+    <dimen name="quiz_details_description_padding">10dp</dimen>
+    <dimen name="quiz_details_name_size">22sp</dimen>
+    <dimen name="quiz_details_card_view_margin">10dp</dimen>
+    <dimen name="quiz_details_card_view_margin_top">20dp</dimen>
+    <dimen name="quiz_details_card_view_padding">10dp</dimen>
+
     <!-- Values for activity_home.xml -->
     <dimen name="quiz_filter_button_margin_end">16dp</dimen>
 

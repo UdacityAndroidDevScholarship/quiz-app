@@ -41,6 +41,11 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     private static final String KEY_USER_STATUS = "status";
     private static final String KEY_USER_TRACK = "track";
     private static final String KEY_NOTIF_PREFS = "prefs";
+
+    private static final String KEY_USER_ATTEMPTED_QUIZ = "attempted";
+    private static final String KEY_DISCUSSION_COMMENTS = "comments";
+
+    private static final String KEY_USER_BOOKMARKS = "bookmarks";
     //
 
     private DatabaseReference mUsersRef;
@@ -50,6 +55,7 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     private List<ValueEventListener> mValueListeners;
 
     // Private variables
+    private FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
     FirebaseHandlerImpl() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -72,10 +78,14 @@ class FirebaseHandlerImpl implements FirebaseHandler {
                 if (snapshot != null) {
                     List<Quiz> quizList = new ArrayList<>();
                     for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                        Quiz singleQuiz = childSnapshot.getValue(Quiz.class);
-                        if (singleQuiz != null) {
-                            singleQuiz.setKey(childSnapshot.getKey());
-                            quizList.add(singleQuiz);
+                        try {
+                            Quiz singleQuiz = childSnapshot.getValue(Quiz.class);
+                            if (singleQuiz != null && singleQuiz.getTitle() != null) {
+                                singleQuiz.setKey(childSnapshot.getKey());
+                                quizList.add(singleQuiz);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     }
                     callback.onReponse(quizList);
@@ -90,11 +100,72 @@ class FirebaseHandlerImpl implements FirebaseHandler {
 
         Query quizzesRefQuery = mQuizzesRef;
 
-        // TODO Implement pagination here.
+        // TODO: Implement pagination here.
         if (limitToFirst > 0) {
             quizzesRefQuery.limitToFirst(limitToFirst);
         }
         quizzesRefQuery.addValueEventListener(listener);
+        mValueListeners.add(listener);
+    }
+
+    @Override
+    public void fetchAttemptedQuizzes(Callback<List<QuizAttempted>> callback) {
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<QuizAttempted> quizzesAttempted = new ArrayList<>();
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        try {
+                            QuizAttempted singleQuizAttempted = childSnapshot.getValue(QuizAttempted.class);
+                            if (singleQuizAttempted != null && singleQuizAttempted.getQuizTitle() != null) {
+                                singleQuizAttempted.setKey(childSnapshot.getKey());
+                                quizzesAttempted.add(singleQuizAttempted);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    callback.onReponse(quizzesAttempted);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        mUsersRef.child(mCurrentUser.getUid()).child(KEY_USER_ATTEMPTED_QUIZ)
+                .addValueEventListener(listener);
+        mValueListeners.add(listener);
+    }
+
+    @Override
+    public void fetchQuizById(String quizId, Callback<Quiz> callback) {
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    Quiz singleQuiz = snapshot.getValue(Quiz.class);
+                    singleQuiz.setKey(snapshot.getKey());
+                    callback.onReponse(singleQuiz);
+                } else {
+                    callback.onError();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mQuizzesRef.child(quizId).addValueEventListener(listener);
         mValueListeners.add(listener);
     }
 
@@ -127,6 +198,33 @@ class FirebaseHandlerImpl implements FirebaseHandler {
 
     @Override
     public void fetchUserInfo(String userIdentifier, Callback<User> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        if (userIdentifier == null) {
+            userIdentifier = mCurrentUser.getUid();
+        }
+
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    User user = snapshot.getValue(User.class);
+                    callback.onReponse(user);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mUsersRef.child(mCurrentUser.getUid()).addValueEventListener(listener);
+        mValueListeners.add(listener);
+
 
     }
 
@@ -135,8 +233,6 @@ class FirebaseHandlerImpl implements FirebaseHandler {
 
         // Here we are not using setValue directly as that will overwrite the entire object and
         // we want to save bookmarks and attempted quizzes. Hence calling updateChildren
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        String userIdentifier = firebaseUser.getUid();
 
         Map<String, Object> userData = new HashMap<>();
         userData.put(KEY_USER_EMAIL, currentUser.getEmail());
@@ -148,28 +244,93 @@ class FirebaseHandlerImpl implements FirebaseHandler {
         userData.put(KEY_USER_TRACK, currentUser.getTrack());
         userData.put(KEY_NOTIF_PREFS, currentUser.getNotificationPrefs());
 
-        mUsersRef.child(userIdentifier).updateChildren(userData)
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        mUsersRef.child(mCurrentUser.getUid()).updateChildren(userData)
                 .addOnSuccessListener(aVoid -> callback.onReponse(null))
                 .addOnFailureListener(e -> callback.onError());
     }
 
     @Override
-    public void postComment(String discussionId, String quizId, Comment comment, Callback<Void> callback) {
-
+    public void postComment(String discussionId, String quizId, Comment comment,
+                            Callback<Void> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+        comment.setCommenterId(mCurrentUser.getUid());
+        mDiscussionsRef.child(discussionId).child(KEY_DISCUSSION_COMMENTS).push().setValue(comment)
+                .addOnSuccessListener(aVoid -> {
+                    callback.onReponse(null);
+                })
+                .addOnFailureListener(e -> {
+                    callback.onError();
+                });
     }
 
     @Override
     public void updateMyAttemptedQuizzes(QuizAttempted quizAttempt, Callback<Void> callback) {
 
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        mUsersRef.child(mCurrentUser.getUid())
+                .child(KEY_USER_ATTEMPTED_QUIZ)
+                .child(quizAttempt.getQuizId())
+                .setValue(quizAttempt)
+                .addOnSuccessListener(aVoid -> callback.onReponse(null))
+                .addOnFailureListener(e -> callback.onError());
+
     }
 
     @Override
-    public void addBookmark(String quizIdentifier, Callback<Void> callback) {
+    public void updateQuizBookmarkStatus(String quizIdentifier, boolean isBookmarked, Callback<Void> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
 
+        mUsersRef.child(mCurrentUser.getUid()).child(KEY_USER_BOOKMARKS).child(quizIdentifier)
+                .setValue(isBookmarked)
+                .addOnSuccessListener(aVoid -> callback.onReponse(null))
+                .addOnFailureListener(e -> callback.onError());
     }
 
     @Override
-    public void getMyBookmarks(Callback<String> callback) {
+    public void getMyBookmarks(Callback<List<String>> callback) {
+
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<String> bookmarks = new ArrayList<>();
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        try {
+                            boolean isAdded = (boolean) childSnapshot.getValue();
+                            if (isAdded) {
+                                bookmarks.add(childSnapshot.getKey());
+                            }
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    callback.onReponse(bookmarks);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mUsersRef.child(mCurrentUser.getUid()).child(KEY_USER_BOOKMARKS)
+                .addValueEventListener(listener);
 
     }
 
@@ -184,7 +345,14 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
     @Override
-    public void updateMyFCMToken(String fcmToken, Callback<Void> callback) {
+    public void updateMyFCMToken(String fcmToken) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        if (mCurrentUser != null) {
+            mUsersRef.child(mCurrentUser.getUid()).child(KEY_FCM_TOKEN).setValue(fcmToken);
+        }
 
     }
 
@@ -206,10 +374,12 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     private void updateUserProperty(String property, String value, final Callback<Void> callback) {
 
         try {
-            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-            String currentUserId = firebaseUser.getUid();
 
-            mUsersRef.child(currentUserId).child(property).setValue(value)
+            if (mCurrentUser == null) {
+                mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+            }
+
+            mUsersRef.child(mCurrentUser.getUid()).child(property).setValue(value)
                     .addOnCompleteListener(task -> callback.onReponse(null))
                     .addOnFailureListener(e -> callback.onError());
         } catch (Exception e) {

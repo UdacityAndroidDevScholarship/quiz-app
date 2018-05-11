@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">UdacityScholarsApp</string>
+    <string name="app_settings">App</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -129,4 +130,20 @@
     <string name="newnotification">15</string>
     <string name="number">10</string>
 
+    <!-- Settings SharedPreferences for Theme color option -->
+    <string name="pref_theme_color_label_dark">Dark</string>
+    <string name="pref_theme_color_label_light">Light</string>
+    <string name="pref_theme_color_dark_value" translatable="false">Dark</string>
+    <string name="pref_theme_color_light_value" translatable="false">Light</string>
+    <string name="pref_theme_color_label">Theme</string>
+    <string name="pref_theme_color_key">theme_color</string>
+
+    <!-- Settings SharedPreferences for Notification enabling/disabling option -->
+    <string name="pref_is_notification_enabled_key">is_notification_enabled</string>
+    <string name="pref_is_notification_enabled_title">Get Notifications</string>
+
+    <!-- Settings SharedPreferences for Sign Out option -->
+    <string name="pref_sign_out_key">is_sign_out</string>
+    <string name="pref_sign_out_summary">Sign Out</string>
+    <string name="activity_settings">Settings</string>
 </resources>

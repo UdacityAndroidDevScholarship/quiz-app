@@ -42,6 +42,8 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        <!-- For Settings screen -->
+        <activity android:theme="@style/AppTheme.Settings" android:label="@string/activity_settings" android:name=".ui.settings.SettingsActivity"/>
 
         <!-- For Firebase cloud messaging -->
         <service

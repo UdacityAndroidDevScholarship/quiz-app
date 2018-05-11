@@ -6,4 +6,16 @@
         <item>Mobile web</item>
         <item>Mobile web specialist</item>-->
     </string-array>
+
+    <!-- Settings SharedPreferences for Theme color array -->
+    <!-- Label ordering must match values -->
+    <array name="pref_theme_color_option_labels">
+        <item>@string/pref_theme_color_label_dark</item>
+        <item>@string/pref_theme_color_label_light</item>
+    </array>
+
+    <array name="pref_theme_color_option_values">
+        <item>@string/pref_theme_color_dark_value</item>
+        <item>@string/pref_theme_color_light_value</item>
+    </array>
 </resources>

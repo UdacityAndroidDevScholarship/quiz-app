@@ -292,7 +292,7 @@ class AppDataHandler implements DataHandler {
 
     @Override
     public boolean isLoggedIn() {
-        return (mPreferences.getUserEmail() != null);
+        return (mPreferences.getSlackHandle() != null);
     }
 
     /**

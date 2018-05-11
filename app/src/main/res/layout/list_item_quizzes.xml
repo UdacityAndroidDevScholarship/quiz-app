@@ -125,7 +125,7 @@
             android:layout_width="@dimen/difficulty_view_width"
             android:layout_height="@dimen/difficulty_view_height"
             android:layout_marginStart="@dimen/difficulty_view_margin"
-            android:background="@android:color/holo_orange_light"
+            android:background="@color/color_yellow_deadline"
             app:layout_constraintStart_toEndOf="@+id/difficulty_easy"
             app:layout_constraintTop_toTopOf="@+id/difficulty_easy" />
 

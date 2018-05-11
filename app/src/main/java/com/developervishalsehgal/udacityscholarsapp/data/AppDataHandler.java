@@ -86,6 +86,7 @@ class AppDataHandler implements DataHandler {
                         }
 
                         callback.onResponse(quizzes);
+                        mFirebaseHandler.destroy();
                     }
 
 
@@ -100,7 +101,37 @@ class AppDataHandler implements DataHandler {
 
     @Override
     public void fetchQuizById(String quizId, Callback<Quiz> callback) {
-        mFirebaseHandler.fetchQuizById(quizId, new FirebaseCallback<>(callback));
+        mFirebaseHandler.fetchQuizById(quizId, new FirebaseCallback<Quiz>(callback) {
+
+            @Override
+            public void onReponse(Quiz fetchedQuiz) {
+
+                mFirebaseHandler.fetchUserScore(quizId, new FirebaseHandler.Callback<Integer>() {
+                    @Override
+                    public void onReponse(Integer result) {
+                        if (result >= 0) {
+                            fetchedQuiz.setAttempted(true);
+                            // If scholar has already attempted the quiz setting the score in
+                            // Rated-by field, is it not used anyway
+                            fetchedQuiz.setRatedBy(result);
+                        }
+                        callback.onResponse(fetchedQuiz);
+                        mFirebaseHandler.destroy();
+                    }
+
+                    @Override
+                    public void onError() {
+                        callback.onResponse(fetchedQuiz);
+                        mFirebaseHandler.destroy();
+                    }
+                });
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
     }
 
     @Override

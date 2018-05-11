@@ -81,7 +81,6 @@ public class Question {
             }
             mOptions = options;
         }
-
     }
 
     @Exclude

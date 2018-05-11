@@ -49,6 +49,8 @@ public interface FirebaseHandler {
 
     void fetchUserInfo(String userIdentifier, Callback<User> callback);
 
+    void fetchUserScore(String quizId, Callback<Integer> callback);
+
     void setUserInfo(User currentUser, Callback<Void> callback);
 
     void postComment(String discussionId, String quizId, Comment comment, Callback<Void> callback);

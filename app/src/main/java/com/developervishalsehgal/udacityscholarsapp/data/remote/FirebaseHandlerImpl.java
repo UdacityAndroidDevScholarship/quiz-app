@@ -50,6 +50,7 @@ class FirebaseHandlerImpl implements FirebaseHandler {
 
     private static final String KEY_LAST_MODIFIED = "last-modified";
     private static final String KEY_TIMESTAMP = "timestamp";
+    private static final String KEY_USER_SCORE = "score";
 
     private DatabaseReference mUsersRef;
     private DatabaseReference mQuizzesRef;
@@ -157,8 +158,12 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot != null) {
                     Quiz singleQuiz = snapshot.getValue(Quiz.class);
-                    singleQuiz.setKey(snapshot.getKey());
-                    callback.onReponse(singleQuiz);
+                    if (singleQuiz != null) {
+                        singleQuiz.setKey(snapshot.getKey());
+                        callback.onReponse(singleQuiz);
+                    } else {
+                        callback.onError();
+                    }
                 } else {
                     callback.onError();
                 }
@@ -211,7 +216,6 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             userIdentifier = mCurrentUser.getUid();
         }
 
-
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -227,10 +231,42 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             }
         };
 
-        mUsersRef.child(mCurrentUser.getUid()).addValueEventListener(listener);
+        mUsersRef.child(userIdentifier).addValueEventListener(listener);
         mValueListeners.add(listener);
 
 
+    }
+
+    @Override
+    public void fetchUserScore(String quizId, Callback<Integer> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    Integer score = snapshot.getValue(Integer.class);
+                    if (score!=null) {
+                        callback.onReponse(score);
+                    } else {
+                        callback.onError();
+                    }
+                } else {
+                    callback.onError();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mUsersRef.child(KEY_USER_ATTEMPTED_QUIZ).child(quizId).child(KEY_USER_SCORE)
+                .addValueEventListener(listener);
+        mValueListeners.add(listener);
     }
 
     @Override

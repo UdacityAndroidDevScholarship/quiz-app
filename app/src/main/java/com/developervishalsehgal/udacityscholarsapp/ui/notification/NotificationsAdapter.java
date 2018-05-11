@@ -2,6 +2,7 @@ package com.developervishalsehgal.udacityscholarsapp.ui.notification;
 
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -93,20 +94,65 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             super(itemView);
             // TODO(1) bind the items from layout/list_item_notifications.xml here
             mTVNotificationTitle = itemView.findViewById(R.id.tv_notification_name);
+            mImgIcon = itemView.findViewById(R.id.iv_notification_icon);
+            mTvDeadline = itemView.findViewById(R.id.tv_notification_date);
+            mTvNotificationDescription = itemView.findViewById(R.id.tv_notification_description);
         }
 
         void bind(int position) {
             Notification notificationItem = mNotifications.get(position);
             // TODO(2) bind notificationItem with UI elements (the textviews) here
             mTVNotificationTitle.setText(notificationItem.getTitle());
+            mTvNotificationDescription.setText(notificationItem.getDescription());
+
+            mTvDeadline.setText("not available");
+
+
             // TODO(3): set onclick listener in itemView here (no need to create a separate variable)
             // TODO(3): using lambda expression would be good, whatever suggested by android studio.
             // TODO(3): call mListener's onClick here and pass notificationItem
+            itemView.setOnClickListener(v -> {
+                if (mListener != null) {
+                    mListener.onClick(notificationItem);
+                }
+            });
 
             // TODO(4): based on mType set drawable resource for on mImgIcon
             // quiz - R.drawable.ic_notification_quiz
             // deadline - R.drawable.ic_notification_deadline
             // resource - R.drawable.ic_notification_resource
+            String quizDeadline = notificationItem.getExtra2();
+            switch (mType) {
+                case NotificationsAdapter.TYPE_NEW_QUIZ:
+                    mImgIcon.setImageResource(R.drawable.ic_notification_quiz);
+
+                    if (quizDeadline != null && !quizDeadline.trim().isEmpty()) {
+                        mTvDeadline.setVisibility(View.VISIBLE);
+                        mTvDeadline.setText(quizDeadline);
+                        mTvDeadline.setTextColor(ContextCompat.getColor(itemView.getContext(),
+                                R.color.white));
+                    } else {
+                        mTvDeadline.setVisibility(View.GONE);
+                    }
+                    break;
+                case NotificationsAdapter.TYPE_DEADLINE:
+                    mImgIcon.setImageResource(R.drawable.ic_notification_deadline);
+
+                    if (quizDeadline != null && !quizDeadline.trim().isEmpty()) {
+                        mTvDeadline.setVisibility(View.VISIBLE);
+                        mTvDeadline.setText(quizDeadline);
+                        mTvDeadline.setTextColor(ContextCompat.getColor(itemView.getContext(),
+                                R.color.color_red_deadline));
+                    } else {
+                        mTvDeadline.setVisibility(View.GONE);
+                    }
+                    break;
+                case NotificationsAdapter.TYPE_RESOURCES:
+                    mImgIcon.setImageResource(R.drawable.ic_notification_resource);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

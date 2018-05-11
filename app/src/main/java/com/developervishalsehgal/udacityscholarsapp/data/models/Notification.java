@@ -99,7 +99,8 @@ public class Notification {
             notification.setDescription(singleQuiz.getDescription());
             notification.setFrom(singleQuiz.getCreatorName());
             notification.setExtra1(singleQuiz.getCreatorId());
-            notification.setExtra2(singleQuiz.getDifficulty());
+            notification.setExtra2(singleQuiz.getDeadline());
+
             notificationList.add(notification);
         }
         return notificationList;
@@ -117,6 +118,7 @@ public class Notification {
             notification.setFrom(resource.getUploadedBy());
             notification.setExtra1(resource.getCategory());
             notification.setExtra2(resource.getTags());
+
             notificationList.add(notification);
         }
         return notificationList;

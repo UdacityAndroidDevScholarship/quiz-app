@@ -1,6 +1,8 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.notification;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +16,8 @@ import android.widget.TextView;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
+import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
+import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
 
 import java.util.List;
 
@@ -91,14 +95,23 @@ public class NotificationTabFragment extends Fragment implements NotificationsAd
             case NotificationsAdapter.TYPE_NEW_QUIZ:
                 // TODO: launch quiz description activity by extracting
                 // TODO: information from notification object. (action field contains quiz id)
+                Intent newQuizIntent = new Intent(getActivity(), AttemptQuizActivity.class);
+                newQuizIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, notification.getAction());
+                startActivity(newQuizIntent);
                 break;
             case NotificationsAdapter.TYPE_DEADLINE:
                 // TODO: launch quiz description activity by extracting (Same action as New Quiz).
                 // TODO: information from notification object. (action field contains quiz id)
+                Intent attemptQuizIntent = new Intent(getActivity(), AttemptQuizActivity.class);
+                attemptQuizIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, notification.getAction());
+                startActivity(attemptQuizIntent);
                 break;
             case NotificationsAdapter.TYPE_RESOURCES:
                 // TODO: launch the resource URL. ACTION_VIEW
                 // TODO: (action field contains resource URL)
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse(notification.getAction()));
+                startActivity(browserIntent);
                 break;
             default:
                 break;

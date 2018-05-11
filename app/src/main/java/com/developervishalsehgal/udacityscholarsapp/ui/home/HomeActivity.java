@@ -139,9 +139,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         // Intent attemptQuizIntent = new Intent(this, AttemptQuizActivity.class);
         // attemptQuizIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, quiz.getKey());
         // startActivity(attemptQuizIntent);
-
-        Intent notificationIntent = new Intent(this, NotificationActivity.class);
-        startActivity(notificationIntent);
     }
 
     @Override

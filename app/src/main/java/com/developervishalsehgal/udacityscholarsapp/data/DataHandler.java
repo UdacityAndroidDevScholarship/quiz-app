@@ -224,6 +224,8 @@ public interface DataHandler {
     List<Notification> searchNotifications(String query, int startFrom, int limit);
 
     void fetchResources(int startFrom, int limit, Callback<List<Resource>> callback);
+
+    boolean isLoggedIn();
     /**
      * Generic callback interface for passing response to caller.
      * <p>

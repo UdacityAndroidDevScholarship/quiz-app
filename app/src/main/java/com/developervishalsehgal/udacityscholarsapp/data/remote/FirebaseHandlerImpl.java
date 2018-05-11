@@ -248,7 +248,7 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot != null) {
                     Integer score = snapshot.getValue(Integer.class);
-                    if (score!=null) {
+                    if (score != null) {
                         callback.onReponse(score);
                     } else {
                         callback.onError();
@@ -440,13 +440,13 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             mQuizzesRef.removeEventListener(listener);
             mDiscussionsRef.removeEventListener(listener);
             mUsersRef.removeEventListener(listener);
+            mDiscussionsRef.removeEventListener(listener);
         }
     }
 
     private void updateUserProperty(String property, String value, final Callback<Void> callback) {
 
         try {
-
             if (mCurrentUser == null) {
                 mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
             }

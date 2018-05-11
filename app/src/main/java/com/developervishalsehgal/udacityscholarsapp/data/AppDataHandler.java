@@ -290,6 +290,11 @@ class AppDataHandler implements DataHandler {
         mFirebaseHandler.fetchResources(startFrom, limit, new FirebaseCallback<>(callback));
     }
 
+    @Override
+    public boolean isLoggedIn() {
+        return (mPreferences.getUserEmail() != null);
+    }
+
     /**
      * internal class for converting {@link FirebaseHandler} Callback to {@link DataHandler} Callback
      *

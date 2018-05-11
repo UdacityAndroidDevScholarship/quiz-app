@@ -43,50 +43,62 @@ public class Comment {
     @Exclude
     String mKey;
 
+    @Exclude
     public String getComment() {
         return mComment;
     }
 
+    @Exclude
     public void setComment(String comment) {
         mComment = comment;
     }
 
+    @Exclude
     public String getCommentBy() {
         return mCommentBy;
     }
 
+    @Exclude
     public void setCommentBy(String commentBy) {
         mCommentBy = commentBy;
     }
 
+    @Exclude
     public long getCommentedOn() {
         return mCommentedOn;
     }
 
+    @Exclude
     public void setCommentedOn(long commentedOn) {
         mCommentedOn = commentedOn;
     }
 
+    @Exclude
     public String getCommenterId() {
         return mCommenterId;
     }
 
+    @Exclude
     public void setCommenterId(String commenterId) {
         mCommenterId = commenterId;
     }
 
+    @Exclude
     public String getKey() {
         return mKey;
     }
 
+    @Exclude
     public void setKey(String key) {
         this.mKey = key;
     }
 
+    @Exclude
     public String getImage() {
         return mImageUrl;
     }
 
+    @Exclude
     public void setImage(String imageUrl) {
         this.mImageUrl = imageUrl;
     }

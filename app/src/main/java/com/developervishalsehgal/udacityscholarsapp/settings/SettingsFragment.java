@@ -80,7 +80,6 @@ public class SettingsFragment extends PreferenceFragmentCompat
     private void showSignOutAlert() {
         new AlertDialog.Builder(getContext())
                 .setTitle(getResources().getString(R.string.sign_out_title))
-                .setIcon(R.drawable.udacity_app_logo)
                 .setMessage(getResources().getString(R.string.sign_out_message))
                 .setPositiveButton(getResources().getString(R.string.sign_out_ok),
                         new DialogInterface.OnClickListener() {

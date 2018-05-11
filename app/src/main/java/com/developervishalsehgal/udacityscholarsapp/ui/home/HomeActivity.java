@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
@@ -82,7 +83,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mQuizAdapter = new QuizAdapter(this);
 
         mQuizRecyclerView.setAdapter(mQuizAdapter);
-      
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
     }
@@ -154,7 +154,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void navigateToSettings() {
-        // TODO: Navigate to Settings screen
+        Intent settings = new Intent(HomeActivity.this, SettingsActivity.class);
+        startActivity(settings);
     }
 
     @Override
@@ -196,7 +197,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         (findViewById(R.id.quiz_filter_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mHomeQuizListFilterRadioGroup.getVisibility() == View.GONE)
+                if (mHomeQuizListFilterRadioGroup.getVisibility() == View.GONE)
                     toggleQuizFilterView(true);
                 else
                     toggleQuizFilterView(false);
@@ -210,17 +211,18 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mHomeQuizListFilterRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                onQuizFilterItemCheckedChanged(radioGroup,i);
+                onQuizFilterItemCheckedChanged(radioGroup, i);
             }
         });
     }
 
     /**
      * Hides or shows the quiz filter view
+     *
      * @param show if true, will show the view else will hide it.
      */
     private void toggleQuizFilterView(boolean show) {
-        if(show) {
+        if (show) {
             mHomeQuizListFilterRadioGroup.setTranslationY(QUIZ_FILTER_VIEW_TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN);
             mHomeQuizListFilterRadioGroup.setVisibility(View.VISIBLE);
             mHomeQuizListFilterRadioGroup.animate()
@@ -233,19 +235,20 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     .setDuration(QUIZ_FILTER_VIEW_SLIDE_UP_ANIMATION_DURATION)
                     .translationY(QUIZ_FILTER_VIEW_ANIMATION_SLIDE_UP_TRANSLATE_Y)
                     .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                mHomeQuizListFilterRadioGroup.setVisibility(View.GONE);
-                            }
-                    }
-            );
+                                       @Override
+                                       public void run() {
+                                           mHomeQuizListFilterRadioGroup.setVisibility(View.GONE);
+                                       }
+                                   }
+                    );
         }
     }
 
     /**
      * This method will be invoked when quiz filter option is changed.
+     *
      * @param radioGroup RadioGroup reference
-     * @param id id of the radio button
+     * @param id         id of the radio button
      */
     private void onQuizFilterItemCheckedChanged(RadioGroup radioGroup, int id) {
         //Hide the quiz filter view after few ms
@@ -254,7 +257,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             public void run() {
                 toggleQuizFilterView(false);
             }
-        },QUIZ_FILTER_VIEW_SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
+        }, QUIZ_FILTER_VIEW_SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
 
         //Perform action based on selected quiz filter
         switch (id) {

@@ -13,7 +13,7 @@
             android:checkable="true"
             app:actionLayout="@layout/menu_counter_quizzes"/>
 
-        <item android:id="@+id/oldquizzes"
+        <item android:id="@+id/create_quizzes"
             android:title="@string/createQuiz"
             android:icon="@drawable/ic_create_quiz"/>
 

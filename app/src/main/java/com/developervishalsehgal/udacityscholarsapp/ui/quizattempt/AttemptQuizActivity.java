@@ -207,6 +207,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     @Override
     public void dismissView() {
         AttemptQuizActivity.this.finish();
+        AttemptQuizActivity.this.overridePendingTransition(R.anim.slide_out_down, R.anim.anim_nothing);
     }
 
     @Override
@@ -351,6 +352,8 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     public void onBackPressed() {
         if (mIsEvaluated) {
             super.onBackPressed();
+            overridePendingTransition(R.anim.slide_out_down, R.anim.anim_nothing);
+
         } else {
             showQuizQuizConfirmation();
         }

@@ -6,4 +6,14 @@
         <item>Mobile web</item>
         <item>Mobile web specialist</item>-->
     </string-array>
+
+    <string-array name="pre_theme_option_label">
+        <item>@string/dark_theme_label</item>
+        <item>@string/light_theme_label</item>
+    </string-array>
+
+    <string-array name="pre_theme_option_value">
+        <item>@string/dark_theme_value</item>
+        <item>@string/light_theme_value</item>
+    </string-array>
 </resources>

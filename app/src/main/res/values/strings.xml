@@ -129,4 +129,20 @@
     <string name="newnotification">15</string>
     <string name="number">10</string>
 
+    <!-- resources for preference fragment-->
+    <!-- preference notification label and key-->
+    <string name="get_notifications_label">Get Notifications</string>
+    <string name="get_notifications_key">getNotifications</string>
+
+    <!-- preference theme label and value used in preference_screen xml-->
+    <string name="default_theme_value">dark</string>
+    <string name="dark_theme_label">Dark</string>
+    <string name="light_theme_label">Light</string>
+    <string name="dark_theme_value">dark</string>
+    <string name="light_theme_value">light</string>
+
+    <string name="pref_theme_title">Theme</string>
+    <string name="pref_theme_key">theme</string>
+
+
 </resources>

@@ -76,6 +76,11 @@ dependencies {
 
     implementation group: 'com.google.code.gson', name: 'gson', version: "$rootProject.gsonVersion"
 
+    //added gradle dependency for the support preference fragment
+    implementation "com.android.support:preference-v7:$rootProject.supportLibVersion"
+
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'

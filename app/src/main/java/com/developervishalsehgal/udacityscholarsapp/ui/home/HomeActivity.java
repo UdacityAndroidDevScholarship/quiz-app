@@ -1,7 +1,7 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -20,7 +20,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -33,7 +32,6 @@ import android.widget.Toast;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
-import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
@@ -70,6 +68,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     boolean isFilterMenuOpen = false;
     private View dimBackground;
     private Animation bgFadingAnimation;
+    private ProgressDialog progressDialog;
 
     Intent navItemsIntent =null;
 
@@ -80,6 +79,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         // Injecting presenter reference
         PresenterInjector.injectHomePresenter(this);
+
+        progressDialog = new ProgressDialog(HomeActivity.this);
+        progressDialog.setMessage("Loading the quizzes ...");
 
         initializeUI();
 
@@ -215,12 +217,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void showLoading() {
-        // TODO: Show progress bar / dialog here
+        progressDialog.show();
     }
 
     @Override
     public void hideLoading() {
-        // TODO: Hide progress bar / dialog here
+        progressDialog.cancel();
     }
 
     @Override

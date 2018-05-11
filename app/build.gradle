@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 27
@@ -36,7 +37,7 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug  
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -77,6 +78,8 @@ dependencies {
     // Ends
 
     implementation group: 'com.google.code.gson', name: 'gson', version: "$rootProject.gsonVersion"
+
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.2'
 
 }
 

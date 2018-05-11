@@ -8,6 +8,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -59,7 +60,7 @@ public class User {
     @Expose
     @PropertyName("attempted")
     @SerializedName("attempted")
-    List<QuizAttempted> mAttemptedList;
+    Map<String, QuizAttempted> mAttemptedList;
 
     @Expose
     @PropertyName("prefs")
@@ -69,7 +70,7 @@ public class User {
     @Expose
     @PropertyName("bookmarks")
     @SerializedName("bookmarks")
-    List<String> mBookmarks;
+    Map<String, Boolean> mBookmarks;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
@@ -77,98 +78,122 @@ public class User {
     @Exclude
     String mKey;
 
+    @Exclude
     public String getEmail() {
         return mEmail;
     }
 
+    @Exclude
     public void setEmail(String email) {
         mEmail = email;
     }
 
+    @Exclude
     public String getImage() {
         return mImage;
     }
 
+    @Exclude
     public void setImage(String image) {
         mImage = image;
     }
 
+    @Exclude
     public boolean getModerator() {
         return mModerator;
     }
 
+    @Exclude
     public void setModerator(boolean moderator) {
         mModerator = moderator;
     }
 
+    @Exclude
     public String getName() {
         return mName;
     }
 
+    @Exclude
     public void setName(String name) {
         mName = name;
     }
 
+    @Exclude
     public String getSlackHandle() {
         return mSlackHandle;
     }
 
+    @Exclude
     public void setSlackHandle(String slackHandle) {
         mSlackHandle = slackHandle;
     }
 
+    @Exclude
     public String getStatus() {
         return mStatus;
     }
 
+    @Exclude
     public void setStatus(String status) {
         mStatus = status;
     }
 
+    @Exclude
     public String getTrack() {
         return mTrack;
     }
 
+    @Exclude
     public void setTrack(String track) {
         mTrack = track;
     }
 
+    @Exclude
     public String getFcmToken() {
         return mFcmToken;
     }
 
+    @Exclude
     public void setFcmToken(String fcmToken) {
         this.mFcmToken = fcmToken;
     }
 
-    public List<QuizAttempted> getAttemptedList() {
+    @Exclude
+    public Map<String, QuizAttempted> getAttemptedList() {
         return mAttemptedList;
     }
 
-    public void setAttemptedList(List<QuizAttempted> attemptedList) {
+    @Exclude
+    public void setAttemptedList(Map<String, QuizAttempted> attemptedList) {
         this.mAttemptedList = attemptedList;
     }
 
+    @Exclude
     public NotificationPrefs getNotificationPrefs() {
         return mNotificationPrefs;
     }
 
+    @Exclude
     public void setNotificationPrefs(NotificationPrefs notificationPrefs) {
         this.mNotificationPrefs = notificationPrefs;
     }
 
-    public List<String> getBookmarks() {
+    @Exclude
+    public Map<String, Boolean> getBookmarks() {
         return mBookmarks;
     }
 
-    public void setBookmarks(List<String> bookmarks) {
+    @Exclude
+    public void setBookmarks(Map<String, Boolean> bookmarks) {
         this.mBookmarks = bookmarks;
     }
 
+    @Exclude
     public String getKey() {
         return mKey;
     }
 
+    @Exclude
     public void setKey(String key) {
         this.mKey = key;
     }

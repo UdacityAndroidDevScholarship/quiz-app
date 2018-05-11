@@ -7,12 +7,12 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
-    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="nav_header_height">200dp</dimen>
     <dimen name="splashscreen_logo">120dp</dimen>
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
-  
+
     <dimen name="user_profile_header_view">100dp</dimen>
 
     <!-- Quizzes List Item layout dimensions -->
@@ -20,7 +20,7 @@
     <dimen name="difficulty_view_width">48dp</dimen>
     <dimen name="difficulty_view_height">16dp</dimen>
     <dimen name="difficulty_view_margin">4dp</dimen>
-    <dimen name="card_view_elevation">4dp</dimen>
+    <dimen name="card_view_elevation">2dp</dimen>
     <dimen name="card_view_corner_radius">2dp</dimen>
 
     <!-- details page ACTIVITY dimensions-->
@@ -42,7 +42,7 @@
     <dimen name="details_page_button_text">24sp</dimen>
     <dimen name="details_page_email_text">18sp</dimen>
 
-    
+
     <!-- Notification Activity dimesions-->
     <dimen name="notification_list_items_layout_margin">2dp</dimen>
     <dimen name="notification_list_items_name_text_size">15sp</dimen>
@@ -81,6 +81,23 @@
     <dimen name="notification_detail_description_margin_start">16dp</dimen>
     <dimen name="notification_detail_description_margin_end">16dp</dimen>
 
+    <!-- Notification Detail Activity dimesions-->
+    <dimen name="quiz_details_cross_margins">30dp</dimen>
+    <dimen name="quiz_details_help_button_margins">40dp</dimen>
+    <dimen name="quiz_details_cardview_corner_radius">30dp</dimen>
+    <dimen name="quiz_details_scrollview_layout_height">200dp</dimen>
+
+    <dimen name="quiz_details_fab_layout_height">68dp</dimen>
+    <dimen name="quiz_details_fab_layout_width">60dp</dimen>
+
+    <dimen name="text_size_26">26sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+
     <!-- Values for activity_home.xml -->
     <dimen name="quiz_filter_button_margin_end">16dp</dimen>
 
@@ -99,7 +116,7 @@
     <!--Box related-->
     <dimen name="box_large">120dp</dimen>
     <dimen name="box_regular">80dp</dimen>
-    <dimen name="box_medium">60dp</dimen>
+    <dimen name="box_medium">64dp</dimen>
 
     <!--Margin related-->
     <dimen name="margin_x_large">32dp</dimen>
@@ -121,8 +138,20 @@
     <dimen name="i_w_dim">94dp</dimen>
     <dimen name="menu_mar">12dp</dimen>
     <dimen name="menu_mar_one">10dp</dimen>
-    <dimen name="draw_r">40dp</dimen>
+    <dimen name="draw_r">5dp</dimen>
     <dimen name="draw_pad">5dp</dimen>
     <dimen name="appbar_padding_top">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    
+    <!--quiz discussion related-->
+    <dimen name="chat_box_padding_end">48dp</dimen>
+    <dimen name="chat_box_padding">16dp</dimen>
+    <dimen name="quiz_discussion_send_padding">8dp</dimen>
+    <dimen name="item_discussion_user_image">40dp</dimen>
+    <dimen name="item_discussion_min_margin">40dp</dimen>
+    <dimen name="item_discussion_chat_bubble_card_radius">4dp</dimen>
+    <dimen name="item_discussion_chat_bubble_card_content_padding">8dp</dimen>
+    <dimen name="item_discussion_minimum_content_height">60dp</dimen>
+    <dimen name="item_discussion_minimum_content_width">200dp</dimen>
 
 </resources>

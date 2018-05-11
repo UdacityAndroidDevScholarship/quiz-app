@@ -151,11 +151,11 @@
     <string name="label_released">Released on :</string>
     <string name="label_deadline">DEADLINE :</string>
     <string name="dummy_deadline_date">14 May 2018</string>
-    <string name="dummy_about">This Quiz is all about intents. Intents are used to signal to the Android system that a certain event has occured. Intents often describe the action which should be performed and provide data upon which such an action should be done.</string>
+    <string name="dummy_about">This Quiz is all about intents. Intents are used to signal to the Android system that a certain event has occurred. Intents often describe the action which should be performed and provide data upon which such an action should be done.</string>
     <string name="your_score">Your Score</string>
     <string name="quiz_status">Unattempted</string>
 
     <!-- Home Screen Back Button -->
     <string name="home_back_btn_msg">Press back again to exit.</string>
-
+    <string name="no_items_to_display">No notifications to display</string>
 </resources>

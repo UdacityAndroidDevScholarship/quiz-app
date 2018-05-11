@@ -1,7 +1,6 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -20,7 +19,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -33,10 +31,9 @@ import android.widget.Toast;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
-import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
-import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
-import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
+import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
+import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsContract;
 
 import java.util.List;
 
@@ -60,18 +57,15 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     // UI Elements
     private DrawerLayout mDrawerLayout;
-    private NavigationView mNavigationView;
+    private TextView mTvQuizCount;
     // Reference of the quiz filter list layout
-    private RadioGroup mHomeQuizListFilterRadioGroup;
+    private RadioGroup mRGHomeQuizListFilter;
     //////////////
-    boolean twiceClicked = false;
-    Snackbar snackbar;
+    boolean mTwiceClicked = false;
+    Snackbar mSnackbar;
 
-    boolean isFilterMenuOpen = false;
-    private View dimBackground;
-    private Animation bgFadingAnimation;
-
-    Intent navItemsIntent =null;
+    boolean mIsFilterMenuOpen = false;
+    private View mDimBackground;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -106,13 +100,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        mNavigationView = findViewById(R.id.nav_view);
+        NavigationView mNavigationView = findViewById(R.id.nav_view);
         mNavigationView.setItemIconTintList(null);
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        dimBackground = findViewById(R.id.scrim_bg_quiz_list);
+        mDimBackground = findViewById(R.id.scrim_bg_quiz_list);
 
-
+        mTvQuizCount = findViewById(R.id.total_quizzes_count);
     }
 
 //    @Override
@@ -133,7 +127,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 } else {
                     mDrawerLayout.openDrawer(Gravity.START);
                 }
-                if (isFilterMenuOpen) {
+                if (mIsFilterMenuOpen) {
                     toggleQuizFilterView(false);
                 }
                 break;
@@ -148,6 +142,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void loadQuizzes(List<Quiz> quizzes) {
         mQuizAdapter.loadQuizzes(quizzes);
+        mTvQuizCount.setText(String.valueOf(quizzes.size()));
     }
 
     @Override
@@ -159,10 +154,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void navigateToQuizDesc(Quiz quiz) {
         // TODO: Navigate to QuizDescription Activity, use the quiz object above to extract quiz
         // TODO: details etc and pass as intent parameter.
-        // TODO remove below code, only for testing
-        Intent attemptQuizIntent = new Intent(this, AttemptQuizActivity.class);
-        attemptQuizIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, quiz.getKey());
-        startActivity(attemptQuizIntent);
+        Intent quizDetailsIntent = new Intent(this, QuizDetailsActivity.class);
+        quizDetailsIntent.putExtra(QuizDetailsContract.KEY_QUIZ_ID, quiz.getKey());
+        startActivity(quizDetailsIntent);
         overridePendingTransition(R.anim.slide_in_up, R.anim.anim_nothing);
     }
 
@@ -180,8 +174,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void navigateToNotifications() {
-        navItemsIntent = new Intent(this, NotificationActivity.class);
-        startActivity(navItemsIntent);
+        Intent notificationIntent = new Intent(this, NotificationActivity.class);
+        startActivity(notificationIntent);
     }
 
     @Override
@@ -216,6 +210,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void showLoading() {
         // TODO: Show progress bar / dialog here
+        /// Default progress
     }
 
     @Override
@@ -225,11 +220,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void onQuizClicked(Quiz quiz) {
-        if (isFilterMenuOpen == true) {
+        if (mIsFilterMenuOpen) {
             toggleQuizFilterView(false);
-            isFilterMenuOpen = false;
+            mIsFilterMenuOpen = false;
         } else {
-
             mPresenter.onQuizClicked(quiz);
         }
     }
@@ -245,17 +239,17 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private void initQuizFilter() {
         //Set quiz filter button behavior
         (findViewById(R.id.quiz_filter_button)).setOnClickListener(view -> {
-            if (mHomeQuizListFilterRadioGroup.getVisibility() == View.GONE) {
+            if (mRGHomeQuizListFilter.getVisibility() == View.GONE) {
                 toggleQuizFilterView(true);
             } else
                 toggleQuizFilterView(false);
         });
 
         //Get reference to the quiz list filter layout and radio buttons
-        mHomeQuizListFilterRadioGroup = findViewById(R.id.home_quiz_list_filter_radio_group);
+        mRGHomeQuizListFilter = findViewById(R.id.home_quiz_list_filter_radio_group);
         //Set radio group checked change listener so we can perform an action when a different
         //quiz filter is selected.
-        mHomeQuizListFilterRadioGroup.setOnCheckedChangeListener(
+        mRGHomeQuizListFilter.setOnCheckedChangeListener(
                 this::onQuizFilterItemCheckedChanged);
     }
 
@@ -265,33 +259,34 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
      * @param show if true, will show the view else will hide it.
      */
     private void toggleQuizFilterView(boolean show) {
+        Animation bgFadingAnimation;
         if (show) {
-            mHomeQuizListFilterRadioGroup.setTranslationY(TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN);
-            mHomeQuizListFilterRadioGroup.setVisibility(View.VISIBLE);
-            mHomeQuizListFilterRadioGroup.animate()
+            mRGHomeQuizListFilter.setTranslationY(TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN);
+            mRGHomeQuizListFilter.setVisibility(View.VISIBLE);
+            mRGHomeQuizListFilter.animate()
                     .setInterpolator(new FastOutSlowInInterpolator())
                     .setDuration(SLIDE_DOWN_ANIMATION_DURATION)
                     .translationY(ANIMATION_SLIDE_DOWN_TRANSLATE_Y);
 
-            dimBackground.setVisibility(View.VISIBLE);
+            mDimBackground.setVisibility(View.VISIBLE);
             bgFadingAnimation = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
             bgFadingAnimation.setDuration(1000);
-            dimBackground.startAnimation(bgFadingAnimation);
-            isFilterMenuOpen = true;
+            mDimBackground.startAnimation(bgFadingAnimation);
+            mIsFilterMenuOpen = true;
         } else {
-            mHomeQuizListFilterRadioGroup.animate()
+            mRGHomeQuizListFilter.animate()
                     .setInterpolator(new FastOutLinearInInterpolator())
                     .setDuration(SLIDE_UP_ANIMATION_DURATION)
                     .translationY(ANIMATION_SLIDE_UP_TRANSLATE_Y)
-                    .withEndAction(() -> mHomeQuizListFilterRadioGroup.setVisibility(View.GONE)
+                    .withEndAction(() -> mRGHomeQuizListFilter.setVisibility(View.GONE)
                     );
 
 
-            dimBackground.setVisibility(View.VISIBLE);
+            mDimBackground.setVisibility(View.VISIBLE);
             bgFadingAnimation = AnimationUtils.loadAnimation(this, android.R.anim.fade_out);
-            dimBackground.startAnimation(bgFadingAnimation);
-            dimBackground.setVisibility(View.GONE);
-            isFilterMenuOpen = false;
+            mDimBackground.startAnimation(bgFadingAnimation);
+            mDimBackground.setVisibility(View.GONE);
+            mIsFilterMenuOpen = false;
         }
     }
 
@@ -327,28 +322,25 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         final Handler mDrawerHandler = new Handler();
 
-        mDrawerHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        mDrawerHandler.postDelayed(() -> {
 
-                switch (item.getItemId()) {
-                    case R.id.scoreboard:
-                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_SCOREBOARD);
-                        break;
-                    case R.id.create_quizzes:
-                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_CREATE_QUIZ);
-                        break;
-                    case R.id.notifications:
-                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_NOTIFICATIONS);
-                        break;
-                    case R.id.resources:
-                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_RESOURCES);
-                        break;
-                    default:
-                        break;
-                }
-
+            switch (item.getItemId()) {
+                case R.id.scoreboard:
+                    mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_SCOREBOARD);
+                    break;
+//                    case R.id.create_quizzes:
+//                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_CREATE_QUIZ);
+//                        break;
+                case R.id.notifications:
+                    mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_NOTIFICATIONS);
+                    break;
+                case R.id.resources:
+                    mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_RESOURCES);
+                    break;
+                default:
+                    break;
             }
+
         }, DELAY_NAV_ITEM_CLICK);
 
         mDrawerLayout.closeDrawers();
@@ -360,27 +352,27 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
-        } else if (isFilterMenuOpen) {
+        } else if (mIsFilterMenuOpen) {
             toggleQuizFilterView(false);
         } else {
-            if (twiceClicked) {
+            if (mTwiceClicked) {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 startActivity(intent);
-                snackbar.dismiss();
+                mSnackbar.dismiss();
 
             } else {
 
-                twiceClicked = true;
+                mTwiceClicked = true;
 
 
-                snackbar = Snackbar.make(findViewById(R.id.homeactivitycoordinator), getResources().getString(R.string.home_back_btn_msg), Snackbar.LENGTH_LONG);
-                final View snackbarView = snackbar.getView();
+                mSnackbar = Snackbar.make(findViewById(R.id.homeactivitycoordinator), getResources().getString(R.string.home_back_btn_msg), Snackbar.LENGTH_LONG);
+                final View snackbarView = mSnackbar.getView();
                 TextView tvSnackbar = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                 tvSnackbar.setTextColor(getResources().getColor(R.color.colorAccent));
                 snackbarView.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
-                snackbar.show();
+                mSnackbar.show();
                 snackbarView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
                     @Override
                     public boolean onPreDraw() {
@@ -390,12 +382,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     }
                 });
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        twiceClicked = false;
-                    }
-                }, BACK_PRESS_DURATION);
+                new Handler().postDelayed(() -> mTwiceClicked = false, BACK_PRESS_DURATION);
             }
 
         }

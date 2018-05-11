@@ -170,7 +170,6 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
 
     }
 
-    @SuppressWarnings("unchecked")
     private void displayQuiz(Quiz currentQuiz) {
         mSelectedQuiz = currentQuiz;
         mQuestions = new ArrayList<>(mSelectedQuiz.getQuestions().values());

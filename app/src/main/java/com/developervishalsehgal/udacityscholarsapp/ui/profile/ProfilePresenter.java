@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 
 import com.developervishalsehgal.udacityscholarsapp.data.DataHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.DataHandlerProvider;
-import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 
 public class ProfilePresenter implements ProfileContract.Presenter {
 
@@ -83,6 +82,13 @@ public class ProfilePresenter implements ProfileContract.Presenter {
 
     @Override
     public void start(@Nullable Bundle extras) {
+
+        if (mDataHandler.isLoggedIn()) {
+            // If user is logged in directly navigate to home
+            mView.onProfileSaved();
+            return;
+        }
+
         // Updating UI with data we have
         mView.loadEmailAddress(mDataHandler.getUserEmail());
         mView.loadSlackHandle(mDataHandler.getSlackHandle());

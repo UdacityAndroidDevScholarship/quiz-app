@@ -43,7 +43,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             // User has already signed in, navigate to home
-            navigateToHome();
+            navigateToProfile();
         }
     }
 
@@ -104,19 +104,12 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     }
 
     @Override
-    public void navigateToHome() {
-        Intent homeIntent = new Intent(this, HomeActivity.class);
-        if (extras != null) {
-            homeIntent.putExtras(extras);
-        }
-        startActivity(homeIntent);
-        this.finish();
-    }
-
-    @Override
     public void navigateToProfile() {
-        Intent signInIntent = new Intent(this, UserProfileActivity.class);
-        startActivity(signInIntent);
+        Intent profileIntent = new Intent(this, UserProfileActivity.class);
+        if (extras != null) {
+            profileIntent.putExtras(extras);
+        }
+        startActivity(profileIntent);
         this.finish();
     }
 

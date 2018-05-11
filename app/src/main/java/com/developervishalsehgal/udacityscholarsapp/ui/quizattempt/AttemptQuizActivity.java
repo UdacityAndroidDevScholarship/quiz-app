@@ -98,7 +98,6 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     @Override
     protected void onResume() {
         super.onResume();
-        mPresenter.start(getIntent().getExtras());
     }
 
     @Override
@@ -197,9 +196,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                     mPresenter.onSubmitClicked();
                     mIsEvaluated = true;
                 })
-                .setNegativeButton(R.string.user_confirmation_cancel, (dialog, which) -> {
-                    dialog.dismiss();
-                })
+                .setNegativeButton(R.string.user_confirmation_cancel, (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
     }
@@ -382,9 +379,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                     dialog.dismiss();
                     dismissView();
                 })
-                .setNegativeButton(R.string.user_confirmation_cancel, (dialog, which) -> {
-                    dialog.dismiss();
-                })
+                .setNegativeButton(R.string.user_confirmation_cancel, (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
     }

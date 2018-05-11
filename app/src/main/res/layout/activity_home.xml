@@ -49,7 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@id/total"
-                android:gravity="center"
+                android:layout_toStartOf="@+id/quiz_filter_button"
+                android:gravity="start|center_vertical"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 tools:text="20" />
 

@@ -10,39 +10,39 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary">
 
         <ImageButton
             android:id="@+id/quiz_details_btn_cross"
-            android:layout_gravity="start"
             android:layout_width="@dimen/quiz_details_cross_margins"
             android:layout_height="@dimen/quiz_details_cross_margins"
+            android:layout_gravity="start"
             android:adjustViewBounds="true"
-            android:background="@drawable/ic_close_black_24dp"
-            android:src="@drawable/ripple_effect"
-            android:contentDescription="@null" />
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_close_black_24dp" />
 
         <TextView
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_25"
             android:text="@string/toolbar_title"
-            android:textSize="@dimen/text_size_26"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_26" />
 
         <ImageButton
             android:id="@+id/quiz_details_btn_help"
-            android:adjustViewBounds="true"
-            android:layout_marginEnd="@dimen/margin_10"
-            android:layout_gravity="end"
             android:layout_width="@dimen/quiz_details_help_button_margins"
             android:layout_height="@dimen/quiz_details_help_button_margins"
-            android:background="@drawable/ic_help"
-            android:src="@drawable/ripple_effect"
-            android:contentDescription="@null" />
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/margin_10"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_help" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -208,15 +208,15 @@
                 android:layout_width="@dimen/quiz_details_fab_layout_width"
                 android:layout_height="@dimen/quiz_details_fab_layout_height"
                 android:layout_gravity="end|bottom"
-                app:fabSize="normal"
-                android:elevation="0dp"
                 android:layout_margin="@dimen/margin_16"
-                android:adjustViewBounds="true"
                 android:clickable="true"
+                android:elevation="0dp"
+                android:focusable="true"
                 android:src="@drawable/ic_play_arrow_black_24dp"
+                android:visibility="gone"
+                app:fabSize="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:focusable="true" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
 
         </android.support.constraint.ConstraintLayout>

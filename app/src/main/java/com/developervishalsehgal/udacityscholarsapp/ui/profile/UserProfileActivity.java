@@ -20,8 +20,8 @@ import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeActivity;
 /**
  * Profile activity for the app.
  */
-public class UserProfileActivity extends AppCompatActivity implements ProfileContract.View
-        , View.OnClickListener {
+public class UserProfileActivity extends AppCompatActivity implements ProfileContract.View,
+        View.OnClickListener {
 
     // UI Elements
     private ImageView mImgUserPic;
@@ -31,6 +31,9 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
     private EditText mEtUserName;
     private TextView mTvUserEmail;
     private ProgressBar mProgressBar;
+    // UI element ends
+
+    private Bundle extras;
 
     private ProfileContract.Presenter mPresenter;
 
@@ -44,7 +47,9 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
         // Injecting presenter
         PresenterInjector.injectProfilePresenter(this);
 
-        mPresenter.start(getIntent().getExtras());
+        extras = getIntent().getExtras();
+
+        mPresenter.start(extras);
     }
 
     private void initializeUI() {
@@ -64,7 +69,7 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
 
     @Override
     public void loadUserPic(String picUrl) {
-        if(picUrl == null){
+        if (picUrl == null) {
             return;
         }
         Glide.with(this).load(picUrl).into(mImgUserPic);
@@ -73,7 +78,7 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
 
     @Override
     public void loadUserName(String userName) {
-        if(userName == null){
+        if (userName == null) {
             return;
         }
         mEtUserName.setText(userName);
@@ -93,7 +98,7 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
 
     @Override
     public void loadUserTrack(String userTrack) {
-        if(userTrack == null){
+        if (userTrack == null) {
             return;
         }
         mEtCourseTrack.setText(userTrack);
@@ -114,6 +119,9 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
         Toast.makeText(this, getString(R.string.profile_saved_successfully), Toast.LENGTH_SHORT).show();
         // Navigate to home activity
         Intent homeIntent = new Intent(this, HomeActivity.class);
+        if (extras != null) {
+            homeIntent.putExtras(extras);
+        }
         startActivity(homeIntent);
         this.finish();
     }

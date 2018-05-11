@@ -2,7 +2,6 @@ package com.developervishalsehgal.udacityscholarsapp.ui.discussion;
 
 
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
-import com.developervishalsehgal.udacityscholarsapp.data.models.Discussion;
 import com.developervishalsehgal.udacityscholarsapp.ui.BasePresenter;
 import com.developervishalsehgal.udacityscholarsapp.ui.BaseView;
 
@@ -15,6 +14,7 @@ import java.util.List;
  */
 public interface QuizDiscussionContract {
 
+    String KEY_QUIZ_ID = "quiz_id";
 
     /**
      * Discussion View

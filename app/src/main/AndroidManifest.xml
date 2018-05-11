@@ -48,7 +48,11 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-
+        <!-- For Settings screen -->
+        <activity android:theme="@style/AppTheme.Settings" android:label="@string/activity_settings" android:name=".ui.settings.SettingsActivity" android:parentActivityName=".ui.home.HomeActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.home.HomeActivity"/>
+        </activity>
         <!-- For Firebase cloud messaging -->
         <service
             android:name=".services.FBMessagingService"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="App">
+        <!-- Notification enable/disable-->
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/pref_is_notification_enabled_key"
+            android:title="@string/pref_is_notification_enabled_title"
+        />
+
+
+        <!-- Choose Dark/Light Theme-->
+        <ListPreference
+            android:defaultValue="@string/pref_theme_color_dark_value"
+            android:entries="@array/pref_theme_color_option_labels"
+            android:entryValues="@array/pref_theme_color_option_values"
+            android:key="@string/pref_theme_color_key"
+            android:title="@string/pref_theme_color_label"
+          />
+
+        <!-- Option for Sign Out-->
+        <com.developervishalsehgal.udacityscholarsapp.ui.settings.SignOutDialogPreference
+            style="@style/AppPreference.DialogPreference"
+            android:key="@string/pref_sign_out_key"
+            android:summary="@string/pref_sign_out_summary" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -68,10 +68,6 @@ class AppDataHandler implements DataHandler {
                         if (result.getAttemptedList() != null) {
                             attemptedQuizzes = result.getAttemptedList().values();
                         }
-                        Collection<String> userBookmarks = new HashSet<>();
-                        if (result.getBookmarks() != null) {
-                            userBookmarks = result.getBookmarks().keySet();
-                        }
 
                         // Mark attempted quizzes
                         for (Quiz singleQuiz : quizzes) {
@@ -81,8 +77,9 @@ class AppDataHandler implements DataHandler {
                                     break;
                                 }
                             }
-                            // set user bookmarks
-                            singleQuiz.setBookmarked(userBookmarks.contains(singleQuiz.getKey()));
+                            if (result.getBookmarks().containsKey(singleQuiz.getKey())) {
+                                singleQuiz.setBookmarked(result.getBookmarks().get(singleQuiz.getKey()));
+                            }
                         }
 
                         callback.onResponse(quizzes);

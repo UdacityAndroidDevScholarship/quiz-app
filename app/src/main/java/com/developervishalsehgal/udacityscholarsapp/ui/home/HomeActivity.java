@@ -210,6 +210,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void showLoading() {
         // TODO: Show progress bar / dialog here
+        /// Default progress
     }
 
     @Override

@@ -2,8 +2,6 @@ package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
 
 import android.content.Intent;
-import android.graphics.Color;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -22,36 +20,22 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import android.widget.ImageButton;
-import android.widget.RadioButton;
-
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-
 import android.widget.RadioGroup;
-
-import android.widget.Toast;
-
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
-
-import com.developervishalsehgal.udacityscholarsapp.ui.settings.SettingsActivity;
-
-import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
-
+import com.developervishalsehgal.udacityscholarsapp.ui.settings.SettingsActivity;
 
 import java.util.List;
 
@@ -76,6 +60,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     // UI Elements
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
+    private TextView mSettingsTextView;
     // Reference of the quiz filter list layout
     private RadioGroup mHomeQuizListFilterRadioGroup;
     //////////////
@@ -86,7 +71,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private View dimBackground;
     private Animation bgFadingAnimation;
 
-    Intent navItemsIntent =null;
+    Intent navItemsIntent = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -103,6 +88,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     private void initializeUI() {
         Toolbar toolbar = findViewById(R.id.toolbarrnav);
+        mSettingsTextView=findViewById(R.id.settings);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -126,7 +112,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mNavigationView.setNavigationItemSelectedListener(this);
 
         dimBackground = findViewById(R.id.scrim_bg_quiz_list);
-
+        mSettingsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentForSettings = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(intentForSettings);
+            }
+        });
 
     }
 
@@ -155,10 +147,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             case R.id.logout:
                 // TODO: Show a confirmation {@link AlertDialog} here. When user cliks OK. call
                 // TODO: mPresenter.logout();
-                break;
-            case R.id.settings:
-                Intent intentForSettings=new Intent(HomeActivity.this, SettingsActivity.class);
-                startActivity(intentForSettings);
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -18,7 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
-        <activity android:name=".ui.signin.SignInActivity">
+        <activity android:name=".ui.signin.SignInActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +37,9 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.profile.UserProfileActivity">
+        <activity android:name=".ui.profile.UserProfileActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
             <!--
             Adding this intent filter here to silence the warning ,this should be a part of home

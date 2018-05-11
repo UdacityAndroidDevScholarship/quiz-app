@@ -1,9 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.developervishalsehgal.udacityscholarsapp.QuizDetailsActivity">
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context="com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <ImageButton
+            android:id="@+id/quiz_details_btn_cross"
+            android:layout_width="@dimen/quiz_details_cross_margins"
+            android:layout_height="@dimen/quiz_details_cross_margins"
+            android:layout_gravity="start"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_close_black_24dp" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_25"
+            android:text="@string/toolbar_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_26" />
+
+        <ImageButton
+            android:id="@+id/quiz_details_btn_help"
+            android:layout_width="@dimen/quiz_details_help_button_margins"
+            android:layout_height="@dimen/quiz_details_help_button_margins"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/margin_10"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_help" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="@dimen/quiz_details_cardview_corner_radius"
+        app:cardElevation="@dimen/card_view_elevation"
+        app:cardMaxElevation="@dimen/card_view_elevation"
+        app:cardUseCompatPadding="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/medium_margin">
+
+
+            <TextView
+                android:id="@+id/quiz_details_label_quiz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@string/dummy_quiz_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_26"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/label_author"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quiz_details_label_quiz" />
+
+            <TextView
+                android:id="@+id/quiz_details_label_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/dummy_author"
+                android:textColor="@color/blue_jeans"
+                android:textSize="@dimen/text_size_18"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/quiz_details_label_quiz" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/label_released"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/quiz_details_label_released"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/dummy_date_created"
+                android:textColor="@color/opaque_white"
+                android:textSize="@dimen/text_size_18"
+                app:layout_constraintStart_toEndOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/label_deadline"
+                android:textColor="@color/color_green_deadline"
+                android:textSize="@dimen/text_size_18"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/quiz_details_label_deadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/dummy_deadline_date"
+                android:textColor="@color/color_green_deadline"
+                android:textSize="@dimen/text_size_18"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <ScrollView
+                android:id="@+id/scrollview"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/quiz_details_scrollview_layout_height"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+
+                <TextView
+                    android:id="@+id/quiz_details_label_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_8"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:gravity="fill"
+                    android:text="@string/dummy_about"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_18" />
+
+            </ScrollView>
+
+            <TextView
+                android:id="@+id/quiz_details_label_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16"
+                android:text="@string/your_score"
+                android:textColor="@color/blue_jeans"
+                android:textSize="@dimen/text_size_26"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/quiz_details_label_status"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/quiz_details_label_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:layout_marginStart="@dimen/margin_16"
+                android:text="@string/quiz_status"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/quiz_details_fab_start"
+                android:layout_width="@dimen/quiz_details_fab_layout_width"
+                android:layout_height="@dimen/quiz_details_fab_layout_height"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="@dimen/margin_16"
+                android:clickable="true"
+                android:elevation="0dp"
+                android:focusable="true"
+                android:src="@drawable/ic_play_arrow_black_24dp"
+                android:visibility="gone"
+                app:fabSize="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

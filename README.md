@@ -26,6 +26,9 @@ Thank you for showing interest in the project. Let's work together and make it b
    
 #### Please have a look at this [video](https://drive.google.com/open?id=1vSSUh3LSNw9PfjyXhiXlF_j-zIO8SjYj) for better understanding.
 
+#### App Walkthrough
+[Click this link to view Prototype](https://invis.io/BPHUT69YG6A#/294684583_Home_Screen_Dark_Theme_Final)
+
 #### To get started, please read [Contributing Guidelines](https://github.com/UdacityAndroidDevScholarship/quiz-app/blob/master/CONTRIBUTING.md).
 
 > Please make sure to create a Pull Request to the *development* branch.

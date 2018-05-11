@@ -7,7 +7,7 @@ import com.developervishalsehgal.udacityscholarsapp.data.local.NotificationContr
 
 /**
  * Local database for the app. Contains only one database with all the related tables.
- * Notifications, Attempt Quiz, Create Quiz, Forums, Cache etc.
+ * Notifications, Create Quiz, Forums, Cache etc.
  *
  * TODO change the description after implementation
  *

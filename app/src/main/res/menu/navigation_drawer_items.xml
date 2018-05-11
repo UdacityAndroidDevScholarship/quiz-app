@@ -1,3 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item android:id="@+id/scoreboard"
+            android:title="@string/scoreboard"
+            android:icon="@drawable/ic_scoreboard"/>
+
+        <item android:id="@+id/quizlist"
+            android:title="@string/quizlist"
+            android:icon="@drawable/ic_quiz_list"
+            android:checked="true"
+            android:checkable="true"
+            app:actionLayout="@layout/menu_counter_quizzes"/>
+
+        <item android:id="@+id/create_quizzes"
+            android:title="@string/createQuiz"
+            android:icon="@drawable/ic_create_quiz"/>
+
+        <item android:id="@+id/notifications"
+            android:title="@string/notifications"
+            android:icon="@drawable/ic_notifications"
+            app:actionLayout="@layout/menu_counter_notifications"/>
+
+        <item android:id="@+id/resources"
+            android:title="@string/resources"
+            android:icon="@drawable/ic_resources_android"/>
+
 </menu>

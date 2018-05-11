@@ -137,9 +137,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     toggleQuizFilterView(false);
                 }
                 break;
-            case R.id.logout:
-                // TODO: Show a confirmation {@link AlertDialog} here. When user cliks OK. call
-                // TODO: mPresenter.logout();
+            case R.id.action_settings_menu:
+                Intent intent = new Intent(HomeActivity.this , SettingsActivity.class);
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);

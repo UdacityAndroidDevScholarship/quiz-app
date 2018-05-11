@@ -9,6 +9,7 @@ import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Resource;
 import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.remote.FirebaseProvider;
@@ -251,6 +252,11 @@ class AppDataHandler implements DataHandler {
     @Override
     public List<Notification> searchNotifications(String query, int startFrom, int limit) {
         return mDBHandler.searchNotifications(query, startFrom, limit);
+    }
+
+    @Override
+    public void fetchResources(int startFrom, int limit, Callback<List<Resource>> callback) {
+        mFirebaseHandler.fetchResources(startFrom, limit, new FirebaseCallback<>(callback));
     }
 
     /**

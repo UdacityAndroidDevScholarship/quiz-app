@@ -18,7 +18,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -28,8 +27,6 @@ import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
-import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
-import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
 
 import java.util.List;
 
@@ -139,9 +136,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         // TODO: details etc and pass as intent parameter.
 
         // TODO remove below code, only for testing
-        Intent attemptQuizIntent = new Intent(this, AttemptQuizActivity.class);
-        attemptQuizIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, quiz.getKey());
-        startActivity(attemptQuizIntent);
+        // Intent attemptQuizIntent = new Intent(this, AttemptQuizActivity.class);
+        // attemptQuizIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, quiz.getKey());
+        // startActivity(attemptQuizIntent);
+
+        Intent notificationIntent = new Intent(this, NotificationActivity.class);
+        startActivity(notificationIntent);
     }
 
     @Override
@@ -309,12 +309,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     }
                 });
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        twiceClicked = false;
-                    }
-                }, BACK_PRESS_DURATION);
+                new Handler().postDelayed(() -> twiceClicked = false, BACK_PRESS_DURATION);
             }
 
         }

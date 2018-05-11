@@ -141,4 +141,5 @@
 
     //Home Screen Back Button
     <string name="home_back_btn_msg">Press back again to exit.</string>
+    <string name="no_items_to_display">No notifications to display</string>
 </resources>

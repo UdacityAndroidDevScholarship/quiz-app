@@ -2,6 +2,8 @@ package com.developervishalsehgal.udacityscholarsapp.ui;
 
 import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.home.HomePresenter;
+import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationContract;
+import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationPresenter;
 import com.developervishalsehgal.udacityscholarsapp.ui.profile.ProfileContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.profile.ProfilePresenter;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
@@ -28,5 +30,9 @@ public class PresenterInjector {
 
     public static void injectQuizAttemptPresenter(AttemptQuizContract.View attemptQuizView) {
         new AttemptQuizPresenter(attemptQuizView);
+    }
+
+    public static void injectNotificationPresenter(NotificationContract.View notificationView) {
+        new NotificationPresenter(notificationView);
     }
 }

@@ -6,6 +6,7 @@ import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
 import com.developervishalsehgal.udacityscholarsapp.data.models.NotificationPrefs;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Resource;
 import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public interface FirebaseHandler {
     String REF_USERS_NODE = "users";
     String REF_QUIZZES_NODE = "quizzes";
     String REF_DISCUSSION_NODE = "discussions";
+    String REF_RESOURCES_NODE = "resources";
 
     /**
      * Fetches quizzes based on parameters passed
@@ -64,6 +66,8 @@ public interface FirebaseHandler {
     void updateMyFCMToken(String fcmToken);
 
     void updateMyStatus(String newStatus, Callback<Void> callback);
+
+    void fetchResources(int startFrom, int limit, Callback<List<Resource>> callback);
 
     void destroy();
 

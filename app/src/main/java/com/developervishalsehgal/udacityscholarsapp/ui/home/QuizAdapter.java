@@ -114,7 +114,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
         QuizViewHolder(View itemView) {
             super(itemView);
-            tvQuizName = itemView.findViewById(R.id.tv_quiz_name);
+            tvQuizName = itemView.findViewById(R.id.tv_notification_name);
             tvQuizCreator = itemView.findViewById(R.id.tv_creator_name);
             tvQuizStatus = itemView.findViewById(R.id.tv_completion_status);
             tvDateCreated = itemView.findViewById(R.id.tv_date_created);

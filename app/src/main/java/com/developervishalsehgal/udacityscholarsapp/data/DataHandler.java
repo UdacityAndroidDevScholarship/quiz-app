@@ -6,6 +6,7 @@ import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Resource;
 import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 
 import java.util.List;
@@ -222,6 +223,7 @@ public interface DataHandler {
 
     List<Notification> searchNotifications(String query, int startFrom, int limit);
 
+    void fetchResources(int startFrom, int limit, Callback<List<Resource>> callback);
     /**
      * Generic callback interface for passing response to caller.
      * <p>

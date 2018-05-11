@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
-        <activity android:name=".ui.signin.SignInActivity"
+        <activity
+            android:name=".ui.signin.SignInActivity"
             android:theme="@style/homeactivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.HomeActivity"
+        <activity
+            android:name=".ui.home.HomeActivity"
             android:theme="@style/homeactivity">
 
             <!--
@@ -37,7 +39,8 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.profile.UserProfileActivity"
+        <activity
+            android:name=".ui.profile.UserProfileActivity"
             android:theme="@style/homeactivity">
 
             <!--
@@ -75,14 +78,6 @@
             android:name=".ui.notification.NotificationActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".ui.notification.NotificationDetail"
-            android:label="@string/notification_detail_activity_title"
-            android:parentActivityName=".ui.notification.NotificationActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.notification.NotificationActivity" />
-        </activity>
         <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
     </application>
 

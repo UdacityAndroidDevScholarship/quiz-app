@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/pb_signin"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/loading_dots_height"
+        android:layout_width="@dimen/loading_dots_width"
+        app:lottie_fileName="loading_animation.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/sigin_image_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:contentDescription="@string/app_name"
         android:src="@mipmap/signin_logo" />
 
     <TextView
         android:id="@+id/signin_text_almost_there"
-        android:layout_marginTop="16dp"
-        android:layout_below="@id/sigin_image_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/sigin_image_logo"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/sigin_text_almost_there"
         android:textColor="#90ffffff" />
@@ -35,16 +46,6 @@
         android:layout_marginTop="100dp">
 
     </com.google.android.gms.common.SignInButton>
-
-    <ProgressBar
-        android:id="@+id/progressbar_google_signin"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="96dp"
-        android:visibility="gone" />
 
 
 </RelativeLayout>

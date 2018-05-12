@@ -1,4 +1,4 @@
-package com.developervishalsehgal.udacityscholarsapp.ui.custom;
+package com.developervishalsehgal.udacityscholarsapp.ui.components;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;

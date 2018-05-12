@@ -41,7 +41,7 @@
         </activity>
         <activity
             android:name=".ui.profile.UserProfileActivity"
-            android:theme="@style/homeactivity">
+            android:theme="@style/AppTheme">
 
             <!--
             Adding this intent filter here to silence the warning ,this should be a part of home

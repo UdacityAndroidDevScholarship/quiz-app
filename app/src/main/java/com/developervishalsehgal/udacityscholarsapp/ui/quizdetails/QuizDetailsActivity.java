@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
 
@@ -30,6 +33,8 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     TextView mTvQuizDescription;
     TextView mTvQuizAttemptedStatus;
     FloatingActionButton mFabStart;
+
+    ImageButton mBtnHelp;
     // UI Element ends
 
     @Override
@@ -55,6 +60,9 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
 
         mFabStart = findViewById(R.id.quiz_details_fab_start);
         mFabStart.setOnClickListener(this);
+
+        mBtnHelp = findViewById(R.id.quiz_details_btn_help);
+        mBtnHelp.setOnClickListener(this);
     }
 
     @Override
@@ -112,9 +120,9 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
 
     @Override
     public void startQuiz(String quizId) {
-        Intent attemptQuizIntent = new Intent(this, AttemptQuizActivity.class);
-        attemptQuizIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, quizId);
-        startActivity(attemptQuizIntent);
+        Intent quizDiscussionIntent = new Intent(this, QuizDiscussionActivity.class);
+        quizDiscussionIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, quizId);
+        startActivity(quizDiscussionIntent);
     }
 
     @Override
@@ -162,5 +170,20 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
             default:
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.dismissView();
+                break;
+            case R.id.quiz_details_btn_help:
+                mPresenter.onDiscussionClicked();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

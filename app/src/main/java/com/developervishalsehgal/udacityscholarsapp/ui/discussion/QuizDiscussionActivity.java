@@ -31,6 +31,7 @@ public class QuizDiscussionActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_discussion);
         initializeUI();
+
         // Injecting presenter reference
         PresenterInjector.injectQuizDiscussionPresenter(this);
 

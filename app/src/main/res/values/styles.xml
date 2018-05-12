@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="app:Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,17 +9,17 @@
     </style>
 
 
-    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+    <style name="Toolbar.TitleText" parent="app:TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">18sp</item>
     </style>
 
 
-    <style name="next_button" parent="Theme.AppCompat.Light">
+    <style name="next_button" parent="app:Theme.AppCompat.Light">
         <item name="colorControlHighlight">#89b345</item>
         <item name="colorButtonNormal">#af1709</item>
     </style>
 
-    <style name="homeactivity" parent="Theme.Design.NoActionBar">
+    <style name="homeactivity" parent="app:Theme.Design.NoActionBar">
         <item name="colorPrimary">#243447</item>
         <item name="colorPrimaryDark">#1b2836</item>
         <item name="colorAccent">#1da1f2</item>
@@ -32,7 +32,7 @@
     </style>
 
 
-    <style name="appIntro" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="appIntro" parent="app:Theme.AppCompat.Light.DarkActionBar">
         <!-- This is App's Intro Activity Theme. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -47,11 +47,11 @@
     </style>
 
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="app:ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="app:ThemeOverlay.AppCompat.Light" />
 
-    <style name="DetailsActivityButton" parent="Theme.AppCompat.Light">
+    <style name="DetailsActivityButton" parent="app:Theme.AppCompat.Light">
         <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
 

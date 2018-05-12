@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
@@ -77,7 +78,7 @@ public class QuizDiscussionActivity extends AppCompatActivity implements
 
     @Override
     public void onCommentsLoadError() {
-        //TODO yet to be implemented
+        Toast.makeText(this, getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -85,7 +86,11 @@ public class QuizDiscussionActivity extends AppCompatActivity implements
         mDiscussionEditText.setText("");
         mQuizDiscussionAdapter.addComment(comment);
         mQuizDiscussionRecyclerView.smoothScrollToPosition(mQuizDiscussionAdapter.getItemCount());
+    }
 
+    @Override
+    public void showInvalidInput() {
+        Toast.makeText(this, getString(R.string.invalid_input_provided), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -106,7 +111,11 @@ public class QuizDiscussionActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.quiz_discussion_btn_send) {
-            mPresenter.onClickedSendComment(mDiscussionEditText.getText().toString());
+            String userComment = mDiscussionEditText.getText().toString();
+            if (!userComment.trim().isEmpty()) {
+                mPresenter.onClickedSendComment(mDiscussionEditText.getText().toString());
+                mDiscussionEditText.setText("");
+            }
         }
     }
 }

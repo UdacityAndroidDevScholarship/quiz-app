@@ -55,6 +55,8 @@ public interface FirebaseHandler {
 
     void postComment(String discussionId, String quizId, Comment comment, Callback<Void> callback);
 
+    void getComments(String discussionId, String quizId, Callback<List<Comment>> callback);
+
     void updateMyAttemptedQuizzes(QuizAttempted quizAttempt, Callback<Void> callback);
 
     void updateQuizBookmarkStatus(String quizIdentifier, boolean isBookmarked, Callback<Void> callback);

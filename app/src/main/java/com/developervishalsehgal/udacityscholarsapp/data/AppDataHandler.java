@@ -179,6 +179,11 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
+    public void fetchComments(String discussionId, String quizId, Callback<List<Comment>> callback) {
+        mFirebaseHandler.getComments(discussionId, quizId, new FirebaseCallback<>(callback));
+    }
+
+    @Override
     public void updateMyAttemptedQuizzes(QuizAttempted quizAttempt, Callback<Void> callback) {
         mFirebaseHandler.updateMyAttemptedQuizzes(quizAttempt, new FirebaseCallback<>(callback));
     }

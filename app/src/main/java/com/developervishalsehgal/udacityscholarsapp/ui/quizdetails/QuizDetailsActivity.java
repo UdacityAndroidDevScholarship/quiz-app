@@ -44,10 +44,10 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
         // Injecting Presenter here
         PresenterInjector.injectQuizDetailsPresenter(this);
 
-        initializaUI();
+        initializeUI();
     }
 
-    private void initializaUI() {
+    private void initializeUI() {
 
         Toolbar mToolbar = findViewById(R.id.toolbar_quizdetail);
         setSupportActionBar(mToolbar);

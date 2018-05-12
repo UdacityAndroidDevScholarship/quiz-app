@@ -44,6 +44,9 @@ public class Comment {
     String mKey;
 
     @Exclude
+    boolean mIsMyComment;
+
+    @Exclude
     public String getComment() {
         return mComment;
     }
@@ -101,6 +104,16 @@ public class Comment {
     @Exclude
     public void setImage(String imageUrl) {
         this.mImageUrl = imageUrl;
+    }
+
+    @Exclude
+    public boolean isMyComment() {
+        return mIsMyComment;
+    }
+
+    @Exclude
+    public void setMyComment(boolean myComment) {
+        mIsMyComment = myComment;
     }
 
     @Override

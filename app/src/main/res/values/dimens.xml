@@ -65,7 +65,6 @@
     <dimen name="notification_description_margin_bottom">8dp</dimen>
     <dimen name="notification_description_margin_top">4dp</dimen>
     <dimen name="notification_description_margin_end">8dp</dimen>
-    <dimen name="appbar_padding_top">12dp</dimen>
     <!-- Notification Detail Activity dimesions-->
     <dimen name="notification_detail_name_text_size">16sp</dimen>
     <dimen name="notification_detail_description_text_size">15sp</dimen>

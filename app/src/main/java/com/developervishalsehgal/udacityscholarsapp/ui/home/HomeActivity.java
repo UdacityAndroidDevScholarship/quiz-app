@@ -41,6 +41,7 @@ import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsContract;
+import com.developervishalsehgal.udacityscholarsapp.utils.Connectivity;
 
 import java.util.List;
 
@@ -75,6 +76,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private DrawerLayout mDrawerLayout;
     private TextView mTvQuizCount;
     private ProgressBar progressBar;
+    private TextView mEmptyStateTextView;
     // Reference of the quiz filter list layout
     private RadioGroup mRGHomeQuizListFilter;
     //////////////
@@ -90,16 +92,23 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         // Injecting presenter reference
         PresenterInjector.injectHomePresenter(this);
 
         initializeUI();
 
-        mPresenter.start(getIntent().getExtras());
-
+       if(Connectivity.isNetworkAvailable(this)) {
+           mPresenter.start(getIntent().getExtras());
+       }else
+       {
+           noInternetMessage();
+       }
         displaySplashScreen();
 
         setUpSwipeRefresh();
+
+
     }
 
     private void initializeUI() {
@@ -120,6 +129,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mQuizAdapter = new QuizAdapter(this);
         quizRecyclerView.setAdapter(mQuizAdapter);
 
+        //initializing empty view
+        mEmptyStateTextView =  findViewById(R.id.empty_view);
 
 
         initQuizFilter();
@@ -138,6 +149,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         progressBar = findViewById(R.id.home_screen_pb);
 
+
     }
 
 //    @Override
@@ -145,6 +157,15 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 //        getMenuInflater().inflate(R.menu.main_menu, menu);
 //        return super.onCreateOptionsMenu(menu);
 //    }
+
+    private void noInternetMessage() {
+
+
+            quizRecyclerView.setVisibility(View.GONE);
+            mEmptyStateTextView.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -172,6 +193,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void loadQuizzes(List<Quiz> quizzes) {
+        quizRecyclerView.setVisibility(View.VISIBLE);
+        mEmptyStateTextView.setVisibility(View.GONE);
         mQuizAdapter.loadQuizzes(quizzes);
         mTvQuizCount.setText(String.valueOf(quizzes.size()));
     }
@@ -385,7 +408,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         return false;
     }
 
-    private void displaySplashScreen(){
+    private void displaySplashScreen() {
         homeLayout.setVisibility(View.GONE);
         splashLayout.setVisibility(View.VISIBLE);
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
@@ -410,7 +433,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
 
-                            circularReveal(R.id.homeactivitycoordinator);
+                        circularReveal(R.id.homeactivitycoordinator);
 
                     }
                 });
@@ -491,9 +514,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     @Override
                     public void run() {
 
-                        if(mQuizAdapter != null){
+                        if (mQuizAdapter != null) {
                             mQuizAdapter.notifyDataSetChanged();
-                           showSnackBar(R.string.refreshed);
+                            showSnackBar(R.string.refreshed);
                         }
                         swipeRefreshLayout.setRefreshing(false);
                     }
@@ -504,7 +527,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         });
     }
 
-    private void showSnackBar(int string){
+    private void showSnackBar(int string) {
         String msg = getResources().getString(string);
         mSnackbar = Snackbar.make(findViewById(R.id.homeactivitycoordinator), msg, Snackbar.LENGTH_LONG);
         final View snackbarView = mSnackbar.getView();
@@ -542,7 +565,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 mTwiceClicked = true;
 
 
-               showSnackBar(R.string.home_back_btn_msg);
+                showSnackBar(R.string.home_back_btn_msg);
 
 
                 new Handler().postDelayed(() -> mTwiceClicked = false, BACK_PRESS_DURATION);

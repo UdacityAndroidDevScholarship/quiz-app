@@ -2,6 +2,10 @@
     <string name="app_name">UdacityScholarsApp</string>
     <string name="quiz_app">Quiz App</string>
 
+
+    <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
+    <string name="no_internet_connection">No internet connection.</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="thumb_link">https://drive.google.com/uc?export=download&amp;id=</string>

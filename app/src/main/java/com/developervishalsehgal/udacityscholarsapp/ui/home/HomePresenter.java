@@ -112,6 +112,9 @@ public class HomePresenter implements HomeContract.Presenter {
                 attemptedQuizzes.add(quiz);
             }
         }
+        if(attemptedQuizzes.isEmpty()) {
+            mView.handleEmptyView(HomeContract.ATTEMPTED_QUIZZES);
+        }
         mView.loadQuizzes(attemptedQuizzes);
     }
 
@@ -123,6 +126,9 @@ public class HomePresenter implements HomeContract.Presenter {
                 unAttemptedQuizzes.add(quiz);
             }
         }
+        if(unAttemptedQuizzes.isEmpty()) {
+            mView.handleEmptyView(HomeContract.UNATTEMPTED_QUIZZES);
+        }
         mView.loadQuizzes(unAttemptedQuizzes);
     }
 
@@ -133,6 +139,9 @@ public class HomePresenter implements HomeContract.Presenter {
             if (quiz.isBookmarked()) {
                 bookmarkedQuizzes.add(quiz);
             }
+        }
+        if(bookmarkedQuizzes.isEmpty()) {
+            mView.handleEmptyView(HomeContract.BOOKMARKED_QUIZZES);
         }
         mView.loadQuizzes(bookmarkedQuizzes);
     }

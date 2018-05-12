@@ -29,6 +29,8 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -77,6 +79,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private ProgressBar progressBar;
     // Reference of the quiz filter list layout
     private RadioGroup mRGHomeQuizListFilter;
+    //Empty View elements
+    private ImageView mIVEmptyFilterResult;
+    private TextView mTVEmptyFilterResult;
+    private LinearLayout mLLEmptyFilterResultContainer;
     //////////////
     boolean mTwiceClicked = false;
     Snackbar mSnackbar;
@@ -120,7 +126,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mQuizAdapter = new QuizAdapter(this);
         quizRecyclerView.setAdapter(mQuizAdapter);
 
-
+        mIVEmptyFilterResult = findViewById(R.id.iv_empty_filter_result);
+        mTVEmptyFilterResult = findViewById(R.id.tv_empty_filter_result);
+        mLLEmptyFilterResultContainer = findViewById(R.id.ll_empty_filter_result_container);
 
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -172,6 +180,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void loadQuizzes(List<Quiz> quizzes) {
+        if(!quizzes.isEmpty()) {
+            mLLEmptyFilterResultContainer.setVisibility(View.GONE);
+        }
         mQuizAdapter.loadQuizzes(quizzes);
         mTvQuizCount.setText(String.valueOf(quizzes.size()));
     }
@@ -231,6 +242,27 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void navigateToEditProfile() {
         // TODO: Navigate to edit profile activity
         Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void handleEmptyView(String selectedFilter) {
+        mLLEmptyFilterResultContainer.setVisibility(View.VISIBLE);
+        switch (selectedFilter) {
+            case HomeContract.ATTEMPTED_QUIZZES:
+                mIVEmptyFilterResult.setImageResource(R.drawable.ic_frown_face);
+                mTVEmptyFilterResult.setText(R.string.no_attempted_quizzes);
+                break;
+            case HomeContract.BOOKMARKED_QUIZZES:
+                mIVEmptyFilterResult.setImageResource(R.drawable.ic_bookmark_warning);
+                mTVEmptyFilterResult.setText(R.string.no_bookmarked_quizzes);
+                break;
+            case HomeContract.UNATTEMPTED_QUIZZES:
+                mIVEmptyFilterResult.setImageResource(R.drawable.ic_fireworks);
+                mTVEmptyFilterResult.setText(R.string.no_un_attempted_quizzes);
+                break;
+            default:
+                throw new UnsupportedOperationException();
+        }
     }
 
     @Override

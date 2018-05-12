@@ -8,10 +8,14 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">200dp</dimen>
-    <dimen name="splashscreen_logo">120dp</dimen>
+    <dimen name="splashscreen_logo">150dp</dimen>
+
+    <dimen name="details_et_image">32dp</dimen>
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
     <dimen name="intro_layout_diagnol_bg">400dp</dimen>
+
+    <dimen name="splashscreen_progressbar_height">6dp</dimen>
 
     <dimen name="user_profile_header_view">100dp</dimen>
 
@@ -29,14 +33,14 @@
 
     <dimen name="details_page_toobar_title_horizontal">48dp</dimen>
 
-    <dimen name="details_page_image_vertical_margin">36dp</dimen>
+    <dimen name="details_page_image_vertical_margin">60dp</dimen>
     <dimen name="details_page_email_vertical_margin">58dp</dimen>
 
     <dimen name="details_page_large_vertical_margin">32dp</dimen>
     <dimen name="details_page_small_vertical_margin">8dp</dimen>
     <dimen name="details_page_small_horizontal_margin">8dp</dimen>
 
-    <dimen name="details_page_icon_vertical_margin">26dp</dimen>
+    <dimen name="details_page_icon_vertical_margin">28dp</dimen>
     <dimen name="details_page_padding">16dp</dimen>
 
     <dimen name="details_page_button_text">24sp</dimen>
@@ -152,5 +156,9 @@
     <dimen name="item_discussion_chat_bubble_card_content_padding">8dp</dimen>
     <dimen name="item_discussion_minimum_content_height">60dp</dimen>
     <dimen name="item_discussion_minimum_content_width">200dp</dimen>
+
+    <!-- Dimensions For Animated Loading Dots -->
+    <dimen name="loading_dots_width">224dp</dimen>
+    <dimen name="loading_dots_height">128dp</dimen>
 
 </resources>

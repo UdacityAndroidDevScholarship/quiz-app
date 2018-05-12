@@ -3,8 +3,6 @@ package com.developervishalsehgal.udacityscholarsapp.ui.discussion;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,15 +13,13 @@ import android.widget.EditText;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
-import com.developervishalsehgal.udacityscholarsapp.data.models.Discussion;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
-import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeActivity;
-import com.developervishalsehgal.udacityscholarsapp.ui.home.QuizAdapter;
 
 import java.util.List;
 
-public class QuizDiscussionActivity extends AppCompatActivity implements QuizDiscussionContract.View, View.OnClickListener {
+public class QuizDiscussionActivity extends AppCompatActivity implements
+        QuizDiscussionContract.View, View.OnClickListener {
 
     private QuizDiscussionAdapter mQuizDiscussionAdapter;
     private QuizDiscussionContract.Presenter mPresenter;

@@ -69,16 +69,16 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         this.mQuizList.clear();
         this.mQuizList.addAll(quizList);
 
-        // Sort the quizzes
-        Collections.sort(mQuizList, (q1, q2) -> {
-            if (q1.isBookmarked() != q2.isBookmarked()) {
-                return Boolean.compare(q2.isBookmarked(), q1.isBookmarked());
-            } else if (q1.isAttempted() != q2.isAttempted()) {
-                return Boolean.compare(q1.isAttempted(), q2.isAttempted());
-            } else {
-                return q1.getTitle().compareTo(q2.getTitle());
-            }
-        });
+//        // Sort the quizzes
+//        Collections.sort(mQuizList, (q1, q2) -> {
+//            if (q1.isBookmarked() != q2.isBookmarked()) {
+//                return Boolean.compare(q2.isBookmarked(), q1.isBookmarked());
+//            } else if (q1.isAttempted() != q2.isAttempted()) {
+//                return Boolean.compare(q1.isAttempted(), q2.isAttempted());
+//            } else {
+//                return q1.getTitle().compareTo(q2.getTitle());
+//            }
+//        });
 
         notifyDataSetChanged();
     }
@@ -114,7 +114,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
         QuizViewHolder(View itemView) {
             super(itemView);
-            tvQuizName = itemView.findViewById(R.id.tv_quiz_name);
+            tvQuizName = itemView.findViewById(R.id.tv_notification_name);
             tvQuizCreator = itemView.findViewById(R.id.tv_creator_name);
             tvQuizStatus = itemView.findViewById(R.id.tv_completion_status);
             tvDateCreated = itemView.findViewById(R.id.tv_date_created);

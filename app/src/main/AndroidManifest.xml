@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
-        <activity android:name=".ui.signin.SignInActivity"
+        <activity
+            android:name=".ui.signin.SignInActivity"
             android:theme="@style/homeactivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.HomeActivity"
+        <activity
+            android:name=".ui.home.HomeActivity"
             android:theme="@style/homeactivity">
 
             <!--
@@ -37,8 +39,9 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.profile.UserProfileActivity"
-            android:theme="@style/homeactivity">
+        <activity
+            android:name=".ui.profile.UserProfileActivity"
+            android:theme="@style/AppTheme">
 
             <!--
             Adding this intent filter here to silence the warning ,this should be a part of home
@@ -58,6 +61,29 @@
             </intent-filter>
         </service>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".ui.notification.NotificationActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".ui.discussion.QuizDiscussionActivity"
+            android:label="@string/title_activity_quiz_discussion"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+      
+        <activity android:name=".settings.SettingsActivity"
+            android:label="@string/settings"
+            android:parentActivityName=".ui.home.HomeActivity"/>/>
+
+        <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
+        <activity android:name=".ui.quizdetails.QuizDetailsActivity" />
+
         <!-- For Firebase cloud messaging token refresh -->
         <service
             android:name=".services.FCMTokenFetcher"
@@ -66,40 +92,7 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
-        <activity
-            android:name=".ui.notification.NotificationActivity"
-            android:launchMode="singleTop"
-            android:theme="@style/AppTheme">
-        </activity>
-
-        <activity
-            android:name=".ui.notification.NotificationDetail"
-            android:label="@string/notification_detail_activity_title"
-            android:parentActivityName=".ui.notification.NotificationActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.notification.NotificationActivity" />
-        </activity>
-
-      
-        <activity
-            android:name=".ui.discussion.QuizDiscussionActivity"
-            android:label="@string/title_activity_quiz_discussion"
-            android:parentActivityName=".ui.home.HomeActivity"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity android:name=".settings.SettingsActivity"
-            android:label="@string/settings"
-            android:parentActivityName=".ui.home.HomeActivity"/>
-      
-        <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
-    
-  </application>
+    </application>
 
 
 </manifest>

@@ -19,4 +19,8 @@ public class AppConstants {
     public static final String KEY_EXTRA_1 = "extra_1";
     public static final String KEY_EXTRA_2 = "extra_2";
 
+    // Notification Types
+    public static final String NOTIFICATION_TYPE_QUIZ = "quiz";
+    public static final String NOTIFICATION_TYPE_DEADLINE = "deadline";
+    public static final String NOTIFICATION_TYPE_RESOURCES = "resources";
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
     android:background="@drawable/nav_header"
@@ -20,39 +19,39 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
         <ImageButton
-            android:layout_marginRight="10dp"
-            android:layout_alignParentEnd="true"
             android:id="@+id/nav_drawer_edit_profile"
-            android:layout_alignParentTop="true"
             android:layout_width="@dimen/img_btn"
             android:layout_height="@dimen/img_btn"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
             android:background="@color/transparent"
             android:src="@drawable/ic_edit" />
 
         <ImageView
-            android:layout_above="@id/username_nav_drawer"
             android:id="@+id/userimage_nav_drawer"
             android:layout_width="64dp"
             android:layout_height="64dp"
+            android:layout_above="@id/username_nav_drawer"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             android:scaleType="fitCenter"
             android:src="@drawable/profile" />
 
         <TextView
-            android:layout_above="@id/slack_name_nav_drawer"
             android:id="@+id/username_nav_drawer"
             android:layout_width="wrap_content"
-            android:textStyle="bold"
             android:layout_height="wrap_content"
+            android:layout_above="@id/slack_name_nav_drawer"
             android:paddingTop="10dp"
             android:text="Vishal Sehgal"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_alignParentBottom="true"
             android:id="@+id/slack_name_nav_drawer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:text="\@sehgalvishal31" />
     </RelativeLayout>
 </RelativeLayout>

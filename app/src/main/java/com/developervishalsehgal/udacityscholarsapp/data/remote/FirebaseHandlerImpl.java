@@ -6,6 +6,7 @@ import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
 import com.developervishalsehgal.udacityscholarsapp.data.models.NotificationPrefs;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Resource;
 import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,11 +47,17 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     private static final String KEY_DISCUSSION_COMMENTS = "comments";
 
     private static final String KEY_USER_BOOKMARKS = "bookmarks";
-    //
+
+    private static final String KEY_LAST_MODIFIED = "last-modified";
+    private static final String KEY_TIMESTAMP = "timestamp";
+    private static final String KEY_USER_SCORE = "score";
+
+    static boolean calledAlready = false;
 
     private DatabaseReference mUsersRef;
     private DatabaseReference mQuizzesRef;
     private DatabaseReference mDiscussionsRef;
+    private DatabaseReference mResourcesRef;
 
     private List<ValueEventListener> mValueListeners;
 
@@ -66,6 +73,9 @@ class FirebaseHandlerImpl implements FirebaseHandler {
         mUsersRef = rootRef.child(REF_USERS_NODE);
         mQuizzesRef = rootRef.child(REF_QUIZZES_NODE);
         mDiscussionsRef = rootRef.child(REF_DISCUSSION_NODE);
+        mResourcesRef = rootRef.child(REF_RESOURCES_NODE);
+
+
     }
 
 
@@ -98,7 +108,7 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             }
         };
 
-        Query quizzesRefQuery = mQuizzesRef;
+        Query quizzesRefQuery = mQuizzesRef.orderByChild(KEY_LAST_MODIFIED);
 
         // TODO: Implement pagination here.
         if (limitToFirst > 0) {
@@ -152,8 +162,12 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot != null) {
                     Quiz singleQuiz = snapshot.getValue(Quiz.class);
-                    singleQuiz.setKey(snapshot.getKey());
-                    callback.onReponse(singleQuiz);
+                    if (singleQuiz != null) {
+                        singleQuiz.setKey(snapshot.getKey());
+                        callback.onReponse(singleQuiz);
+                    } else {
+                        callback.onError();
+                    }
                 } else {
                     callback.onError();
                 }
@@ -206,7 +220,6 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             userIdentifier = mCurrentUser.getUid();
         }
 
-
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -222,10 +235,42 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             }
         };
 
-        mUsersRef.child(mCurrentUser.getUid()).addValueEventListener(listener);
+        mUsersRef.child(userIdentifier).addValueEventListener(listener);
         mValueListeners.add(listener);
 
 
+    }
+
+    @Override
+    public void fetchUserScore(String quizId, Callback<Integer> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    Integer score = snapshot.getValue(Integer.class);
+                    if (score != null) {
+                        callback.onReponse(score);
+                    } else {
+                        callback.onError();
+                    }
+                } else {
+                    callback.onError();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mUsersRef.child(KEY_USER_ATTEMPTED_QUIZ).child(quizId).child(KEY_USER_SCORE)
+                .addValueEventListener(listener);
+        mValueListeners.add(listener);
     }
 
     @Override
@@ -362,19 +407,50 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
     @Override
+    public void fetchResources(int startFrom, int limit, Callback<List<Resource>> callback) {
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<Resource> resources = new ArrayList<>();
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        Resource resource = childSnapshot.getValue(Resource.class);
+                        resources.add(resource);
+                    }
+                    callback.onReponse(resources);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        Query resourcesQuery = mResourcesRef.orderByChild(KEY_TIMESTAMP);
+
+        if (limit > 0) {
+            resourcesQuery.limitToFirst(limit);
+        }
+
+        resourcesQuery.addValueEventListener(listener);
+        mValueListeners.add(listener);
+    }
+
+    @Override
     public void destroy() {
         // Remove all listeners
         for (ValueEventListener listener : mValueListeners) {
             mQuizzesRef.removeEventListener(listener);
             mDiscussionsRef.removeEventListener(listener);
             mUsersRef.removeEventListener(listener);
+            mDiscussionsRef.removeEventListener(listener);
         }
     }
 
     private void updateUserProperty(String property, String value, final Callback<Void> callback) {
 
         try {
-
             if (mCurrentUser == null) {
                 mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
             }

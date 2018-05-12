@@ -8,7 +8,7 @@
     <color name="white">#ffffff</color>
     <color name="darkgrey">#6c6c6c</color>
     <color name="black">#000000</color>
-    <color name="transparent">#00000000</color>
+    <color name="transparent">#00ffffff</color>
     <color name="bg">#283747</color>
     <color name="red">#D32F2F</color>
 
@@ -31,6 +31,8 @@
 
     <color name="translucent_scrim_bottom">#6f000000</color>
     <color name="translucent_scrim_bottom_center">#0D000000</color>
+
+    <color name="scrim_color">#86000000</color>
 
 
     <color name="bnv_color">#151e3f</color>

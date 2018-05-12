@@ -1,62 +1,99 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.notification;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
+import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 
-public class NotificationActivity extends AppCompatActivity {
+import java.util.List;
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+public class NotificationActivity extends AppCompatActivity implements NotificationContract.View {
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    private ViewPager mViewPager;
+    private static final int TAB_COUNT = 3;
+    private static final int INDEX_NEW_QUIZ = 0;
+    private static final int INDEX_DEADLINE_QUIZ = 1;
+    private static final int INDEX_RESOURCES = 2;
+
+    private NotificationTabFragment mNewQuizTab;
+    private NotificationTabFragment mDeadlineQuizTab;
+    private NotificationTabFragment mResourcesTab;
+
+    private NotificationContract.Presenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        ViewPager mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+        initializeTabs();
+
+        // Injecting Presenter here
+        PresenterInjector.injectNotificationPresenter(this);
+
+        mPresenter.start(getIntent().getExtras());
+    }
+
+    private void initializeTabs() {
+        mNewQuizTab = NotificationTabFragment.getInstance(NotificationsAdapter.TYPE_NEW_QUIZ);
+        mDeadlineQuizTab = NotificationTabFragment.getInstance(NotificationsAdapter.TYPE_DEADLINE);
+        mResourcesTab = NotificationTabFragment.getInstance(NotificationsAdapter.TYPE_RESOURCES);
+    }
+
+    @Override
+    public void loadNewQuizNotifications(List<Notification> newQuizNotifications) {
+        mNewQuizTab.addItems(newQuizNotifications);
+    }
+
+    @Override
+    public void loadDeadlineNotifications(List<Notification> deadlineNotifications) {
+        mDeadlineQuizTab.addItems(deadlineNotifications);
+    }
+
+    @Override
+    public void loadResourceNotifications(List<Notification> resourceNotifications) {
+        mResourcesTab.addItems(resourceNotifications);
+    }
+
+    @Override
+    public void showError() {
+        Toast.makeText(this, getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setPresenter(NotificationContract.Presenter presenter) {
+        this.mPresenter = presenter;
+    }
+
+    @Override
+    public void showLoading() {
+        // TODO(1): Show loading here
+    }
+
+    @Override
+    public void hideLoading() {
+        // TODO(2): Hide loading here
     }
 
     /**
@@ -73,22 +110,24 @@ public class NotificationActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-           switch (position){
-               case 0:
-                   return new NotificationTab1();
-               case 1:
-                   return new NotificationTab2();
-               case 2:
-                   return new NotificationTab3();
-               default:
-                   return null;
-           }
+            switch (position) {
+                case INDEX_NEW_QUIZ:
+                    mPresenter.fetchNewQuizNotifications();
+                    return mNewQuizTab;
+                case INDEX_DEADLINE_QUIZ:
+                    mPresenter.fetchDeadlineNotifications();
+                    return mDeadlineQuizTab;
+                case INDEX_RESOURCES:
+                    mPresenter.fetchResources();
+                    return mResourcesTab;
+                default:
+                    return null;
+            }
         }
 
         @Override
         public int getCount() {
-            // Show 3 total tabs.
-            return 3;
+            return TAB_COUNT;
         }
     }
 }

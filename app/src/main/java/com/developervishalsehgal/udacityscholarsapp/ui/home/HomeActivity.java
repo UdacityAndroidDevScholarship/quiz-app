@@ -1,5 +1,8 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +16,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,10 +25,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,9 +62,19 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     private HomeContract.Presenter mPresenter;
 
+    private RelativeLayout splashLayout;
+    private CoordinatorLayout homeLayout;
+    private ProgressBar splashScreenProgress;
+
+    private ValueAnimator splashProgressLoading;
+    private Animation recyclerViewLoading;
+
+    private RecyclerView quizRecyclerView;
+
     // UI Elements
     private DrawerLayout mDrawerLayout;
     private TextView mTvQuizCount;
+    private ProgressBar progressBar;
     // Reference of the quiz filter list layout
     private RadioGroup mRGHomeQuizListFilter;
     //////////////
@@ -66,6 +83,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     boolean mIsFilterMenuOpen = false;
     private View mDimBackground;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,6 +96,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         initializeUI();
 
         mPresenter.start(getIntent().getExtras());
+
+        displaySplashScreen();
+
+        setUpSwipeRefresh();
     }
 
     private void initializeUI() {
@@ -89,7 +111,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_udacity));
         }
 
-        RecyclerView quizRecyclerView = findViewById(R.id.recyclerview_quizzes);
+        quizRecyclerView = findViewById(R.id.recyclerview_quizzes);
         quizRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false);
@@ -97,6 +119,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         mQuizAdapter = new QuizAdapter(this);
         quizRecyclerView.setAdapter(mQuizAdapter);
+
+
 
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -107,6 +131,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mDimBackground = findViewById(R.id.scrim_bg_quiz_list);
 
         mTvQuizCount = findViewById(R.id.total_quizzes_count);
+
+
+        splashLayout = findViewById(R.id.layout_splash_screen);
+        homeLayout = findViewById(R.id.homeactivitycoordinator);
+
+        progressBar = findViewById(R.id.home_screen_pb);
+
     }
 
 //    @Override
@@ -210,12 +241,18 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void showLoading() {
         // TODO: Show progress bar / dialog here
-        /// Default progress
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoading() {
         // TODO: Hide progress bar / dialog here
+
+        recyclerViewLoading = AnimationUtils.loadAnimation(this, R.anim.anim_nothing);
+        quizRecyclerView.startAnimation(recyclerViewLoading);
+
+
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -348,6 +385,144 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         return false;
     }
 
+    private void displaySplashScreen(){
+        homeLayout.setVisibility(View.GONE);
+        splashLayout.setVisibility(View.VISIBLE);
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+        splashScreenProgress = findViewById(R.id.progressbar_splash);
+        splashScreenProgress.setVisibility(View.VISIBLE);
+
+
+        HomeActivity.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                splashProgressLoading = ValueAnimator.ofInt(0, splashScreenProgress.getMax());
+                splashProgressLoading.setDuration(1500);
+                splashProgressLoading.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                        splashScreenProgress.setProgress((Integer) valueAnimator.getAnimatedValue());
+                    }
+                });
+                splashProgressLoading.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+
+                            circularReveal(R.id.homeactivitycoordinator);
+
+                    }
+                });
+                splashProgressLoading.start();
+            }
+        });
+
+    }
+
+    public void circularReveal(int id) {
+        //Applying the circular reveal effect on the activity.
+        final View rootLayout = findViewById(id);
+        rootLayout.setVisibility(View.INVISIBLE);
+
+
+        ViewTreeObserver viewTreeObserver = rootLayout.getViewTreeObserver();
+        if (viewTreeObserver.isAlive()) {
+            viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    rootLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+
+                    int centerX = (rootLayout.getLeft() + rootLayout.getRight()) / 2;
+                    int centerY = (rootLayout.getTop() + rootLayout.getBottom()) / 2;
+
+                    int startRadius = 0;
+                    int endRadius = Math.max(rootLayout.getWidth(), rootLayout.getHeight());
+
+                    Animator animator = ViewAnimationUtils.createCircularReveal(rootLayout, centerX, centerY, startRadius, endRadius);
+                    animator.setDuration(1000);
+                    animator.addListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animator) {
+                            if (id == R.id.homeactivitycoordinator) {
+                                mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                                splashLayout.setVisibility(View.GONE);
+
+                            }
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animator) {
+
+                        }
+                    });
+                    rootLayout.setVisibility(View.VISIBLE);
+                    animator.start();
+                }
+            });
+        }
+
+
+    }
+
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    private void setUpSwipeRefresh() {
+        swipeRefreshLayout = findViewById(R.id.refresh_homescreen);
+        swipeRefreshLayout.setColorSchemeResources(R.color.bnv_color, R.color.blue_jeans,
+                R.color.ufo_green, R.color.vivid_tangelo);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if(mQuizAdapter != null){
+                            mQuizAdapter.notifyDataSetChanged();
+                           showSnackBar(R.string.refreshed);
+                        }
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, BACK_PRESS_DURATION);
+
+
+            }
+        });
+    }
+
+    private void showSnackBar(int string){
+        String msg = getResources().getString(string);
+        mSnackbar = Snackbar.make(findViewById(R.id.homeactivitycoordinator), msg, Snackbar.LENGTH_LONG);
+        final View snackbarView = mSnackbar.getView();
+        TextView tvSnackbar = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+        tvSnackbar.setTextColor(getResources().getColor(R.color.colorAccent));
+        snackbarView.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
+        mSnackbar.show();
+
+        snackbarView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                snackbarView.getViewTreeObserver().removeOnPreDrawListener(this);
+                ((CoordinatorLayout.LayoutParams) snackbarView.getLayoutParams()).setBehavior(null);
+                return true;
+            }
+        });
+    }
+
     @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -367,20 +542,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 mTwiceClicked = true;
 
 
-                mSnackbar = Snackbar.make(findViewById(R.id.homeactivitycoordinator), getResources().getString(R.string.home_back_btn_msg), Snackbar.LENGTH_LONG);
-                final View snackbarView = mSnackbar.getView();
-                TextView tvSnackbar = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                tvSnackbar.setTextColor(getResources().getColor(R.color.colorAccent));
-                snackbarView.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
-                mSnackbar.show();
-                snackbarView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-                    @Override
-                    public boolean onPreDraw() {
-                        snackbarView.getViewTreeObserver().removeOnPreDrawListener(this);
-                        ((CoordinatorLayout.LayoutParams) snackbarView.getLayoutParams()).setBehavior(null);
-                        return true;
-                    }
-                });
+               showSnackBar(R.string.home_back_btn_msg);
+
 
                 new Handler().postDelayed(() -> mTwiceClicked = false, BACK_PRESS_DURATION);
             }

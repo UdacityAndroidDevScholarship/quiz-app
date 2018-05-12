@@ -3,22 +3,23 @@ package com.developervishalsehgal.udacityscholarsapp.ui.quizdetails;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity;
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
 
 import java.util.Locale;
-
-import static com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionContract.KEY_QUIZ_ID;
 
 public class QuizDetailsActivity extends AppCompatActivity implements QuizDetailsContract.View,
         View.OnClickListener {
@@ -33,8 +34,6 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     TextView mTvQuizDescription;
     TextView mTvQuizAttemptedStatus;
     FloatingActionButton mFabStart;
-
-    ImageButton mBtnHelp;
     // UI Element ends
 
     @Override
@@ -51,6 +50,15 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     }
 
     private void initializaUI() {
+
+        Toolbar mToolbar = findViewById(R.id.toolbar_quizdetail);
+        setSupportActionBar(mToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_clear_black_24dp));
+        }
+
         mTvQuizTitle = findViewById(R.id.quiz_details_label_quiz);
         mTvQuizAuthor = findViewById(R.id.quiz_details_label_author);
         mTvQuizReleasedOn = findViewById(R.id.quiz_details_label_released);
@@ -60,9 +68,12 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
 
         mFabStart = findViewById(R.id.quiz_details_fab_start);
         mFabStart.setOnClickListener(this);
+    }
 
-        mBtnHelp = findViewById(R.id.quiz_details_btn_help);
-        mBtnHelp.setOnClickListener(this);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.quiz_detail_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -113,16 +124,16 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
 
     @Override
     public void navigateToDiscussion(String quizId) {
-        Intent quizDiscussionIntent = new Intent(this, AttemptQuizActivity.class);
-        quizDiscussionIntent.putExtra(KEY_QUIZ_ID, quizId);
+        Intent quizDiscussionIntent = new Intent(this, QuizDiscussionActivity.class);
+        quizDiscussionIntent.putExtra(QuizDiscussionContract.KEY_QUIZ_ID, quizId);
         startActivity(quizDiscussionIntent);
     }
 
     @Override
     public void startQuiz(String quizId) {
-        Intent quizDiscussionIntent = new Intent(this, QuizDiscussionActivity.class);
-        quizDiscussionIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, quizId);
-        startActivity(quizDiscussionIntent);
+        Intent attemptQuizIntent = new Intent(this, AttemptQuizActivity.class);
+        attemptQuizIntent.putExtra(AttemptQuizContract.KEY_QUIZ_ID, quizId);
+        startActivity(attemptQuizIntent);
     }
 
     @Override
@@ -178,12 +189,19 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
             case android.R.id.home:
                 this.dismissView();
                 break;
-            case R.id.quiz_details_btn_help:
+            case R.id.quiz_details_help:
                 mPresenter.onDiscussionClicked();
                 break;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_down);
+
     }
 }

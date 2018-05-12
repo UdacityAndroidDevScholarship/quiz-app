@@ -52,6 +52,8 @@ class FirebaseHandlerImpl implements FirebaseHandler {
     private static final String KEY_TIMESTAMP = "timestamp";
     private static final String KEY_USER_SCORE = "score";
 
+    static boolean calledAlready = false;
+
     private DatabaseReference mUsersRef;
     private DatabaseReference mQuizzesRef;
     private DatabaseReference mDiscussionsRef;
@@ -72,6 +74,8 @@ class FirebaseHandlerImpl implements FirebaseHandler {
         mQuizzesRef = rootRef.child(REF_QUIZZES_NODE);
         mDiscussionsRef = rootRef.child(REF_DISCUSSION_NODE);
         mResourcesRef = rootRef.child(REF_RESOURCES_NODE);
+
+
     }
 
 
@@ -264,8 +268,8 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             }
         };
 
-        mUsersRef.child(KEY_USER_ATTEMPTED_QUIZ).child(quizId).child(KEY_USER_SCORE)
-                .addValueEventListener(listener);
+        mUsersRef.child(mCurrentUser.getUid()).child(KEY_USER_ATTEMPTED_QUIZ).child(quizId)
+                .child(KEY_USER_SCORE).addValueEventListener(listener);
         mValueListeners.add(listener);
     }
 

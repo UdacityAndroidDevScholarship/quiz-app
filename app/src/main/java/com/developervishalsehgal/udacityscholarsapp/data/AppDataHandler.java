@@ -77,7 +77,7 @@ class AppDataHandler implements DataHandler {
                                     break;
                                 }
                             }
-                            if (result.getBookmarks().containsKey(singleQuiz.getKey())) {
+                            if (result.getBookmarks() != null && result.getBookmarks().containsKey(singleQuiz.getKey())) {
                                 singleQuiz.setBookmarked(result.getBookmarks().get(singleQuiz.getKey()));
                             }
                         }
@@ -106,7 +106,7 @@ class AppDataHandler implements DataHandler {
                 mFirebaseHandler.fetchUserScore(quizId, new FirebaseHandler.Callback<Integer>() {
                     @Override
                     public void onReponse(Integer result) {
-                        if (result >= 0) {
+                        if (result != null && result >= 0) {
                             fetchedQuiz.setAttempted(true);
                             // If scholar has already attempted the quiz setting the score in
                             // Rated-by field, is it not used anyway

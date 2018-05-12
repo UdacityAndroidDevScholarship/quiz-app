@@ -131,7 +131,7 @@
 
     //Nav Dimens
     <dimen name="pad_main">15dp</dimen>
-    <https://github.com/UdacityAndroidDevScholarship/quiz-app/pull/147/conflict?name=app%252Fsrc%252Fmain%252Fres%252Flayout%252Factivity_home.xml&ancestor_oid=35dc26a2c20917ddaa02f37989fd78a91dd407f3&base_oid=7bd5a3006295b52610da7d280ec69ee22402a64c&head_oid=097e2d007890b2c7dfd6f911c97e17e4361b063adimen name="pad_b_main">10dp</dimen>
+    <dimen name="pad_b_main">10dp</dimen>
     <dimen name="img_view_main">50dp</dimen>
     <dimen name="dim_one">48dp</dimen>
     <dimen name="dim_two">25dp</dimen>

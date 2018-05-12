@@ -82,7 +82,7 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+                dismissView();
                 break;
             default:
                 break;
@@ -201,5 +201,7 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_down);
+
     }
+
 }

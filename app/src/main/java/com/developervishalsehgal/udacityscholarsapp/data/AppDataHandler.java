@@ -77,7 +77,7 @@ class AppDataHandler implements DataHandler {
                                     break;
                                 }
                             }
-                            if (result.getBookmarks().containsKey(singleQuiz.getKey())) {
+                            if (result.getBookmarks() != null && result.getBookmarks().containsKey(singleQuiz.getKey())) {
                                 singleQuiz.setBookmarked(result.getBookmarks().get(singleQuiz.getKey()));
                             }
                         }

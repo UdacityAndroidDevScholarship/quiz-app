@@ -110,7 +110,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
             profileIntent.putExtras(extras);
         }
         startActivity(profileIntent);
-        this.finish();
+        finish();
     }
 
     @Override

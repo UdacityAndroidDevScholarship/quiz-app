@@ -32,6 +32,8 @@
     <color name="translucent_scrim_bottom">#6f000000</color>
     <color name="translucent_scrim_bottom_center">#0D000000</color>
 
+    <color name="scrim_color">#86000000</color>
+
 
     <color name="bnv_color">#151e3f</color>
     <color name="blue_jeans">#63adf2</color>

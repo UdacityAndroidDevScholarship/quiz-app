@@ -3,7 +3,11 @@ package com.developervishalsehgal.udacityscholarsapp.ui.quizdetails;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +34,8 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     TextView mTvQuizDescription;
     TextView mTvQuizAttemptedStatus;
     FloatingActionButton mFabStart;
+
+
     // UI Element ends
 
     @Override
@@ -46,6 +52,15 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     }
 
     private void initializaUI() {
+
+         Toolbar mToolbar = findViewById(R.id.toolbar_quizdetail);
+        setSupportActionBar(mToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_clear_black_24dp));
+        }
+
         mTvQuizTitle = findViewById(R.id.quiz_details_label_quiz);
         mTvQuizAuthor = findViewById(R.id.quiz_details_label_author);
         mTvQuizReleasedOn = findViewById(R.id.quiz_details_label_released);
@@ -55,6 +70,24 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
 
         mFabStart = findViewById(R.id.quiz_details_fab_start);
         mFabStart.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.quiz_detail_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                dismissView();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -163,4 +196,12 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
                 break;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_down);
+
+    }
+
 }

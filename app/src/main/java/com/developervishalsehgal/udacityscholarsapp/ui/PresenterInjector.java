@@ -36,9 +36,6 @@ public class PresenterInjector {
         new QuizDiscussionPresenter(quizDiscussionView);
     }
 
-    public static void injectQuizAttemptPresenter(AttemptQuizContract.View attemptQuizView) {
-        new AttemptQuizPresenter(attemptQuizView);
-    }
 
     public static void injectNotificationPresenter(NotificationContract.View notificationView) {
         new NotificationPresenter(notificationView);

@@ -17,7 +17,7 @@ import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeActivity;
 
-public class NotificationUtils {
+class NotificationUtils {
 
     /**
      * Description - creates a notification channel based on given channelId and channelName if the channel does not exists

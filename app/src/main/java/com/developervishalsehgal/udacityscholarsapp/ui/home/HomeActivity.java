@@ -6,15 +6,10 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -25,6 +20,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.view.ViewAnimationUtils;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
@@ -38,6 +35,7 @@ import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
+import com.developervishalsehgal.udacityscholarsapp.settings.SettingsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
@@ -46,18 +44,15 @@ import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsCo
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View,
-        QuizAdapter.QuizItemListener, NavigationView.OnNavigationItemSelectedListener {
+        QuizAdapter.QuizItemListener {
 
     /* static constants for quiz filter */
-    private static final int SLIDE_DOWN_ANIMATION_DURATION = 600;
-    private static final int SLIDE_UP_ANIMATION_DURATION = 450;
-    private static final int TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN = -1000;
-    private static final int ANIMATION_SLIDE_DOWN_TRANSLATE_Y = 0;
-    private static final int ANIMATION_SLIDE_UP_TRANSLATE_Y = -1000;
-    private static final int SLIDE_UP_DELAY_ON_CHECKED_CHANGED = 350;
-    private static final int BACK_PRESS_DURATION = 3000;
-    private static final int DELAY_NAV_ITEM_CLICK = 250;
-    private static final String DEMO_TOAST_MSG = "Clicked!";
+    private static final int QUIZ_FILTER_VIEW_SLIDE_DOWN_ANIMATION_DURATION = 600;
+    private static final int QUIZ_FILTER_VIEW_SLIDE_UP_ANIMATION_DURATION = 450;
+    private static final int QUIZ_FILTER_VIEW_TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN = -1000;
+    private static final int QUIZ_FILTER_VIEW_ANIMATION_SLIDE_DOWN_TRANSLATE_Y = 0;
+    private static final int QUIZ_FILTER_VIEW_ANIMATION_SLIDE_UP_TRANSLATE_Y = -1000;
+    private static final int QUIZ_FILTER_VIEW_SLIDE_UP_DELAY_ON_CHECKED_CHANGED = 350;
 
     private QuizAdapter mQuizAdapter;
 
@@ -74,6 +69,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     // UI Elements
     private DrawerLayout mDrawerLayout;
+    private RecyclerView mQuizRecyclerView;
+    //Reference of the quiz filter list layout
+    private RadioGroup mHomeQuizListFilterRadioGroup;
+    //////////////
     private TextView mTvQuizCount;
     private LottieAnimationView progressBar;
     // Reference of the quiz filter list layout
@@ -84,7 +83,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     boolean mIsFilterMenuOpen = false;
     private View mDimBackground;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -112,15 +110,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             actionBar.setHomeAsUpIndicator(getDrawable(R.mipmap.ic_launcher));
         }
 
-        quizRecyclerView = findViewById(R.id.recyclerview_quizzes);
-        quizRecyclerView.setHasFixedSize(true);
+        RecyclerView mQuizRecyclerView = findViewById(R.id.recyclerview_quizzes);
+        mQuizRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false);
-        quizRecyclerView.setLayoutManager(linearLayoutManager);
+        mQuizRecyclerView.setLayoutManager(linearLayoutManager);
 
         mQuizAdapter = new QuizAdapter(this);
-        quizRecyclerView.setAdapter(mQuizAdapter);
-
 
 
         initQuizFilter();
@@ -141,11 +137,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.main_menu, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -154,8 +150,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             case android.R.id.home:
                 if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
                     mDrawerLayout.closeDrawer(Gravity.START);
-
-
                 } else {
                     mDrawerLayout.openDrawer(Gravity.START);
                 }
@@ -166,6 +160,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             case R.id.logout:
                 // TODO: Show a confirmation {@link AlertDialog} here. When user cliks OK. call
                 // TODO: mPresenter.logout();
+                break;
+            case R.id.settings:
+                Intent settings = new Intent(this, SettingsActivity.class);
+                startActivity(settings);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -195,17 +193,16 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void navigateToScoreboard() {
         // TODO: Navigate to Scoreboard screen
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToCreateQuiz() {
         // TODO: Navigate to Create Quiz screen
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToNotifications() {
+        // TODO: Navigate to Notifications screen
         Intent notificationIntent = new Intent(this, NotificationActivity.class);
         startActivity(notificationIntent);
     }
@@ -213,26 +210,22 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void navigateToResources() {
         // TODO: Navigate to Resources screen / tab
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToSettings() {
-        // TODO: Navigate to Settings screen
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToAboutScreen() {
         // TODO: Navigate to About screen
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToEditProfile() {
-        // TODO: Navigate to edit profile activity
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
+
     }
+
 
     @Override
     public void setPresenter(HomeContract.Presenter presenter) {
@@ -268,7 +261,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void onBookmarkStatusChanged(Quiz quiz) {
-        mPresenter.onBookmarkStatusChange(quiz);
+
     }
 
     /**
@@ -314,6 +307,15 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         } else {
             mRGHomeQuizListFilter.animate()
                     .setInterpolator(new FastOutLinearInInterpolator())
+                    .setDuration(QUIZ_FILTER_VIEW_SLIDE_UP_ANIMATION_DURATION)
+                    .translationY(QUIZ_FILTER_VIEW_ANIMATION_SLIDE_UP_TRANSLATE_Y)
+                    .withEndAction(new Runnable() {
+                                       @Override
+                                       public void run() {
+                                           mHomeQuizListFilterRadioGroup.setVisibility(View.GONE);
+                                       }
+                                   }
+                    );
                     .setDuration(SLIDE_UP_ANIMATION_DURATION)
                     .translationY(ANIMATION_SLIDE_UP_TRANSLATE_Y)
                     .withEndAction(() -> mRGHomeQuizListFilter.setVisibility(View.GONE)
@@ -336,21 +338,22 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
      */
     private void onQuizFilterItemCheckedChanged(RadioGroup radioGroup, int id) {
         //Hide the quiz filter view after few ms
-        new Handler().postDelayed(() -> toggleQuizFilterView(false), SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toggleQuizFilterView(false);
+            }
+        }, QUIZ_FILTER_VIEW_SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
 
         //Perform action based on selected quiz filter
         switch (id) {
             case R.id.radio_quiz_filter_all:
-                mPresenter.onAllQuizSelected();
                 break;
             case R.id.radio_quiz_filter_attempted:
-                mPresenter.onAttemptedQuizSelected();
                 break;
             case R.id.radio_quiz_filter_un_attempted:
-                mPresenter.onUnAttemptedQuizSelected();
                 break;
             case R.id.radio_quiz_filter_bookmarks:
-                mPresenter.onBookmarkSelected();
                 break;
         }
     }

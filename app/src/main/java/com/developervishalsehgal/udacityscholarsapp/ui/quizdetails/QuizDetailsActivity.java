@@ -45,8 +45,6 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
         PresenterInjector.injectQuizDetailsPresenter(this);
 
         initializaUI();
-
-        mPresenter.start(getIntent().getExtras());
     }
 
     private void initializaUI() {
@@ -79,6 +77,7 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     @Override
     protected void onResume() {
         super.onResume();
+        mFabStart.setVisibility(View.GONE);
         mPresenter.start(getIntent().getExtras());
     }
 

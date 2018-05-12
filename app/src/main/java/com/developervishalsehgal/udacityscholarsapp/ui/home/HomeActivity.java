@@ -35,6 +35,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
@@ -75,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     // UI Elements
     private DrawerLayout mDrawerLayout;
     private TextView mTvQuizCount;
-    private ProgressBar progressBar;
+    private LottieAnimationView progressBar;
     private TextView mEmptyStateTextView;
     // Reference of the quiz filter list layout
     private RadioGroup mRGHomeQuizListFilter;

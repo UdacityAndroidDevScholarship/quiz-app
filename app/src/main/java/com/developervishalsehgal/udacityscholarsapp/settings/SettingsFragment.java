@@ -1,6 +1,5 @@
 package com.developervishalsehgal.udacityscholarsapp.settings;
 
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v14.preference.SwitchPreference;
@@ -68,28 +67,20 @@ public class SettingsFragment extends PreferenceFragmentCompat
         }
 
         Preference signOut = findPreference(getResources().getString(R.string.sign_out_key));
-        signOut.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                showSignOutAlert();
-                return true;
-            }
+        signOut.setOnPreferenceClickListener(preference -> {
+            showSignOutAlert();
+            return true;
         });
     }
 
     private void showSignOutAlert() {
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(getActivity())
                 .setTitle(getResources().getString(R.string.sign_out_title))
                 .setMessage(getResources().getString(R.string.sign_out_message))
-                .setPositiveButton(getResources().getString(R.string.sign_out_ok),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //TODO Implement Sign out sequence
-                            }
-                        })
-                .setNegativeButton(getResources().getString(R.string.sign_out_cancel),
-                        null)
+                .setPositiveButton(getResources().getString(R.string.sign_out_ok), (dialog, which) -> {
+                    //TODO Implement Sign out sequence
+                })
+                .setNegativeButton(getResources().getString(R.string.sign_out_cancel), null)
                 .create().show();
     }
 

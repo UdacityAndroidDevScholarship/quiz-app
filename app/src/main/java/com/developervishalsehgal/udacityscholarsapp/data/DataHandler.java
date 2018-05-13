@@ -7,7 +7,6 @@ import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.QuizAttempted;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Resource;
-import com.developervishalsehgal.udacityscholarsapp.data.models.User;
 
 import java.util.List;
 
@@ -109,6 +108,8 @@ public interface DataHandler {
      * @param callback     callback for status of operation
      */
     void postComment(String discussionId, String quizId, String comment, Callback<Void> callback);
+
+    void fetchComments(String discussionId, String quizId, Callback<List<Comment>> callback);
 
     /**
      * Updates user's attempted quizzes in remote database
@@ -226,6 +227,7 @@ public interface DataHandler {
     void fetchResources(int startFrom, int limit, Callback<List<Resource>> callback);
 
     boolean isLoggedIn();
+
     /**
      * Generic callback interface for passing response to caller.
      * <p>

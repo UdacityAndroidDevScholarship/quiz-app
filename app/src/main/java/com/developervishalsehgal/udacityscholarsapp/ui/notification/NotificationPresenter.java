@@ -8,6 +8,7 @@ import com.developervishalsehgal.udacityscholarsapp.data.DataHandlerProvider;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Resource;
+import com.developervishalsehgal.udacityscholarsapp.utils.AppConstants;
 
 import java.util.List;
 
@@ -84,7 +85,9 @@ public class NotificationPresenter implements NotificationContract.Presenter {
 
     @Override
     public void start(@Nullable Bundle extras) {
-
+        if(extras != null && extras.containsKey(AppConstants.NOTIFICATION_TYPE_RESOURCES)){
+            mView.showResourcesTab();
+        }
     }
 
     @Override

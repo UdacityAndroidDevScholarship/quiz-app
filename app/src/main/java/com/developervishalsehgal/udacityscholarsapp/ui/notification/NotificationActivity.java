@@ -28,6 +28,7 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     private NotificationTabFragment mResourcesTab;
 
     private NotificationContract.Presenter mPresenter;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        ViewPager mViewPager = findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = findViewById(R.id.tabs);
@@ -79,6 +80,11 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     @Override
     public void showError() {
         Toast.makeText(this, getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showResourcesTab() {
+        mViewPager.setCurrentItem(INDEX_RESOURCES);
     }
 
     @Override

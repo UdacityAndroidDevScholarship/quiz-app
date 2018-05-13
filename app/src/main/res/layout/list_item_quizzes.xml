@@ -57,6 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
+            android:maxLength="40"
             android:textColor="@color/colorAccent"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_creator_label"
             app:layout_constraintStart_toEndOf="@+id/tv_creator_label"

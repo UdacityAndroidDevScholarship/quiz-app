@@ -20,7 +20,6 @@
         tools:replace="android:allowBackup">
         <activity
             android:name=".ui.signin.SignInActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/homeactivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +41,6 @@
         </activity>
         <activity
             android:name=".ui.profile.UserProfileActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
 
             <!--

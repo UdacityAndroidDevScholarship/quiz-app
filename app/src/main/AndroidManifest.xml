@@ -13,13 +13,14 @@
         android:name=".application.AppClass"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/quiz_app"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
         <activity
             android:name=".ui.signin.SignInActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/homeactivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +42,7 @@
         </activity>
         <activity
             android:name=".ui.profile.UserProfileActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
 
             <!--
@@ -51,6 +53,25 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.notification.NotificationActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".ui.discussion.QuizDiscussionActivity"
+            android:label="@string/title_activity_quiz_discussion"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/settings"
+            android:parentActivityName=".ui.home.HomeActivity" />
+
+        <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
+        <activity android:name=".ui.quizdetails.QuizDetailsActivity" />
 
         <!-- For Firebase cloud messaging -->
         <service
@@ -64,21 +85,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-        <activity
-            android:name=".ui.notification.NotificationActivity"
-            android:launchMode="singleTop"
-            android:theme="@style/AppTheme" />
-
-        <activity
-            android:name=".ui.discussion.QuizDiscussionActivity"
-            android:label="@string/title_activity_quiz_discussion"
-            android:parentActivityName=".ui.home.HomeActivity"
-            android:theme="@style/AppTheme" />
-
-        <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
-        <activity android:name=".ui.quizdetails.QuizDetailsActivity" />
-
         <!-- For Firebase cloud messaging token refresh -->
         <service
             android:name=".services.FCMTokenFetcher"
@@ -88,5 +94,4 @@
             </intent-filter>
         </service>
     </application>
-
 </manifest>

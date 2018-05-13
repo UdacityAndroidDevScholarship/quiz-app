@@ -36,15 +36,15 @@ public class PresenterInjector {
         new QuizDiscussionPresenter(quizDiscussionView);
     }
 
-    public static void injectQuizAttemptPresenter(AttemptQuizContract.View attemptQuizView) {
-        new AttemptQuizPresenter(attemptQuizView);
-    }
-
     public static void injectNotificationPresenter(NotificationContract.View notificationView) {
         new NotificationPresenter(notificationView);
     }
 
     public static void injectQuizDetailsPresenter(QuizDetailsContract.View quizDetailsView) {
         new QuizDetailsPresenter(quizDetailsView);
+    }
+
+    public static void injectQuizAttemptPresenter(AttemptQuizContract.View view) {
+        new AttemptQuizPresenter(view);
     }
 }

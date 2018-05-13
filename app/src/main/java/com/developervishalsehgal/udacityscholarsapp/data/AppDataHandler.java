@@ -106,7 +106,7 @@ class AppDataHandler implements DataHandler {
                 mFirebaseHandler.fetchUserScore(quizId, new FirebaseHandler.Callback<Integer>() {
                     @Override
                     public void onReponse(Integer result) {
-                        if (result >= 0) {
+                        if (result != null && result >= 0) {
                             fetchedQuiz.setAttempted(true);
                             // If scholar has already attempted the quiz setting the score in
                             // Rated-by field, is it not used anyway
@@ -176,6 +176,11 @@ class AppDataHandler implements DataHandler {
         comment.setCommentedOn(System.currentTimeMillis() / 1000);
         comment.setImage(mPreferences.getUserPic());
         mFirebaseHandler.postComment(discussionId, quizId, comment, new FirebaseCallback<>(callback));
+    }
+
+    @Override
+    public void fetchComments(String discussionId, String quizId, Callback<List<Comment>> callback) {
+        mFirebaseHandler.getComments(discussionId, quizId, new FirebaseCallback<>(callback));
     }
 
     @Override

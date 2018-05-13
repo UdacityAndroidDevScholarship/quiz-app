@@ -5,12 +5,16 @@ import android.support.annotation.Nullable;
 
 import com.developervishalsehgal.udacityscholarsapp.data.DataHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.DataHandlerProvider;
-import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeContract;
+import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
+
+import java.util.List;
 
 public class QuizDiscussionPresenter implements QuizDiscussionContract.Presenter {
 
     private QuizDiscussionContract.View mView;
     private DataHandler mDataHandler;
+
+    private String quizId;
 
     public QuizDiscussionPresenter(QuizDiscussionContract.View view) {
         this.mView = view;
@@ -21,7 +25,24 @@ public class QuizDiscussionPresenter implements QuizDiscussionContract.Presenter
 
     @Override
     public void start(@Nullable Bundle extras) {
-        //TODO load comments from model
+        if (extras == null || !extras.containsKey(QuizDiscussionContract.KEY_QUIZ_ID)) {
+            mView.showInvalidInput();
+            return;
+        }
+
+        quizId = extras.getString(QuizDiscussionContract.KEY_QUIZ_ID);
+
+        mDataHandler.fetchComments(quizId, quizId, new DataHandler.Callback<List<Comment>>() {
+            @Override
+            public void onResponse(List<Comment> result) {
+                mView.loadComments(result);
+            }
+
+            @Override
+            public void onError() {
+                mView.onCommentsLoadError();
+            }
+        });
     }
 
     @Override
@@ -32,8 +53,16 @@ public class QuizDiscussionPresenter implements QuizDiscussionContract.Presenter
 
     @Override
     public void onClickedSendComment(String comment) {
+        mDataHandler.postComment(quizId, quizId, comment, new DataHandler.Callback<Void>() {
+            @Override
+            public void onResponse(Void result) {
+                // DO nothing
+            }
 
-        //TODO actual implementation to be done
-        mView.loadComment(null);
+            @Override
+            public void onError() {
+
+            }
+        });
     }
 }

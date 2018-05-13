@@ -71,10 +71,10 @@
         <item name="android:textColorSecondary">@color/white</item>
         <item name="android:background">@color/colorPrimary</item>
     </style>
-      
+
     <style name="DetailsActivityButton" parent="Theme.AppCompat.Light">
         <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
-     
+
 
 </resources>

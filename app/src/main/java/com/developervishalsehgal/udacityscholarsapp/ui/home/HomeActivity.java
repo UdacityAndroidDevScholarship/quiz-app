@@ -44,15 +44,18 @@ import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsCo
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View,
-        QuizAdapter.QuizItemListener {
+        QuizAdapter.QuizItemListener, NavigationView.OnNavigationItemSelectedListener {
 
     /* static constants for quiz filter */
-    private static final int QUIZ_FILTER_VIEW_SLIDE_DOWN_ANIMATION_DURATION = 600;
-    private static final int QUIZ_FILTER_VIEW_SLIDE_UP_ANIMATION_DURATION = 450;
-    private static final int QUIZ_FILTER_VIEW_TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN = -1000;
-    private static final int QUIZ_FILTER_VIEW_ANIMATION_SLIDE_DOWN_TRANSLATE_Y = 0;
-    private static final int QUIZ_FILTER_VIEW_ANIMATION_SLIDE_UP_TRANSLATE_Y = -1000;
-    private static final int QUIZ_FILTER_VIEW_SLIDE_UP_DELAY_ON_CHECKED_CHANGED = 350;
+    private static final int SLIDE_DOWN_ANIMATION_DURATION = 600;
+    private static final int SLIDE_UP_ANIMATION_DURATION = 450;
+    private static final int TRANSLATE_Y_POSITION_BEFORE_SLIDE_DOWN = -1000;
+    private static final int ANIMATION_SLIDE_DOWN_TRANSLATE_Y = 0;
+    private static final int ANIMATION_SLIDE_UP_TRANSLATE_Y = -1000;
+    private static final int SLIDE_UP_DELAY_ON_CHECKED_CHANGED = 350;
+    private static final int BACK_PRESS_DURATION = 3000;
+    private static final int DELAY_NAV_ITEM_CLICK = 250;
+    private static final String DEMO_TOAST_MSG = "Clicked!";
 
     private QuizAdapter mQuizAdapter;
 
@@ -84,6 +87,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     boolean mIsFilterMenuOpen = false;
     private View mDimBackground;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,14 +114,14 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             actionBar.setHomeAsUpIndicator(getDrawable(R.mipmap.ic_launcher));
         }
 
-        RecyclerView mQuizRecyclerView = findViewById(R.id.recyclerview_quizzes);
-        mQuizRecyclerView.setHasFixedSize(true);
+        RecyclerView quizRecyclerView = findViewById(R.id.recyclerview_quizzes);
+        quizRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false);
-        mQuizRecyclerView.setLayoutManager(linearLayoutManager);
+        quizRecyclerView.setLayoutManager(linearLayoutManager);
 
         mQuizAdapter = new QuizAdapter(this);
-
+        quizRecyclerView.setAdapter(mQuizAdapter);
 
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -135,13 +139,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         progressBar = findViewById(R.id.home_screen_pb);
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main_menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -193,16 +195,17 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void navigateToScoreboard() {
         // TODO: Navigate to Scoreboard screen
+        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToCreateQuiz() {
         // TODO: Navigate to Create Quiz screen
+        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToNotifications() {
-        // TODO: Navigate to Notifications screen
         Intent notificationIntent = new Intent(this, NotificationActivity.class);
         startActivity(notificationIntent);
     }
@@ -210,22 +213,26 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void navigateToResources() {
         // TODO: Navigate to Resources screen / tab
+        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToSettings() {
+        // TODO: Navigate to Settings screen
+        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToAboutScreen() {
         // TODO: Navigate to About screen
+        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToEditProfile() {
-
+        // TODO: Navigate to edit profile activity
+        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
     }
-
 
     @Override
     public void setPresenter(HomeContract.Presenter presenter) {
@@ -261,7 +268,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void onBookmarkStatusChanged(Quiz quiz) {
-
+        mPresenter.onBookmarkStatusChange(quiz);
     }
 
     /**
@@ -307,15 +314,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         } else {
             mRGHomeQuizListFilter.animate()
                     .setInterpolator(new FastOutLinearInInterpolator())
-                    .setDuration(QUIZ_FILTER_VIEW_SLIDE_UP_ANIMATION_DURATION)
-                    .translationY(QUIZ_FILTER_VIEW_ANIMATION_SLIDE_UP_TRANSLATE_Y)
-                    .withEndAction(new Runnable() {
-                                       @Override
-                                       public void run() {
-                                           mHomeQuizListFilterRadioGroup.setVisibility(View.GONE);
-                                       }
-                                   }
-                    );
                     .setDuration(SLIDE_UP_ANIMATION_DURATION)
                     .translationY(ANIMATION_SLIDE_UP_TRANSLATE_Y)
                     .withEndAction(() -> mRGHomeQuizListFilter.setVisibility(View.GONE)
@@ -343,17 +341,21 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             public void run() {
                 toggleQuizFilterView(false);
             }
-        }, QUIZ_FILTER_VIEW_SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
+        }, SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
 
         //Perform action based on selected quiz filter
         switch (id) {
             case R.id.radio_quiz_filter_all:
+                mPresenter.onAllQuizSelected();
                 break;
             case R.id.radio_quiz_filter_attempted:
+                mPresenter.onAttemptedQuizSelected();
                 break;
             case R.id.radio_quiz_filter_un_attempted:
+                mPresenter.onUnAttemptedQuizSelected();
                 break;
             case R.id.radio_quiz_filter_bookmarks:
+                mPresenter.onBookmarkSelected();
                 break;
         }
     }

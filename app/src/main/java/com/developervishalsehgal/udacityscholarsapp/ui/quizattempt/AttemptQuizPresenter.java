@@ -26,6 +26,8 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
 
     private boolean mIsEvaluated = false;
 
+    private boolean isQuizDisplayed = false;
+
     public AttemptQuizPresenter(AttemptQuizContract.View view) {
         this.mView = view;
         this.mDataHandler = DataHandlerProvider.provide();
@@ -158,7 +160,10 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
             @Override
             public void onResponse(Quiz result) {
                 mView.hideLoading();
-                displayQuiz(result);
+                if (!isQuizDisplayed) {
+                    displayQuiz(result);
+                    isQuizDisplayed = true;
+                }
             }
 
             @Override

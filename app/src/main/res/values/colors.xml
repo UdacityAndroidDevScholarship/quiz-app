@@ -12,6 +12,9 @@
     <color name="bg">#283747</color>
     <color name="red">#D32F2F</color>
 
+
+    <color name="fab_ripple">#00BCD4</color>
+
     <color name="nav_drawer_bg">#1B2836</color>
 
     <color name="opaque_white">#90ffffff</color>

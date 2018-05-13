@@ -35,6 +35,8 @@
         android:paddingEnd="@dimen/chat_box_padding_end"
         android:paddingStart="@dimen/chat_box_padding"
         android:paddingTop="@dimen/chat_box_padding"
+        android:textSize="@dimen/text_small"
+        android:hint="@string/type_comment_hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

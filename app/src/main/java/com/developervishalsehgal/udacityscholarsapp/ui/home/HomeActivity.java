@@ -73,6 +73,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     private ValueAnimator splashProgressLoading;
     private Animation recyclerViewLoading;
+          
+    private RecyclerView quizRecyclerView;
 
     private RecyclerView mQuizRecyclerView;
 
@@ -125,6 +127,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         }
 
 
+
         mQuizRecyclerView = findViewById(R.id.recyclerview_quizzes);
         mQuizRecyclerView.setHasFixedSize(true);
 
@@ -134,10 +137,14 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         mQuizAdapter = new QuizAdapter(this);
 
+
         mQuizRecyclerView.setAdapter(mQuizAdapter);
+
 
         //initializing empty view
         mEmptyStateTextView =  findViewById(R.id.empty_view);
+
+
 
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -346,7 +353,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     .withEndAction(() -> mRGHomeQuizListFilter.setVisibility(View.GONE)
                     );
 
-
             mDimBackground.setVisibility(View.VISIBLE);
             bgFadingAnimation = AnimationUtils.loadAnimation(this, android.R.anim.fade_out);
             mDimBackground.startAnimation(bgFadingAnimation);
@@ -504,6 +510,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         swipeRefreshLayout = findViewById(R.id.refresh_homescreen);
         swipeRefreshLayout.setColorSchemeResources(R.color.bnv_color, R.color.blue_jeans,
                 R.color.ufo_green, R.color.vivid_tangelo);
+
         swipeRefreshLayout.setOnRefreshListener(() -> {
             swipeRefreshLayout.setRefreshing(true);
 
@@ -515,6 +522,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 }
                 swipeRefreshLayout.setRefreshing(false);
             }, BACK_PRESS_DURATION);
+
 
         });
     }
@@ -553,7 +561,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 mSnackbar.dismiss();
             } else {
                 mTwiceClicked = true;
-      showSnackBar(R.string.home_back_btn_msg);
+                     showSnackBar(R.string.home_back_btn_msg);
+
 
                 new Handler().postDelayed(() -> mTwiceClicked = false, BACK_PRESS_DURATION);
             }

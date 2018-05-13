@@ -63,7 +63,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
         initializeUI();
 
         // Injecting presenter here
-        PresenterInjector.injectQuizAttemptPresenter(this);
+        //PresenterInjector.injectQuizAttemptPresenter(this);
 
         mPresenter.start(getIntent().getExtras());
     }

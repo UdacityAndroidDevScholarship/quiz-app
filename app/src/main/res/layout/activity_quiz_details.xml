@@ -11,9 +11,9 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_quizdetail"
         android:layout_width="match_parent"
+        app:title=" "
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        app:title=" ">
+        android:background="@color/colorPrimary">
 
 
         <TextView
@@ -50,13 +50,13 @@
                 android:layout_marginEnd="@dimen/margin_8"
                 android:layout_marginStart="@dimen/margin_8"
                 android:layout_marginTop="@dimen/margin_16"
+                tools:text="@string/dummy_quiz_name"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_26"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/dummy_quiz_name" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -64,12 +64,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_8"
                 android:layout_marginTop="@dimen/margin_10"
+                tools:text="@string/label_author"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_18"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/quiz_details_label_quiz"
-                tools:text="@string/label_author" />
+                app:layout_constraintTop_toBottomOf="@+id/quiz_details_label_quiz" />
 
             <TextView
                 android:id="@+id/quiz_details_label_author"
@@ -77,12 +77,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_8"
                 android:layout_marginTop="@dimen/margin_10"
+                tools:text="@string/dummy_author"
                 android:textColor="@color/blue_jeans"
                 android:textSize="@dimen/text_size_18"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/quiz_details_label_quiz"
-                tools:text="@string/dummy_author" />
+                app:layout_constraintTop_toBottomOf="@+id/quiz_details_label_quiz" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -90,12 +90,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_8"
                 android:layout_marginTop="@dimen/margin_10"
+                tools:text="@string/label_released"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_18"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"
-                tools:text="@string/label_released" />
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <TextView
                 android:id="@+id/quiz_details_label_released"
@@ -115,12 +115,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_8"
                 android:layout_marginTop="@dimen/margin_10"
+                tools:text="@string/label_deadline"
                 android:textColor="@color/color_green_deadline"
                 android:textSize="@dimen/text_size_18"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
-                tools:text="@string/label_deadline" />
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <TextView
                 android:id="@+id/quiz_details_label_deadline"
@@ -128,12 +128,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_8"
                 android:layout_marginTop="@dimen/margin_10"
+                tools:text="@string/dummy_deadline_date"
                 android:textColor="@color/color_green_deadline"
                 android:textSize="@dimen/text_size_18"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
-                tools:text="@string/dummy_deadline_date" />
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <ScrollView
                 android:id="@+id/scrollview"
@@ -154,9 +154,9 @@
                     android:layout_marginEnd="@dimen/margin_8"
                     android:layout_marginStart="@dimen/margin_8"
                     android:gravity="fill"
+                    tools:text="@string/dummy_about"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_18"
-                    tools:text="@string/dummy_about" />
+                    android:textSize="@dimen/text_size_18" />
 
             </ScrollView>
 
@@ -165,7 +165,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_16"
-                android:text="@string/your_score"
+                tools:text="@string/your_score"
                 android:textColor="@color/blue_jeans"
                 android:textSize="@dimen/text_size_26"
                 android:textStyle="bold"
@@ -178,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_16"
                 android:layout_marginStart="@dimen/margin_16"
-                android:text="@string/quiz_status"
+                tools:text="@string/quiz_status"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_18"
                 app:layout_constraintBottom_toBottomOf="parent"

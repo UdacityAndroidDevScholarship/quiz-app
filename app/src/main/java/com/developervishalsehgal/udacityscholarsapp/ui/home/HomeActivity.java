@@ -6,15 +6,10 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -25,6 +20,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.view.ViewAnimationUtils;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
@@ -35,8 +32,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
+import com.developervishalsehgal.udacityscholarsapp.settings.SettingsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
@@ -73,8 +72,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     // UI Elements
     private DrawerLayout mDrawerLayout;
+    private RecyclerView mQuizRecyclerView;
+    //Reference of the quiz filter list layout
+    private RadioGroup mHomeQuizListFilterRadioGroup;
+    //////////////
     private TextView mTvQuizCount;
-    private ProgressBar progressBar;
+    private LottieAnimationView progressBar;
     // Reference of the quiz filter list layout
     private RadioGroup mRGHomeQuizListFilter;
     //////////////
@@ -108,10 +111,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_udacity));
+            actionBar.setHomeAsUpIndicator(getDrawable(R.mipmap.ic_launcher));
         }
 
-        quizRecyclerView = findViewById(R.id.recyclerview_quizzes);
+        RecyclerView quizRecyclerView = findViewById(R.id.recyclerview_quizzes);
         quizRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false);
@@ -119,8 +122,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         mQuizAdapter = new QuizAdapter(this);
         quizRecyclerView.setAdapter(mQuizAdapter);
-
-
 
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -138,8 +139,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         progressBar = findViewById(R.id.home_screen_pb);
 
-    }
-
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -153,8 +152,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             case android.R.id.home:
                 if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
                     mDrawerLayout.closeDrawer(Gravity.START);
-
-
                 } else {
                     mDrawerLayout.openDrawer(Gravity.START);
                 }
@@ -165,6 +162,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             case R.id.logout:
                 // TODO: Show a confirmation {@link AlertDialog} here. When user cliks OK. call
                 // TODO: mPresenter.logout();
+                break;
+            case R.id.settings:
+                Intent settings = new Intent(this, SettingsActivity.class);
+                startActivity(settings);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -335,7 +336,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
      */
     private void onQuizFilterItemCheckedChanged(RadioGroup radioGroup, int id) {
         //Hide the quiz filter view after few ms
-        new Handler().postDelayed(() -> toggleQuizFilterView(false), SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toggleQuizFilterView(false);
+            }
+        }, SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
 
         //Perform action based on selected quiz filter
         switch (id) {

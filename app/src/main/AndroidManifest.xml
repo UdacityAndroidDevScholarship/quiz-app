@@ -76,7 +76,12 @@
             android:name=".ui.discussion.QuizDiscussionActivity"
             android:label="@string/title_activity_quiz_discussion"
             android:parentActivityName=".ui.home.HomeActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity android:name=".settings.SettingsActivity"
+            android:label="@string/settings"
+            android:parentActivityName=".ui.home.HomeActivity"/>/>
 
         <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
         <activity android:name=".ui.quizdetails.QuizDetailsActivity" />
@@ -90,5 +95,4 @@
             </intent-filter>
         </service>
     </application>
-
 </manifest>

@@ -34,6 +34,8 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     TextView mTvQuizDescription;
     TextView mTvQuizAttemptedStatus;
     FloatingActionButton mFabStart;
+
+
     // UI Element ends
 
     @Override

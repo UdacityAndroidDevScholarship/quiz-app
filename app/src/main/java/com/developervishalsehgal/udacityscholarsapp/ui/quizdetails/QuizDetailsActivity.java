@@ -34,8 +34,6 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     TextView mTvQuizDescription;
     TextView mTvQuizAttemptedStatus;
     FloatingActionButton mFabStart;
-
-
     // UI Element ends
 
     @Override
@@ -50,7 +48,6 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     }
 
     private void initializeUI() {
-
         Toolbar mToolbar = findViewById(R.id.toolbar_quizdetail);
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -58,7 +55,6 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_clear_black_24dp));
         }
-
         mTvQuizTitle = findViewById(R.id.quiz_details_label_quiz);
         mTvQuizAuthor = findViewById(R.id.quiz_details_label_author);
         mTvQuizReleasedOn = findViewById(R.id.quiz_details_label_released);

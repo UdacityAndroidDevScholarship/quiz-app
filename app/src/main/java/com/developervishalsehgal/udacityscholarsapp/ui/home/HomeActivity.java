@@ -45,6 +45,7 @@ import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsContract;
+import com.developervishalsehgal.udacityscholarsapp.utils.AppConstants;
 
 import java.util.List;
 
@@ -228,8 +229,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void navigateToResources() {
-        // TODO: Navigate to Resources screen / tab
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
+        Intent resourcesIntent = new Intent(this, NotificationActivity.class);
+        resourcesIntent.putExtra(AppConstants.NOTIFICATION_TYPE_RESOURCES, true);
+        startActivity(resourcesIntent);
     }
 
     @Override

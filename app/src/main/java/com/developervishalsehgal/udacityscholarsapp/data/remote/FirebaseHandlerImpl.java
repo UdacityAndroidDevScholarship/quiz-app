@@ -268,8 +268,8 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             }
         };
 
-        mUsersRef.child(KEY_USER_ATTEMPTED_QUIZ).child(quizId).child(KEY_USER_SCORE)
-                .addValueEventListener(listener);
+        mUsersRef.child(mCurrentUser.getUid()).child(KEY_USER_ATTEMPTED_QUIZ).child(quizId)
+                .child(KEY_USER_SCORE).addValueEventListener(listener);
         mValueListeners.add(listener);
     }
 
@@ -305,13 +305,46 @@ class FirebaseHandlerImpl implements FirebaseHandler {
             mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         }
         comment.setCommenterId(mCurrentUser.getUid());
-        mDiscussionsRef.child(discussionId).child(KEY_DISCUSSION_COMMENTS).push().setValue(comment)
+        mDiscussionsRef.child(quizId).push().setValue(comment)
                 .addOnSuccessListener(aVoid -> {
                     callback.onReponse(null);
                 })
                 .addOnFailureListener(e -> {
                     callback.onError();
                 });
+    }
+
+    @Override
+    public void getComments(String discussionId, String quizId, Callback<List<Comment>> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                List<Comment> comments = new ArrayList<>();
+                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                    try {
+                        Comment comment = childSnapshot.getValue(Comment.class);
+                        comment.setMyComment(comment.getCommenterId().equalsIgnoreCase(mCurrentUser.getUid()));
+                        comments.add(comment);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                callback.onReponse(comments);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mDiscussionsRef.child(quizId).addValueEventListener(listener);
+        mValueListeners.add(listener);
+
     }
 
     @Override

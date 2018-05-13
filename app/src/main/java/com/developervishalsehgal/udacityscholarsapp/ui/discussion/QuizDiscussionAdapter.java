@@ -11,58 +11,75 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Comment;
+import com.developervishalsehgal.udacityscholarsapp.utils.Utils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class QuizDiscussionAdapter extends RecyclerView.Adapter<QuizDiscussionAdapter.ViewHolder> {
 
-
-    private static int sDemoCommentCounter = 3;
     private List<Comment> mComments;
+
+    QuizDiscussionAdapter() {
+        mComments = new ArrayList<>();
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        /*treating viewType as layout id as returned from getItemViewType(int position)*/
+        /* *
+         * treating viewType as layout id as returned from getItemViewType(int position)
+         * */
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-
-        //TODO uncomment for actual implementation
-       /* Comment comment = mComments.get(position);
-        holder.bindComment(comment);*/
+        Comment comment = mComments.get(position);
+        holder.bindComment(comment);
 
     }
 
     @Override
     public int getItemViewType(int position) {
-        /*returning layout id to be inflated in viewType*/
-        //TODO replace dummy implementation with actual implementation
-        return position % 2 == 0 ? R.layout.item_discussion_others : R.layout.item_discussion_self;
+        Comment comment = mComments.get(position);
+        return comment.isMyComment() ? R.layout.item_discussion_self : R.layout.item_discussion_others;
     }
 
     @Override
     public int getItemCount() {
-        //TODO need to uncomment for actual implementation
-        //  return mComments == null ? 0 : mComments.size();
-        return sDemoCommentCounter;
+        return mComments.size();
     }
 
     public void setComments(List<Comment> comments) {
-        this.mComments = comments;
+        this.mComments.clear();
+        this.mComments.addAll(comments);
+
+        Collections.sort(mComments, new Comparator<Comment>() {
+            @Override
+            public int compare(Comment o1, Comment o2) {
+                return (int) (o1.getCommentedOn() - o2.getCommentedOn());
+            }
+        });
+
         notifyDataSetChanged();
     }
 
-    public void addComment(Comment comment) {
+    public void addComment(@NonNull Comment comment) {
+        mComments.add(comment);
 
-        //TODO replace dummy implementation with actual implementation
-        sDemoCommentCounter++;
-        notifyItemInserted(sDemoCommentCounter);
+        Collections.sort(mComments, new Comparator<Comment>() {
+            @Override
+            public int compare(Comment o1, Comment o2) {
+                return (int) (o1.getCommentedOn() - o2.getCommentedOn());
+            }
+        });
+
+        notifyDataSetChanged();
     }
 
 
@@ -73,7 +90,7 @@ public class QuizDiscussionAdapter extends RecyclerView.Adapter<QuizDiscussionAd
         TextView commentTimeTextView;
         TextView commentTextView;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             userImageView = itemView.findViewById(R.id.item_discussion_chat_user_image);
             userNameTextView = itemView.findViewById(R.id.item_discussion_user_text_view);
@@ -82,12 +99,12 @@ public class QuizDiscussionAdapter extends RecyclerView.Adapter<QuizDiscussionAd
 
         }
 
-        public void bindComment(Comment comment) {
+        void bindComment(Comment comment) {
 
             userNameTextView.setText(comment.getCommentBy());
             commentTextView.setText(comment.getComment());
             //TODO need to normalize the date
-            //commentTimeTextView.setText(comment.getCommentedOn());
+            commentTimeTextView.setText(Utils.getDisplayDate(comment.getCommentedOn()));
 
             //TODO need to add circular bitmap transformation for circular image
             Glide.with(userImageView).load(comment.getImage()).into(userImageView);

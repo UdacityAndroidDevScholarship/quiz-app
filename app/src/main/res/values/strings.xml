@@ -110,7 +110,7 @@
     <string name="txt_status_pending">Not started</string>
     <string name="txt_deadline_none">NONE</string>
 
-    //Navigation Drawer Menu Items
+    <!--Navigation Drawer Menu Items-->
     <string name="scoreboard">Scoreboard</string>
     <string name="quizlist">QuizList</string>
     <string name="createQuiz">Create Quiz</string>
@@ -123,9 +123,30 @@
     <string name="name">Vishal Sehgal</string>
     <string name="emailid">sehgalvishal31@gmail.com</string>
 
-    //Unread Notification
+    <!--Unread Notification-->
     <string name="newnotification">15</string>
     <string name="number">10</string>
+
+    <!--Settings Fragment Strings-->
+
+    <string name="sign_out_title">Are you sure?</string>
+    <string name="sign_out_ok">Yes</string>
+    <string name="sign_out_cancel">Cancel</string>
+    <string name="sign_out_message">This will sign you out from this device</string>
+
+    <!-- Keys -->
+    <string name="get_notification_key">get_notification</string>
+    <string name="theme_list_key">theme_list</string>
+    <string name="sign_out_key">sign_out</string>
+
+    <string name="theme_option_dark">Dark</string>
+    <string name="theme_option_light">Light</string>
+
+    <string name="get_notifications_title">Get notifications</string>
+    <string name="get_notification_summary">Enable to receive notifications for quizzes</string>
+    <string name="theme_list_label">Theme</string>
+    <string name="sign_out">Sign out</string>
+
 
     <!--Quiz Discussion Screen-->
     <string name="title_activity_quiz_discussion">Help/ Discussion</string>

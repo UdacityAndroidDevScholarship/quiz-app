@@ -21,4 +21,15 @@ public class Utils {
         return 0;
     }
 
+    public static String getDisplayDate(long timeInMillis) {
+        try {
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            Date d = new Date(timeInMillis);
+            return df.format(d);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "NA";
+    }
+
 }

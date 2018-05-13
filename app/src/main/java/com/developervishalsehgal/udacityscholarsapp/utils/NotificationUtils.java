@@ -18,7 +18,7 @@ import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.ui.home.HomeActivity;
 
-class NotificationUtils {
+public class NotificationUtils {
 
     /**
      * Description - creates a notification channel based on given channelId and channelName if the channel does not exists
@@ -76,7 +76,7 @@ class NotificationUtils {
      */
     private static PendingIntent createContentIntent(Context context, String type, String action,
                                                      String extra1, String extra2) {
-        Intent intent = null;
+        Intent intent;
         if (AppConstants.NOTIFICATION_TYPE_RESOURCES.equalsIgnoreCase(type)) {
             intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(action));
@@ -100,16 +100,22 @@ class NotificationUtils {
         switch (notificationType) {
             case AppConstants.NOTIFICATION_TYPE_QUIZ:
                 drawableResourceId = R.drawable.ic_notification_quiz;
+                break;
             case AppConstants.NOTIFICATION_TYPE_RESOURCES:
                 drawableResourceId = R.drawable.ic_notification_resource;
+                break;
             case AppConstants.NOTIFICATION_TYPE_DEADLINE:
                 drawableResourceId = R.drawable.ic_notification_deadline;
+                break;
             case AppConstants.NOTIFICATION_TYPE_DISCUSSION:
                 drawableResourceId = R.drawable.ic_help;
+                break;
             case AppConstants.NOTIFICATION_TYPE_ANNOUNCEMENTS:
                 drawableResourceId = R.drawable.ic_udacity;
+                break;
             default:
                 drawableResourceId = R.drawable.ic_udacity;
+                break;
         }
         return BitmapFactory.decodeResource(context.getResources(), drawableResourceId);
     }

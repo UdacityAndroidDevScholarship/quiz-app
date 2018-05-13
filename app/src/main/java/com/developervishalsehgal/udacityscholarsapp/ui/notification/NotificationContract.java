@@ -24,6 +24,8 @@ public interface NotificationContract {
         void loadResourceNotifications(List<Notification> resourceNotifications);
 
         void showError();
+
+        void showResourcesTab();
     }
 
     /**

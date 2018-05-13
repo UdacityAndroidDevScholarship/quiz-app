@@ -44,6 +44,7 @@ import com.developervishalsehgal.udacityscholarsapp.ui.notification.Notification
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsContract;
 import com.developervishalsehgal.udacityscholarsapp.utils.AppConstants;
+import com.developervishalsehgal.udacityscholarsapp.utils.Connectivity;
 
 import java.util.List;
 
@@ -89,6 +90,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     boolean mIsFilterMenuOpen = false;
     private View mDimBackground;
 
+    private TextView mEmptyStateTextView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,7 +102,14 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         initializeUI();
 
-        mPresenter.start(getIntent().getExtras());
+        if(Connectivity.isNetworkAvailable(this)) {
+            mPresenter.start(getIntent().getExtras());
+        }else
+        {
+            noInternetMessage();
+        }
+
+
 
         displaySplashScreen();
 
@@ -140,6 +149,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         homeLayout = findViewById(R.id.homeactivitycoordinator);
 
         progressBar = findViewById(R.id.home_screen_pb);
+
+        //initializing empty view
+        mEmptyStateTextView =  findViewById(R.id.empty_view);
+
+
     }
 
 //    @Override
@@ -147,6 +161,14 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 //        getMenuInflater().inflate(R.menu.main_menu, menu);
 //        return super.onCreateOptionsMenu(menu);
 //    }
+
+
+    private void noInternetMessage() {
+        mQuizRecyclerView.setVisibility(View.GONE);
+        mEmptyStateTextView.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -176,6 +198,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void loadQuizzes(List<Quiz> quizzes) {
+        mQuizRecyclerView.setVisibility(View.VISIBLE);
+        mEmptyStateTextView.setVisibility(View.GONE);
         mQuizAdapter.loadQuizzes(quizzes);
         mTvQuizCount.setText(String.valueOf(quizzes.size()));
     }

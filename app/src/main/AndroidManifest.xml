@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.developervishalsehgal.udacityscholarsapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,25 +13,37 @@
         android:name=".application.AppClass"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/quiz_app"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.signin.SignInActivity">
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name=".ui.signin.SignInActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/homeactivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.HomeActivity">
-            <!--Adding this intent filter here to silence the warning ,this should be a part of home
-            activity or quiz details activity-->
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:theme="@style/homeactivity">
+
+            <!--
+            Adding this intent filter here to silence the warning ,this should be a part of home
+            activity or quiz details activity
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.profile.UserProfileActivity">
+        <activity
+            android:name=".ui.profile.UserProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
 
             <!--
             Adding this intent filter here to silence the warning ,this should be a part of home
@@ -41,6 +54,25 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.notification.NotificationActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".ui.discussion.QuizDiscussionActivity"
+            android:label="@string/title_activity_quiz_discussion"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/settings"
+            android:parentActivityName=".ui.home.HomeActivity" />
+
+        <activity android:name=".ui.quizattempt.AttemptQuizActivity" />
+        <activity android:name=".ui.quizdetails.QuizDetailsActivity" />
+
         <!-- For Firebase cloud messaging -->
         <service
             android:name=".services.FBMessagingService"
@@ -50,6 +82,9 @@
             </intent-filter>
         </service>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
         <!-- For Firebase cloud messaging token refresh -->
         <service
             android:name=".services.FCMTokenFetcher"
@@ -58,10 +93,5 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
-
 </manifest>

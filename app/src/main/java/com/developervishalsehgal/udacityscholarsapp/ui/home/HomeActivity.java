@@ -128,7 +128,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mQuizRecyclerView.setLayoutManager(linearLayoutManager);
 
         mQuizAdapter = new QuizAdapter(this);
-        quizRecyclerView.setAdapter(mQuizAdapter);
+        mQuizRecyclerView.setAdapter(mQuizAdapter);
 
         mIVEmptyFilterResult = findViewById(R.id.iv_empty_filter_result);
         mTVEmptyFilterResult = findViewById(R.id.tv_empty_filter_result);

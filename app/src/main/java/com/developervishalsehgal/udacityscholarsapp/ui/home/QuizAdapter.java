@@ -14,7 +14,6 @@ import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,6 +27,8 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
     private static final String DIFFICULTY_LEVEL_HARD = "hard";
     @SuppressWarnings("unused")
     private static final String DIFFICULTY_LEVEL_IMPOSSIBLE = "impossible";
+
+
 
     private List<Quiz> mQuizList;
     private QuizItemListener mQuizItemListener;

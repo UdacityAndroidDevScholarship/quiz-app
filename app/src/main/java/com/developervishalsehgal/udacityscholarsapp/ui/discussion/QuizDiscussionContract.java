@@ -26,6 +26,7 @@ public interface QuizDiscussionContract {
 
         void loadComment(Comment comment);
 
+        void showInvalidInput();
     }
 
     /**

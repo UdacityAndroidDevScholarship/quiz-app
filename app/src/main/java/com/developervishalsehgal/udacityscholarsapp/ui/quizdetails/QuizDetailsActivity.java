@@ -14,12 +14,12 @@ import android.widget.Toast;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity;
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizattempt.AttemptQuizContract;
 
 import java.util.Locale;
-
-import static com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionContract.KEY_QUIZ_ID;
 
 public class QuizDetailsActivity extends AppCompatActivity implements QuizDetailsContract.View,
         View.OnClickListener {
@@ -34,8 +34,6 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     TextView mTvQuizDescription;
     TextView mTvQuizAttemptedStatus;
     FloatingActionButton mFabStart;
-
-
     // UI Element ends
 
     @Override
@@ -46,21 +44,17 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
         // Injecting Presenter here
         PresenterInjector.injectQuizDetailsPresenter(this);
 
-        initializaUI();
-
-        mPresenter.start(getIntent().getExtras());
+        initializeUI();
     }
 
-    private void initializaUI() {
-
-         Toolbar mToolbar = findViewById(R.id.toolbar_quizdetail);
+    private void initializeUI() {
+        Toolbar mToolbar = findViewById(R.id.toolbar_quizdetail);
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_clear_black_24dp));
         }
-
         mTvQuizTitle = findViewById(R.id.quiz_details_label_quiz);
         mTvQuizAuthor = findViewById(R.id.quiz_details_label_author);
         mTvQuizReleasedOn = findViewById(R.id.quiz_details_label_released);
@@ -79,20 +73,9 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                dismissView();
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
+        mFabStart.setVisibility(View.GONE);
         mPresenter.start(getIntent().getExtras());
     }
 
@@ -138,8 +121,8 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
 
     @Override
     public void navigateToDiscussion(String quizId) {
-        Intent quizDiscussionIntent = new Intent(this, AttemptQuizActivity.class);
-        quizDiscussionIntent.putExtra(KEY_QUIZ_ID, quizId);
+        Intent quizDiscussionIntent = new Intent(this, QuizDiscussionActivity.class);
+        quizDiscussionIntent.putExtra(QuizDiscussionContract.KEY_QUIZ_ID, quizId);
         startActivity(quizDiscussionIntent);
     }
 
@@ -198,10 +181,24 @@ public class QuizDetailsActivity extends AppCompatActivity implements QuizDetail
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.dismissView();
+                break;
+            case R.id.quiz_details_help:
+                mPresenter.onDiscussionClicked();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_down);
 
     }
-
 }

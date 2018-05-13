@@ -42,7 +42,10 @@ import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsContract;
+
 import com.developervishalsehgal.udacityscholarsapp.utils.Connectivity;
+import com.developervishalsehgal.udacityscholarsapp.utils.AppConstants;
+
 
 import java.util.List;
 
@@ -71,7 +74,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private ValueAnimator splashProgressLoading;
     private Animation recyclerViewLoading;
 
-    private RecyclerView quizRecyclerView;
+    private RecyclerView mQuizRecyclerView;
 
     // UI Elements
     private DrawerLayout mDrawerLayout;
@@ -121,18 +124,20 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_udacity));
         }
 
-        quizRecyclerView = findViewById(R.id.recyclerview_quizzes);
-        quizRecyclerView.setHasFixedSize(true);
+
+        mQuizRecyclerView = findViewById(R.id.recyclerview_quizzes);
+        mQuizRecyclerView.setHasFixedSize(true);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false);
-        quizRecyclerView.setLayoutManager(linearLayoutManager);
+        mQuizRecyclerView.setLayoutManager(linearLayoutManager);
 
         mQuizAdapter = new QuizAdapter(this);
-        quizRecyclerView.setAdapter(mQuizAdapter);
+
+        mQuizRecyclerView.setAdapter(mQuizAdapter);
 
         //initializing empty view
         mEmptyStateTextView =  findViewById(R.id.empty_view);
-
 
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -150,7 +155,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         progressBar = findViewById(R.id.home_screen_pb);
 
-
     }
 
 //    @Override
@@ -159,14 +163,16 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 //        return super.onCreateOptionsMenu(menu);
 //    }
 
+
     private void noInternetMessage() {
 
 
-            quizRecyclerView.setVisibility(View.GONE);
+            mQuizRecyclerView.setVisibility(View.GONE);
             mEmptyStateTextView.setVisibility(View.VISIBLE);
             progressBar.setVisibility(View.GONE);
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -194,7 +200,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void loadQuizzes(List<Quiz> quizzes) {
-        quizRecyclerView.setVisibility(View.VISIBLE);
+        mQuizRecyclerView.setVisibility(View.VISIBLE);
         mEmptyStateTextView.setVisibility(View.GONE);
         mQuizAdapter.loadQuizzes(quizzes);
         mTvQuizCount.setText(String.valueOf(quizzes.size()));
@@ -235,8 +241,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void navigateToResources() {
-        // TODO: Navigate to Resources screen / tab
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
+
+        Intent resourcesIntent = new Intent(this, NotificationActivity.class);
+        resourcesIntent.putExtra(AppConstants.NOTIFICATION_TYPE_RESOURCES, true);
+        startActivity(resourcesIntent);
+
     }
 
     @Override
@@ -264,18 +273,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void showLoading() {
-        // TODO: Show progress bar / dialog here
         progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoading() {
-        // TODO: Hide progress bar / dialog here
-
         recyclerViewLoading = AnimationUtils.loadAnimation(this, R.anim.anim_nothing);
-        quizRecyclerView.startAnimation(recyclerViewLoading);
-
-
+        mQuizRecyclerView.startAnimation(recyclerViewLoading);
         progressBar.setVisibility(View.GONE);
     }
 
@@ -423,12 +427,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             public void run() {
                 splashProgressLoading = ValueAnimator.ofInt(0, splashScreenProgress.getMax());
                 splashProgressLoading.setDuration(1500);
-                splashProgressLoading.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                        splashScreenProgress.setProgress((Integer) valueAnimator.getAnimatedValue());
-                    }
-                });
+                splashProgressLoading.addUpdateListener(valueAnimator -> splashScreenProgress.setProgress((Integer) valueAnimator.getAnimatedValue()));
                 splashProgressLoading.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
@@ -505,26 +504,18 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         swipeRefreshLayout = findViewById(R.id.refresh_homescreen);
         swipeRefreshLayout.setColorSchemeResources(R.color.bnv_color, R.color.blue_jeans,
                 R.color.ufo_green, R.color.vivid_tangelo);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(true);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            swipeRefreshLayout.setRefreshing(true);
 
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                if (mQuizAdapter != null) {
+                    mQuizAdapter.notifyDataSetChanged();
+                    showSnackBar(R.string.refreshed);
+                }
+                swipeRefreshLayout.setRefreshing(false);
+            }, BACK_PRESS_DURATION);
 
-                        if (mQuizAdapter != null) {
-                            mQuizAdapter.notifyDataSetChanged();
-                            showSnackBar(R.string.refreshed);
-                        }
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                }, BACK_PRESS_DURATION);
-
-
-            }
         });
     }
 
@@ -560,14 +551,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 intent.addCategory(Intent.CATEGORY_HOME);
                 startActivity(intent);
                 mSnackbar.dismiss();
-
             } else {
-
                 mTwiceClicked = true;
-
-
-                showSnackBar(R.string.home_back_btn_msg);
-
+      showSnackBar(R.string.home_back_btn_msg);
 
                 new Handler().postDelayed(() -> mTwiceClicked = false, BACK_PRESS_DURATION);
             }

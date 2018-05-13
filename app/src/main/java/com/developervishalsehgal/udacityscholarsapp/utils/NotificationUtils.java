@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.NotificationCompat;
@@ -57,8 +58,8 @@ public class NotificationUtils {
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(
                         notification.getDescription()))
                 .setDefaults(android.app.Notification.DEFAULT_VIBRATE)
-                .setContentIntent(createContentIntent(context, notification.getAction(),
-                        notification.getExtra1(), notification.getExtra2()))
+                .setContentIntent(createContentIntent(context, notification.getType(),
+                        notification.getAction(), notification.getExtra1(), notification.getExtra2()))
                 .setAutoCancel(true);
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
@@ -73,11 +74,19 @@ public class NotificationUtils {
      * @param context - Context of the calling activity
      * @return - returns PendingIntent
      */
-    private static PendingIntent createContentIntent(Context context, String action, String extra1, String extra2) {
-        Intent intent = new Intent(context, HomeActivity.class);
-        intent.putExtra(AppConstants.KEY_ACTION, action);
-        intent.putExtra(AppConstants.KEY_EXTRA_1, extra1);
-        intent.putExtra(AppConstants.KEY_EXTRA_2, extra2);
+    private static PendingIntent createContentIntent(Context context, String type, String action,
+                                                     String extra1, String extra2) {
+        Intent intent;
+        if (AppConstants.NOTIFICATION_TYPE_RESOURCES.equalsIgnoreCase(type)) {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(action));
+        } else {
+            intent = new Intent(context, HomeActivity.class);
+            intent.putExtra(AppConstants.KEY_ACTION, action);
+            intent.putExtra(AppConstants.KEY_EXTRA_1, extra1);
+            intent.putExtra(AppConstants.KEY_EXTRA_2, extra2);
+            intent.putExtra(AppConstants.KEY_TYPE, type);
+        }
         return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
@@ -89,20 +98,24 @@ public class NotificationUtils {
     private static Bitmap getLargeIcon(Context context, String notificationType) {
         @DrawableRes int drawableResourceId;
         switch (notificationType) {
-            case "quiz":
-                drawableResourceId = R.drawable.ic_udacity;
+            case AppConstants.NOTIFICATION_TYPE_QUIZ:
+                drawableResourceId = R.drawable.ic_notification_quiz;
                 break;
-            case "resource":
-                drawableResourceId = R.drawable.ic_udacity;
+            case AppConstants.NOTIFICATION_TYPE_RESOURCES:
+                drawableResourceId = R.drawable.ic_notification_resource;
                 break;
-            case "discussion":
-                drawableResourceId = R.drawable.ic_udacity;
+            case AppConstants.NOTIFICATION_TYPE_DEADLINE:
+                drawableResourceId = R.drawable.ic_notification_deadline;
                 break;
-            case "announcement":
+            case AppConstants.NOTIFICATION_TYPE_DISCUSSION:
+                drawableResourceId = R.drawable.ic_help;
+                break;
+            case AppConstants.NOTIFICATION_TYPE_ANNOUNCEMENTS:
                 drawableResourceId = R.drawable.ic_udacity;
                 break;
             default:
-                drawableResourceId = 0;
+                drawableResourceId = R.drawable.ic_udacity;
+                break;
         }
         return BitmapFactory.decodeResource(context.getResources(), drawableResourceId);
     }
@@ -114,16 +127,18 @@ public class NotificationUtils {
     @DrawableRes
     private static int getSmallIcon(String notificationType) {
         switch (notificationType) {
-            case "quiz":
-                return R.drawable.ic_udacity;
-            case "resource":
-                return R.drawable.ic_udacity;
-            case "discussion":
-                return R.drawable.ic_udacity;
-            case "announcement":
+            case AppConstants.NOTIFICATION_TYPE_QUIZ:
+                return R.drawable.ic_notification_quiz;
+            case AppConstants.NOTIFICATION_TYPE_RESOURCES:
+                return R.drawable.ic_notification_resource;
+            case AppConstants.NOTIFICATION_TYPE_DEADLINE:
+                return R.drawable.ic_notification_deadline;
+            case AppConstants.NOTIFICATION_TYPE_DISCUSSION:
+                return R.drawable.ic_help;
+            case AppConstants.NOTIFICATION_TYPE_ANNOUNCEMENTS:
                 return R.drawable.ic_udacity;
             default:
-                return 0;
+                return R.drawable.ic_udacity;
         }
     }
 }

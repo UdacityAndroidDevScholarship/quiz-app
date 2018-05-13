@@ -25,16 +25,18 @@ public class FBMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-        // check if message contains a data payload
-        if (remoteMessage != null && remoteMessage.getData().size() > 0) {
-            Notification notification = createNotificationObject(remoteMessage);
-            storeNotification(notification);
-            raiseSystemNotification(notification);
-        }
+        if (remoteMessage != null) {
+            // check if message contains a data payload
+            if (remoteMessage.getData() != null && remoteMessage.getData().size() > 0) {
+                Notification notification = createNotificationObject(remoteMessage);
+                storeNotification(notification);
+                raiseSystemNotification(notification);
+            }
 
-        // Check if message contains a notification payload
-        if (remoteMessage != null && remoteMessage.getNotification() != null) {
-            // TODO: Decide if any action is needed here
+            // Check if message contains a notification payload
+            if (remoteMessage.getNotification() != null) {
+                // TODO: Decide if any action is needed here
+            }
         }
     }
 

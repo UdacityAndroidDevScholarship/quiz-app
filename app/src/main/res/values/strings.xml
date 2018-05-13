@@ -61,7 +61,7 @@
     <string name="unable_to_login">Unable to login with this account</string>
     <string name="text_proceed">Proceed >> </string>
     <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
-    <string name="profile_saved_successfully">Profile saved successfully</string>
+    <string name="profile_saved_successfully">Logged in successfully</string>
 
 
     <!-- NotificationActivity Helper Strings  -->
@@ -192,6 +192,9 @@
     <string name="no_attempted_quizzes">No Attempts Yet!</string>
     <string name="no_bookmarked_quizzes">No Bookmarks!</string>
     <string name="no_un_attempted_quizzes">All Caught Up!</string>
+
+    <string name="type_comment_hint">Type message here</string>
+
 
 
 </resources>

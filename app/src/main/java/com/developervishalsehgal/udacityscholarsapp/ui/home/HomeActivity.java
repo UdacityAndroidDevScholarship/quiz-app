@@ -89,6 +89,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(0,0);
         setContentView(R.layout.activity_main);
 
         // Injecting presenter reference

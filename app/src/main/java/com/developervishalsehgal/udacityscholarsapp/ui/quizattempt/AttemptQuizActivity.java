@@ -397,7 +397,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
         } catch (NullPointerException npe){
-            
+                npe.printStackTrace();
         }
     }
 }

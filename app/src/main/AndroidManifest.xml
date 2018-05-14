@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.signin.AvatarGridActivity"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert"/>
+            android:theme="@style/AvatarDialog"/>
         <activity android:name=".ui.home.HomeActivity">
             <!--Adding this intent filter here to silence the warning ,this should be a part of home
             activity or quiz details activity-->

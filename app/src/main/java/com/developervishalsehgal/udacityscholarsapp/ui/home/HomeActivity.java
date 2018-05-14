@@ -29,6 +29,7 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -36,6 +37,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.bumptech.glide.Glide;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.settings.SettingsActivity;
@@ -44,6 +46,7 @@ import com.developervishalsehgal.udacityscholarsapp.ui.notification.Notification
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsContract;
 import com.developervishalsehgal.udacityscholarsapp.utils.AppConstants;
+import com.developervishalsehgal.udacityscholarsapp.utils.Connectivity;
 
 import java.util.List;
 
@@ -70,13 +73,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private ProgressBar splashScreenProgress;
 
     private ValueAnimator splashProgressLoading;
-    private Animation recyclerViewLoading;
 
     // UI Elements
     private DrawerLayout mDrawerLayout;
     private RecyclerView mQuizRecyclerView;
-    //Reference of the quiz filter list layout
-    private RadioGroup mHomeQuizListFilterRadioGroup;
     //////////////
     private TextView mTvQuizCount;
     private LottieAnimationView progressBar;
@@ -89,6 +89,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     boolean mIsFilterMenuOpen = false;
     private View mDimBackground;
 
+    private TextView mEmptyStateTextView;
+
+    private ImageView mImgUserPic;
+    private TextView mTvUserName;
+    private TextView mTvSlackHandle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,7 +105,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         initializeUI();
 
-        mPresenter.start(getIntent().getExtras());
+        if (Connectivity.isNetworkAvailable(this)) {
+            mPresenter.start(getIntent().getExtras());
+        } else {
+            noInternetMessage();
+        }
 
         displaySplashScreen();
 
@@ -127,9 +136,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView mNavigationView = findViewById(R.id.nav_view);
-        mNavigationView.setItemIconTintList(null);
-        mNavigationView.setNavigationItemSelectedListener(this);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
+        navigationView.setNavigationItemSelectedListener(this);
 
         mDimBackground = findViewById(R.id.scrim_bg_quiz_list);
 
@@ -140,6 +149,15 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         homeLayout = findViewById(R.id.homeactivitycoordinator);
 
         progressBar = findViewById(R.id.home_screen_pb);
+
+        View navHeaderView = navigationView.getHeaderView(0);
+
+        mImgUserPic = navHeaderView.findViewById(R.id.userimage_nav_drawer);
+        mTvSlackHandle = navHeaderView.findViewById(R.id.slack_name_nav_drawer);
+        mTvUserName = navHeaderView.findViewById(R.id.username_nav_drawer);
+
+        //initializing empty view
+        mEmptyStateTextView = findViewById(R.id.empty_view);
     }
 
 //    @Override
@@ -147,6 +165,14 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 //        getMenuInflater().inflate(R.menu.main_menu, menu);
 //        return super.onCreateOptionsMenu(menu);
 //    }
+
+
+    private void noInternetMessage() {
+        mQuizRecyclerView.setVisibility(View.GONE);
+        mEmptyStateTextView.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -176,6 +202,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void loadQuizzes(List<Quiz> quizzes) {
+        mQuizRecyclerView.setVisibility(View.VISIBLE);
+        mEmptyStateTextView.setVisibility(View.GONE);
         mQuizAdapter.loadQuizzes(quizzes);
         mTvQuizCount.setText(String.valueOf(quizzes.size()));
     }
@@ -183,6 +211,27 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void onQuizLoadError() {
         // TODO: show an alert or toast saying "quiz can't be loaded at the moment, check network connection and try again"
+    }
+
+    @Override
+    public void loadUserImageInDrawer(String imageUrl) {
+        if (imageUrl != null) {
+            Glide.with(this).load(imageUrl).into(mImgUserPic);
+        }
+    }
+
+    @Override
+    public void loadUserNameInDrawer(String username) {
+        if (username != null) {
+            mTvUserName.setText(username);
+        }
+    }
+
+    @Override
+    public void loadSlackHandleInDrawer(String slackHandle) {
+        if (slackHandle != null) {
+            mTvSlackHandle.setText(slackHandle);
+        }
     }
 
     @Override
@@ -250,7 +299,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void hideLoading() {
-        recyclerViewLoading = AnimationUtils.loadAnimation(this, R.anim.anim_nothing);
+        Animation recyclerViewLoading = AnimationUtils.loadAnimation(this, R.anim.anim_nothing);
         mQuizRecyclerView.startAnimation(recyclerViewLoading);
         progressBar.setVisibility(View.GONE);
     }

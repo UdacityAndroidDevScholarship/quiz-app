@@ -1,5 +1,6 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -12,11 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -24,6 +27,7 @@ import android.widget.Toast;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.signin.AvatarGridActivity;
 
 import java.util.List;
 
@@ -38,6 +42,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private static final int QUIZ_FILTER_VIEW_ANIMATION_SLIDE_UP_TRANSLATE_Y = -1000;
     private static final int QUIZ_FILTER_VIEW_SLIDE_UP_DELAY_ON_CHECKED_CHANGED = 350;
 
+    static final int PICK_IMAGE_AVATAR = 131;  // The request code
+
     private QuizAdapter mQuizAdapter;
 
     private HomeContract.Presenter mPresenter;
@@ -45,6 +51,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     // UI Elements
     private DrawerLayout mDrawerLayout;
     private RecyclerView mQuizRecyclerView;
+    private NavigationView mNavigationView;
+    private ImageView mImageView;
     //Reference of the quiz filter list layout
     private RadioGroup mHomeQuizListFilterRadioGroup;
     //////////////
@@ -83,7 +91,62 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
       
         initQuizFilter();
         mDrawerLayout = findViewById(R.id.drawer_layout);
+
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        View v = mNavigationView.getHeaderView(0);
+        mImageView = (ImageView) v.findViewById(R.id.usericon_nav);
+        mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, AvatarGridActivity.class);
+                startActivityForResult(i, PICK_IMAGE_AVATAR);
+            }
+        });
+
+
     }
+
+    /**
+     * Dispatch incoming result to the correct fragment.
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PICK_IMAGE_AVATAR) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                String position = data.getStringExtra("result");
+                setImageResource(Integer.parseInt(position));
+            }
+        }
+    }
+
+    void setImageResource( int id){
+        switch (id){
+            case 0:
+                mImageView.setImageResource(R.drawable.ic_asset_0);
+                break;
+            case 1:
+                mImageView.setImageResource(R.drawable.ic_asset_1);
+                break;
+            case 2:
+                mImageView.setImageResource(R.drawable.ic_asset_2);
+                break;
+            case 3:
+                mImageView.setImageResource(R.drawable.ic_asset_3);
+                break;
+            case 4:
+                mImageView.setImageResource(R.drawable.ic_asset_4);
+                break;
+            case 5:
+                mImageView.setImageResource(R.drawable.ic_asset_5);
+                break;
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

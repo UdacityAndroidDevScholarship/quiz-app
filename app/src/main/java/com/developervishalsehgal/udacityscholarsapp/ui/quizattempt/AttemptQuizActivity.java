@@ -9,7 +9,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,8 +41,6 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     private Question mCurrentQuestion;
 
     private boolean mIsEvaluated;
-
-    private static String TAG = "AttemptQuizActivity";
 
     // UI Elements
     Toolbar mToolbar;
@@ -141,6 +138,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     public void loadQuestion(Question question) {
         this.mCurrentQuestion = question;
         populateQuestionDetails(mCurrentQuestion, null);
+        hideKeyboard();
     }
 
     @Override
@@ -235,7 +233,6 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
         // Remove all subview before adding new ones
         mLLMultipleChoice.removeAllViews();
         mRgSingleChoice.removeAllViews();
-        hideKeyboard();
 
         // Type of question
         String type = userAttempt.getType();
@@ -400,7 +397,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
         } catch (NullPointerException npe){
-            Log.v(TAG, "Null pointer exception for Input Method Manager service");
+            
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.quizattempt;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,9 +9,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -39,6 +42,8 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     private Question mCurrentQuestion;
 
     private boolean mIsEvaluated;
+
+    private static String TAG = "AttemptQuizActivity";
 
     // UI Elements
     Toolbar mToolbar;
@@ -230,6 +235,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
         // Remove all subview before adding new ones
         mLLMultipleChoice.removeAllViews();
         mRgSingleChoice.removeAllViews();
+        hideKeyboard();
 
         // Type of question
         String type = userAttempt.getType();
@@ -382,5 +388,19 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                 .setNegativeButton(R.string.user_confirmation_cancel, (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
+    }
+
+    //method to hide input keyboard on next/previous question button click
+    private void hideKeyboard(){
+        // Check if no view has focus:
+        View view = this.getCurrentFocus();
+        try {
+            if (view != null) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        } catch (NullPointerException npe){
+            Log.v(TAG, "Null pointer exception for Input Method Manager service");
+        }
     }
 }

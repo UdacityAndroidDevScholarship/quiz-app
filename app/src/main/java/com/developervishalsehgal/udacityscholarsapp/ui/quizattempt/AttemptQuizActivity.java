@@ -137,8 +137,8 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     @Override
     public void loadQuestion(Question question) {
         this.mCurrentQuestion = question;
-        populateQuestionDetails(mCurrentQuestion, null);
         hideKeyboard();
+        populateQuestionDetails(mCurrentQuestion, null);
     }
 
     @Override
@@ -388,16 +388,16 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     }
 
     //method to hide input keyboard on next/previous question button click
-    private void hideKeyboard(){
+    private void hideKeyboard() {
         // Check if no view has focus:
         View view = this.getCurrentFocus();
         try {
             if (view != null) {
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
-        } catch (NullPointerException npe){
-                npe.printStackTrace();
+        } catch (NullPointerException npe) {
+            npe.printStackTrace();
         }
     }
 }

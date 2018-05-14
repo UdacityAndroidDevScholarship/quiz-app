@@ -49,6 +49,11 @@ public class HomePresenter implements HomeContract.Presenter {
                 mView.hideLoading();
             }
         });
+
+        // Load user image, name and slack handle in navigation drawer
+        mView.loadUserImageInDrawer(mDataHandler.getUserPic());
+        mView.loadSlackHandleInDrawer(mDataHandler.getSlackHandle());
+        mView.loadUserNameInDrawer(mDataHandler.getUserName());
     }
 
     @Override

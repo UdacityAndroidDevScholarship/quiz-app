@@ -29,6 +29,12 @@ public interface HomeContract {
 
         void onQuizLoadError();
 
+        void loadUserImageInDrawer(String imageUrl);
+
+        void loadUserNameInDrawer(String username);
+
+        void loadSlackHandleInDrawer(String slackHandle);
+
         void navigateToQuizDesc(Quiz quiz);
 
         void navigateToScoreboard();

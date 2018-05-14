@@ -18,23 +18,20 @@ import java.util.Objects;
 public class Option {
 
     @Expose
-    @PropertyName("description")
     @SerializedName("description")
-    String mDescription;
+    private String mDescription;
 
     /**
      * Since we are using the same model to store correct answers and scholar's answers, this field
      * can represent either
      */
     @Expose
-    @PropertyName("is-correct")
     @SerializedName("is-correct")
-    boolean mIsCorrect;
+    private boolean mIsCorrect;
 
     @Expose
-    @PropertyName("remarks")
     @SerializedName("remarks")
-    String mRemarks;
+    private String mRemarks;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
@@ -57,32 +54,32 @@ public class Option {
         mRemarks = toClone.mRemarks;
     }
 
-    @Exclude
+    @PropertyName("description")
     public String getDescription() {
         return mDescription;
     }
 
-    @Exclude
+    @PropertyName("description")
     public void setDescription(String description) {
         mDescription = description;
     }
 
-    @Exclude
+    @PropertyName("is-correct")
     public boolean isCorrect() {
         return mIsCorrect;
     }
 
-    @Exclude
+    @PropertyName("is-correct")
     public void setIsCorrect(boolean isCorrect) {
         mIsCorrect = isCorrect;
     }
 
-    @Exclude
+    @PropertyName("remarks")
     public String getRemarks() {
         return mRemarks;
     }
 
-    @Exclude
+    @PropertyName("remarks")
     public void setRemarks(String remarks) {
         mRemarks = remarks;
     }

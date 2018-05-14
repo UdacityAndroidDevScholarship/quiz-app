@@ -1,8 +1,6 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.profile;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -45,7 +43,7 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(R.anim.slide_in_left,R.anim.anim_nothing);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.anim_nothing);
         setContentView(R.layout.activity_details_page);
 
         initializeUI();
@@ -156,19 +154,20 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_details_proceed:
-                if(mEtUserName.getText().toString().trim().equals("")){
+                if (mEtUserName.getText().toString().trim().equals("")) {
                     mEtUserName.setError(getResources().getString(R.string.user_name_empty_error));
-                }else if(mEtSlackHandle.getText().toString().trim().equals("")){
+                } else if (mEtSlackHandle.getText().toString().trim().equals("")) {
                     mEtSlackHandle.setError(getResources().getString(R.string.slack_handle_empty_error));
-                }else if(!mEtSlackHandle.getText().toString().trim().contains("@")){
+                } else if (!mEtSlackHandle.getText().toString().trim().contains("@")) {
                     mEtSlackHandle.setError(getResources().getString(R.string.slack_handle_format_missing));
-                }else if(mCourseTrack.getSelectedItem().toString().trim().equals(getResources().getString(R.string.select_your_track))){
+                } else if (mCourseTrack.getSelectedItem().toString().trim().equals(getResources().getString(R.string.select_your_track))) {
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.select_your_track), Toast.LENGTH_LONG).show();
-                }else if(mImgUserPic.getDrawable() == null){
+                } else if (mImgUserPic.getDrawable() == null) {
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.user_image_empty), Toast.LENGTH_LONG).show();
                 } else {
-                    mPresenter.saveProfile("", mEtSlackHandle.getText().toString()
-                            , mCourseTrack.getSelectedItem().toString().trim());
+                    mPresenter.saveProfile("", mEtUserName.getText().toString(),
+                            mEtSlackHandle.getText().toString(),
+                            mCourseTrack.getSelectedItem().toString().trim());
                 }
 
                 break;
@@ -180,6 +179,6 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.anim_nothing,R.anim.slide_out_right);
+        overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_right);
     }
 }

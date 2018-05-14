@@ -13,142 +13,133 @@ import com.google.gson.annotations.SerializedName;
 public class Resource {
 
     @Expose
-    @PropertyName("category")
     @SerializedName("category")
-    String mCategory;
+    private String mCategory;
 
     @Expose
-    @PropertyName("description")
     @SerializedName("description")
-    String mDescription;
+    private String mDescription;
 
     @Expose
-    @PropertyName("tags")
     @SerializedName("tags")
-    String mTags;
+    private String mTags;
 
     @Expose
-    @PropertyName("title")
     @SerializedName("title")
-    String mTitle;
+    private String mTitle;
 
     @Expose
-    @PropertyName("url")
     @SerializedName("url")
-    String mUrl;
+    private String mUrl;
 
     @Expose
-    @PropertyName("timestamp")
     @SerializedName("timestamp")
-    long mTimestamp;
+    private long mTimestamp;
 
     @Expose
-    @PropertyName("shared-by")
     @SerializedName("shared-by")
-    String mUploadedBy;
+    private String mUploadedBy;
 
     @Expose
-    @PropertyName("uploader-id")
     @SerializedName("uploader-id")
-    String mUploaderId;
+    private String mUploaderId;
 
     @Expose
-    @PropertyName("uploader-pic")
     @SerializedName("uploader-pic")
-    String mUploaderPic;
+    private String mUploaderPic;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    String mKey;
+    private String mKey;
 
-    @Exclude
+    @PropertyName("category")
     public String getCategory() {
         return mCategory;
     }
 
-    @Exclude
+    @PropertyName("category")
     public void setCategory(String category) {
         this.mCategory = category;
     }
 
-    @Exclude
+    @PropertyName("description")
     public String getDescription() {
         return mDescription;
     }
 
-    @Exclude
+    @PropertyName("description")
     public void setDescription(String description) {
         this.mDescription = description;
     }
 
-    @Exclude
+    @PropertyName("tags")
     public String getTags() {
         return mTags;
     }
 
-    @Exclude
+    @PropertyName("tags")
     public void setTags(String tags) {
         this.mTags = tags;
     }
 
-    @Exclude
+    @PropertyName("title")
     public String getTitle() {
         return mTitle;
     }
 
-    @Exclude
+    @PropertyName("title")
     public void setTitle(String title) {
         this.mTitle = title;
     }
 
-    @Exclude
+    @PropertyName("url")
     public String getUrl() {
         return mUrl;
     }
 
-    @Exclude
+    @PropertyName("url")
     public void setUrl(String url) {
         this.mUrl = url;
     }
 
-    @Exclude
+    @PropertyName("timestamp")
     public long getTimestamp() {
         return mTimestamp;
     }
 
-    @Exclude
+    @PropertyName("timestamp")
     public void setTimestamp(long timestamp) {
         this.mTimestamp = timestamp;
     }
 
-    @Exclude
+    @PropertyName("shared-by")
     public String getUploadedBy() {
         return mUploadedBy;
     }
 
-    @Exclude
+    @PropertyName("shared-by")
     public void setUploadedBy(String uploadedBy) {
         this.mUploadedBy = uploadedBy;
     }
 
-    @Exclude
+    @PropertyName("uploader-id")
     public String getUploaderId() {
         return mUploaderId;
     }
 
-    @Exclude
+    @PropertyName("uploader-id")
     public void setUploaderId(String uploaderId) {
         this.mUploaderId = uploaderId;
     }
 
-    @Exclude
+    @PropertyName("uploader-pic")
     public String getUploaderPic() {
         return mUploaderPic;
     }
 
-    @Exclude
+    @PropertyName("uploader-pic")
     public void setUploaderPic(String uploaderPic) {
         this.mUploaderPic = uploaderPic;
     }

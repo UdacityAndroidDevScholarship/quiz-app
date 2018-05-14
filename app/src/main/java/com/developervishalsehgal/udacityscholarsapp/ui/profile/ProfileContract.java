@@ -1,7 +1,6 @@
 package com.developervishalsehgal.udacityscholarsapp.ui.profile;
 
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.developervishalsehgal.udacityscholarsapp.ui.BasePresenter;
@@ -44,7 +43,7 @@ public interface ProfileContract {
 
         void saveProfile(@Nullable Bitmap picture, String slackHandle, String courseTrack);
 
-        void saveProfile(@Nullable String pictureUrl, String slackHandle, String courseTrack);
+        void saveProfile(@Nullable String pictureUrl, String username, String slackHandle, String courseTrack);
 
     }
 

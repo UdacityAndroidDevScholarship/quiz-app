@@ -15,105 +15,98 @@ import java.util.Objects;
 public class QuizAttempted {
 
     @Expose
-    @PropertyName("lesson")
-    long mLesson;
+    private long mLesson;
 
     @Expose
-    @PropertyName("max-marks")
-    long mMaxMarks;
+    private long mMaxMarks;
 
     @Expose
-    @PropertyName("percentage")
-    long mPercentage;
+    private long mPercentage;
 
     @Expose
-    @PropertyName("quiz-id")
-    String mQuizId;
+    private String mQuizId;
 
     @Expose
-    @PropertyName("quiz-title")
-    String mQuizTitle;
+    private String mQuizTitle;
 
     @Expose
-    @PropertyName("remarks")
-    String mRemarks;
+    private String mRemarks;
 
     @Expose
-    @PropertyName("score")
-    long mScore;
+    private long mScore;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    String mKey;
+    private String mKey;
 
-    @Exclude
+    @PropertyName("lesson")
     public long getLesson() {
         return mLesson;
     }
 
-    @Exclude
+    @PropertyName("lesson")
     public void setLesson(long lesson) {
         mLesson = lesson;
     }
 
-    @Exclude
+    @PropertyName("max-marks")
     public long getMaxMarks() {
         return mMaxMarks;
     }
 
-    @Exclude
+    @PropertyName("max-marks")
     public void setMaxMarks(long maxMarks) {
         mMaxMarks = maxMarks;
     }
 
-    @Exclude
+    @PropertyName("percentage")
     public long getPercentage() {
         return mPercentage;
     }
 
-    @Exclude
+    @PropertyName("percentage")
     public void setPercentage(long percentage) {
         mPercentage = percentage;
     }
 
-    @Exclude
+    @PropertyName("quiz-id")
     public String getQuizId() {
         return mQuizId;
     }
 
-    @Exclude
+    @PropertyName("quiz-id")
     public void setQuizId(String quizId) {
         mQuizId = quizId;
     }
 
-    @Exclude
+    @PropertyName("quiz-title")
     public String getQuizTitle() {
         return mQuizTitle;
     }
 
-    @Exclude
+    @PropertyName("quiz-title")
     public void setQuizTitle(String quizTitle) {
         mQuizTitle = quizTitle;
     }
 
-    @Exclude
+    @PropertyName("remarks")
     public String getRemarks() {
         return mRemarks;
     }
 
-    @Exclude
+    @PropertyName("remarks")
     public void setRemarks(String remarks) {
         mRemarks = remarks;
     }
 
-    @Exclude
+    @PropertyName("score")
     public long getScore() {
         return mScore;
     }
 
-    @Exclude
+    @PropertyName("score")
     public void setScore(long score) {
         mScore = score;
     }

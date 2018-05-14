@@ -17,38 +17,33 @@ import java.util.Objects;
 public class Question {
 
     @Expose
-    @PropertyName("description")
     @SerializedName("description")
-    String mDescription;
+    private String mDescription;
 
     @Expose
-    @PropertyName("marks")
     @SerializedName("marks")
-    long mMarks;
+    private long mMarks;
 
     @Expose
-    @PropertyName("options")
     @SerializedName("options")
-    Map<String, Option> mOptions;
+    private Map<String, Option> mOptions;
 
     @Expose
-    @PropertyName("type")
     @SerializedName("type")
-    String mType;
+    private String mType;
 
     @Expose
-    @PropertyName("files")
     @SerializedName("files")
-    Map<String, String> mFiles;
+    private Map<String, String> mFiles;
 
     @Exclude
-    String mExtra;
+    private String mExtra;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    String mKey;
+    private String mKey;
 
     public Question() {
     }
@@ -82,52 +77,52 @@ public class Question {
         }
     }
 
-    @Exclude
+    @PropertyName("description")
     public String getDescription() {
         return mDescription;
     }
 
-    @Exclude
+    @PropertyName("description")
     public void setDescription(String description) {
         mDescription = description;
     }
 
-    @Exclude
+    @PropertyName("marks")
     public long getMarks() {
         return mMarks;
     }
 
-    @Exclude
+    @PropertyName("marks")
     public void setMarks(Long marks) {
         mMarks = marks;
     }
 
-    @Exclude
+    @PropertyName("options")
     public Map<String, Option> getOptions() {
         return mOptions;
     }
 
-    @Exclude
+    @PropertyName("options")
     public void setOptions(Map<String, Option> options) {
         mOptions = options;
     }
 
-    @Exclude
+    @PropertyName("type")
     public String getType() {
         return mType;
     }
 
-    @Exclude
+    @PropertyName("type")
     public void setType(String type) {
         mType = type;
     }
 
-    @Exclude
+    @PropertyName("files")
     public Map<String, String> getFiles() {
         return mFiles;
     }
 
-    @Exclude
+    @PropertyName("files")
     public void setFiles(Map<String, String> files) {
         this.mFiles = files;
     }

@@ -122,7 +122,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(getDrawable(R.mipmap.ic_launcher));
+            actionBar.setHomeAsUpIndicator(getDrawable(R.mipmap.ic_launcher_12));
         }
 
         mQuizRecyclerView = findViewById(R.id.recyclerview_quizzes);

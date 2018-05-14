@@ -17,19 +17,16 @@ import java.util.Objects;
 public class Discussion {
 
     @Expose
-    @PropertyName("quiz-id")
     @SerializedName("quiz-id")
-    String mQuizId;
+    private String mQuizId;
 
     @Expose
-    @PropertyName("quiz-title")
     @SerializedName("quiz-title")
-    String mQuizTitle;
+    private String mQuizTitle;
 
     @Expose
-    @PropertyName("comments")
     @SerializedName("comments")
-    List<Comment> mComments;
+    private List<Comment> mComments;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
@@ -37,32 +34,32 @@ public class Discussion {
     @Exclude
     String mKey;
 
-    @Exclude
+    @PropertyName("quiz-id")
     public String getQuizId() {
         return mQuizId;
     }
 
-    @Exclude
+    @PropertyName("quiz-id")
     public void setQuizId(String quizId) {
         mQuizId = quizId;
     }
 
-    @Exclude
+    @PropertyName("quiz-title")
     public String getQuizTitle() {
         return mQuizTitle;
     }
 
-    @Exclude
+    @PropertyName("quiz-title")
     public void setQuizTitle(String quizTitle) {
         mQuizTitle = quizTitle;
     }
 
-    @Exclude
+    @PropertyName("comments")
     public List<Comment> getComments() {
         return mComments;
     }
 
-    @Exclude
+    @PropertyName("comments")
     public void setComments(List<Comment> comments) {
         this.mComments = comments;
     }

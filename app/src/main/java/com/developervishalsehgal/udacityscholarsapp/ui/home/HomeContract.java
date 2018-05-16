@@ -50,6 +50,10 @@ public interface HomeContract {
         void navigateToAboutScreen();
 
         void navigateToEditProfile();
+
+        void navigateToQuizDiscussion(String quizId);
+
+        void navigateToQuizDetails(String quizId);
     }
 
     /**

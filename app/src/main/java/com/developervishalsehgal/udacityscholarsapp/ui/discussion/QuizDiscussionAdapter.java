@@ -72,12 +72,7 @@ public class QuizDiscussionAdapter extends RecyclerView.Adapter<QuizDiscussionAd
     public void addComment(@NonNull Comment comment) {
         mComments.add(comment);
 
-        Collections.sort(mComments, new Comparator<Comment>() {
-            @Override
-            public int compare(Comment o1, Comment o2) {
-                return (int) (o1.getCommentedOn() - o2.getCommentedOn());
-            }
-        });
+        Collections.sort(mComments, (o1, o2) -> (int) (o1.getCommentedOn() - o2.getCommentedOn()));
 
         notifyDataSetChanged();
     }

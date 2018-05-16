@@ -42,6 +42,8 @@ import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
 import com.developervishalsehgal.udacityscholarsapp.settings.SettingsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity;
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsContract;
@@ -288,6 +290,20 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     }
 
     @Override
+    public void navigateToQuizDiscussion(String quizId) {
+        Intent quizDiscussionIntent = new Intent(this, QuizDiscussionActivity.class);
+        quizDiscussionIntent.putExtra(QuizDiscussionContract.KEY_QUIZ_ID, quizId);
+        startActivity(quizDiscussionIntent);
+    }
+
+    @Override
+    public void navigateToQuizDetails(String quizId) {
+        Intent quizDetailsIntent = new Intent(this, QuizDiscussionActivity.class);
+        quizDetailsIntent.putExtra(QuizDetailsContract.KEY_QUIZ_ID, quizId);
+        startActivity(quizDetailsIntent);
+    }
+
+    @Override
     public void setPresenter(HomeContract.Presenter presenter) {
         this.mPresenter = presenter;
     }
@@ -526,6 +542,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         swipeRefreshLayout.setColorSchemeResources(R.color.bnv_color, R.color.blue_jeans,
                 R.color.ufo_green, R.color.vivid_tangelo);
         swipeRefreshLayout.setOnRefreshListener(() -> {
+
+            mPresenter.start(getIntent().getExtras());
+
             swipeRefreshLayout.setRefreshing(true);
 
             Handler handler = new Handler();

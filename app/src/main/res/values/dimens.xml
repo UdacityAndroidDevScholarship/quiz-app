@@ -157,6 +157,9 @@
     <dimen name="item_discussion_minimum_content_height">60dp</dimen>
     <dimen name="item_discussion_minimum_content_width">200dp</dimen>
 
+    <!--Handle Filter Layout-->
+    <dimen name="empty_view_img_size">56dp</dimen>
+
     <!-- Dimensions For Animated Loading Dots -->
     <dimen name="loading_dots_width">224dp</dimen>
     <dimen name="loading_dots_height">128dp</dimen>

@@ -13,75 +13,70 @@ import java.util.Objects;
 public class Comment {
 
     @Expose
-    @PropertyName("comment")
     @SerializedName("comment")
-    String mComment;
+    private String mComment;
 
     @Expose
-    @PropertyName("comment-by")
     @SerializedName("comment-by")
-    String mCommentBy;
+    private String mCommentBy;
 
     @Expose
-    @PropertyName("commented-on")
     @SerializedName("commented-on")
-    long mCommentedOn;
+    private long mCommentedOn;
 
     @Expose
-    @PropertyName("commenter-id")
     @SerializedName("commenter-id")
-    String mCommenterId;
+    private String mCommenterId;
 
     @Expose
-    @PropertyName("commenter-pic")
     @SerializedName("commenter-pic")
-    String mImageUrl;
+    private String mImageUrl;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    String mKey;
+    private String mKey;
 
     @Exclude
-    boolean mIsMyComment;
+    private boolean mIsMyComment;
 
-    @Exclude
+    @PropertyName("comment")
     public String getComment() {
         return mComment;
     }
 
-    @Exclude
+    @PropertyName("comment")
     public void setComment(String comment) {
         mComment = comment;
     }
 
-    @Exclude
+    @PropertyName("comment-by")
     public String getCommentBy() {
         return mCommentBy;
     }
 
-    @Exclude
+    @PropertyName("comment-by")
     public void setCommentBy(String commentBy) {
         mCommentBy = commentBy;
     }
 
-    @Exclude
+    @PropertyName("commented-on")
     public long getCommentedOn() {
         return mCommentedOn;
     }
 
-    @Exclude
+    @PropertyName("commented-on")
     public void setCommentedOn(long commentedOn) {
         mCommentedOn = commentedOn;
     }
 
-    @Exclude
+    @PropertyName("commenter-id")
     public String getCommenterId() {
         return mCommenterId;
     }
 
-    @Exclude
+    @PropertyName("commenter-id")
     public void setCommenterId(String commenterId) {
         mCommenterId = commenterId;
     }
@@ -96,12 +91,12 @@ public class Comment {
         this.mKey = key;
     }
 
-    @Exclude
+    @PropertyName("commenter-pic")
     public String getImage() {
         return mImageUrl;
     }
 
-    @Exclude
+    @PropertyName("commenter-pic")
     public void setImage(String imageUrl) {
         this.mImageUrl = imageUrl;
     }

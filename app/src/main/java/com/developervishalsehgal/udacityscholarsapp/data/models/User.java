@@ -7,7 +7,6 @@ import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -18,172 +17,161 @@ import java.util.Objects;
 public class User {
 
     @Expose
-    @PropertyName("email")
     @SerializedName("email")
-    String mEmail;
+    private String mEmail;
 
     @Expose
-    @PropertyName("image")
     @SerializedName("image")
-    String mImage;
+    private String mImage;
 
     @Expose
-    @PropertyName("moderator")
     @SerializedName("moderator")
-    boolean mModerator;
+    private boolean mModerator;
 
     @Expose
-    @PropertyName("name")
     @SerializedName("name")
-    String mName;
+    private String mName;
 
     @Expose
-    @PropertyName("slack-handle")
     @SerializedName("slack-handle")
-    String mSlackHandle;
+    private String mSlackHandle;
 
     @Expose
-    @PropertyName("status")
     @SerializedName("status")
-    String mStatus;
+    private String mStatus;
 
     @Expose
-    @PropertyName("track")
     @SerializedName("track")
-    String mTrack;
+    private String mTrack;
 
     @Expose
-    @PropertyName("fcm-token")
     @SerializedName("fcm-token")
-    String mFcmToken;
+    private String mFcmToken;
 
     @Expose
-    @PropertyName("attempted")
     @SerializedName("attempted")
-    Map<String, QuizAttempted> mAttemptedList;
+    private Map<String, QuizAttempted> mAttemptedList;
 
     @Expose
-    @PropertyName("prefs")
     @SerializedName("prefs")
-    NotificationPrefs mNotificationPrefs;
+    private NotificationPrefs mNotificationPrefs;
 
     @Expose
-    @PropertyName("bookmarks")
     @SerializedName("bookmarks")
-    Map<String, Boolean> mBookmarks;
+    private Map<String, Boolean> mBookmarks;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    String mKey;
+    private String mKey;
 
-    @Exclude
+    @PropertyName("email")
     public String getEmail() {
         return mEmail;
     }
 
-    @Exclude
+    @PropertyName("email")
     public void setEmail(String email) {
         mEmail = email;
     }
 
-    @Exclude
+    @PropertyName("image")
     public String getImage() {
         return mImage;
     }
 
-    @Exclude
+    @PropertyName("image")
     public void setImage(String image) {
         mImage = image;
     }
 
-    @Exclude
+    @PropertyName("moderator")
     public boolean getModerator() {
         return mModerator;
     }
 
-    @Exclude
+    @PropertyName("moderator")
     public void setModerator(boolean moderator) {
         mModerator = moderator;
     }
 
-    @Exclude
+    @PropertyName("name")
     public String getName() {
         return mName;
     }
 
-    @Exclude
+    @PropertyName("name")
     public void setName(String name) {
         mName = name;
     }
 
-    @Exclude
+    @PropertyName("slack-handle")
     public String getSlackHandle() {
         return mSlackHandle;
     }
 
-    @Exclude
+    @PropertyName("slack-handle")
     public void setSlackHandle(String slackHandle) {
         mSlackHandle = slackHandle;
     }
 
-    @Exclude
+    @PropertyName("status")
     public String getStatus() {
         return mStatus;
     }
 
-    @Exclude
+    @PropertyName("status")
     public void setStatus(String status) {
         mStatus = status;
     }
 
-    @Exclude
+    @PropertyName("track")
     public String getTrack() {
         return mTrack;
     }
 
-    @Exclude
+    @PropertyName("track")
     public void setTrack(String track) {
         mTrack = track;
     }
 
-    @Exclude
+    @PropertyName("fcm-token")
     public String getFcmToken() {
         return mFcmToken;
     }
 
-    @Exclude
+    @PropertyName("fcm-token")
     public void setFcmToken(String fcmToken) {
         this.mFcmToken = fcmToken;
     }
 
-    @Exclude
+    @PropertyName("attempted")
     public Map<String, QuizAttempted> getAttemptedList() {
         return mAttemptedList;
     }
 
-    @Exclude
+    @PropertyName("attempted")
     public void setAttemptedList(Map<String, QuizAttempted> attemptedList) {
         this.mAttemptedList = attemptedList;
     }
 
-    @Exclude
+    @PropertyName("prefs")
     public NotificationPrefs getNotificationPrefs() {
         return mNotificationPrefs;
     }
 
-    @Exclude
+    @PropertyName("prefs")
     public void setNotificationPrefs(NotificationPrefs notificationPrefs) {
         this.mNotificationPrefs = notificationPrefs;
     }
 
-    @Exclude
+    @PropertyName("bookmarks")
     public Map<String, Boolean> getBookmarks() {
         return mBookmarks;
     }
 
-    @Exclude
+    @PropertyName("bookmarks")
     public void setBookmarks(Map<String, Boolean> bookmarks) {
         this.mBookmarks = bookmarks;
     }

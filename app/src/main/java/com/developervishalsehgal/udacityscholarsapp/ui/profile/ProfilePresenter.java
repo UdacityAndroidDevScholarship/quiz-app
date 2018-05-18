@@ -54,7 +54,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     }
 
     @Override
-    public void saveProfile(String pictureUrl, String slackHandle, String courseTrack) {
+    public void saveProfile(String pictureUrl, String username, String slackHandle, String courseTrack) {
 
         if (pictureUrl != null && !pictureUrl.isEmpty()) {
             mDataHandler.saveUserPic(pictureUrl);
@@ -66,6 +66,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
 
         mDataHandler.saveSlackHandle(slackHandle);
         mDataHandler.saveUserTrack(courseTrack);
+        mDataHandler.saveUserName(username);
 
         mDataHandler.setUserInfo(new DataHandler.Callback<Void>() {
             @Override

@@ -18,87 +18,74 @@ import java.util.Objects;
 public class Quiz {
 
     @Expose
-    @PropertyName("creator-id")
     @SerializedName("creator-id")
-    String mCreatorId;
+    private String mCreatorId;
 
     @Expose
-    @PropertyName("creator-name")
     @SerializedName("creator-name")
-    String mCreatorName;
+    private String mCreatorName;
 
     @Expose
-    @PropertyName("description")
     @SerializedName("description")
-    String mDescription;
+    private String mDescription;
 
     @Expose
-    @PropertyName("difficulty")
     @SerializedName("difficulty")
-    String mDifficulty;
+    private String mDifficulty;
 
     @Expose
-    @PropertyName("files")
     @SerializedName("files")
-    Map<String, String> mFiles;
+    private Map<String, String> mFiles;
 
     @Expose
-    @PropertyName("last-modified")
     @SerializedName("last-modified")
-    String mLastModified;
+    private String mLastModified;
 
     @Expose
-    @PropertyName("lesson")
     @SerializedName("lesson")
-    int mLesson;
+    private int mLesson;
 
     @Expose
-    @PropertyName("max-marks")
     @SerializedName("max-marks")
-    int mMaxMarks;
+    private int mMaxMarks;
 
     @Expose
-    @PropertyName("questions")
     @SerializedName("questions")
-    Map<String, Question> mQuestions;
+    private Map<String, Question> mQuestions;
 
     @Expose
-    @PropertyName("rated-by")
     @SerializedName("rated-by")
-    int mRatedBy;
+    private int mRatedBy;
 
     @Expose
-    @PropertyName("rating")
     @SerializedName("rating")
-    double mRating;
+    private double mRating;
 
     @Expose
-    @PropertyName("title")
     @SerializedName("title")
-    String mTitle;
+    private String mTitle;
 
     @Expose
-    @PropertyName("deadline")
     @SerializedName("deadline")
-    String mDeadline;
+    private String mDeadline;
 
     /**
      * For local usage only, it is not stored in database
      */
     @Exclude
-    boolean mAttempted;
+    private boolean mAttempted;
 
     /**
      * For local usage only, it is not stored in database
      */
     @Exclude
-    boolean mIsBookmarked;
+    private boolean mIsBookmarked;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
     @Exclude
-    String mKey;
+    private String mKey;
 
     public Quiz() {
     }
@@ -141,132 +128,132 @@ public class Quiz {
 
     }
 
-    @Exclude
+    @PropertyName("creator-id")
     public String getCreatorId() {
         return mCreatorId;
     }
 
-    @Exclude
+    @PropertyName("creator-id")
     public void setCreatorId(String creatorId) {
         mCreatorId = creatorId;
     }
 
-    @Exclude
+    @PropertyName("creator-name")
     public String getCreatorName() {
         return mCreatorName;
     }
 
-    @Exclude
+    @PropertyName("creator-name")
     public void setCreatorName(String creatorName) {
         mCreatorName = creatorName;
     }
 
-    @Exclude
+    @PropertyName("description")
     public String getDescription() {
         return mDescription;
     }
 
-    @Exclude
+    @PropertyName("description")
     public void setDescription(String description) {
         mDescription = description;
     }
 
-    @Exclude
+    @PropertyName("difficulty")
     public String getDifficulty() {
         return mDifficulty;
     }
 
-    @Exclude
+    @PropertyName("difficulty")
     public void setDifficulty(String difficulty) {
         mDifficulty = difficulty;
     }
 
-    @Exclude
+    @PropertyName("files")
     public Map<String, String> getFiles() {
         return mFiles;
     }
 
-    @Exclude
+    @PropertyName("files")
     public void setFiles(Map<String, String> files) {
         mFiles = files;
     }
 
-    @Exclude
+    @PropertyName("last-modified")
     public String getLastModified() {
         return mLastModified;
     }
 
-    @Exclude
+    @PropertyName("last-modified")
     public void setLastModified(String lastModified) {
         mLastModified = lastModified;
     }
 
-    @Exclude
+    @PropertyName("lesson")
     public int getLesson() {
         return mLesson;
     }
 
-    @Exclude
+    @PropertyName("lesson")
     public void setLesson(int lesson) {
         mLesson = lesson;
     }
 
-    @Exclude
+    @PropertyName("max-marks")
     public int getMaxMarks() {
         return mMaxMarks;
     }
 
-    @Exclude
+    @PropertyName("max-marks")
     public void setMaxMarks(int maxMarks) {
         mMaxMarks = maxMarks;
     }
 
-    @Exclude
+    @PropertyName("questions")
     public Map<String, Question> getQuestions() {
         return mQuestions;
     }
 
-    @Exclude
+    @PropertyName("questions")
     public void setQuestions(Map<String, Question> questions) {
         mQuestions = questions;
     }
 
-    @Exclude
+    @PropertyName("rated-by")
     public int getRatedBy() {
         return mRatedBy;
     }
 
-    @Exclude
+    @PropertyName("rated-by")
     public void setRatedBy(int ratedBy) {
         mRatedBy = ratedBy;
     }
 
-    @Exclude
+    @PropertyName("rating")
     public double getRating() {
         return mRating;
     }
 
-    @Exclude
+    @PropertyName("rating")
     public void setRating(Double rating) {
         mRating = rating;
     }
 
-    @Exclude
+    @PropertyName("title")
     public String getTitle() {
         return mTitle;
     }
 
-    @Exclude
+    @PropertyName("title")
     public void setTitle(String title) {
         mTitle = title;
     }
 
-    @Exclude
+    @PropertyName("deadline")
     public String getDeadline() {
         return mDeadline;
     }
 
-    @Exclude
+    @PropertyName("deadline")
     public void setDeadline(String deadline) {
         mDeadline = deadline;
     }

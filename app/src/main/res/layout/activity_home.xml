@@ -79,10 +79,9 @@
         <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/refresh_homescreen"
+            android:layout_marginTop="@dimen/difficulty_view_margin"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/difficulty_view_margin">
-
+            android:layout_height="match_parent">
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_quizzes"
                 android:layout_width="match_parent"
@@ -99,6 +98,19 @@
                 tools:itemCount="4"
                 tools:listitem="@layout/list_item_quizzes" />
         </android.support.v4.widget.SwipeRefreshLayout>
+
+        <!-- Empty view is only visible when the list has no items. -->
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/no_internet_connection"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAppearance="?android:textAppearanceMedium"/>
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/home_screen_pb"

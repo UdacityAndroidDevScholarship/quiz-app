@@ -297,6 +297,13 @@ class AppDataHandler implements DataHandler {
         return (mPreferences.getSlackHandle() != null);
     }
 
+    @Override
+    public void destroy() {
+        mPreferences.destroy();
+        // mDBHandler.destroy(); // this is yet to be implemented
+        mFirebaseHandler.destroy();
+    }
+
     /**
      * internal class for converting {@link FirebaseHandler} Callback to {@link DataHandler} Callback
      *

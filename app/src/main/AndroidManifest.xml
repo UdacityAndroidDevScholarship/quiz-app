@@ -64,7 +64,7 @@
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".settings.SettingsActivity"
+            android:name=".ui.settings.SettingsActivity"
             android:label="@string/settings"
             android:parentActivityName=".ui.home.HomeActivity" />
 

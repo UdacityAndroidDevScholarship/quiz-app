@@ -228,6 +228,7 @@ public interface DataHandler {
 
     boolean isLoggedIn();
 
+    void destroy();
     /**
      * Generic callback interface for passing response to caller.
      * <p>

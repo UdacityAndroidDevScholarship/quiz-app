@@ -31,9 +31,6 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void start(@Nullable Bundle extras) {
-        // TODO: check the bundle extras here if it contains quiz, or resource or some other id.
-        // TODO: If it does, take action accordingly and navigate to the right quiz / resource.
-
         if (extras != null && extras.containsKey(AppConstants.KEY_TYPE)) {
             if (AppConstants.NOTIFICATION_TYPE_DISCUSSION.equalsIgnoreCase(
                     extras.getString(AppConstants.KEY_TYPE))) {
@@ -130,7 +127,7 @@ public class HomePresenter implements HomeContract.Presenter {
                 attemptedQuizzes.add(quiz);
             }
         }
-        if(attemptedQuizzes.isEmpty()) {
+        if (attemptedQuizzes.isEmpty()) {
             mView.handleEmptyView(HomeContract.ATTEMPTED_QUIZZES);
         }
         mView.loadQuizzes(attemptedQuizzes);
@@ -144,7 +141,7 @@ public class HomePresenter implements HomeContract.Presenter {
                 unAttemptedQuizzes.add(quiz);
             }
         }
-        if(unAttemptedQuizzes.isEmpty()) {
+        if (unAttemptedQuizzes.isEmpty()) {
             mView.handleEmptyView(HomeContract.UNATTEMPTED_QUIZZES);
         }
         mView.loadQuizzes(unAttemptedQuizzes);
@@ -158,7 +155,7 @@ public class HomePresenter implements HomeContract.Presenter {
                 bookmarkedQuizzes.add(quiz);
             }
         }
-        if(bookmarkedQuizzes.isEmpty()) {
+        if (bookmarkedQuizzes.isEmpty()) {
             mView.handleEmptyView(HomeContract.BOOKMARKED_QUIZZES);
         }
         mView.loadQuizzes(bookmarkedQuizzes);

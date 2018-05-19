@@ -8,7 +8,7 @@
     <string name="deadline">Deadline:</string>
 
     <!--Sign In page text-->
-    <string name="sigin_text_almost_there">Almost there, Sign In to continue</string>
+    <string name="sigin_text_almost_there">For Scholars, By Scholars</string>
 
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->

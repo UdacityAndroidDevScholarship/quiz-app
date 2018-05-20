@@ -41,13 +41,13 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
-import com.developervishalsehgal.udacityscholarsapp.ui.settings.SettingsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
 import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsContract;
+import com.developervishalsehgal.udacityscholarsapp.ui.settings.SettingsActivity;
 import com.developervishalsehgal.udacityscholarsapp.utils.AppConstants;
 import com.developervishalsehgal.udacityscholarsapp.utils.Connectivity;
 
@@ -128,7 +128,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(getDrawable(R.mipmap.ic_launcher));
+            actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_menu_white_24dp));
         }
 
         mQuizRecyclerView = findViewById(R.id.recyclerview_quizzes);

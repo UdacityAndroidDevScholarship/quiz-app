@@ -18,12 +18,12 @@
 
     <ImageView
         android:id="@+id/sigin_image_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/box_x_large"
+        android:layout_height="@dimen/box_x_large"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/box_regular"
+        android:layout_marginTop="@dimen/margin_xx_large"
         android:contentDescription="@string/app_name"
-        android:src="@mipmap/signin_logo" />
+        android:src="@drawable/signin_pic" />
 
     <TextView
         android:id="@+id/signin_text_almost_there"

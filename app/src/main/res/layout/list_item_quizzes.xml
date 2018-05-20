@@ -8,6 +8,9 @@
     android:layout_marginStart="@dimen/medium_margin"
     app:cardBackgroundColor="@color/colorPrimary"
     app:cardCornerRadius="@dimen/card_view_corner_radius"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
     app:cardElevation="@dimen/card_view_elevation"
     app:cardMaxElevation="@dimen/card_view_elevation"
     app:cardUseCompatPadding="true">

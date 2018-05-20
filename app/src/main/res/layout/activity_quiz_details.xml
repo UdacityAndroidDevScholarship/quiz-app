@@ -192,6 +192,7 @@
                 android:layout_margin="@dimen/margin_16"
                 android:clickable="true"
                 android:elevation="0dp"
+                app:rippleColor="@color/fab_ripple"
                 android:focusable="true"
                 android:src="@drawable/ic_play_arrow_black_24dp"
                 android:visibility="gone"

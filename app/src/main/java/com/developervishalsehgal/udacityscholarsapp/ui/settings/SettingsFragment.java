@@ -87,7 +87,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
                             DataHandlerProvider.provide().destroy();
                             Intent signInIntent = new Intent(getActivity(), SignInActivity.class);
                             startActivity(signInIntent);
-                            getActivity().finish();
+                            getActivity().finishAffinity();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import com.developervishalsehgal.udacityscholarsapp.data.DataHandler;
 import com.developervishalsehgal.udacityscholarsapp.data.DataHandlerProvider;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
+import com.developervishalsehgal.udacityscholarsapp.utils.AppConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,17 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void start(@Nullable Bundle extras) {
-        // TODO: check the bundle extras here if it contains quiz, or resource or some other id.
-        // TODO: If it does, take action accordingly and navigate to the right quiz / resource.
+        if (extras != null && extras.containsKey(AppConstants.KEY_TYPE)) {
+            if (AppConstants.NOTIFICATION_TYPE_DISCUSSION.equalsIgnoreCase(
+                    extras.getString(AppConstants.KEY_TYPE))) {
+                String quizId = extras.getString(AppConstants.KEY_ACTION);
+                mView.navigateToQuizDiscussion(quizId);
+            } else if (AppConstants.NOTIFICATION_TYPE_QUIZ.equalsIgnoreCase(
+                    extras.getString(AppConstants.KEY_TYPE))) {
+                String quizId = extras.getString(AppConstants.KEY_ACTION);
+                mView.navigateToQuizDetails(quizId);
+            }
+        }
 
         mView.showLoading();
         mDataHandler.fetchQuizzes(0, new DataHandler.Callback<List<Quiz>>() {
@@ -117,7 +127,7 @@ public class HomePresenter implements HomeContract.Presenter {
                 attemptedQuizzes.add(quiz);
             }
         }
-        if(attemptedQuizzes.isEmpty()) {
+        if (attemptedQuizzes.isEmpty()) {
             mView.handleEmptyView(HomeContract.ATTEMPTED_QUIZZES);
         }
         mView.loadQuizzes(attemptedQuizzes);
@@ -131,7 +141,7 @@ public class HomePresenter implements HomeContract.Presenter {
                 unAttemptedQuizzes.add(quiz);
             }
         }
-        if(unAttemptedQuizzes.isEmpty()) {
+        if (unAttemptedQuizzes.isEmpty()) {
             mView.handleEmptyView(HomeContract.UNATTEMPTED_QUIZZES);
         }
         mView.loadQuizzes(unAttemptedQuizzes);
@@ -145,7 +155,7 @@ public class HomePresenter implements HomeContract.Presenter {
                 bookmarkedQuizzes.add(quiz);
             }
         }
-        if(bookmarkedQuizzes.isEmpty()) {
+        if (bookmarkedQuizzes.isEmpty()) {
             mView.handleEmptyView(HomeContract.BOOKMARKED_QUIZZES);
         }
         mView.loadQuizzes(bookmarkedQuizzes);

@@ -41,11 +41,13 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.developervishalsehgal.udacityscholarsapp.R;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Quiz;
-import com.developervishalsehgal.udacityscholarsapp.settings.SettingsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.PresenterInjector;
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionActivity;
+import com.developervishalsehgal.udacityscholarsapp.ui.discussion.QuizDiscussionContract;
 import com.developervishalsehgal.udacityscholarsapp.ui.notification.NotificationActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsActivity;
 import com.developervishalsehgal.udacityscholarsapp.ui.quizdetails.QuizDetailsContract;
+import com.developervishalsehgal.udacityscholarsapp.ui.settings.SettingsActivity;
 import com.developervishalsehgal.udacityscholarsapp.utils.AppConstants;
 import com.developervishalsehgal.udacityscholarsapp.utils.Connectivity;
 
@@ -63,7 +65,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private static final int SLIDE_UP_DELAY_ON_CHECKED_CHANGED = 350;
     private static final int BACK_PRESS_DURATION = 3000;
     private static final int DELAY_NAV_ITEM_CLICK = 250;
-    private static final String DEMO_TOAST_MSG = "Clicked!";
 
     private QuizAdapter mQuizAdapter;
 
@@ -78,16 +79,16 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     // UI Elements
     private DrawerLayout mDrawerLayout;
     private RecyclerView mQuizRecyclerView;
-    //////////////
+
     private TextView mTvQuizCount;
     private LottieAnimationView progressBar;
-    // Reference of the quiz filter list layout
+
     private RadioGroup mRGHomeQuizListFilter;
-    //Empty View elements
+
     private ImageView mIVEmptyFilterResult;
     private TextView mTVEmptyFilterResult;
     private LinearLayout mLLEmptyFilterResultContainer;
-    //////////////
+
     boolean mTwiceClicked = false;
     Snackbar mSnackbar;
 
@@ -127,7 +128,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(getDrawable(R.mipmap.ic_launcher));
+            actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_menu_white_24dp));
         }
 
         mQuizRecyclerView = findViewById(R.id.recyclerview_quizzes);
@@ -165,6 +166,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mImgUserPic = navHeaderView.findViewById(R.id.userimage_nav_drawer);
         mTvSlackHandle = navHeaderView.findViewById(R.id.slack_name_nav_drawer);
         mTvUserName = navHeaderView.findViewById(R.id.username_nav_drawer);
+
+        findViewById(R.id.settings).setOnClickListener(v -> {
+            if (mPresenter != null) {
+                mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_SETTINGS);
+            }
+        });
 
         //initializing empty view
         mEmptyStateTextView = findViewById(R.id.empty_view);
@@ -212,7 +219,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void loadQuizzes(List<Quiz> quizzes) {
-        if(!quizzes.isEmpty()) {
+        if (!quizzes.isEmpty()) {
             mLLEmptyFilterResultContainer.setVisibility(View.GONE);
         }
         mQuizRecyclerView.setVisibility(View.VISIBLE);
@@ -260,13 +267,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void navigateToScoreboard() {
         // TODO: Navigate to Scoreboard screen
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.msg_under_construction, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToCreateQuiz() {
         // TODO: Navigate to Create Quiz screen
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.msg_under_construction, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -284,20 +291,34 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void navigateToSettings() {
-        // TODO: Navigate to Settings screen
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        startActivity(settingsIntent);
     }
 
     @Override
     public void navigateToAboutScreen() {
         // TODO: Navigate to About screen
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.msg_under_construction, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToEditProfile() {
         // TODO: Navigate to edit profile activity
-        Toast.makeText(getApplicationContext(), DEMO_TOAST_MSG, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.msg_under_construction, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void navigateToQuizDiscussion(String quizId) {
+        Intent quizDiscussionIntent = new Intent(this, QuizDiscussionActivity.class);
+        quizDiscussionIntent.putExtra(QuizDiscussionContract.KEY_QUIZ_ID, quizId);
+        startActivity(quizDiscussionIntent);
+    }
+
+    @Override
+    public void navigateToQuizDetails(String quizId) {
+        Intent quizDetailsIntent = new Intent(this, QuizDiscussionActivity.class);
+        quizDetailsIntent.putExtra(QuizDetailsContract.KEY_QUIZ_ID, quizId);
+        startActivity(quizDetailsIntent);
     }
 
     @Override
@@ -560,6 +581,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         swipeRefreshLayout.setColorSchemeResources(R.color.bnv_color, R.color.blue_jeans,
                 R.color.ufo_green, R.color.vivid_tangelo);
         swipeRefreshLayout.setOnRefreshListener(() -> {
+
+            mPresenter.start(getIntent().getExtras());
+
             swipeRefreshLayout.setRefreshing(true);
 
             Handler handler = new Handler();

@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/activity_settings"
-        android:name="com.developervishalsehgal.udacityscholarsapp.settings.SettingsFragment"
+        android:name="com.developervishalsehgal.udacityscholarsapp.ui.settings.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"

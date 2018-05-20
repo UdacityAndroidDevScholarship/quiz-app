@@ -145,8 +145,8 @@
     <string name="theme_option_dark">Dark</string>
     <string name="theme_option_light">Light</string>
 
-    <string name="get_notifications_title">Get notifications</string>
-    <string name="get_notification_summary">Enable to receive notifications for quizzes</string>
+    <string name="get_notifications_title">Get All Notifications</string>
+    <string name="get_notification_summary">Enable to receive notifications</string>
     <string name="theme_list_label">Theme</string>
     <string name="sign_out">Sign out</string>
 
@@ -197,7 +197,7 @@
     <string name="no_un_attempted_quizzes">All Caught Up!</string>
 
     <string name="type_comment_hint">Type message here</string>
-
+    <string name="msg_under_construction">Feature is under construction</string>
 
 
 </resources>

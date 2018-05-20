@@ -54,6 +54,10 @@ public interface HomeContract {
 
         void navigateToEditProfile();
 
+        void navigateToQuizDiscussion(String quizId);
+
+        void navigateToQuizDetails(String quizId);
+
         void handleEmptyView(String selectedFilter);
     }
 

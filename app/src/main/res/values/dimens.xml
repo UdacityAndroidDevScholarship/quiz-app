@@ -69,6 +69,7 @@
     <dimen name="notification_description_margin_bottom">8dp</dimen>
     <dimen name="notification_description_margin_top">4dp</dimen>
     <dimen name="notification_description_margin_end">8dp</dimen>
+
     <!-- Notification Detail Activity dimesions-->
     <dimen name="notification_detail_name_text_size">16sp</dimen>
     <dimen name="notification_detail_description_text_size">15sp</dimen>
@@ -128,7 +129,7 @@
     <dimen name="margin_medium">8dp</dimen>
     <dimen name="margin_small">4dp</dimen>
 
-    //Nav Dimens
+    <!--Nav Dimens-->
     <dimen name="pad_main">15dp</dimen>
     <dimen name="pad_b_main">10dp</dimen>
     <dimen name="img_view_main">50dp</dimen>

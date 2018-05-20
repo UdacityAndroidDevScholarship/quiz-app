@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="@dimen/box_regular"
         android:contentDescription="@string/app_name"
         android:src="@mipmap/signin_logo" />
 
@@ -32,7 +32,7 @@
         android:layout_above="@+id/google_signin_btn"
         android:layout_below="@id/sigin_image_logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/margin_x_large"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/sigin_text_almost_there"
         android:textColor="#90ffffff" />

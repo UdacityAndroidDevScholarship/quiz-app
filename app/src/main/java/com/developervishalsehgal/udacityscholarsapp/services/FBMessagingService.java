@@ -81,7 +81,7 @@ public class FBMessagingService extends FirebaseMessagingService {
     private void raiseSystemNotification(@NonNull Notification notification) {
         // Before raising notification check if user has disabled notifications
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (sharedPrefs.getBoolean(getString(R.string.get_notification_key), false)) {
+        if (sharedPrefs.getBoolean(getString(R.string.get_notification_key), true)) {
             NotificationUtils.createNotification(this, notification, notification.getType());
         }
     }

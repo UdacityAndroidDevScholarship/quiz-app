@@ -8,7 +8,7 @@
     <string name="deadline">Deadline:</string>
 
     <!--Sign In page text-->
-    <string name="sigin_text_almost_there">Almost there, Sign In to continue</string>
+    <string name="sigin_text_almost_there">For Scholars, By Scholars</string>
 
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
@@ -145,8 +145,8 @@
     <string name="theme_option_dark">Dark</string>
     <string name="theme_option_light">Light</string>
 
-    <string name="get_notifications_title">Get notifications</string>
-    <string name="get_notification_summary">Enable to receive notifications for quizzes</string>
+    <string name="get_notifications_title">Get All Notifications</string>
+    <string name="get_notification_summary">Enable to receive notifications</string>
     <string name="theme_list_label">Theme</string>
     <string name="sign_out">Sign out</string>
 
@@ -189,7 +189,15 @@
     <string name="slack_handle_format_missing">Start with \@</string>
     <string name="select_your_track">Select Your Track</string>
     <string name="user_image_empty">Select a profile photo</string>
+    <string name="empty_quiz_list">No quiz for the selected Filter</string>
+
+    <!--Handle Filter Helper Strings-->
+    <string name="no_attempted_quizzes">No Attempts Yet!</string>
+    <string name="no_bookmarked_quizzes">No Bookmarks!</string>
+    <string name="no_un_attempted_quizzes">All Caught Up!</string>
+
     <string name="type_comment_hint">Type message here</string>
+    <string name="msg_under_construction">Feature is under construction</string>
 
 
 </resources>

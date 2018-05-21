@@ -21,10 +21,11 @@ public class Utils {
         return 0;
     }
 
-    public static String getDisplayDate(long timeInMillis) {
+    public static String getDisplayDate(long timeInSeconds) {
         try {
+            timeInSeconds = timeInSeconds * 1000;
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            Date d = new Date(timeInMillis);
+            Date d = new Date(timeInSeconds);
             return df.format(d);
         } catch (Exception e) {
             e.printStackTrace();

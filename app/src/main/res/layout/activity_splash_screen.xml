@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
         android:contentDescription="@string/app_name"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/app_title"

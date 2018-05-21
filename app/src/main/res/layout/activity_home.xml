@@ -5,9 +5,9 @@
     android:id="@+id/homeactivitycoordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible"
     android:background="@color/black"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:visibility="visible">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout_home"
@@ -99,7 +99,6 @@
                 tools:listitem="@layout/list_item_quizzes" />
         </android.support.v4.widget.SwipeRefreshLayout>
 
-
         <!-- Empty view is only visible when the list has no items. -->
         <TextView
             android:id="@+id/empty_view"
@@ -143,6 +142,38 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_empty_filter_result_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/refresh_homescreen"
+            app:layout_constraintVertical_bias="0.38"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/iv_empty_filter_result"
+                android:layout_width="@dimen/empty_view_img_size"
+                android:layout_height="@dimen/empty_view_img_size"
+                android:contentDescription="@string/empty_quiz_list"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@drawable/ic_fireworks" />
+
+            <TextView
+                android:id="@+id/tv_empty_filter_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
+                tools:text="Empty"
+                android:textColor="@color/colorAccent"
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/medium_margin"/>
+        </LinearLayout>
 
 
     </android.support.constraint.ConstraintLayout>

@@ -1,14 +1,14 @@
 package com.developervishalsehgal.udacityscholarsapp.services;
 
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
+import android.support.v7.preference.PreferenceManager;
+
+import com.developervishalsehgal.udacityscholarsapp.R;
+import com.developervishalsehgal.udacityscholarsapp.data.DataHandlerProvider;
 import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.developervishalsehgal.udacityscholarsapp.utils.AppConstants;
 import com.developervishalsehgal.udacityscholarsapp.utils.NotificationUtils;
-
-import android.support.annotation.NonNull;
-import android.util.Log;
-
-import com.developervishalsehgal.udacityscholarsapp.data.DataHandlerProvider;
-import com.developervishalsehgal.udacityscholarsapp.data.models.Notification;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -79,7 +79,10 @@ public class FBMessagingService extends FirebaseMessagingService {
      * @param notification - {@link Notification} object generated from received data payload
      */
     private void raiseSystemNotification(@NonNull Notification notification) {
-
-        NotificationUtils.createNotification(this, notification, notification.getType());
+        // Before raising notification check if user has disabled notifications
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (sharedPrefs.getBoolean(getString(R.string.get_notification_key), true)) {
+            NotificationUtils.createNotification(this, notification, notification.getType());
+        }
     }
 }

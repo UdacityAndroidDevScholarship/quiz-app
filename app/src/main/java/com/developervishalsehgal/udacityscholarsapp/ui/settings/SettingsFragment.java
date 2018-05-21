@@ -1,5 +1,6 @@
-package com.developervishalsehgal.udacityscholarsapp.settings;
+package com.developervishalsehgal.udacityscholarsapp.ui.settings;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v14.preference.SwitchPreference;
@@ -9,9 +10,12 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
-import android.util.Log;
 
 import com.developervishalsehgal.udacityscholarsapp.R;
+import com.developervishalsehgal.udacityscholarsapp.data.DataHandlerProvider;
+import com.developervishalsehgal.udacityscholarsapp.ui.signin.SignInActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -46,7 +50,6 @@ public class SettingsFragment extends PreferenceFragmentCompat
             if (p instanceof PreferenceCategory) {
                 PreferenceCategory pc = (PreferenceCategory) p;
                 prefCount = pc.getPreferenceCount();
-                Log.d("Preference Count", String.valueOf(prefCount));
 
                 /* Calling setupPreferences() method
                     to set preference summary after getting the
@@ -61,7 +64,6 @@ public class SettingsFragment extends PreferenceFragmentCompat
             Preference p = category.getPreference(i);
             if (!(p instanceof SwitchPreference)) {
                 String value = preferences.getString(p.getKey(), "");
-                Log.d("Value", value);
                 setPreferenceSummary(p, value);
             }
         }
@@ -76,11 +78,22 @@ public class SettingsFragment extends PreferenceFragmentCompat
     private void showSignOutAlert() {
         new AlertDialog.Builder(getActivity())
                 .setTitle(getResources().getString(R.string.sign_out_title))
-                .setMessage(getResources().getString(R.string.sign_out_message))
+                .setMessage(getString(R.string.sign_out_message))
                 .setPositiveButton(getResources().getString(R.string.sign_out_ok), (dialog, which) -> {
-                    //TODO Implement Sign out sequence
+                    try {
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        if (currentUser != null) {
+                            FirebaseAuth.getInstance().signOut();
+                            DataHandlerProvider.provide().destroy();
+                            Intent signInIntent = new Intent(getActivity(), SignInActivity.class);
+                            startActivity(signInIntent);
+                            getActivity().finishAffinity();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 })
-                .setNegativeButton(getResources().getString(R.string.sign_out_cancel), null)
+                .setNegativeButton(getString(R.string.sign_out_cancel), (dialog, which) -> dialog.dismiss())
                 .create().show();
     }
 
@@ -89,7 +102,6 @@ public class SettingsFragment extends PreferenceFragmentCompat
         if (preference instanceof ListPreference) {
             ListPreference listPreference = (ListPreference) preference;
             int index = listPreference.findIndexOfValue(value);
-            Log.d("Index", String.valueOf(index));
             if (index >= 0) {
                 listPreference.setSummary(listPreference.getEntries()[index]);
             }

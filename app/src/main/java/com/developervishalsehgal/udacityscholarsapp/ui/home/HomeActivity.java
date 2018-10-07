@@ -582,18 +582,24 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 R.color.ufo_green, R.color.vivid_tangelo);
         swipeRefreshLayout.setOnRefreshListener(() -> {
 
-            mPresenter.start(getIntent().getExtras());
+            if (Connectivity.isNetworkAvailable(this)) {
+                mPresenter.start(getIntent().getExtras());
 
-            swipeRefreshLayout.setRefreshing(true);
+                swipeRefreshLayout.setRefreshing(true);
 
-            Handler handler = new Handler();
-            handler.postDelayed(() -> {
-                if (mQuizAdapter != null) {
-                    mQuizAdapter.notifyDataSetChanged();
-                    showSnackBar(R.string.refreshed);
-                }
+                Handler handler = new Handler();
+                handler.postDelayed(() -> {
+                    if (mQuizAdapter != null) {
+                        mQuizAdapter.notifyDataSetChanged();
+                        showSnackBar(R.string.refreshed);
+                    }
+                    swipeRefreshLayout.setRefreshing(false);
+                }, BACK_PRESS_DURATION);
+
+            }else {
                 swipeRefreshLayout.setRefreshing(false);
-            }, BACK_PRESS_DURATION);
+                showSnackBar(R.string.no_internet_connection);
+            }
         });
     }
 

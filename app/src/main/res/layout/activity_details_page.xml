@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/light_gray"
     android:clipToPadding="false"
     android:orientation="vertical">
@@ -196,7 +195,8 @@
         android:text="@string/details_page_next_btn"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/details_page_button_text" />
+        android:textSize="@dimen/details_page_button_text"
+        android:focusable="true" />
 
     <ProgressBar
         android:id="@+id/pb_profile"
@@ -204,7 +204,7 @@
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_marginBottom="@dimen/margin_small"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/white"
         android:indeterminate="true"
         android:layout_alignParentBottom="true"
         android:indeterminateTint="@color/colorPrimary"
